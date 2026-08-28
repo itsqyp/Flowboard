@@ -4,22 +4,39 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <meta
+      name="description"
+      content="Flowboard — Project management for modern teams."
+    />
+
     <title>Flowboard</title>
 
     <link rel="stylesheet" href="./src/output.css" />
   </head>
 
   <body>
-    <main
-      class="min-h-screen flex items-center justify-center bg-slate-950 text-white"
-    >
-      <div class="text-center">
-        <h1 class="text-5xl font-bold tracking-tight">Flowasdasdboard</h1>
+    <!-- Navbar -->
+    <div id="navbar"></div>
 
-        <p class="mt-4 text-slate-400">
-          Project management forasd asasddas sdasdasdasdmodern teams.
-        </p>
+    <!-- Application -->
+    <div class="flex min-h-[calc(100vh-4rem)]">
+      <!-- Sidebar -->
+      <div id="sidebar"></div>
+
+      <!-- Main -->
+      <div class="min-w-0 flex-1">
+        <main id="app" class="min-h-full"></main>
+
+        <!-- Footer -->
+        <div id="footer"></div>
       </div>
-    </main>
+    </div>
+    <!-- Mobile Navigation -->
+    <div id="mobile-navigation"></div>
+
+    <!-- Toast notifications -->
+    <div id="toast-container"></div>
+
+    <script type="module" src="./src/main.js"></script>
   </body>
 </html>
