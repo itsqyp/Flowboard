@@ -1,3 +1,5 @@
+import { mainNavigation, workspaceNavigation } from "../data/navigation.js";
+
 export function renderMobileNavigation() {
   const navigation = document.querySelector("#mobile-navigation");
 
@@ -60,72 +62,57 @@ export function renderMobileNavigation() {
             <!-- Navigation -->
             <nav class="flex-1 overflow-y-auto p-4">
 
-                <div class="space-y-1">
+    <div class="space-y-1">
 
-                    <a
-                        href="/"
-                        class="flex items-center gap-3 rounded-lg bg-indigo-50 px-3 py-2.5 text-sm font-semibold text-indigo-700"
-                    >
-                        <span>▦</span>
-                        Dashboard
-                    </a>
+        ${mainNavigation
+          .map(
+            (item, index) => `
+            <a
+                href="${item.href}"
+                class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm ${
+                  index === 0
+                    ? "bg-indigo-50 font-semibold text-indigo-700"
+                    : "font-medium text-slate-600 hover:bg-slate-100 hover:text-slate-900"
+                }"
+            >
+                ${item.icon}
 
-                    <a
-                        href="#"
-                        class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 hover:bg-slate-100 hover:text-slate-900"
-                    >
-                        <span>▱</span>
-                        Projects
-                    </a>
+                ${item.label}
+            </a>
+        `,
+          )
+          .join("")}
 
-                    <a
-                        href="#"
-                        class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 hover:bg-slate-100 hover:text-slate-900"
-                    >
-                        <span>✓</span>
-                        My Tasks
-                    </a>
+    </div>
 
-                    <a
-                        href="#"
-                        class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 hover:bg-slate-100 hover:text-slate-900"
-                    >
-                        <span>▣</span>
-                        Calendar
-                    </a>
+    <div class="mt-8">
 
-                    <a
-                        href="#"
-                        class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 hover:bg-slate-100 hover:text-slate-900"
-                    >
-                        <span>♧</span>
-                        Team
-                    </a>
+        <p class="px-3 text-xs font-semibold uppercase tracking-wider text-slate-400">
+            Workspace
+        </p>
 
-                </div>
+        <div class="mt-2 space-y-1">
 
-                <div class="mt-8">
+            ${workspaceNavigation
+              .map(
+                (item) => `
+                <a
+                    href="${item.href}"
+                    class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 hover:bg-slate-100 hover:text-slate-900"
+                >
+                    ${item.icon}
 
-                    <p class="px-3 text-xs font-semibold uppercase tracking-wider text-slate-400">
-                        Workspace
-                    </p>
+                    ${item.label}
+                </a>
+            `,
+              )
+              .join("")}
 
-                    <div class="mt-2">
+        </div>
 
-                        <a
-                            href="#"
-                            class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 hover:bg-slate-100 hover:text-slate-900"
-                        >
-                            <span>⚙</span>
-                            Settings
-                        </a>
+    </div>
 
-                    </div>
-
-                </div>
-
-            </nav>
-
+</nav>
         </aside>
     `;
 
