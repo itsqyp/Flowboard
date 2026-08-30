@@ -1,3 +1,10 @@
+import { renderWelcomeHeader } from "../components/dashboard/welcome-header.js";
+import { renderStatCards } from "../components/dashboard/stat-cards.js";
+import { renderProjectsOverview } from "../components/dashboard/projects-overview.js";
+import { renderMyTasks } from "../components/dashboard/my-tasks.js";
+import { renderUpcomingDeadlines } from "../components/dashboard/upcoming-deadlines.js";
+import { renderRecentActivity } from "../components/dashboard/recent-activity.js";
+
 export function renderDashboard() {
   const app = document.querySelector("#app");
 
@@ -7,71 +14,42 @@ export function renderDashboard() {
   }
 
   app.innerHTML = `
-        <section class="px-6 py-8">
+    <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
 
-            <div class="mx-auto max-w-7xl">
+      <!-- Welcome -->
+      <div id="dashboard-welcome"></div>
 
-                <div>
-                    <p class="text-sm font-medium text-indigo-600">
-                        Workspace
-                    </p>
+      <!-- Statistics -->
+      <div id="dashboard-stats" class="mt-6"></div>
 
-                    <h1 class="mt-1 text-3xl font-bold tracking-tight text-slate-900">
-                        Dashboard
-                    </h1>
+      <!-- Projects -->
+      <div id="dashboard-projects" class="mt-6"></div>
 
-                    <p class="mt-2 text-sm text-slate-500">
-                        Welcome back. Here's what's happening with your projects.
-                    </p>
-                </div>
+      <!-- Tasks + Deadlines -->
+      <div class="mt-6 grid gap-6 lg:grid-cols-3">
 
-                <!-- Temporary content -->
-                <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div
+          id="dashboard-tasks"
+          class="lg:col-span-2"
+        ></div>
 
-                    <div class="rounded-xl border bg-white p-5">
-                        <p class="text-sm text-slate-500">
-                            Total Projects
-                        </p>
+        <div id="dashboard-deadlines"></div>
 
-                        <p class="mt-2 text-3xl font-bold text-slate-900">
-                            3
-                        </p>
-                    </div>
+      </div>
 
-                    <div class="rounded-xl border bg-white p-5">
-                        <p class="text-sm text-slate-500">
-                            Active Tasks
-                        </p>
+      <!-- Recent Activity -->
+      <div
+        id="dashboard-activity"
+        class="mt-6"
+      ></div>
 
-                        <p class="mt-2 text-3xl font-bold text-slate-900">
-                            12
-                        </p>
-                    </div>
+    </div>
+  `;
 
-                    <div class="rounded-xl border bg-white p-5">
-                        <p class="text-sm text-slate-500">
-                            Completed
-                        </p>
-
-                        <p class="mt-2 text-3xl font-bold text-slate-900">
-                            28
-                        </p>
-                    </div>
-
-                    <div class="rounded-xl border bg-white p-5">
-                        <p class="text-sm text-slate-500">
-                            Team Members
-                        </p>
-
-                        <p class="mt-2 text-3xl font-bold text-slate-900">
-                            6
-                        </p>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-    `;
+  renderWelcomeHeader();
+  renderStatCards();
+  renderProjectsOverview();
+  renderMyTasks();
+  renderUpcomingDeadlines();
+  renderRecentActivity();
 }
