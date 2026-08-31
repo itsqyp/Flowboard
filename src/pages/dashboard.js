@@ -4,6 +4,10 @@ import { renderProjectsOverview } from "../components/dashboard/projects-overvie
 import { renderMyTasks } from "../components/dashboard/my-tasks.js";
 import { renderUpcomingDeadlines } from "../components/dashboard/upcoming-deadlines.js";
 import { renderRecentActivity } from "../components/dashboard/recent-activity.js";
+import {
+  renderProjectModal,
+  setupCreateProjectButton,
+} from "../components/dashboard/project-modal.js";
 
 export function renderDashboard() {
   const app = document.querySelector("#app");
@@ -52,4 +56,6 @@ export function renderDashboard() {
   renderMyTasks();
   renderUpcomingDeadlines();
   renderRecentActivity();
+  renderProjectModal();
+  setupCreateProjectButton();
 }
