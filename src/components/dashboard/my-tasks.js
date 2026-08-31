@@ -1,4 +1,5 @@
 import { dashboardTasks } from "../../data/dashboard.js";
+import { showToast } from "../toast.js";
 
 export function renderMyTasks() {
   const container = document.querySelector("#dashboard-tasks");
@@ -162,6 +163,12 @@ function setupTaskInteractions() {
       task.completed = !task.completed;
 
       renderMyTasks();
+
+      if (task.completed) {
+        showToast(`"${task.title}" has been completed.`, "success");
+      } else {
+        showToast(`"${task.title}" has been marked as incomplete.`, "info");
+      }
     });
   });
 }
