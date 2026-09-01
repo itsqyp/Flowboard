@@ -21,7 +21,7 @@ export const mainNavigation = [
 
   {
     label: "Projects",
-    href: "#",
+    href: "/projects",
     icon: `
             <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -39,7 +39,7 @@ export const mainNavigation = [
 
   {
     label: "My Tasks",
-    href: "#",
+    href: "/tasks",
     icon: `
             <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -57,7 +57,7 @@ export const mainNavigation = [
 
   {
     label: "Calendar",
-    href: "#",
+    href: "/calendar",
     icon: `
             <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -77,7 +77,7 @@ export const mainNavigation = [
 
   {
     label: "Team",
-    href: "#",
+    href: "/team",
     icon: `
             <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -99,7 +99,7 @@ export const mainNavigation = [
 export const workspaceNavigation = [
   {
     label: "Settings",
-    href: "#",
+    href: "/settings",
     icon: `
             <svg
                 xmlns="http://www.w3.org/2000/svg"
