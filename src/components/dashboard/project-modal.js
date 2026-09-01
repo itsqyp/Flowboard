@@ -1,6 +1,6 @@
 import { showToast } from "../toast.js";
 import { dashboardProjects } from "../../data/dashboard.js";
-
+import { renderProjectsOverview } from "./projects-overview.js";
 let modal = null;
 
 export function renderProjectModal() {
@@ -300,6 +300,8 @@ function handleProjectSubmit(event) {
   };
 
   dashboardProjects.unshift(newProject);
+
+  renderProjectsOverview();
 
   closeProjectModal();
 
