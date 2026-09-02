@@ -139,8 +139,97 @@ export function renderProjects() {
   `;
 
   const projectsGrid = document.querySelector("#projects-grid");
+  const searchInput = document.querySelector("#project-search");
+  const statusFilter = document.querySelector("#project-status-filter");
+  const sortSelect = document.querySelector("#project-sort");
+  const projectCount = document.querySelector("#project-count");
 
-  projectsGrid.innerHTML = projects
-    .map((project) => renderProjectCard(project))
-    .join("");
+  function updateProjects() {
+    const searchTerm = searchInput.value.trim().toLowerCase();
+    const selectedStatus = statusFilter.value;
+    const selectedSort = sortSelect.value;
+
+    let filteredProjects = projects.filter((project) => {
+      const matchesSearch =
+        project.name.toLowerCase().includes(searchTerm) ||
+        project.description.toLowerCase().includes(searchTerm);
+
+      const matchesStatus =
+        selectedStatus === "all" || project.status === selectedStatus;
+
+      return matchesSearch && matchesStatus;
+    });
+
+    filteredProjects.sort((a, b) => {
+      switch (selectedSort) {
+        case "name-asc":
+          return a.name.localeCompare(b.name);
+
+        case "name-desc":
+          return b.name.localeCompare(a.name);
+
+        case "due-soon":
+          return new Date(a.dueDate) - new Date(b.dueDate);
+
+        case "progress-high":
+          return b.progress - a.progress;
+
+        case "progress-low":
+          return a.progress - b.progress;
+
+        case "recent":
+        default:
+          return new Date(b.createdAt) - new Date(a.createdAt);
+      }
+    });
+
+    projectCount.textContent =
+      `${filteredProjects.length} ` +
+      `${filteredProjects.length === 1 ? "project" : "projects"}`;
+
+    if (filteredProjects.length === 0) {
+      projectsGrid.innerHTML = `
+      <div class="col-span-full rounded-xl border border-dashed border-slate-300 bg-white px-6 py-12 text-center">
+        
+        <div class="mx-auto flex size-12 items-center justify-center rounded-full bg-slate-100">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.8"
+            stroke="currentColor"
+            class="size-6 text-slate-400"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="m21 21-4.5-4.5m2-5.5a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z"
+            />
+          </svg>
+        </div>
+
+        <h2 class="mt-4 text-sm font-semibold text-slate-900">
+          No projects found
+        </h2>
+
+        <p class="mx-auto mt-1 max-w-sm text-sm text-slate-500">
+          Try changing your search or status filter to find what you're looking for.
+        </p>
+
+      </div>
+    `;
+
+      return;
+    }
+
+    projectsGrid.innerHTML = filteredProjects
+      .map((project) => renderProjectCard(project))
+      .join("");
+  }
+
+  updateProjects();
+
+  searchInput.addEventListener("input", updateProjects);
+  statusFilter.addEventListener("change", updateProjects);
+  sortSelect.addEventListener("change", updateProjects);
 }
