@@ -1,4 +1,5 @@
 import { router, navigateTo } from "./router.js";
+import { renderSidebar } from "./components/sidebar.js";
 
 export function setupNavigation() {
   document.addEventListener("click", (event) => {
@@ -21,9 +22,12 @@ export function setupNavigation() {
     event.preventDefault();
 
     navigateTo(href);
+
+    renderSidebar();
   });
 
   window.addEventListener("popstate", () => {
     router();
+    renderSidebar();
   });
 }
