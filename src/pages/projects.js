@@ -1,3 +1,6 @@
+import { projects } from "../data/projects.js";
+import { renderProjectCard } from "../components/projects/project-card.js";
+
 export function renderProjects() {
   const app = document.querySelector("#app");
 
@@ -134,4 +137,10 @@ export function renderProjects() {
 
     </div>
   `;
+
+  const projectsGrid = document.querySelector("#projects-grid");
+
+  projectsGrid.innerHTML = projects
+    .map((project) => renderProjectCard(project))
+    .join("");
 }
