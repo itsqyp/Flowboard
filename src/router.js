@@ -22,3 +22,9 @@ export function router() {
 
   renderPage();
 }
+
+export function navigateTo(path) {
+  window.history.pushState({}, "", path);
+
+  router();
+}
