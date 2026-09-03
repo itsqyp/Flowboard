@@ -1,5 +1,9 @@
 import { projects } from "../data/projects.js";
 import { tasks } from "../data/tasks.js";
+import {
+  renderTaskModal,
+  openTaskModal,
+} from "../components/tasks/task-modal.js";
 
 export function renderProjectDetails(projectId) {
   const app = document.querySelector("#app");
@@ -116,12 +120,13 @@ export function renderProjectDetails(projectId) {
             Edit Project
           </button>
 
-          <button
-            type="button"
-            class="rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-700"
-          >
-            Add Task
-          </button>
+         <button
+  id="add-task-btn"
+  type="button"
+  class="rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-700"
+>
+  Add Task
+</button>
 
         </div>
 
@@ -200,12 +205,13 @@ export function renderProjectDetails(projectId) {
       </p>
     </div>
 
-    <button
-      type="button"
-      class="inline-flex items-center justify-center rounded-lg bg-indigo-600 px-3.5 py-2 text-xs font-semibold text-white transition hover:bg-indigo-700"
-    >
-      Add Task
-    </button>
+   <button
+  id="add-task-btn-secondary"
+  type="button"
+  class="inline-flex items-center justify-center rounded-lg bg-indigo-600 px-3.5 py-2 text-xs font-semibold text-white transition hover:bg-indigo-700"
+>
+  Add Task
+</button>
 
   </div>
 
@@ -322,5 +328,22 @@ export function renderProjectDetails(projectId) {
     </div>
    
   `;
+
+  renderTaskModal((newTask) => {
+    newTask.projectId = projectId;
+
+    tasks.unshift(newTask);
+
+    renderProjectDetails(projectId);
+  });
+
+  const addTaskButton = document.querySelector("#add-task-btn");
+  const secondaryAddTaskButton = document.querySelector(
+    "#add-task-btn-secondary",
+  );
+
+  addTaskButton.addEventListener("click", openTaskModal);
+  secondaryAddTaskButton.addEventListener("click", openTaskModal);
 }
 // this div could be an issue. ??
+// this project-details.js could be very shaky
