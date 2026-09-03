@@ -18,6 +18,19 @@ export function renderProjectDetails(projectId) {
   const project = projects.find((item) => item.id === projectId);
   const projectTasks = tasks.filter((task) => task.projectId === projectId);
 
+  //Dynamic Progress
+
+  const completedTasks = projectTasks.filter(
+    (task) => task.status === "completed",
+  ).length;
+
+  const totalTasks = projectTasks.length;
+
+  const progress =
+    totalTasks === 0 ? 0 : Math.round((completedTasks / totalTasks) * 100);
+
+  // Dynamic Progress
+
   if (!project) {
     app.innerHTML = `
       <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
@@ -139,14 +152,29 @@ export function renderProjectDetails(projectId) {
       <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
 
         <div class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-          <p class="text-sm font-medium text-slate-500">
-            Progress
-          </p>
 
-          <p class="mt-2 text-2xl font-bold text-slate-900">
-            ${project.progress}%
-          </p>
-        </div>
+  <div class="flex items-center justify-between">
+
+    <p class="text-sm font-medium text-slate-500">
+      Progress
+    </p>
+
+    <span class="text-sm font-bold text-slate-900">
+      ${progress}%
+    </span>
+
+  </div>
+
+  <div class="mt-4 h-2 overflow-hidden rounded-full bg-slate-100">
+
+    <div
+      class="h-full rounded-full bg-indigo-600 transition-all duration-500"
+      style="width: ${progress}%"
+    ></div>
+
+  </div>
+
+</div>
 
 
         <div class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
@@ -155,10 +183,10 @@ export function renderProjectDetails(projectId) {
           </p>
 
           <p class="mt-2 text-2xl font-bold text-slate-900">
-            ${project.tasks.completed}
-            <span class="text-base font-medium text-slate-400">
-              / ${project.tasks.total}
-            </span>
+           ${completedTasks}
+<span class="text-base font-medium text-slate-400">
+  / ${totalTasks}
+</span>
           </p>
         </div>
 
