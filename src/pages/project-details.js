@@ -5,6 +5,8 @@ import {
   openTaskModal,
 } from "../components/tasks/task-modal.js";
 
+import { showToast } from "../components/toast.js";
+
 export function renderProjectDetails(projectId) {
   const app = document.querySelector("#app");
 
@@ -262,21 +264,62 @@ export function renderProjectDetails(projectId) {
 
                     <div class="flex items-center gap-3">
 
-                      <button
-                        type="button"
-                        class="flex size-5 shrink-0 items-center justify-center rounded border border-slate-300 bg-white transition hover:border-indigo-500"
-                        aria-label="Complete task"
-                      ></button>
+                     <button
+  type="button"
+  class="task-complete-btn flex size-5 shrink-0 items-center justify-center rounded border transition
+    ${
+      task.status === "completed"
+        ? "border-indigo-600 bg-indigo-600 text-white"
+        : "border-slate-300 bg-white hover:border-indigo-500"
+    }"
+  data-task-id="${task.id}"
+  aria-label="${
+    task.status === "completed"
+      ? "Mark task as incomplete"
+      : "Mark task as complete"
+  }"
+>
+  ${
+    task.status === "completed"
+      ? `
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="2.5"
+          stroke="currentColor"
+          class="size-3.5"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="m5 12 4 4L19 7"
+          />
+        </svg>
+      `
+      : ""
+  }
+</button>
 
-                      <h3 class="truncate text-sm font-semibold text-slate-900">
-                        ${task.title}
-                      </h3>
+                     <h3
+  class="truncate text-sm font-semibold ${
+    task.status === "completed"
+      ? "text-slate-400 line-through"
+      : "text-slate-900"
+  }"
+>
+  ${task.title}
+</h3>
 
                     </div>
 
-                    <p class="mt-1 pl-8 text-xs text-slate-500">
-                      ${task.description}
-                    </p>
+                    <p
+  class="mt-1 pl-8 text-xs ${
+    task.status === "completed" ? "text-slate-400" : "text-slate-500"
+  }"
+>
+  ${task.description}
+</p>
 
                   </div>
 
@@ -341,9 +384,32 @@ export function renderProjectDetails(projectId) {
   const secondaryAddTaskButton = document.querySelector(
     "#add-task-btn-secondary",
   );
-
   addTaskButton.addEventListener("click", openTaskModal);
   secondaryAddTaskButton.addEventListener("click", openTaskModal);
+
+  const taskCompleteButtons = document.querySelectorAll(".task-complete-btn");
+  taskCompleteButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const taskId = button.dataset.taskId;
+
+      const task = tasks.find((item) => item.id === taskId);
+
+      if (!task) {
+        return;
+      }
+
+      task.status = task.status === "completed" ? "todo" : "completed";
+
+      showToast(
+        task.status === "completed"
+          ? `"${task.title}" completed.`
+          : `"${task.title}" marked as incomplete.`,
+        "success",
+      );
+
+      renderProjectDetails(projectId);
+    });
+  });
 }
 // this div could be an issue. ??
 // this project-details.js could be very shaky
