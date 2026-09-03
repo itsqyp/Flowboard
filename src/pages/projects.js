@@ -1,6 +1,11 @@
 import { projects } from "../data/projects.js";
 import { renderProjectCard } from "../components/projects/project-card.js";
 
+import {
+  renderProjectModal,
+  openProjectModal,
+} from "../components/projects/project-modal.js";
+
 export function renderProjects() {
   const app = document.querySelector("#app");
 
@@ -227,9 +232,17 @@ export function renderProjects() {
       .join("");
   }
 
+  renderProjectModal((newProject) => {
+    projects.unshift(newProject);
+    updateProjects();
+  });
+
   updateProjects();
 
   searchInput.addEventListener("input", updateProjects);
   statusFilter.addEventListener("change", updateProjects);
   sortSelect.addEventListener("change", updateProjects);
+
+  const createProjectButton = document.querySelector("#create-project-btn");
+  createProjectButton.addEventListener("click", openProjectModal);
 }
