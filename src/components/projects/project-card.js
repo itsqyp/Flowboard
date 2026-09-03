@@ -166,13 +166,12 @@ export function renderProjectCard(project) {
           ${project.tasks.completed} of ${project.tasks.total} tasks
         </span>
 
-        <button
-          type="button"
-          class="project-view-btn rounded-lg px-3 py-1.5 text-xs font-semibold text-indigo-600 transition hover:bg-indigo-50 hover:text-indigo-700"
-          data-project-id="${project.id}"
-        >
-          View Project
-        </button>
+       <a
+  href="/projects/${project.id}"
+  class="project-view-btn rounded-lg px-3 py-1.5 text-xs font-semibold text-indigo-600 transition hover:bg-indigo-50 hover:text-indigo-700"
+>
+  View Project
+</a>
 
       </div>
 
