@@ -354,6 +354,43 @@ export function renderProjectDetails(projectId) {
 
                   <div class="flex shrink-0 items-center gap-4 pl-8 sm:pl-0">
 
+
+ <!-- Status -->
+                  <select
+  class="task-status-select rounded-full border-0 px-2.5 py-1 text-xs font-semibold outline-none ring-0 transition
+    ${
+      task.status === "completed"
+        ? "bg-green-50 text-green-700"
+        : task.status === "in-progress"
+          ? "bg-indigo-50 text-indigo-700"
+          : "bg-slate-100 text-slate-600"
+    }"
+  data-task-id="${task.id}"
+  aria-label="Change task status"
+>
+  <option
+    value="todo"
+    ${task.status === "todo" ? "selected" : ""}
+  >
+    To Do
+  </option>
+
+  <option
+    value="in-progress"
+    ${task.status === "in-progress" ? "selected" : ""}
+  >
+    In Progress
+  </option>
+
+  <option
+    value="completed"
+    ${task.status === "completed" ? "selected" : ""}
+  >
+    Completed
+  </option>
+</select>
+
+ <!-- Priority -->
                     <span class="rounded-full px-2.5 py-1 text-xs font-semibold
                       ${
                         task.priority === "high"
@@ -369,6 +406,11 @@ export function renderProjectDetails(projectId) {
                       }
                     </span>
 
+
+
+
+
+  <!-- Due Date -->
                     <span class="text-xs font-medium text-slate-500">
                       ${new Date(task.dueDate).toLocaleDateString("en-US", {
                         month: "short",
@@ -376,6 +418,7 @@ export function renderProjectDetails(projectId) {
                       })}
                     </span>
 
+                      <!-- Assignee -->
                     <div
                       class="flex size-7 items-center justify-center rounded-full bg-indigo-100 text-[10px] font-bold text-indigo-700"
                       title="${task.assignee.name}"
@@ -432,6 +475,34 @@ export function renderProjectDetails(projectId) {
         task.status === "completed"
           ? `"${task.title}" completed.`
           : `"${task.title}" marked as incomplete.`,
+        "success",
+      );
+
+      renderProjectDetails(projectId);
+    });
+  });
+  const taskStatusSelects = document.querySelectorAll(".task-status-select");
+
+  taskStatusSelects.forEach((select) => {
+    select.addEventListener("change", () => {
+      const taskId = select.dataset.taskId;
+      const task = tasks.find((item) => item.id === taskId);
+
+      if (!task) {
+        return;
+      }
+
+      //   const previousStatus = task.status;
+
+      task.status = select.value;
+      showToast(
+        `"${task.title}" moved to ${
+          task.status === "todo"
+            ? "To Do"
+            : task.status === "in-progress"
+              ? "In Progress"
+              : "Completed"
+        }.`,
         "success",
       );
 
