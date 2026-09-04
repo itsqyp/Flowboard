@@ -15,6 +15,11 @@ import {
   openDeleteTaskModal,
 } from "../components/tasks/delete-task-modal.js";
 
+import {
+  renderEditProjectModal,
+  openEditProjectModal,
+} from "../components/projects/edit-project-modal.js";
+
 import { showToast } from "../components/toast.js";
 
 function renderTaskList(taskList) {
@@ -348,12 +353,15 @@ export function renderProjectDetails(projectId) {
 
         <div class="flex shrink-0 gap-2">
 
-          <button
-            type="button"
-            class="rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 shadow-sm transition hover:bg-slate-50"
-          >
-            Edit Project
-          </button>
+         <button
+  id="edit-project-btn"
+  type="button"
+  class="rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 shadow-sm transition hover:bg-slate-50"
+>
+  Edit Project
+</button>
+
+          
 
          <button
   id="add-task-btn"
@@ -546,6 +554,24 @@ export function renderProjectDetails(projectId) {
     renderProjectDetails(projectId);
   });
 
+  renderEditProjectModal((updatedProject) => {
+    const projectIndex = projects.findIndex(
+      (item) => item.id === updatedProject.id,
+    );
+
+    if (projectIndex === -1) return;
+
+    const project = projects[projectIndex];
+
+    project.name = updatedProject.name;
+    project.description = updatedProject.description;
+    project.status = updatedProject.status;
+    project.priority = updatedProject.priority;
+    project.dueDate = updatedProject.dueDate;
+
+    renderProjectDetails(projectId);
+  });
+
   // renderDeleteTaskModal((taskId) => {
   //   const taskIndex = tasks.findIndex((item) => item.id === taskId);
 
@@ -584,8 +610,13 @@ export function renderProjectDetails(projectId) {
   const secondaryAddTaskButton = document.querySelector(
     "#add-task-btn-secondary",
   );
+  const editProjectButton = document.querySelector("#edit-project-btn");
   addTaskButton.addEventListener("click", openTaskModal);
   secondaryAddTaskButton.addEventListener("click", openTaskModal);
+
+  editProjectButton.addEventListener("click", () => {
+    openEditProjectModal(project);
+  });
 
   const taskList = document.querySelector("#task-list");
 
