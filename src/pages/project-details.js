@@ -10,6 +10,11 @@ import {
   openEditTaskModal,
 } from "../components/tasks/edit-task-modal.js";
 
+import {
+  renderDeleteTaskModal,
+  openDeleteTaskModal,
+} from "../components/tasks/delete-task-modal.js";
+
 import { showToast } from "../components/toast.js";
 
 function renderTaskList(taskList) {
@@ -131,6 +136,13 @@ function renderTaskList(taskList) {
   data-task-id="${task.id}"
 >
   Edit
+</button>
+<button
+  type="button"
+  class="task-delete-btn rounded-lg px-2.5 py-1.5 text-xs font-semibold text-red-600 transition hover:bg-red-50 hover:text-red-700"
+  data-task-id="${task.id}"
+>
+  Delete
 </button>
 
                 <!-- Status -->
@@ -534,6 +546,26 @@ export function renderProjectDetails(projectId) {
     renderProjectDetails(projectId);
   });
 
+  // renderDeleteTaskModal((taskId) => {
+  //   const taskIndex = tasks.findIndex((item) => item.id === taskId);
+
+  //   if (taskIndex === -1) return;
+
+  //   tasks.splice(taskIndex, 1);
+
+  //   renderProjectDetails(projectId);
+  // });
+
+  renderDeleteTaskModal((task) => {
+    const taskIndex = tasks.findIndex((item) => item.id === task.id);
+
+    if (taskIndex === -1) return;
+
+    tasks.splice(taskIndex, 1);
+
+    renderProjectDetails(projectId);
+  });
+
   renderEditTaskModal((updatedTask) => {
     const task = tasks.find((item) => item.id === updatedTask.id);
 
@@ -568,6 +600,19 @@ export function renderProjectDetails(projectId) {
       if (!task) return;
 
       openEditTaskModal(task);
+      return;
+    }
+
+    const deleteButton = event.target.closest(".task-delete-btn");
+
+    if (deleteButton) {
+      const taskId = deleteButton.dataset.taskId;
+
+      const task = tasks.find((item) => item.id === taskId);
+
+      if (!task) return;
+
+      openDeleteTaskModal(task);
       return;
     }
 

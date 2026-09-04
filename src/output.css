@@ -45,6 +45,7 @@
     --color-white: #fff;
     --spacing: 0.25rem;
     --container-sm: 24rem;
+    --container-md: 28rem;
     --container-lg: 32rem;
     --container-2xl: 42rem;
     --container-7xl: 80rem;
@@ -481,6 +482,9 @@
   .max-w-lg {
     max-width: var(--container-lg);
   }
+  .max-w-md {
+    max-width: var(--container-md);
+  }
   .max-w-sm {
     max-width: var(--container-sm);
   }
@@ -728,6 +732,9 @@
   }
   .bg-red-500 {
     background-color: var(--color-red-500);
+  }
+  .bg-red-600 {
+    background-color: var(--color-red-600);
   }
   .bg-slate-50 {
     background-color: var(--color-slate-50);
@@ -1076,6 +1083,9 @@
     .hover\:bg-red-50:hover {
       background-color: var(--color-red-50);
     }
+    .hover\:bg-red-700:hover {
+      background-color: var(--color-red-700);
+    }
     .hover\:bg-slate-50:hover {
       background-color: var(--color-slate-50);
     }
@@ -1087,6 +1097,9 @@
     }
     .hover\:text-indigo-700:hover {
       color: var(--color-indigo-700);
+    }
+    .hover\:text-red-700:hover {
+      color: var(--color-red-700);
     }
     .hover\:text-slate-700:hover {
       color: var(--color-slate-700);
