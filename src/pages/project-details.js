@@ -5,6 +5,11 @@ import {
   openTaskModal,
 } from "../components/tasks/task-modal.js";
 
+import {
+  renderEditTaskModal,
+  openEditTaskModal,
+} from "../components/tasks/edit-task-modal.js";
+
 import { showToast } from "../components/toast.js";
 
 function renderTaskList(taskList) {
@@ -118,6 +123,15 @@ function renderTaskList(taskList) {
 
 
               <div class="flex shrink-0 items-center gap-4 pl-8 sm:pl-0">
+
+
+              <button
+  type="button"
+  class="task-edit-btn rounded-lg px-2.5 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-slate-100 hover:text-slate-900"
+  data-task-id="${task.id}"
+>
+  Edit
+</button>
 
                 <!-- Status -->
                 <select
@@ -520,6 +534,20 @@ export function renderProjectDetails(projectId) {
     renderProjectDetails(projectId);
   });
 
+  renderEditTaskModal((updatedTask) => {
+    const task = tasks.find((item) => item.id === updatedTask.id);
+
+    if (!task) return;
+
+    task.title = updatedTask.title;
+    task.description = updatedTask.description;
+    task.status = updatedTask.status;
+    task.priority = updatedTask.priority;
+    task.dueDate = updatedTask.dueDate;
+
+    renderProjectDetails(projectId);
+  });
+
   const addTaskButton = document.querySelector("#add-task-btn");
   const secondaryAddTaskButton = document.querySelector(
     "#add-task-btn-secondary",
@@ -530,6 +558,19 @@ export function renderProjectDetails(projectId) {
   const taskList = document.querySelector("#task-list");
 
   taskList.addEventListener("click", (event) => {
+    const editButton = event.target.closest(".task-edit-btn");
+
+    if (editButton) {
+      const taskId = editButton.dataset.taskId;
+
+      const task = tasks.find((item) => item.id === taskId);
+
+      if (!task) return;
+
+      openEditTaskModal(task);
+      return;
+    }
+
     const button = event.target.closest(".task-complete-btn");
 
     if (!button) {
