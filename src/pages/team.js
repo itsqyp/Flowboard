@@ -9,6 +9,11 @@ import {
   openEditMemberModal,
 } from "../components/team/edit-member-modal.js";
 
+import {
+  renderDeleteMemberModal,
+  openDeleteMemberModal,
+} from "../components/team/delete-member-modal.js";
+
 export function renderTeam() {
   const app = document.querySelector("#app");
 
@@ -78,6 +83,18 @@ export function renderTeam() {
     renderTeam();
   });
 
+  renderDeleteMemberModal((memberToDelete) => {
+    const memberIndex = teamMembers.findIndex(
+      (member) => member.id === memberToDelete.id,
+    );
+
+    if (memberIndex === -1) return;
+
+    teamMembers.splice(memberIndex, 1);
+
+    renderTeam();
+  });
+
   setupTeamPage();
 }
 
@@ -105,7 +122,7 @@ function renderTeamMemberCard(member) {
           </div>
         </div>
 
-       <div class="flex items-center gap-2">
+      <div class="flex items-center gap-1">
   <span
     class="rounded-full ${
       member.status === "active"
@@ -137,6 +154,28 @@ function renderTeamMemberCard(member) {
       />
     </svg>
   </button>
+
+  <button
+    type="button"
+    data-delete-member-id="${member.id}"
+    class="delete-member-btn rounded-lg p-1.5 text-slate-400 transition hover:bg-red-50 hover:text-red-600"
+    aria-label="Remove ${member.name}"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="2"
+      stroke="currentColor"
+      class="size-4"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12.756 0a48.108 48.108 0 0 1 3.478-.397m7.5 0V4.75c0-1.18-.91-2.15-2.09-2.244a48.11 48.11 0 0 0-3.32 0C7.91 2.6 7 3.57 7 4.75v.643m7.5 0a48.11 48.11 0 0 1-7.5 0"
+      />
+    </svg>
+  </button>
 </div>
       </div>
 
@@ -163,14 +202,28 @@ function setupTeamPage() {
   teamGrid.addEventListener("click", (event) => {
     const editButton = event.target.closest(".edit-member-btn");
 
-    if (!editButton) return;
+    if (editButton) {
+      const memberId = Number(editButton.dataset.editMemberId);
 
-    const memberId = Number(editButton.dataset.editMemberId);
+      const member = teamMembers.find((item) => item.id === memberId);
+
+      if (!member) return;
+
+      openEditMemberModal(member);
+
+      return;
+    }
+
+    const deleteButton = event.target.closest(".delete-member-btn");
+
+    if (!deleteButton) return;
+
+    const memberId = Number(deleteButton.dataset.deleteMemberId);
 
     const member = teamMembers.find((item) => item.id === memberId);
 
     if (!member) return;
 
-    openEditMemberModal(member);
+    openDeleteMemberModal(member);
   });
 }
