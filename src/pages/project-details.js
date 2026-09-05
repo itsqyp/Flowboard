@@ -20,6 +20,11 @@ import {
   openEditProjectModal,
 } from "../components/projects/edit-project-modal.js";
 
+import {
+  renderDeleteProjectModal,
+  openDeleteProjectModal,
+} from "../components/projects/delete-project-modal.js";
+import { navigateTo } from "../router.js";
 import { showToast } from "../components/toast.js";
 
 function renderTaskList(taskList) {
@@ -361,6 +366,13 @@ export function renderProjectDetails(projectId) {
   Edit Project
 </button>
 
+<button
+  id="delete-project-btn"
+  type="button"
+  class="rounded-lg border border-red-200 bg-white px-4 py-2.5 text-sm font-semibold text-red-600 shadow-sm transition hover:bg-red-50 hover:text-red-700"
+>
+  Delete Project
+</button>
           
 
          <button
@@ -572,6 +584,24 @@ export function renderProjectDetails(projectId) {
     renderProjectDetails(projectId);
   });
 
+  renderDeleteProjectModal((projectToDelete) => {
+    const projectIndex = projects.findIndex(
+      (item) => item.id === projectToDelete.id,
+    );
+
+    if (projectIndex === -1) return;
+
+    projects.splice(projectIndex, 1);
+
+    for (let i = tasks.length - 1; i >= 0; i--) {
+      if (tasks[i].projectId === projectToDelete.id) {
+        tasks.splice(i, 1);
+      }
+    }
+
+    navigateTo("/projects");
+  });
+
   // renderDeleteTaskModal((taskId) => {
   //   const taskIndex = tasks.findIndex((item) => item.id === taskId);
 
@@ -616,6 +646,12 @@ export function renderProjectDetails(projectId) {
 
   editProjectButton.addEventListener("click", () => {
     openEditProjectModal(project);
+  });
+
+  const deleteProjectButton = document.querySelector("#delete-project-btn");
+
+  deleteProjectButton.addEventListener("click", () => {
+    openDeleteProjectModal(project);
   });
 
   const taskList = document.querySelector("#task-list");
