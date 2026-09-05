@@ -4,6 +4,11 @@ import {
   openMemberModal,
 } from "../components/team/member-modal.js";
 
+import {
+  renderEditMemberModal,
+  openEditMemberModal,
+} from "../components/team/edit-member-modal.js";
+
 export function renderTeam() {
   const app = document.querySelector("#app");
 
@@ -61,6 +66,18 @@ export function renderTeam() {
     renderTeam();
   });
 
+  renderEditMemberModal((updatedMember) => {
+    const memberIndex = teamMembers.findIndex(
+      (member) => member.id === updatedMember.id,
+    );
+
+    if (memberIndex === -1) return;
+
+    teamMembers[memberIndex] = updatedMember;
+
+    renderTeam();
+  });
+
   setupTeamPage();
 }
 
@@ -88,11 +105,39 @@ function renderTeamMemberCard(member) {
           </div>
         </div>
 
-        <span
-          class="rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-700"
-        >
-          ${member.status}
-        </span>
+       <div class="flex items-center gap-2">
+  <span
+    class="rounded-full ${
+      member.status === "active"
+        ? "bg-emerald-50 text-emerald-700"
+        : "bg-slate-100 text-slate-500"
+    } px-2.5 py-1 text-xs font-semibold"
+  >
+    ${member.status}
+  </span>
+
+  <button
+    type="button"
+    data-edit-member-id="${member.id}"
+    class="edit-member-btn rounded-lg p-1.5 text-slate-400 transition hover:bg-slate-100 hover:text-slate-700"
+    aria-label="Edit ${member.name}"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="2"
+      stroke="currentColor"
+      class="size-4"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M16.862 4.487 19.5 7.125M18.5 2.5a2.121 2.121 0 0 1 3 3L7 20l-4 1 1-4L18.5 2.5Z"
+      />
+    </svg>
+  </button>
+</div>
       </div>
 
       <div class="mt-5 border-t border-slate-100 pt-4">
@@ -112,4 +157,20 @@ function setupTeamPage() {
   const addMemberButton = document.querySelector("#add-team-member-btn");
 
   addMemberButton.addEventListener("click", openMemberModal);
+
+  const teamGrid = document.querySelector("#team-grid");
+
+  teamGrid.addEventListener("click", (event) => {
+    const editButton = event.target.closest(".edit-member-btn");
+
+    if (!editButton) return;
+
+    const memberId = Number(editButton.dataset.editMemberId);
+
+    const member = teamMembers.find((item) => item.id === memberId);
+
+    if (!member) return;
+
+    openEditMemberModal(member);
+  });
 }
