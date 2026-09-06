@@ -8,11 +8,7 @@ export const tasks = [
     status: "completed",
     priority: "high",
     dueDate: "2026-09-05",
-    assignee: {
-      id: 1,
-      name: "Abir",
-      initials: "AB",
-    },
+    assigneeId: 1,
     createdAt: "2026-08-21",
   },
 
@@ -25,11 +21,7 @@ export const tasks = [
     status: "in-progress",
     priority: "high",
     dueDate: "2026-09-08",
-    assignee: {
-      id: 1,
-      name: "Abir",
-      initials: "AB",
-    },
+    assigneeId: 1,
     createdAt: "2026-08-22",
   },
 
@@ -42,11 +34,7 @@ export const tasks = [
     status: "todo",
     priority: "high",
     dueDate: "2026-09-12",
-    assignee: {
-      id: 2,
-      name: "Sarah",
-      initials: "SM",
-    },
+    assigneeId: 2,
     createdAt: "2026-08-25",
   },
 
@@ -59,11 +47,7 @@ export const tasks = [
     status: "completed",
     priority: "medium",
     dueDate: "2026-08-30",
-    assignee: {
-      id: 1,
-      name: "Abir",
-      initials: "AB",
-    },
+    assigneeId: 1,
     createdAt: "2026-08-23",
   },
 
@@ -76,11 +60,7 @@ export const tasks = [
     status: "todo",
     priority: "medium",
     dueDate: "2026-09-15",
-    assignee: {
-      id: 2,
-      name: "Sarah",
-      initials: "SM",
-    },
+    assigneeId: 2,
     createdAt: "2026-08-27",
   },
 
@@ -93,11 +73,7 @@ export const tasks = [
     status: "completed",
     priority: "high",
     dueDate: "2026-08-25",
-    assignee: {
-      id: 1,
-      name: "Abir",
-      initials: "AB",
-    },
+    assigneeId: 1,
     createdAt: "2026-08-15",
   },
 
@@ -110,11 +86,7 @@ export const tasks = [
     status: "completed",
     priority: "high",
     dueDate: "2026-08-28",
-    assignee: {
-      id: 1,
-      name: "Abir",
-      initials: "AB",
-    },
+    assigneeId: 1,
     createdAt: "2026-08-18",
   },
 
@@ -127,11 +99,7 @@ export const tasks = [
     status: "in-progress",
     priority: "high",
     dueDate: "2026-09-06",
-    assignee: {
-      id: 4,
-      name: "Daniel",
-      initials: "DB",
-    },
+    assigneeId: 4,
     createdAt: "2026-08-20",
   },
 
@@ -144,11 +112,7 @@ export const tasks = [
     status: "in-progress",
     priority: "medium",
     dueDate: "2026-09-20",
-    assignee: {
-      id: 1,
-      name: "Abir",
-      initials: "AB",
-    },
+    assigneeId: 1,
     createdAt: "2026-08-29",
   },
 
@@ -161,11 +125,7 @@ export const tasks = [
     status: "todo",
     priority: "low",
     dueDate: "2026-09-25",
-    assignee: {
-      id: 5,
-      name: "Emma",
-      initials: "EW",
-    },
+    assigneeId: 5,
     createdAt: "2026-08-30",
   },
 
@@ -178,11 +138,7 @@ export const tasks = [
     status: "completed",
     priority: "high",
     dueDate: "2026-08-30",
-    assignee: {
-      id: 6,
-      name: "Michael",
-      initials: "MK",
-    },
+    assigneeId: 6,
     createdAt: "2026-08-27",
   },
 
@@ -195,11 +151,7 @@ export const tasks = [
     status: "in-progress",
     priority: "medium",
     dueDate: "2026-09-18",
-    assignee: {
-      id: 8,
-      name: "Olivia",
-      initials: "OR",
-    },
+    assigneeId: 8,
     createdAt: "2026-08-10",
   },
 ];

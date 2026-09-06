@@ -1,5 +1,6 @@
 import { projects } from "../data/projects.js";
 import { tasks } from "../data/tasks.js";
+import { teamMembers } from "../data/team.js";
 import {
   renderTaskModal,
   openTaskModal,
@@ -67,8 +68,12 @@ function renderTaskList(taskList) {
     <div class="divide-y divide-slate-100">
 
       ${taskList
-        .map(
-          (task) => `
+        .map((task) => {
+          const assignee = teamMembers.find(
+            (member) => member.id === task.assigneeId,
+          );
+
+          return `
             <div class="flex flex-col gap-4 px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
 
               <div class="min-w-0">
@@ -136,24 +141,25 @@ function renderTaskList(taskList) {
 
               </div>
 
-
               <div class="flex shrink-0 items-center gap-4 pl-8 sm:pl-0">
 
+                <!-- Edit -->
+                <button
+                  type="button"
+                  class="task-edit-btn rounded-lg px-2.5 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-slate-100 hover:text-slate-900"
+                  data-task-id="${task.id}"
+                >
+                  Edit
+                </button>
 
-              <button
-  type="button"
-  class="task-edit-btn rounded-lg px-2.5 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-slate-100 hover:text-slate-900"
-  data-task-id="${task.id}"
->
-  Edit
-</button>
-<button
-  type="button"
-  class="task-delete-btn rounded-lg px-2.5 py-1.5 text-xs font-semibold text-red-600 transition hover:bg-red-50 hover:text-red-700"
-  data-task-id="${task.id}"
->
-  Delete
-</button>
+                <!-- Delete -->
+                <button
+                  type="button"
+                  class="task-delete-btn rounded-lg px-2.5 py-1.5 text-xs font-semibold text-red-600 transition hover:bg-red-50 hover:text-red-700"
+                  data-task-id="${task.id}"
+                >
+                  Delete
+                </button>
 
                 <!-- Status -->
                 <select
@@ -190,7 +196,6 @@ function renderTaskList(taskList) {
                   </option>
                 </select>
 
-
                 <!-- Priority -->
                 <span
                   class="rounded-full px-2.5 py-1 text-xs font-semibold
@@ -208,7 +213,6 @@ function renderTaskList(taskList) {
                   }
                 </span>
 
-
                 <!-- Due Date -->
                 <span class="text-xs font-medium text-slate-500">
                   ${new Date(task.dueDate).toLocaleDateString("en-US", {
@@ -217,20 +221,19 @@ function renderTaskList(taskList) {
                   })}
                 </span>
 
-
                 <!-- Assignee -->
                 <div
                   class="flex size-7 items-center justify-center rounded-full bg-indigo-100 text-[10px] font-bold text-indigo-700"
-                  title="${task.assignee.name}"
+                  title="${assignee ? assignee.name : "Unassigned"}"
                 >
-                  ${task.assignee.initials}
+                  ${assignee ? assignee.initials : "??"}
                 </div>
 
               </div>
 
             </div>
-          `,
-        )
+          `;
+        })
         .join("")}
 
     </div>
