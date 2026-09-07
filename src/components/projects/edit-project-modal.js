@@ -2,6 +2,7 @@ import { showToast } from "../toast.js";
 
 let editCallback = null;
 let editingProjectId = null;
+let editingProjectMemberIds = [];
 
 export function renderEditProjectModal(callback) {
   editCallback = callback;
@@ -156,7 +157,7 @@ export function renderEditProjectModal(callback) {
                   name="dueDate"
                   type="date"
                   required
-                  class="w-full rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-900 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+                  class="w-full rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
                 />
               </div>
 
@@ -215,6 +216,7 @@ function setupEditProjectModal() {
       status: formData.get("status"),
       priority: formData.get("priority"),
       dueDate: formData.get("dueDate"),
+      memberIds: [...editingProjectMemberIds],
     };
 
     if (!updatedProject.name || !updatedProject.dueDate) {
@@ -238,12 +240,17 @@ export function openEditProjectModal(project) {
   if (!modal) return;
 
   editingProjectId = project.id;
+  editingProjectMemberIds = [...(project.memberIds || [])];
 
   document.querySelector("#edit-project-name").value = project.name;
+
   document.querySelector("#edit-project-description").value =
     project.description || "";
+
   document.querySelector("#edit-project-status").value = project.status;
+
   document.querySelector("#edit-project-priority").value = project.priority;
+
   document.querySelector("#edit-project-due-date").value = project.dueDate;
 
   modal.classList.remove("hidden");
@@ -261,4 +268,5 @@ export function closeEditProjectModal() {
   modal.classList.remove("flex");
 
   editingProjectId = null;
+  editingProjectMemberIds = [];
 }
