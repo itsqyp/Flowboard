@@ -2,6 +2,7 @@ import { showToast } from "../toast.js";
 
 let editCallback = null;
 let editingTaskId = null;
+let editingTaskAssigneeId = null;
 
 export function renderEditTaskModal(callback) {
   editCallback = callback;
@@ -214,6 +215,7 @@ function setupEditTaskModal() {
       status: formData.get("status"),
       priority: formData.get("priority"),
       dueDate: formData.get("dueDate"),
+      assigneeId: editingTaskAssigneeId,
     };
 
     if (!updatedTask.title || !updatedTask.dueDate) {
@@ -233,6 +235,7 @@ function setupEditTaskModal() {
 
 export function openEditTaskModal(task) {
   editingTaskId = task.id;
+  editingTaskAssigneeId = task.assigneeId ?? null;
   const modal = document.querySelector("#edit-task-modal");
 
   if (!modal) return;
@@ -257,4 +260,7 @@ export function closeEditTaskModal() {
 
   modal.classList.add("hidden");
   modal.classList.remove("flex");
+
+  editingTaskId = null;
+  editingTaskAssigneeId = null;
 }
