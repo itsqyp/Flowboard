@@ -251,6 +251,8 @@ export function renderProjectDetails(projectId) {
   const project = projects.find((item) => item.id === projectId);
   const projectTasks = tasks.filter((task) => task.projectId === projectId);
 
+  //Changed hereeee
+
   //Dynamic Progress
 
   const completedTasks = projectTasks.filter(
@@ -307,6 +309,9 @@ export function renderProjectDetails(projectId) {
 
     return;
   }
+  const members = (project.memberIds || [])
+    .map((memberId) => teamMembers.find((member) => member.id === memberId))
+    .filter(Boolean);
 
   app.innerHTML = `
     <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
@@ -440,7 +445,7 @@ export function renderProjectDetails(projectId) {
           </p>
 
           <p class="mt-2 text-2xl font-bold text-slate-900">
-            ${project.members.length}
+            ${members.length}
           </p>
         </div>
 

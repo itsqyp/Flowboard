@@ -271,13 +271,7 @@ function handleSubmit(event) {
     priority,
     progress: 0,
     dueDate,
-    members: [
-      {
-        id: 1,
-        name: "Abir",
-        initials: "AB",
-      },
-    ],
+    memberIds: [1],
     tasks: {
       total: 0,
       completed: 0,

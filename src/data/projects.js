@@ -8,23 +8,7 @@ export const projects = [
     priority: "high",
     progress: 68,
     dueDate: "2026-09-18",
-    members: [
-      {
-        id: 1,
-        name: "Abir",
-        initials: "AB",
-      },
-      {
-        id: 2,
-        name: "Sarah",
-        initials: "SM",
-      },
-      {
-        id: 3,
-        name: "Alex",
-        initials: "AK",
-      },
-    ],
+    memberIds: [1, 2, 3],
     tasks: {
       total: 32,
       completed: 22,
@@ -41,18 +25,7 @@ export const projects = [
     priority: "high",
     progress: 82,
     dueDate: "2026-09-10",
-    members: [
-      {
-        id: 1,
-        name: "Abir",
-        initials: "AB",
-      },
-      {
-        id: 4,
-        name: "Daniel",
-        initials: "DB",
-      },
-    ],
+    memberIds: [1, 4],
     tasks: {
       total: 45,
       completed: 37,
@@ -69,18 +42,7 @@ export const projects = [
     priority: "medium",
     progress: 24,
     dueDate: "2026-10-05",
-    members: [
-      {
-        id: 1,
-        name: "Abir",
-        initials: "AB",
-      },
-      {
-        id: 5,
-        name: "Emma",
-        initials: "EW",
-      },
-    ],
+    memberIds: [1, 5],
     tasks: {
       total: 25,
       completed: 6,
@@ -97,23 +59,7 @@ export const projects = [
     priority: "medium",
     progress: 100,
     dueDate: "2026-08-30",
-    members: [
-      {
-        id: 1,
-        name: "Abir",
-        initials: "AB",
-      },
-      {
-        id: 6,
-        name: "Michael",
-        initials: "MK",
-      },
-      {
-        id: 7,
-        name: "Nadia",
-        initials: "NR",
-      },
-    ],
+    memberIds: [1, 6, 7],
     tasks: {
       total: 18,
       completed: 18,
@@ -130,18 +76,7 @@ export const projects = [
     priority: "low",
     progress: 41,
     dueDate: "2026-10-20",
-    members: [
-      {
-        id: 1,
-        name: "Abir",
-        initials: "AB",
-      },
-      {
-        id: 8,
-        name: "Olivia",
-        initials: "OR",
-      },
-    ],
+    memberIds: [1, 8],
     tasks: {
       total: 34,
       completed: 14,

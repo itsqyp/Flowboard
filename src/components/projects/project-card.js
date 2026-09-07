@@ -1,3 +1,5 @@
+import { teamMembers } from "../../data/team.js";
+
 export function renderProjectCard(project) {
   const statusConfig = {
     planning: {
@@ -41,6 +43,10 @@ export function renderProjectCard(project) {
     day: "numeric",
     year: "numeric",
   });
+
+  const members = (project.memberIds || [])
+    .map((memberId) => teamMembers.find((member) => member.id === memberId))
+    .filter(Boolean);
 
   return `
     <article
@@ -106,7 +112,7 @@ export function renderProjectCard(project) {
         <div class="flex items-center">
 
           <div class="flex -space-x-2">
-            ${project.members
+            ${members
               .slice(0, 4)
               .map(
                 (member) => `
@@ -122,10 +128,10 @@ export function renderProjectCard(project) {
           </div>
 
           ${
-            project.members.length > 4
+            members.length > 4
               ? `
                 <span class="ml-2 text-xs font-medium text-slate-400">
-                  +${project.members.length - 4}
+                  +${members.length - 4}
                 </span>
               `
               : ""
@@ -166,12 +172,12 @@ export function renderProjectCard(project) {
           ${project.tasks.completed} of ${project.tasks.total} tasks
         </span>
 
-       <a
-  href="/projects/${project.id}"
-  class="project-view-btn rounded-lg px-3 py-1.5 text-xs font-semibold text-indigo-600 transition hover:bg-indigo-50 hover:text-indigo-700"
->
-  View Project
-</a>
+        <a
+          href="/projects/${project.id}"
+          class="project-view-btn rounded-lg px-3 py-1.5 text-xs font-semibold text-indigo-600 transition hover:bg-indigo-50 hover:text-indigo-700"
+        >
+          View Project
+        </a>
 
       </div>
 
