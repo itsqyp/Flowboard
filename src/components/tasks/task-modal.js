@@ -277,11 +277,7 @@ function handleSubmit(event) {
 
     dueDate,
 
-    assignee: {
-      id: 1,
-      name: "Abir",
-      initials: "AB",
-    },
+    assigneeId: 1,
 
     createdAt: new Date().toISOString().split("T")[0],
   };
