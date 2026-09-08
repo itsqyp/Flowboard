@@ -1,4 +1,5 @@
 import { showToast } from "../toast.js";
+import { teamMembers } from "../../data/team.js";
 
 let modal = null;
 let onCreate = null;
@@ -116,51 +117,75 @@ export function renderTaskModal(createCallback) {
             ></textarea>
           </div>
 
+<!-- Assignee + Priority -->
+<div class="grid gap-5 sm:grid-cols-2">
 
-          <!-- Priority + Due Date -->
-          <div class="grid gap-5 sm:grid-cols-2">
+  <!-- Assignee -->
+  <div>
+    <label
+      for="task-assignee"
+      class="block text-sm font-semibold text-slate-700"
+    >
+      Assignee
+    </label>
 
-            <!-- Priority -->
-            <div>
-              <label
-                for="task-priority"
-                class="block text-sm font-semibold text-slate-700"
-              >
-                Priority
-              </label>
+    <select
+      id="task-assignee"
+      name="assigneeId"
+      class="mt-2 w-full rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-700 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+    >
+      ${teamMembers
+        .map(
+          (member) => `
+            <option value="${member.id}" ${member.id === 1 ? "selected" : ""}>
+              ${member.name}
+            </option>
+          `,
+        )
+        .join("")}
+    </select>
+  </div>
 
-              <select
-                id="task-priority"
-                name="priority"
-                class="mt-2 w-full rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-700 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
-              >
-                <option value="low">Low</option>
-                <option value="medium" selected>Medium</option>
-                <option value="high">High</option>
-              </select>
-            </div>
+  <!-- Priority -->
+  <div>
+    <label
+      for="task-priority"
+      class="block text-sm font-semibold text-slate-700"
+    >
+      Priority
+    </label>
 
+    <select
+      id="task-priority"
+      name="priority"
+      class="mt-2 w-full rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-700 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+    >
+      <option value="low">Low</option>
+      <option value="medium" selected>Medium</option>
+      <option value="high">High</option>
+    </select>
+  </div>
 
-            <!-- Due Date -->
-            <div>
-              <label
-                for="task-due-date"
-                class="block text-sm font-semibold text-slate-700"
-              >
-                Due date
-              </label>
+</div>
 
-              <input
-                id="task-due-date"
-                name="dueDate"
-                type="date"
-                class="mt-2 w-full rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-700 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
-              />
-            </div>
+<!-- Due Date -->
+<div>
+  <label
+    for="task-due-date"
+    class="block text-sm font-semibold text-slate-700"
+  >
+    Due date
+  </label>
 
-          </div>
+  <input
+    id="task-due-date"
+    name="dueDate"
+    type="date"
+    class="mt-2 w-full rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-700 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+  />
+</div>
 
-        </div>
+        
 
 
         <!-- Footer -->
@@ -253,6 +278,7 @@ function handleSubmit(event) {
   const description = formData.get("description").trim();
   const priority = formData.get("priority");
   const dueDate = formData.get("dueDate");
+  const assigneeId = Number(formData.get("assigneeId"));
 
   if (!title) {
     showToast("Please enter a task title.", "warning");
@@ -277,7 +303,7 @@ function handleSubmit(event) {
 
     dueDate,
 
-    assigneeId: 1,
+    assigneeId,
 
     createdAt: new Date().toISOString().split("T")[0],
   };
