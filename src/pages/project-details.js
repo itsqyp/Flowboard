@@ -640,6 +640,7 @@ export function renderProjectDetails(projectId) {
     task.status = updatedTask.status;
     task.priority = updatedTask.priority;
     task.dueDate = updatedTask.dueDate;
+    task.assigneeId = updatedTask.assigneeId;
 
     renderProjectDetails(projectId);
   });

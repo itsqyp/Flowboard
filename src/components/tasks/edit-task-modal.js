@@ -1,8 +1,9 @@
 import { showToast } from "../toast.js";
+import { teamMembers } from "../../data/team.js";
 
 let editCallback = null;
 let editingTaskId = null;
-let editingTaskAssigneeId = null;
+// let editingTaskAssigneeId = null;
 
 export function renderEditTaskModal(callback) {
   editCallback = callback;
@@ -101,48 +102,75 @@ export function renderEditTaskModal(callback) {
                 ></textarea>
               </div>
 
-              <div class="grid gap-4 sm:grid-cols-2">
+             <div class="grid gap-4 sm:grid-cols-2">
 
-                <div>
-                  <label
-                    for="edit-task-status"
-                    class="mb-1.5 block text-sm font-semibold text-slate-700"
-                  >
-                    Status
-                  </label>
+  <!-- Status -->
+  <div>
+    <label
+      for="edit-task-status"
+      class="mb-1.5 block text-sm font-semibold text-slate-700"
+    >
+      Status
+    </label>
 
-                  <select
-                    id="edit-task-status"
-                    name="status"
-                    class="w-full rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-700 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
-                  >
-                    <option value="todo">To Do</option>
-                    <option value="in-progress">In Progress</option>
-                    <option value="completed">Completed</option>
-                  </select>
-                </div>
+    <select
+      id="edit-task-status"
+      name="status"
+      class="w-full rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-700 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+    >
+      <option value="todo">To Do</option>
+      <option value="in-progress">In Progress</option>
+      <option value="completed">Completed</option>
+    </select>
+  </div>
 
-                <div>
-                  <label
-                    for="edit-task-priority"
-                    class="mb-1.5 block text-sm font-semibold text-slate-700"
-                  >
-                    Priority
-                  </label>
+  <!-- Priority -->
+  <div>
+    <label
+      for="edit-task-priority"
+      class="mb-1.5 block text-sm font-semibold text-slate-700"
+    >
+      Priority
+    </label>
 
-                  <select
-                    id="edit-task-priority"
-                    name="priority"
-                    class="w-full rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-700 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
-                  >
-                    <option value="high">High</option>
-                    <option value="medium">Medium</option>
-                    <option value="low">Low</option>
-                  </select>
-                </div>
+    <select
+      id="edit-task-priority"
+      name="priority"
+      class="w-full rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-700 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+    >
+      <option value="high">High</option>
+      <option value="medium">Medium</option>
+      <option value="low">Low</option>
+    </select>
+  </div>
 
-              </div>
+</div>
 
+<!-- Assignee -->
+<div>
+  <label
+    for="edit-task-assignee"
+    class="mb-1.5 block text-sm font-semibold text-slate-700"
+  >
+    Assignee
+  </label>
+
+  <select
+    id="edit-task-assignee"
+    name="assigneeId"
+    class="w-full rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-700 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+  >
+    ${teamMembers
+      .map(
+        (member) => `
+          <option value="${member.id}">
+            ${member.name}
+          </option>
+        `,
+      )
+      .join("")}
+  </select>
+</div>
               <div>
                 <label
                   for="edit-task-due-date"
@@ -215,7 +243,7 @@ function setupEditTaskModal() {
       status: formData.get("status"),
       priority: formData.get("priority"),
       dueDate: formData.get("dueDate"),
-      assigneeId: editingTaskAssigneeId,
+      assigneeId: Number(formData.get("assigneeId")),
     };
 
     if (!updatedTask.title || !updatedTask.dueDate) {
@@ -235,7 +263,9 @@ function setupEditTaskModal() {
 
 export function openEditTaskModal(task) {
   editingTaskId = task.id;
-  editingTaskAssigneeId = task.assigneeId ?? null;
+  document.querySelector("#edit-task-assignee").value = String(
+    task.assigneeId ?? "",
+  );
   const modal = document.querySelector("#edit-task-modal");
 
   if (!modal) return;
@@ -262,5 +292,5 @@ export function closeEditTaskModal() {
   modal.classList.remove("flex");
 
   editingTaskId = null;
-  editingTaskAssigneeId = null;
+  // editingTaskAssigneeId = null;
 }
