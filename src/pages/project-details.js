@@ -588,6 +588,7 @@ export function renderProjectDetails(projectId) {
     project.status = updatedProject.status;
     project.priority = updatedProject.priority;
     project.dueDate = updatedProject.dueDate;
+    project.memberIds = updatedProject.memberIds;
 
     renderProjectDetails(projectId);
   });

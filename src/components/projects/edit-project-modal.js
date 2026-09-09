@@ -1,8 +1,9 @@
 import { showToast } from "../toast.js";
+import { teamMembers } from "../../data/team.js";
 
 let editCallback = null;
 let editingProjectId = null;
-let editingProjectMemberIds = [];
+// let editingProjectMemberIds = [];
 
 export function renderEditProjectModal(callback) {
   editCallback = callback;
@@ -161,6 +162,56 @@ export function renderEditProjectModal(callback) {
                 />
               </div>
 
+              <!-- Project Members -->
+<div>
+  <label
+    class="mb-1.5 block text-sm font-semibold text-slate-700"
+  >
+    Project Members
+  </label>
+
+  <div
+    class="mt-2 max-h-40 space-y-2 overflow-y-auto rounded-lg border border-slate-200 p-3"
+  >
+    ${teamMembers
+      .map(
+        (member) => `
+          <label
+            class="flex cursor-pointer items-center gap-3 rounded-lg px-2 py-2 transition hover:bg-slate-50"
+          >
+            <input
+              type="checkbox"
+              name="memberIds"
+              value="${member.id}"
+              class="edit-project-member size-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
+            />
+
+            <div
+              class="flex size-8 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-xs font-bold text-indigo-700"
+            >
+              ${member.initials}
+            </div>
+
+            <div class="min-w-0">
+              <p class="truncate text-sm font-semibold text-slate-800">
+                ${member.name}
+              </p>
+
+              <p class="truncate text-xs text-slate-500">
+                ${member.role}
+              </p>
+            </div>
+          </label>
+        `,
+      )
+      .join("")}
+  </div>
+
+  <p class="mt-1.5 text-xs text-slate-500">
+    Select the members who will work on this project.
+  </p>
+</div>
+
             </div>
 
             <div class="flex justify-end gap-3 border-t border-slate-100 px-5 py-4">
@@ -187,7 +238,6 @@ export function renderEditProjectModal(callback) {
 
   setupEditProjectModal();
 }
-
 function setupEditProjectModal() {
   const modal = document.querySelector("#edit-project-modal");
   const form = document.querySelector("#edit-project-form");
@@ -207,6 +257,7 @@ function setupEditProjectModal() {
     event.preventDefault();
 
     const formData = new FormData(form);
+    const memberIds = formData.getAll("memberIds").map((id) => Number(id));
 
     const updatedProject = {
       id: editingProjectId,
@@ -216,11 +267,16 @@ function setupEditProjectModal() {
       status: formData.get("status"),
       priority: formData.get("priority"),
       dueDate: formData.get("dueDate"),
-      memberIds: [...editingProjectMemberIds],
+      memberIds,
     };
 
     if (!updatedProject.name || !updatedProject.dueDate) {
       showToast("Please fill in all required fields.", "error");
+      return;
+    }
+
+    if (memberIds.length === 0) {
+      showToast("Please select at least one project member.", "warning");
       return;
     }
 
@@ -240,7 +296,8 @@ export function openEditProjectModal(project) {
   if (!modal) return;
 
   editingProjectId = project.id;
-  editingProjectMemberIds = [...(project.memberIds || [])];
+
+  const existingMemberIds = project.memberIds || [];
 
   document.querySelector("#edit-project-name").value = project.name;
 
@@ -252,6 +309,10 @@ export function openEditProjectModal(project) {
   document.querySelector("#edit-project-priority").value = project.priority;
 
   document.querySelector("#edit-project-due-date").value = project.dueDate;
+
+  document.querySelectorAll(".edit-project-member").forEach((checkbox) => {
+    checkbox.checked = existingMemberIds.includes(Number(checkbox.value));
+  });
 
   modal.classList.remove("hidden");
   modal.classList.add("flex");
@@ -268,5 +329,4 @@ export function closeEditProjectModal() {
   modal.classList.remove("flex");
 
   editingProjectId = null;
-  editingProjectMemberIds = [];
 }
