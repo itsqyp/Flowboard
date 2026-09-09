@@ -1,4 +1,5 @@
 import { showToast } from "../toast.js";
+import { teamMembers } from "../../data/team.js";
 
 let modal = null;
 let onCreate = null;
@@ -154,6 +155,54 @@ export function renderProjectModal(createCallback) {
             </div>
 
           </div>
+          <!-- Project Members -->
+<div>
+  <label
+    class="block text-sm font-semibold text-slate-700"
+  >
+    Project Members
+  </label>
+
+  <div
+    class="mt-2 max-h-40 space-y-2 overflow-y-auto rounded-lg border border-slate-200 p-3"
+  >
+    ${teamMembers
+      .map(
+        (member) => `
+          <label
+            class="flex cursor-pointer items-center gap-3 rounded-lg px-2 py-2 transition hover:bg-slate-50"
+          >
+            <input
+              type="checkbox"
+              name="memberIds"
+              value="${member.id}"
+              ${member.id === 1 ? "checked" : ""}
+              class="size-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
+            />
+
+            <div class="flex size-8 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-xs font-bold text-indigo-700">
+              ${member.initials}
+            </div>
+
+            <div class="min-w-0">
+              <p class="truncate text-sm font-semibold text-slate-800">
+                ${member.name}
+              </p>
+
+              <p class="truncate text-xs text-slate-500">
+                ${member.role}
+              </p>
+            </div>
+          </label>
+        `,
+      )
+      .join("")}
+  </div>
+
+  <p class="mt-1.5 text-xs text-slate-500">
+    Select the members who will work on this project.
+  </p>
+</div>
 
         </div>
 
@@ -252,6 +301,7 @@ function handleSubmit(event) {
   const description = formData.get("description").trim();
   const dueDate = formData.get("dueDate");
   const priority = formData.get("priority");
+  const memberIds = formData.getAll("memberIds").map((id) => Number(id));
 
   if (!name) {
     showToast("Please enter a project name.", "warning");
@@ -260,6 +310,10 @@ function handleSubmit(event) {
 
   if (!dueDate) {
     showToast("Please select a due date.", "warning");
+    return;
+  }
+  if (memberIds.length === 0) {
+    showToast("Please select at least one project member.", "warning");
     return;
   }
 
@@ -271,7 +325,7 @@ function handleSubmit(event) {
     priority,
     progress: 0,
     dueDate,
-    memberIds: [1],
+    memberIds,
     tasks: {
       total: 0,
       completed: 0,
