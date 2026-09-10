@@ -1,6 +1,7 @@
 import { showToast } from "../toast.js";
-import { dashboardProjects } from "../../data/dashboard.js";
-import { renderProjectsOverview } from "./projects-overview.js";
+import { projects } from "../../data/projects.js";
+import { teamMembers } from "../../data/team.js";
+
 let modal = null;
 
 export function renderProjectModal() {
@@ -141,6 +142,58 @@ export function renderProjectModal() {
 
             </div>
 
+
+
+<!-- Project Members -->
+<div class="mt-5">
+  <p class="block text-sm font-semibold text-slate-700">
+    Project members
+  </p>
+
+  <div class="mt-2 max-h-52 space-y-2 overflow-y-auto pr-1">
+    ${teamMembers
+      .map(
+        (member) => `
+          <label
+            class="flex cursor-pointer items-center gap-3 rounded-lg border border-slate-200 px-3 py-2.5 transition hover:bg-slate-50"
+          >
+            <input
+              type="checkbox"
+              name="memberIds"
+              value="${member.id}"
+              class="size-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
+              ${member.id === 1 ? "checked" : ""}
+            />
+
+            <div class="flex size-8 items-center justify-center rounded-full bg-indigo-100 text-xs font-bold text-indigo-700">
+              ${member.initials}
+            </div>
+
+            <div>
+              <p class="text-sm font-semibold text-slate-800">
+                ${member.name}
+              </p>
+
+              <p class="text-xs text-slate-500">
+                ${member.role}
+              </p>
+            </div>
+          </label>
+        `,
+      )
+      .join("")}
+  </div>
+
+  <p
+    id="project-members-error"
+    class="mt-1.5 hidden text-xs font-medium text-red-600"
+  ></p>
+</div>
+
+
+
+
+
             <!-- Actions -->
             <div class="mt-7 flex flex-col-reverse gap-3 sm:flex-row sm:justify-end">
 
@@ -252,6 +305,10 @@ function handleProjectSubmit(event) {
   const description = modal.descriptionInput.value.trim();
   const dueDate = modal.dueDateInput.value;
 
+  const formData = new FormData(modal.form);
+
+  const memberIds = formData.getAll("memberIds").map((id) => Number(id));
+
   clearErrors();
 
   let isValid = true;
@@ -284,24 +341,36 @@ function handleProjectSubmit(event) {
     isValid = false;
   }
 
+  if (memberIds.length === 0) {
+    showFieldError(
+      "project-members-error",
+      "Please select at least one project member.",
+    );
+
+    isValid = false;
+  }
+
   if (!isValid) {
     return;
   }
 
   const newProject = {
-    id: Date.now(),
+    id: `project-${Date.now()}`,
     name,
     description,
+    status: "planning",
+    priority: "medium",
     progress: 0,
-    status: "Not Started",
-    statusType: "progress",
-    dueDate: formatDate(dueDate),
-    members: 1,
+    dueDate,
+    memberIds,
+    tasks: {
+      total: 0,
+      completed: 0,
+    },
+    createdAt: new Date().toISOString().split("T")[0],
   };
 
-  dashboardProjects.unshift(newProject);
-
-  renderProjectsOverview();
+  projects.unshift(newProject);
 
   closeProjectModal();
 

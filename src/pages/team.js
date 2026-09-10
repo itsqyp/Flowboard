@@ -1,4 +1,6 @@
 import { teamMembers } from "../data/team.js";
+import { projects } from "../data/projects.js";
+import { tasks } from "../data/tasks.js";
 import {
   renderMemberModal,
   openMemberModal,
@@ -90,6 +92,23 @@ export function renderTeam() {
 
     if (memberIndex === -1) return;
 
+    const memberId = memberToDelete.id;
+
+    // Remove the member from all projects
+    projects.forEach((project) => {
+      project.memberIds = (project.memberIds || []).filter(
+        (id) => id !== memberId,
+      );
+    });
+
+    // Unassign the member from all tasks
+    tasks.forEach((task) => {
+      if (task.assigneeId === memberId) {
+        task.assigneeId = null;
+      }
+    });
+
+    // Remove the member from the team
     teamMembers.splice(memberIndex, 1);
 
     renderTeam();
