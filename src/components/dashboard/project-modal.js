@@ -1,6 +1,7 @@
 import { showToast } from "../toast.js";
 import { projects } from "../../data/projects.js";
 import { teamMembers } from "../../data/team.js";
+import { renderProjectsOverview } from "./projects-overview.js";
 
 let modal = null;
 
@@ -371,6 +372,8 @@ function handleProjectSubmit(event) {
   };
 
   projects.unshift(newProject);
+
+  renderProjectsOverview();
 
   closeProjectModal();
 

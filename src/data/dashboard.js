@@ -32,51 +32,51 @@ export const dashboardStats = [
   },
 ];
 
-export const dashboardProjects = [
-  {
-    id: 1,
-    name: "Website Redesign",
-    description: "Redesign the company website and improve UX.",
-    progress: 78,
-    status: "In Progress",
-    statusType: "progress",
-    dueDate: "Sep 12, 2026",
-    members: 5,
-  },
+// export const dashboardProjects = [
+//   {
+//     id: 1,
+//     name: "Website Redesign",
+//     description: "Redesign the company website and improve UX.",
+//     progress: 78,
+//     status: "In Progress",
+//     statusType: "progress",
+//     dueDate: "Sep 12, 2026",
+//     members: 5,
+//   },
 
-  {
-    id: 2,
-    name: "Mobile Application",
-    description: "Build the next generation mobile experience.",
-    progress: 54,
-    status: "In Progress",
-    statusType: "progress",
-    dueDate: "Sep 24, 2026",
-    members: 4,
-  },
+//   {
+//     id: 2,
+//     name: "Mobile Application",
+//     description: "Build the next generation mobile experience.",
+//     progress: 54,
+//     status: "In Progress",
+//     statusType: "progress",
+//     dueDate: "Sep 24, 2026",
+//     members: 4,
+//   },
 
-  {
-    id: 3,
-    name: "Marketing Campaign",
-    description: "Prepare the Q4 marketing campaign.",
-    progress: 32,
-    status: "At Risk",
-    statusType: "warning",
-    dueDate: "Sep 08, 2026",
-    members: 3,
-  },
+//   {
+//     id: 3,
+//     name: "Marketing Campaign",
+//     description: "Prepare the Q4 marketing campaign.",
+//     progress: 32,
+//     status: "At Risk",
+//     statusType: "warning",
+//     dueDate: "Sep 08, 2026",
+//     members: 3,
+//   },
 
-  {
-    id: 4,
-    name: "Internal Dashboard",
-    description: "Create analytics dashboard for internal teams.",
-    progress: 91,
-    status: "Almost Done",
-    statusType: "success",
-    dueDate: "Sep 04, 2026",
-    members: 2,
-  },
-];
+//   {
+//     id: 4,
+//     name: "Internal Dashboard",
+//     description: "Create analytics dashboard for internal teams.",
+//     progress: 91,
+//     status: "Almost Done",
+//     statusType: "success",
+//     dueDate: "Sep 04, 2026",
+//     members: 2,
+//   },
+// ];
 
 export const dashboardTasks = [
   {

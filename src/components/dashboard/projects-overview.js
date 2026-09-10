@@ -1,4 +1,5 @@
-import { dashboardProjects } from "../../data/dashboard.js";
+import { projects } from "../../data/projects.js";
+import { teamMembers } from "../../data/team.js";
 
 export function renderProjectsOverview() {
   const container = document.querySelector("#dashboard-projects");
@@ -7,6 +8,31 @@ export function renderProjectsOverview() {
     console.error("Dashboard projects mount point not found.");
     return;
   }
+
+  const dashboardProjects = projects.slice(0, 4).map((project) => {
+    const members = (project.memberIds || [])
+      .map((memberId) => teamMembers.find((member) => member.id === memberId))
+      .filter(Boolean);
+
+    const statusLabels = {
+      planning: "Planning",
+      "in-progress": "In Progress",
+      completed: "Completed",
+      "on-hold": "On Hold",
+    };
+
+    return {
+      ...project,
+      members: members.length,
+      status: statusLabels[project.status] || project.status,
+      statusType:
+        project.status === "completed"
+          ? "success"
+          : project.status === "on-hold"
+            ? "warning"
+            : "progress",
+    };
+  });
 
   container.innerHTML = `
     <section class="rounded-xl border bg-white shadow-sm">
