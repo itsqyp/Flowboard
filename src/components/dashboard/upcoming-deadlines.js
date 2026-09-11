@@ -1,4 +1,4 @@
-import { upcomingDeadlines } from "../../data/dashboard.js";
+import { projects } from "../../data/projects.js";
 
 export function renderUpcomingDeadlines() {
   const container = document.querySelector("#dashboard-deadlines");
@@ -7,6 +7,32 @@ export function renderUpcomingDeadlines() {
     console.error("Dashboard deadlines mount point not found.");
     return;
   }
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  const upcomingDeadlines = projects
+    .filter((project) => project.dueDate)
+    .map((project) => {
+      const dueDate = new Date(`${project.dueDate}T00:00:00`);
+
+      const daysRemaining = Math.ceil(
+        (dueDate - today) / (1000 * 60 * 60 * 24),
+      );
+
+      return {
+        title: project.name,
+        date: dueDate.toLocaleDateString("en-US", {
+          month: "short",
+          day: "2-digit",
+          year: "numeric",
+        }),
+        daysRemaining,
+      };
+    })
+    .filter((project) => project.daysRemaining >= 0)
+    .sort((a, b) => a.daysRemaining - b.daysRemaining)
+    .slice(0, 3);
 
   container.innerHTML = `
     <section class="h-full rounded-xl border bg-white shadow-sm">
