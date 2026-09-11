@@ -1,31 +1,32 @@
+import { projects } from "./projects.js";
+import { tasks } from "./tasks.js";
+import { teamMembers } from "./team.js";
+
 export const dashboardStats = [
   {
     label: "Total Projects",
-    value: 12,
+    value: projects.length,
     change: "+12.5%",
     trend: "up",
     description: "vs. last month",
   },
-
   {
     label: "Active Tasks",
-    value: 48,
+    value: tasks.filter((task) => task.status !== "completed").length,
     change: "+8.2%",
     trend: "up",
     description: "vs. last month",
   },
-
   {
     label: "Completed Tasks",
-    value: 136,
+    value: tasks.filter((task) => task.status === "completed").length,
     change: "+18.4%",
     trend: "up",
     description: "vs. last month",
   },
-
   {
     label: "Team Members",
-    value: 8,
+    value: teamMembers.length,
     change: "+2",
     trend: "up",
     description: "this month",

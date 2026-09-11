@@ -6,7 +6,21 @@ import { renderProjectsOverview } from "./projects-overview.js";
 let modal = null;
 
 export function renderProjectModal() {
-  if (document.querySelector("#project-modal")) {
+  const existingContainer = document.querySelector("#project-modal");
+
+  if (existingContainer) {
+    modal = {
+      container: existingContainer,
+      backdrop: existingContainer.querySelector("#project-modal-backdrop"),
+      dialog: existingContainer.querySelector("#project-modal-dialog"),
+      form: existingContainer.querySelector("#project-form"),
+      closeButton: existingContainer.querySelector("#project-modal-close"),
+      cancelButton: existingContainer.querySelector("#project-modal-cancel"),
+      nameInput: existingContainer.querySelector("#project-name"),
+      descriptionInput: existingContainer.querySelector("#project-description"),
+      dueDateInput: existingContainer.querySelector("#project-due-date"),
+    };
+
     return;
   }
 
@@ -261,6 +275,20 @@ function setupProjectModal() {
   document.addEventListener("keydown", handleEscape);
 }
 
+function closeProjectModal() {
+  if (!modal) {
+    return;
+  }
+
+  modal.backdrop.classList.add("hidden");
+
+  document.body.classList.remove("overflow-hidden");
+
+  modal.form.reset();
+
+  clearErrors();
+}
+
 function openProjectModal() {
   if (!modal) {
     renderProjectModal();
@@ -275,20 +303,6 @@ function openProjectModal() {
   document.body.classList.add("overflow-hidden");
 
   modal.nameInput.focus();
-}
-
-function closeProjectModal() {
-  if (!modal) {
-    return;
-  }
-
-  modal.backdrop.classList.add("hidden");
-
-  document.body.classList.remove("overflow-hidden");
-
-  modal.form.reset();
-
-  clearErrors();
 }
 
 function handleEscape(event) {
