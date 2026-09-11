@@ -1,6 +1,7 @@
 import { tasks } from "../../data/tasks.js";
 import { projects } from "../../data/projects.js";
 import { showToast } from "../toast.js";
+import { renderStatCards } from "./stat-cards.js";
 
 export function renderMyTasks() {
   const container = document.querySelector("#dashboard-tasks");
@@ -165,6 +166,7 @@ function setupTaskInteractions() {
       task.status = task.status === "completed" ? "todo" : "completed";
 
       renderMyTasks();
+      renderStatCards();
 
       if (task.status === "completed") {
         showToast(`"${task.title}" has been completed.`, "success");

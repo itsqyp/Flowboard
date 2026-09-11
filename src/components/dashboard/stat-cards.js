@@ -1,4 +1,4 @@
-import { dashboardStats } from "../../data/dashboard.js";
+import { getDashboardStats } from "../../data/dashboard.js";
 
 export function renderStatCards() {
   const container = document.querySelector("#dashboard-stats");
@@ -7,6 +7,7 @@ export function renderStatCards() {
     console.error("Dashboard stats mount point not found.");
     return;
   }
+  const dashboardStats = getDashboardStats();
 
   container.innerHTML = `
     <section
