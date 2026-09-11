@@ -1,4 +1,5 @@
-import { dashboardTasks } from "../../data/dashboard.js";
+import { tasks } from "../../data/tasks.js";
+import { projects } from "../../data/projects.js";
 import { showToast } from "../toast.js";
 
 export function renderMyTasks() {
@@ -37,89 +38,91 @@ export function renderMyTasks() {
       <!-- Task List -->
       <div class="divide-y">
 
-        ${dashboardTasks
-          .map(
-            (task) => `
-              <article
-                class="flex gap-3 px-5 py-4 transition-colors hover:bg-slate-50 sm:px-6"
-              >
+      ${tasks
+        .map((task) => {
+          const project = projects.find((item) => item.id === task.projectId);
 
-                <!-- Checkbox -->
-                <button
-                  type="button"
-                  class="task-checkbox mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-md border ${
-                    task.completed
-                      ? "border-indigo-600 bg-indigo-600 text-white"
-                      : "border-slate-300 bg-white hover:border-indigo-500"
-                  }"
-                  data-task-id="${task.id}"
-                  aria-label="${
-                    task.completed
-                      ? `Mark ${task.title} as incomplete`
-                      : `Mark ${task.title} as complete`
-                  }"
+          return `
+      <article
+        class="flex gap-3 px-5 py-4 transition-colors hover:bg-slate-50 sm:px-6"
+      >
+
+        <!-- Checkbox -->
+        <button
+          type="button"
+          class="task-checkbox mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-md border ${
+            task.status === "completed"
+              ? "border-indigo-600 bg-indigo-600 text-white"
+              : "border-slate-300 bg-white hover:border-indigo-500"
+          }"
+          data-task-id="${task.id}"
+          aria-label="${
+            task.status === "completed"
+              ? `Mark ${task.title} as incomplete`
+              : `Mark ${task.title} as complete`
+          }"
+        >
+
+          ${
+            task.status === "completed"
+              ? `
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  class="size-3.5"
                 >
+                  <path d="m5 12 4 4L19 6"></path>
+                </svg>
+              `
+              : ""
+          }
 
-                  ${
-                    task.completed
-                      ? `
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="3"
-                          class="size-3.5"
-                        >
-                          <path d="m5 12 4 4L19 6"></path>
-                        </svg>
-                      `
-                      : ""
-                  }
+        </button>
 
-                </button>
+        <!-- Task Content -->
+        <div class="min-w-0 flex-1">
 
-                <!-- Task Content -->
-                <div class="min-w-0 flex-1">
+          <div class="flex flex-col gap-1.5 sm:flex-row sm:items-center sm:justify-between">
 
-                  <div class="flex flex-col gap-1.5 sm:flex-row sm:items-center sm:justify-between">
+            <h3
+              class="truncate text-sm font-semibold ${
+                task.status === "completed"
+                  ? "text-slate-400 line-through"
+                  : "text-slate-800"
+              }"
+            >
+              ${task.title}
+            </h3>
 
-                    <h3
-                      class="truncate text-sm font-semibold ${
-                        task.completed
-                          ? "text-slate-400 line-through"
-                          : "text-slate-800"
-                      }"
-                    >
-                      ${task.title}
-                    </h3>
+            ${getPriorityBadge(task)}
 
-                    ${getPriorityBadge(task)}
+          </div>
 
-                  </div>
+          <div class="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-400">
 
-                  <div class="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-400">
+            <span>
+              ${project ? project.name : "Unknown project"}
+            </span>
 
-                    <span>
-                      ${task.project}
-                    </span>
+            <span class="hidden sm:inline">
+              •
+            </span>
 
-                    <span class="hidden sm:inline">
-                      •
-                    </span>
+            <span>
+              Due ${task.dueDate}
+            </span>
 
-                    <span>
-                      Due ${task.dueDate}
-                    </span>
+          </div>
 
-                  </div>
+        </div>
 
-                </div>
-
-              </article>
-            `,
-          )
-          .join("")}
+      </article>
+    `;
+        })
+        .join("")}
 
       </div>
 
@@ -139,7 +142,7 @@ function getPriorityBadge(task) {
   return `
     <span
       class="shrink-0 rounded-full px-2.5 py-1 text-xs font-semibold ${
-        styles[task.priorityType] || styles.low
+        styles[task.priority] || styles.low
       }"
     >
       ${task.priority}
@@ -152,19 +155,18 @@ function setupTaskInteractions() {
 
   checkboxes.forEach((checkbox) => {
     checkbox.addEventListener("click", () => {
-      const taskId = Number(checkbox.dataset.taskId);
+      const taskId = checkbox.dataset.taskId;
 
-      const task = dashboardTasks.find((item) => item.id === taskId);
+      const task = tasks.find((item) => item.id === taskId);
 
       if (!task) {
         return;
       }
-
-      task.completed = !task.completed;
+      task.status = task.status === "completed" ? "todo" : "completed";
 
       renderMyTasks();
 
-      if (task.completed) {
+      if (task.status === "completed") {
         showToast(`"${task.title}" has been completed.`, "success");
       } else {
         showToast(`"${task.title}" has been marked as incomplete.`, "info");
