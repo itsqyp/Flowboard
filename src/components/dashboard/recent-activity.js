@@ -1,4 +1,6 @@
-import { recentActivity } from "../../data/dashboard.js";
+import { tasks } from "../../data/tasks.js";
+import { projects } from "../../data/projects.js";
+import { teamMembers } from "../../data/team.js";
 
 export function renderRecentActivity() {
   const container = document.querySelector("#dashboard-activity");
@@ -7,7 +9,40 @@ export function renderRecentActivity() {
     console.error("Dashboard activity mount point not found.");
     return;
   }
+  const recentActivity = tasks
+    .map((task) => {
+      const project = projects.find((item) => item.id === task.projectId);
 
+      const member = teamMembers.find((item) => item.id === task.assigneeId);
+
+      if (!project || !member) {
+        return null;
+      }
+
+      return {
+        user: member.name,
+        action:
+          task.status === "completed"
+            ? "completed"
+            : task.status === "in-progress"
+              ? "updated"
+              : "created",
+        target: task.title,
+        project: project.name,
+        time: new Date(`${task.createdAt}T00:00:00`).toLocaleDateString(
+          "en-US",
+          {
+            month: "short",
+            day: "numeric",
+            year: "numeric",
+          },
+        ),
+        avatar: member.initials,
+      };
+    })
+    .filter(Boolean)
+    .slice(-4)
+    .reverse();
   container.innerHTML = `
     <section class="rounded-xl border bg-white shadow-sm">
 
