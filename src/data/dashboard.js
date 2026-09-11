@@ -79,57 +79,57 @@ export const dashboardStats = [
 //   },
 // ];
 
-export const dashboardTasks = [
-  {
-    id: 1,
-    title: "Finalize homepage design",
-    project: "Website Redesign",
-    priority: "High",
-    priorityType: "high",
-    dueDate: "Today",
-    completed: false,
-  },
+// export const dashboardTasks = [
+//   {
+//     id: 1,
+//     title: "Finalize homepage design",
+//     project: "Website Redesign",
+//     priority: "High",
+//     priorityType: "high",
+//     dueDate: "Today",
+//     completed: false,
+//   },
 
-  {
-    id: 2,
-    title: "Review API integration",
-    project: "Mobile Application",
-    priority: "Medium",
-    priorityType: "medium",
-    dueDate: "Tomorrow",
-    completed: false,
-  },
+//   {
+//     id: 2,
+//     title: "Review API integration",
+//     project: "Mobile Application",
+//     priority: "Medium",
+//     priorityType: "medium",
+//     dueDate: "Tomorrow",
+//     completed: false,
+//   },
 
-  {
-    id: 3,
-    title: "Prepare campaign assets",
-    project: "Marketing Campaign",
-    priority: "High",
-    priorityType: "high",
-    dueDate: "Sep 02",
-    completed: false,
-  },
+//   {
+//     id: 3,
+//     title: "Prepare campaign assets",
+//     project: "Marketing Campaign",
+//     priority: "High",
+//     priorityType: "high",
+//     dueDate: "Sep 02",
+//     completed: false,
+//   },
 
-  {
-    id: 4,
-    title: "Fix dashboard responsive issues",
-    project: "Internal Dashboard",
-    priority: "Low",
-    priorityType: "low",
-    dueDate: "Sep 05",
-    completed: false,
-  },
+//   {
+//     id: 4,
+//     title: "Fix dashboard responsive issues",
+//     project: "Internal Dashboard",
+//     priority: "Low",
+//     priorityType: "low",
+//     dueDate: "Sep 05",
+//     completed: false,
+//   },
 
-  {
-    id: 5,
-    title: "Update project documentation",
-    project: "Website Redesign",
-    priority: "Low",
-    priorityType: "low",
-    dueDate: "Sep 06",
-    completed: true,
-  },
-];
+//   {
+//     id: 5,
+//     title: "Update project documentation",
+//     project: "Website Redesign",
+//     priority: "Low",
+//     priorityType: "low",
+//     dueDate: "Sep 06",
+//     completed: true,
+//   },
+// ];
 
 export const upcomingDeadlines = [
   {
