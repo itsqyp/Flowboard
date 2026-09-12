@@ -3,6 +3,7 @@ import { teamMembers } from "../../data/team.js";
 
 let editCallback = null;
 let editingTaskId = null;
+let editingTaskProjectId = null;
 // let editingTaskAssigneeId = null;
 
 export function renderEditTaskModal(callback) {
@@ -237,6 +238,7 @@ function setupEditTaskModal() {
 
     const updatedTask = {
       id: editingTaskId,
+      projectId: editingTaskProjectId,
       title: formData.get("title").trim(),
       description:
         formData.get("description").trim() || "No description provided.",
@@ -263,6 +265,7 @@ function setupEditTaskModal() {
 
 export function openEditTaskModal(task) {
   editingTaskId = task.id;
+  editingTaskProjectId = task.projectId;
   document.querySelector("#edit-task-assignee").value = String(
     task.assigneeId ?? "",
   );
@@ -292,5 +295,6 @@ export function closeEditTaskModal() {
   modal.classList.remove("flex");
 
   editingTaskId = null;
+  editingTaskProjectId = null;
   // editingTaskAssigneeId = null;
 }
