@@ -1,6 +1,6 @@
 import { projects } from "../../data/projects.js";
 import { teamMembers } from "../../data/team.js";
-
+import { tasks } from "../../data/tasks.js";
 export function renderProjectsOverview() {
   const container = document.querySelector("#dashboard-projects");
 
@@ -10,6 +10,17 @@ export function renderProjectsOverview() {
   }
 
   const dashboardProjects = projects.slice(0, 4).map((project) => {
+    const projectTasks = tasks.filter((task) => task.projectId === project.id);
+
+    const completedTasks = projectTasks.filter(
+      (task) => task.status === "completed",
+    ).length;
+
+    const progress =
+      projectTasks.length === 0
+        ? 0
+        : Math.round((completedTasks / projectTasks.length) * 100);
+
     const members = (project.memberIds || [])
       .map((memberId) => teamMembers.find((member) => member.id === memberId))
       .filter(Boolean);
@@ -23,6 +34,7 @@ export function renderProjectsOverview() {
 
     return {
       ...project,
+      progress,
       members: members.length,
       status: statusLabels[project.status] || project.status,
       statusType:

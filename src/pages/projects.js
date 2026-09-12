@@ -1,4 +1,5 @@
 import { projects } from "../data/projects.js";
+import { tasks } from "../data/tasks.js";
 import { renderProjectCard } from "../components/projects/project-card.js";
 
 import {
@@ -148,6 +149,17 @@ export function renderProjects() {
   const statusFilter = document.querySelector("#project-status-filter");
   const sortSelect = document.querySelector("#project-sort");
   const projectCount = document.querySelector("#project-count");
+  function getProjectProgress(projectId) {
+    const projectTasks = tasks.filter((task) => task.projectId === projectId);
+
+    const completedTasks = projectTasks.filter(
+      (task) => task.status === "completed",
+    ).length;
+
+    return projectTasks.length === 0
+      ? 0
+      : Math.round((completedTasks / projectTasks.length) * 100);
+  }
 
   function updateProjects() {
     const searchTerm = searchInput.value.trim().toLowerCase();
@@ -177,10 +189,10 @@ export function renderProjects() {
           return new Date(a.dueDate) - new Date(b.dueDate);
 
         case "progress-high":
-          return b.progress - a.progress;
+          return getProjectProgress(b.id) - getProjectProgress(a.id);
 
         case "progress-low":
-          return a.progress - b.progress;
+          return getProjectProgress(a.id) - getProjectProgress(b.id);
 
         case "recent":
         default:

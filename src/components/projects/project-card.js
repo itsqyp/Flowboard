@@ -1,4 +1,5 @@
 import { teamMembers } from "../../data/team.js";
+import { tasks } from "../../data/tasks.js";
 
 export function renderProjectCard(project) {
   const statusConfig = {
@@ -37,6 +38,16 @@ export function renderProjectCard(project) {
 
   const status = statusConfig[project.status] || statusConfig.planning;
   const priority = priorityConfig[project.priority] || priorityConfig.medium;
+  const projectTasks = tasks.filter((task) => task.projectId === project.id);
+
+  const completedTasks = projectTasks.filter(
+    (task) => task.status === "completed",
+  ).length;
+
+  const totalTasks = projectTasks.length;
+
+  const progress =
+    totalTasks === 0 ? 0 : Math.round((completedTasks / totalTasks) * 100);
 
   const dueDate = new Date(project.dueDate).toLocaleDateString("en-US", {
     month: "short",
@@ -91,14 +102,14 @@ export function renderProjectCard(project) {
           </span>
 
           <span class="text-xs font-bold text-slate-900">
-            ${project.progress}%
+            ${progress}%
           </span>
         </div>
 
         <div class="mt-2 h-2 overflow-hidden rounded-full bg-slate-100">
           <div
             class="h-full rounded-full bg-indigo-600 transition-all duration-500"
-            style="width: ${project.progress}%"
+            style="width: ${progress}%"
           ></div>
         </div>
 
@@ -169,7 +180,7 @@ export function renderProjectCard(project) {
       <div class="mt-4 flex items-center justify-between">
 
         <span class="text-xs text-slate-400">
-          ${project.tasks.completed} of ${project.tasks.total} tasks
+         ${completedTasks} of ${totalTasks} tasks
         </span>
 
         <a
