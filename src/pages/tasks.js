@@ -20,6 +20,7 @@ let taskFilters = {
   search: "",
   status: "all",
   priority: "all",
+  project: "all",
 };
 
 export function renderTasks() {
@@ -44,8 +45,10 @@ export function renderTasks() {
 
     const matchesPriority =
       taskFilters.priority === "all" || task.priority === taskFilters.priority;
+    const matchesProject =
+      taskFilters.project === "all" || task.projectId === taskFilters.project;
 
-    return matchesSearch && matchesStatus && matchesPriority;
+    return matchesSearch && matchesStatus && matchesPriority && matchesProject;
   });
 
   app.innerHTML = `
@@ -224,6 +227,30 @@ export function renderTasks() {
   Low
 </option>
       </select>
+      <select
+  id="task-project-filter"
+  class="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-600 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+>
+  <option
+    value="all"
+    ${taskFilters.project === "all" ? "selected" : ""}
+  >
+    All Projects
+  </option>
+
+  ${projects
+    .map(
+      (project) => `
+        <option
+          value="${project.id}"
+          ${taskFilters.project === project.id ? "selected" : ""}
+        >
+          ${project.name}
+        </option>
+      `,
+    )
+    .join("")}
+</select>
 
     </div>
   </div>
@@ -555,6 +582,7 @@ export function renderTasks() {
   //  const searchInput = document.querySelector("#task-search");
   // const statusFilter = document.querySelector("#task-status-filter");
   // const priorityFilter = document.querySelector("#task-priority-filter");
+  const taskProjectFilter = document.querySelector("#task-project-filter");
 
   taskSearch?.addEventListener("input", (event) => {
     taskFilters.search = event.target.value;
@@ -580,6 +608,10 @@ export function renderTasks() {
 
   taskPriorityFilter?.addEventListener("change", (event) => {
     taskFilters.priority = event.target.value;
+    renderTasks();
+  });
+  taskProjectFilter?.addEventListener("change", (event) => {
+    taskFilters.project = event.target.value;
     renderTasks();
   });
 }
