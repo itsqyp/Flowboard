@@ -16,13 +16,37 @@ import {
   openDeleteTaskModal,
 } from "../components/tasks/delete-task-modal.js";
 
+let taskFilters = {
+  search: "",
+  status: "all",
+  priority: "all",
+};
+
 export function renderTasks() {
   const app = document.querySelector("#app");
+  // const searchInput = document.querySelector("#task-search");
+  // const statusFilter = document.querySelector("#task-status-filter");
+  // const priorityFilter = document.querySelector("#task-priority-filter");
 
   if (!app) {
     console.error("App mount point not found.");
     return;
   }
+  const filteredTasks = tasks.filter((task) => {
+    const searchTerm = taskFilters.search.toLowerCase();
+
+    const matchesSearch =
+      task.title.toLowerCase().includes(searchTerm) ||
+      task.description.toLowerCase().includes(searchTerm);
+
+    const matchesStatus =
+      taskFilters.status === "all" || task.status === taskFilters.status;
+
+    const matchesPriority =
+      taskFilters.priority === "all" || task.priority === taskFilters.priority;
+
+    return matchesSearch && matchesStatus && matchesPriority;
+  });
 
   app.innerHTML = `
     <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
@@ -115,21 +139,101 @@ export function renderTasks() {
       <!-- Task List -->
       <div class="mt-6 overflow-hidden rounded-xl border border-slate-200 bg-white">
 
-        <div class="border-b border-slate-200 px-5 py-4">
-          <h2 class="text-sm font-bold text-slate-900">
-            All Tasks
-          </h2>
+       <div class="border-b border-slate-200 px-5 py-4">
+  <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
 
-          <p class="mt-1 text-xs text-slate-500">
-            ${tasks.length} tasks across ${projects.length} projects
-          </p>
-        </div>
+    <div>
+      <h2 class="text-sm font-bold text-slate-900">
+        All Tasks
+      </h2>
+
+      <p class="mt-1 text-xs text-slate-500">
+        ${tasks.length} tasks across ${projects.length} projects
+      </p>
+    </div>
+
+    <!-- Filters -->
+    <div class="flex flex-col gap-2 sm:flex-row">
+
+      <!-- Search -->
+      <div class="relative">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.8"
+          stroke="currentColor"
+          class="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-slate-400"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="m21 21-4.35-4.35m1.85-5.15a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"
+          />
+        </svg>
+
+        <input
+          id="task-search"
+          type="search"
+           value="${taskFilters.search}"
+          placeholder="Search tasks..."
+          class="w-full rounded-lg border border-slate-200 bg-white py-2 pl-9 pr-3 text-sm text-slate-700 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 sm:w-56"
+        />
+      </div>
+
+      <!-- Status -->
+      <select
+        id="task-status-filter"
+        class="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-600 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+      >
+        <option value="all" ${taskFilters.status === "all" ? "selected" : ""}>
+  All Status
+</option>
+
+<option value="todo" ${taskFilters.status === "todo" ? "selected" : ""}>
+  To Do
+</option>
+
+<option value="in-progress" ${taskFilters.status === "in-progress" ? "selected" : ""}>
+  In Progress
+</option>
+
+<option value="completed" ${taskFilters.status === "completed" ? "selected" : ""}>
+  Completed
+</option>
+      </select>
+
+      <!-- Priority -->
+      <select
+        id="task-priority-filter"
+        class="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-600 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+      >
+       <option value="all" ${taskFilters.priority === "all" ? "selected" : ""}>
+  All Priority
+</option>
+
+<option value="high" ${taskFilters.priority === "high" ? "selected" : ""}>
+  High
+</option>
+
+<option value="medium" ${taskFilters.priority === "medium" ? "selected" : ""}>
+  Medium
+</option>
+
+<option value="low" ${taskFilters.priority === "low" ? "selected" : ""}>
+  Low
+</option>
+      </select>
+
+    </div>
+  </div>
+</div>
 
 
         <div class="divide-y divide-slate-100">
 
           ${
-            tasks.length === 0
+            filteredTasks.length === 0
               ? `
                 <div class="px-5 py-12 text-center">
                   <p class="text-sm font-medium text-slate-900">
@@ -141,7 +245,7 @@ export function renderTasks() {
                   </p>
                 </div>
               `
-              : tasks
+              : filteredTasks
                   .map((task) => {
                     const project = projects.find(
                       (item) => item.id === task.projectId,
@@ -443,5 +547,39 @@ export function renderTasks() {
 
       renderTasks();
     });
+  });
+
+  const taskSearch = document.querySelector("#task-search");
+  const taskStatusFilter = document.querySelector("#task-status-filter");
+  const taskPriorityFilter = document.querySelector("#task-priority-filter");
+  //  const searchInput = document.querySelector("#task-search");
+  // const statusFilter = document.querySelector("#task-status-filter");
+  // const priorityFilter = document.querySelector("#task-priority-filter");
+
+  taskSearch?.addEventListener("input", (event) => {
+    taskFilters.search = event.target.value;
+
+    renderTasks();
+
+    const newSearchInput = document.querySelector("#task-search");
+
+    if (newSearchInput) {
+      newSearchInput.focus();
+
+      newSearchInput.setSelectionRange(
+        newSearchInput.value.length,
+        newSearchInput.value.length,
+      );
+    }
+  });
+
+  taskStatusFilter?.addEventListener("change", (event) => {
+    taskFilters.status = event.target.value;
+    renderTasks();
+  });
+
+  taskPriorityFilter?.addEventListener("change", (event) => {
+    taskFilters.priority = event.target.value;
+    renderTasks();
   });
 }
