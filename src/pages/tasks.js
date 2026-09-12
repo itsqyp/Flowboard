@@ -6,6 +6,11 @@ import {
   openTaskModal,
 } from "../components/tasks/task-modal.js";
 
+import {
+  renderEditTaskModal,
+  openEditTaskModal,
+} from "../components/tasks/edit-task-modal.js";
+
 export function renderTasks() {
   const app = document.querySelector("#app");
 
@@ -265,25 +270,59 @@ export function renderTasks() {
                         </div>
 
 
-                        <!-- Assignee -->
-                        ${
-                          assignee
-                            ? `
-                              <div class="flex shrink-0 items-center gap-2">
-                                <div
-                                  class="flex size-8 items-center justify-center rounded-full bg-indigo-100 text-xs font-bold text-indigo-700"
-                                  title="${assignee.name}"
-                                >
-                                  ${assignee.initials}
-                                </div>
+                        <!-- Actions + Assignee -->
+<div class="flex shrink-0 items-center gap-4">
 
-                                <span class="text-sm font-medium text-slate-600">
-                                  ${assignee.name}
-                                </span>
-                              </div>
-                            `
-                            : ""
-                        }
+  <!-- Assignee -->
+  ${
+    assignee
+      ? `
+        <div class="flex items-center gap-2">
+          <div
+            class="flex size-8 items-center justify-center rounded-full bg-indigo-100 text-xs font-bold text-indigo-700"
+            title="${assignee.name}"
+          >
+            ${assignee.initials}
+          </div>
+
+          <span class="text-sm font-medium text-slate-600">
+            ${assignee.name}
+          </span>
+        </div>
+      `
+      : ""
+  }
+
+  <!-- Edit -->
+  <button
+    type="button"
+    class="edit-task-btn rounded-lg p-2 text-slate-400 transition hover:bg-slate-100 hover:text-indigo-600"
+    data-task-id="${task.id}"
+    aria-label="Edit task"
+    title="Edit task"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.8"
+      stroke="currentColor"
+      class="size-4"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Z"
+      />
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M19.5 7.125 16.875 4.5"
+      />
+    </svg>
+  </button>
+
+</div>
 
                       </div>
                     `;
@@ -302,8 +341,51 @@ export function renderTasks() {
     tasks.unshift(newTask);
     renderTasks();
   });
+  renderEditTaskModal((updatedTask) => {
+    const taskIndex = tasks.findIndex((task) => task.id === updatedTask.id);
+
+    if (taskIndex === -1) {
+      return;
+    }
+
+    tasks[taskIndex] = updatedTask;
+
+    renderTasks();
+  });
+  const editTaskButtons = document.querySelectorAll(".edit-task-btn");
+
+  editTaskButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const taskId = button.dataset.taskId;
+
+      const task = tasks.find((item) => item.id === taskId);
+
+      if (!task) {
+        return;
+      }
+
+      openEditTaskModal(task);
+    });
+  });
 
   const addTaskButton = document.querySelector("#add-task-btn");
 
   addTaskButton?.addEventListener("click", openTaskModal);
+  const taskCompleteButtons = document.querySelectorAll(".task-complete-btn");
+
+  taskCompleteButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const taskId = button.dataset.taskId;
+
+      const task = tasks.find((item) => item.id === taskId);
+
+      if (!task) {
+        return;
+      }
+
+      task.status = task.status === "completed" ? "todo" : "completed";
+
+      renderTasks();
+    });
+  });
 }
