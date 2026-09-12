@@ -11,6 +11,11 @@ import {
   openEditTaskModal,
 } from "../components/tasks/edit-task-modal.js";
 
+import {
+  renderDeleteTaskModal,
+  openDeleteTaskModal,
+} from "../components/tasks/delete-task-modal.js";
+
 export function renderTasks() {
   const app = document.querySelector("#app");
 
@@ -321,6 +326,29 @@ export function renderTasks() {
       />
     </svg>
   </button>
+  <!-- Delete -->
+<button
+  type="button"
+  class="delete-task-btn rounded-lg p-2 text-slate-400 transition hover:bg-slate-100 hover:text-red-600"
+  data-task-id="${task.id}"
+  aria-label="Delete task"
+  title="Delete task"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke-width="1.8"
+    stroke="currentColor"
+    class="size-4"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      d="M6 7.5h12m-10.5 0v10.125A1.875 1.875 0 0 0 9.375 19.5h5.25a1.875 1.875 0 0 0 1.875-1.875V7.5m-6.75 0V5.625A1.125 1.125 0 0 1 10.875 4.5h2.25A1.125 1.125 0 0 1 14.25 5.625V7.5"
+    />
+  </svg>
+</button>
 
 </div>
 
@@ -352,6 +380,18 @@ export function renderTasks() {
 
     renderTasks();
   });
+
+  renderDeleteTaskModal((taskToDelete) => {
+    const taskIndex = tasks.findIndex((task) => task.id === taskToDelete.id);
+
+    if (taskIndex === -1) {
+      return;
+    }
+
+    tasks.splice(taskIndex, 1);
+
+    renderTasks();
+  });
   const editTaskButtons = document.querySelectorAll(".edit-task-btn");
 
   editTaskButtons.forEach((button) => {
@@ -365,6 +405,22 @@ export function renderTasks() {
       }
 
       openEditTaskModal(task);
+    });
+  });
+
+  const deleteTaskButtons = document.querySelectorAll(".delete-task-btn");
+
+  deleteTaskButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const taskId = button.dataset.taskId;
+
+      const task = tasks.find((item) => item.id === taskId);
+
+      if (!task) {
+        return;
+      }
+
+      openDeleteTaskModal(task);
     });
   });
 
