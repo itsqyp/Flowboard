@@ -21,6 +21,7 @@ let taskFilters = {
   status: "all",
   priority: "all",
   project: "all",
+  sort: "newest",
 };
 
 export function renderTasks() {
@@ -49,6 +50,42 @@ export function renderTasks() {
       taskFilters.project === "all" || task.projectId === taskFilters.project;
 
     return matchesSearch && matchesStatus && matchesPriority && matchesProject;
+  });
+  const sortedTasks = [...filteredTasks].sort((a, b) => {
+    switch (taskFilters.sort) {
+      case "oldest":
+        return new Date(a.createdAt) - new Date(b.createdAt);
+
+      case "due-asc":
+        return new Date(a.dueDate) - new Date(b.dueDate);
+
+      case "due-desc":
+        return new Date(b.dueDate) - new Date(a.dueDate);
+
+      case "priority-high": {
+        const priorityOrder = {
+          high: 3,
+          medium: 2,
+          low: 1,
+        };
+
+        return priorityOrder[b.priority] - priorityOrder[a.priority];
+      }
+
+      case "priority-low": {
+        const priorityOrder = {
+          high: 3,
+          medium: 2,
+          low: 1,
+        };
+
+        return priorityOrder[a.priority] - priorityOrder[b.priority];
+      }
+
+      case "newest":
+      default:
+        return new Date(b.createdAt) - new Date(a.createdAt);
+    }
   });
 
   app.innerHTML = `
@@ -251,6 +288,52 @@ export function renderTasks() {
     )
     .join("")}
 </select>
+<select
+  id="task-sort"
+  class="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-600 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+>
+  <option
+    value="newest"
+    ${taskFilters.sort === "newest" ? "selected" : ""}
+  >
+    Newest
+  </option>
+
+  <option
+    value="oldest"
+    ${taskFilters.sort === "oldest" ? "selected" : ""}
+  >
+    Oldest
+  </option>
+
+  <option
+    value="due-asc"
+    ${taskFilters.sort === "due-asc" ? "selected" : ""}
+  >
+    Due Date ↑
+  </option>
+
+  <option
+    value="due-desc"
+    ${taskFilters.sort === "due-desc" ? "selected" : ""}
+  >
+    Due Date ↓
+  </option>
+
+  <option
+    value="priority-high"
+    ${taskFilters.sort === "priority-high" ? "selected" : ""}
+  >
+    Priority: High → Low
+  </option>
+
+  <option
+    value="priority-low"
+    ${taskFilters.sort === "priority-low" ? "selected" : ""}
+  >
+    Priority: Low → High
+  </option>
+</select>
 
     </div>
   </div>
@@ -272,7 +355,7 @@ export function renderTasks() {
                   </p>
                 </div>
               `
-              : filteredTasks
+              : sortedTasks
                   .map((task) => {
                     const project = projects.find(
                       (item) => item.id === task.projectId,
@@ -583,6 +666,7 @@ export function renderTasks() {
   // const statusFilter = document.querySelector("#task-status-filter");
   // const priorityFilter = document.querySelector("#task-priority-filter");
   const taskProjectFilter = document.querySelector("#task-project-filter");
+  const taskSort = document.querySelector("#task-sort");
 
   taskSearch?.addEventListener("input", (event) => {
     taskFilters.search = event.target.value;
@@ -612,6 +696,10 @@ export function renderTasks() {
   });
   taskProjectFilter?.addEventListener("change", (event) => {
     taskFilters.project = event.target.value;
+    renderTasks();
+  });
+  taskSort?.addEventListener("change", (event) => {
+    taskFilters.sort = event.target.value;
     renderTasks();
   });
 }
