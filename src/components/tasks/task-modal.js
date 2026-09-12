@@ -1,5 +1,6 @@
 import { showToast } from "../toast.js";
 import { teamMembers } from "../../data/team.js";
+import { projects } from "../../data/projects.js";
 
 let modal = null;
 let onCreate = null;
@@ -118,6 +119,33 @@ export function renderTaskModal(createCallback) {
           </div>
 
 <!-- Assignee + Priority -->
+<!-- Project -->
+<div>
+  <label
+    for="task-project"
+    class="block text-sm font-semibold text-slate-700"
+  >
+    Project
+  </label>
+
+  <select
+    id="task-project"
+    name="projectId"
+    class="mt-2 w-full rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-700 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+  >
+    <option value="">Select a project</option>
+
+    ${projects
+      .map(
+        (project) => `
+          <option value="${project.id}">
+            ${project.name}
+          </option>
+        `,
+      )
+      .join("")}
+  </select>
+</div>
 <div class="grid gap-5 sm:grid-cols-2">
 
   <!-- Assignee -->
@@ -276,12 +304,17 @@ function handleSubmit(event) {
 
   const title = formData.get("title").trim();
   const description = formData.get("description").trim();
+  const projectId = formData.get("projectId");
   const priority = formData.get("priority");
   const dueDate = formData.get("dueDate");
   const assigneeId = Number(formData.get("assigneeId"));
 
   if (!title) {
     showToast("Please enter a task title.", "warning");
+    return;
+  }
+  if (!projectId) {
+    showToast("Please select a project.", "warning");
     return;
   }
 
@@ -292,6 +325,8 @@ function handleSubmit(event) {
 
   const newTask = {
     id: `task-${Date.now()}`,
+
+    projectId,
 
     title,
 

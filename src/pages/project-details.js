@@ -25,7 +25,8 @@ import {
   renderDeleteProjectModal,
   openDeleteProjectModal,
 } from "../components/projects/delete-project-modal.js";
-import { navigateTo } from "../router.js";
+// import { navigateTo } from "../router.js";
+import { router, navigateTo } from "../router.js";
 import { showToast } from "../components/toast.js";
 
 function renderTaskList(taskList) {
@@ -567,11 +568,9 @@ export function renderProjectDetails(projectId) {
   `;
 
   renderTaskModal((newTask) => {
-    newTask.projectId = projectId;
-
     tasks.unshift(newTask);
 
-    renderProjectDetails(projectId);
+    navigateTo(`/projects/${newTask.projectId}`);
   });
 
   renderEditProjectModal((updatedProject) => {
@@ -749,34 +748,6 @@ export function renderProjectDetails(projectId) {
 
     renderProjectDetails(projectId);
   });
-  //   const taskStatusSelects = document.querySelectorAll(".task-status-select");
-
-  //   taskStatusSelects.forEach((select) => {
-  //     select.addEventListener("change", () => {
-  //       const taskId = select.dataset.taskId;
-  //       const task = tasks.find((item) => item.id === taskId);
-
-  //       if (!task) {
-  //         return;
-  //       }
-
-  //       //   const previousStatus = task.status;
-
-  //       task.status = select.value;
-  //       showToast(
-  //         `"${task.title}" moved to ${
-  //           task.status === "todo"
-  //             ? "To Do"
-  //             : task.status === "in-progress"
-  //               ? "In Progress"
-  //               : "Completed"
-  //         }.`,
-  //         "success",
-  //       );
-
-  //       renderProjectDetails(projectId);
-  //     });
-  //   });
 
   const taskSearch = document.querySelector("#task-search");
   const taskStatusFilter = document.querySelector("#task-status-filter");
@@ -846,5 +817,3 @@ export function renderProjectDetails(projectId) {
   taskPriorityFilter.addEventListener("change", updateTaskList);
   taskSort.addEventListener("change", updateTaskList);
 }
-// this div could be an issue. ??
-// this project-details.js could be very shaky
