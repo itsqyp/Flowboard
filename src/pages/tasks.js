@@ -24,6 +24,10 @@ let taskFilters = {
   sort: "newest",
 };
 
+let currentPage = 1;
+
+const TASKS_PER_PAGE = 10;
+
 export function renderTasks() {
   const app = document.querySelector("#app");
   // const searchInput = document.querySelector("#task-search");
@@ -87,6 +91,14 @@ export function renderTasks() {
         return new Date(b.createdAt) - new Date(a.createdAt);
     }
   });
+
+  const totalPages = Math.ceil(sortedTasks.length / TASKS_PER_PAGE);
+
+  const startIndex = (currentPage - 1) * TASKS_PER_PAGE;
+
+  const endIndex = startIndex + TASKS_PER_PAGE;
+
+  const visibleTasks = sortedTasks.slice(startIndex, endIndex);
 
   app.innerHTML = `
     <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
@@ -355,7 +367,7 @@ export function renderTasks() {
                   </p>
                 </div>
               `
-              : sortedTasks
+              : visibleTasks
                   .map((task) => {
                     const project = projects.find(
                       (item) => item.id === task.projectId,
@@ -571,8 +583,84 @@ export function renderTasks() {
                   })
                   .join("")
           }
+            ${
+              sortedTasks.length > 0
+                ? `
+      <div class="flex flex-col gap-3 border-t border-slate-200 px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
+
+        <!-- Results Info -->
+        <p class="text-xs text-slate-500">
+          Showing
+          <span class="font-semibold text-slate-700">
+            ${startIndex + 1}
+          </span>
+          -
+          <span class="font-semibold text-slate-700">
+            ${Math.min(endIndex, sortedTasks.length)}
+          </span>
+          of
+          <span class="font-semibold text-slate-700">
+            ${sortedTasks.length}
+          </span>
+          tasks
+        </p>
+
+
+        <!-- Pagination Controls -->
+        <div class="flex items-center gap-1">
+
+          <!-- Previous -->
+          <button
+            id="previous-task-page"
+            type="button"
+            class="rounded-lg border border-slate-200 px-3 py-2 text-xs font-semibold text-slate-600 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40"
+            ${currentPage === 1 ? "disabled" : ""}
+          >
+            Previous
+          </button>
+
+
+          <!-- Page Numbers -->
+          ${Array.from({ length: totalPages }, (_, index) => {
+            const page = index + 1;
+
+            return `
+                <button
+                  type="button"
+                  class="task-page-btn rounded-lg px-3 py-2 text-xs font-semibold transition ${
+                    currentPage === page
+                      ? "bg-indigo-600 text-white"
+                      : "text-slate-600 hover:bg-slate-100"
+                  }"
+                  data-page="${page}"
+                >
+                  ${page}
+                </button>
+              `;
+          }).join("")}
+
+
+          <!-- Next -->
+          <button
+            id="next-task-page"
+            type="button"
+            class="rounded-lg border border-slate-200 px-3 py-2 text-xs font-semibold text-slate-600 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40"
+            ${currentPage === totalPages ? "disabled" : ""}
+          >
+            Next
+          </button>
 
         </div>
+
+      </div>
+    `
+                : ""
+            }
+
+        </div>
+
+
+
 
       </div>
 
@@ -701,5 +789,36 @@ export function renderTasks() {
   taskSort?.addEventListener("change", (event) => {
     taskFilters.sort = event.target.value;
     renderTasks();
+  });
+
+  const previousPageButton = document.querySelector("#previous-task-page");
+
+  const nextPageButton = document.querySelector("#next-task-page");
+
+  const taskPageButtons = document.querySelectorAll(".task-page-btn");
+
+  previousPageButton?.addEventListener("click", () => {
+    if (currentPage <= 1) {
+      return;
+    }
+
+    currentPage -= 1;
+    renderTasks();
+  });
+
+  nextPageButton?.addEventListener("click", () => {
+    if (currentPage >= totalPages) {
+      return;
+    }
+
+    currentPage += 1;
+    renderTasks();
+  });
+
+  taskPageButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      currentPage = Number(button.dataset.page);
+      renderTasks();
+    });
   });
 }

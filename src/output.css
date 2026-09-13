@@ -1217,6 +1217,12 @@
     --tw-outline-style: none;
     outline-style: none;
   }
+  .disabled\:cursor-not-allowed:disabled {
+    cursor: not-allowed;
+  }
+  .disabled\:opacity-40:disabled {
+    opacity: 40%;
+  }
   @media (width >= 40rem) {
     .sm\:top-6 {
       top: calc(var(--spacing) * 6);
