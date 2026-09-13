@@ -758,6 +758,7 @@ export function renderTasks() {
 
   taskSearch?.addEventListener("input", (event) => {
     taskFilters.search = event.target.value;
+    currentPage = 1;
 
     renderTasks();
 
@@ -775,19 +776,27 @@ export function renderTasks() {
 
   taskStatusFilter?.addEventListener("change", (event) => {
     taskFilters.status = event.target.value;
+    currentPage = 1;
+
     renderTasks();
   });
 
   taskPriorityFilter?.addEventListener("change", (event) => {
     taskFilters.priority = event.target.value;
+    currentPage = 1;
+
     renderTasks();
   });
   taskProjectFilter?.addEventListener("change", (event) => {
     taskFilters.project = event.target.value;
+    currentPage = 1;
+
     renderTasks();
   });
   taskSort?.addEventListener("change", (event) => {
     taskFilters.sort = event.target.value;
+    currentPage = 1;
+
     renderTasks();
   });
 
