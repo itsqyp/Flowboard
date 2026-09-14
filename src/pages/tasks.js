@@ -94,6 +94,10 @@ export function renderTasks() {
 
   const totalPages = Math.ceil(sortedTasks.length / TASKS_PER_PAGE);
 
+  if (totalPages > 0 && currentPage > totalPages) {
+    currentPage = totalPages;
+  }
+
   const startIndex = (currentPage - 1) * TASKS_PER_PAGE;
 
   const endIndex = startIndex + TASKS_PER_PAGE;
