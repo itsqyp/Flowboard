@@ -111,13 +111,22 @@ export function renderTasks() {
       <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
 
         <div>
-          <h1 class="text-2xl font-bold tracking-tight text-slate-900">
-            Tasks
-          </h1>
+          <h1 class="text-2xl font-bold text-slate-900">
+  Tasks
+</h1>
 
-          <p class="mt-1 text-sm text-slate-500">
-            Manage all tasks across your projects.
-          </p>
+<div class="mt-1 flex flex-wrap items-center gap-2">
+  <p class="text-sm text-slate-500">
+    Manage and track all tasks across your projects.
+  </p>
+
+  <span class="text-slate-300">•</span>
+
+  <span class="text-sm font-semibold text-slate-700">
+    ${filteredTasks.length}
+    ${filteredTasks.length === 1 ? "task" : "tasks"}
+  </span>
+</div>
         </div>
 
         <button
@@ -486,20 +495,27 @@ export function renderTasks() {
                                     : ""
                                 }
 
-                                <span
-                                  class="rounded-md px-2 py-1 text-xs font-medium ${
-                                    task.priority === "high"
-                                      ? "bg-red-50 text-red-700"
-                                      : task.priority === "medium"
-                                        ? "bg-amber-50 text-amber-700"
-                                        : "bg-slate-100 text-slate-600"
-                                  }"
-                                >
-                                  ${
-                                    task.priority.charAt(0).toUpperCase() +
-                                    task.priority.slice(1)
-                                  }
-                                </span>
+                               <span
+  class="inline-flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium ${
+    task.priority === "high"
+      ? "bg-red-50 text-red-700"
+      : task.priority === "medium"
+        ? "bg-amber-50 text-amber-700"
+        : "bg-slate-100 text-slate-600"
+  }"
+>
+  <span
+    class="size-1.5 rounded-full ${
+      task.priority === "high"
+        ? "bg-red-500"
+        : task.priority === "medium"
+          ? "bg-amber-500"
+          : "bg-slate-400"
+    }"
+  ></span>
+
+  ${task.priority.charAt(0).toUpperCase() + task.priority.slice(1)}
+</span>
 
                                 <span
                                   class="rounded-md px-2 py-1 text-xs font-medium ${

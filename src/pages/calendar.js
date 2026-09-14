@@ -2,20 +2,148 @@ export function renderCalendar() {
   const app = document.querySelector("#app");
 
   if (!app) {
-    console.error("App mount point not found.");
     return;
   }
 
   app.innerHTML = `
-    <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+    <div class="space-y-6">
 
-      <h1 class="text-2xl font-bold tracking-tight text-slate-900">
-        Calendar
-      </h1>
+      <!-- Header -->
+      <div class="flex flex-col gap-4 p-4 sm:flex-row sm:items-center sm:justify-between">
 
-      <p class="mt-1 text-sm text-slate-500">
-        View your upcoming deadlines and events.
-      </p>
+        <div>
+          <h1 class="text-2xl font-bold text-slate-900">
+            Calendar
+          </h1>
+
+          <p class="mt-1 text-sm text-slate-500">
+            View and manage your project deadlines and tasks.
+          </p>
+        </div>
+
+        <button
+          type="button"
+          class="rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-indigo-700"
+        >
+          Today
+        </button>
+
+      </div>
+
+
+      <!-- Calendar -->
+      <div  class="overflow-hidden rounded-xl border p-4 border-slate-200 bg-white shadow-sm">
+
+        <!-- Calendar Header -->
+        <div class="flex items-center justify-between border-b border-slate-200 px-5 py-4">
+
+          <button
+            type="button"
+            class="rounded-lg p-2 text-slate-500 transition hover:bg-slate-100 hover:text-slate-900"
+            aria-label="Previous month"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.8"
+              stroke="currentColor"
+              class="size-5"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="m15.75 19.5-7.5-7.5 7.5-7.5"
+              />
+            </svg>
+          </button>
+
+
+          <h2 class="text-base font-bold text-slate-900">
+            September 2026
+          </h2>
+
+
+          <button
+            type="button"
+            class="rounded-lg p-2 text-slate-500 transition hover:bg-slate-100 hover:text-slate-900"
+            aria-label="Next month"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.8"
+              stroke="currentColor"
+              class="size-5"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="m8.25 4.5 7.5 7.5-7.5 7.5"
+              />
+            </svg>
+          </button>
+
+        </div>
+
+
+        <!-- Weekdays -->
+        <div class="grid grid-cols-7 border-b border-slate-200">
+
+          <div class="px-2 py-3 text-center text-xs font-semibold text-slate-500">
+            Sun
+          </div>
+
+          <div class="px-2 py-3 text-center text-xs font-semibold text-slate-500">
+            Mon
+          </div>
+
+          <div class="px-2 py-3 text-center text-xs font-semibold text-slate-500">
+            Tue
+          </div>
+
+          <div class="px-2 py-3 text-center text-xs font-semibold text-slate-500">
+            Wed
+          </div>
+
+          <div class="px-2 py-3 text-center text-xs font-semibold text-slate-500">
+            Thu
+          </div>
+
+          <div class="px-2 py-3 text-center text-xs font-semibold text-slate-500">
+            Fri
+          </div>
+
+          <div class="px-2 py-3 text-center text-xs font-semibold text-slate-500">
+            Sat
+          </div>
+
+        </div>
+
+
+        <!-- Calendar Grid -->
+        <div class="grid grid-cols-7">
+
+          ${Array.from({ length: 35 }, (_, index) => {
+            const day = index + 1;
+
+            return `
+              <div
+                class="min-h-28 border-b border-r border-slate-100 p-3"
+              >
+                <span
+                  class="flex size-7 items-center justify-center rounded-full text-sm font-medium text-slate-700"
+                >
+                  ${day <= 30 ? day : ""}
+                </span>
+              </div>
+            `;
+          }).join("")}
+
+        </div>
+
+      </div>
 
     </div>
   `;
