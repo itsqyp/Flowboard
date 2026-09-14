@@ -1,3 +1,5 @@
+let currentCalendarDate = new Date();
+
 export function renderCalendar() {
   const app = document.querySelector("#app");
 
@@ -37,8 +39,9 @@ export function renderCalendar() {
         <!-- Calendar Header -->
         <div class="flex items-center justify-between border-b border-slate-200 px-5 py-4">
 
-          <button
-            type="button"
+         <button
+  id="previous-calendar-month"
+  type="button"
             class="rounded-lg p-2 text-slate-500 transition hover:bg-slate-100 hover:text-slate-900"
             aria-label="Previous month"
           >
@@ -60,12 +63,16 @@ export function renderCalendar() {
 
 
           <h2 class="text-base font-bold text-slate-900">
-            September 2026
-          </h2>
+  ${currentCalendarDate.toLocaleDateString("en-US", {
+    month: "long",
+    year: "numeric",
+  })}
+</h2>
 
 
-          <button
-            type="button"
+         <button
+  id="next-calendar-month"
+  type="button"
             class="rounded-lg p-2 text-slate-500 transition hover:bg-slate-100 hover:text-slate-900"
             aria-label="Next month"
           >
@@ -122,29 +129,69 @@ export function renderCalendar() {
         </div>
 
 
-        <!-- Calendar Grid -->
-        <div class="grid grid-cols-7">
+       <!-- Calendar Grid -->
+<div class="grid grid-cols-7">
 
-          ${Array.from({ length: 35 }, (_, index) => {
-            const day = index + 1;
+  ${(() => {
+    const year = currentCalendarDate.getFullYear();
+    const month = currentCalendarDate.getMonth();
 
-            return `
-              <div
-                class="min-h-28 border-b border-r border-slate-100 p-3"
-              >
+    const firstDay = new Date(year, month, 1).getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+    const totalCells = Math.ceil((firstDay + daysInMonth) / 7) * 7;
+
+    return Array.from({ length: totalCells }, (_, index) => {
+      const dayNumber = index - firstDay + 1;
+
+      const isCurrentMonth = dayNumber >= 1 && dayNumber <= daysInMonth;
+
+      return `
+        <div
+          class="min-h-28 border-b border-r border-slate-100 p-3 ${
+            isCurrentMonth ? "bg-white" : "bg-slate-50"
+          }"
+        >
+
+          ${
+            isCurrentMonth
+              ? `
                 <span
                   class="flex size-7 items-center justify-center rounded-full text-sm font-medium text-slate-700"
                 >
-                  ${day <= 30 ? day : ""}
+                  ${dayNumber}
                 </span>
-              </div>
-            `;
-          }).join("")}
+              `
+              : ""
+          }
 
         </div>
+      `;
+    }).join("");
+  })()}
+
+</div>
 
       </div>
 
     </div>
   `;
+
+  const previousMonthButton = document.querySelector(
+    "#previous-calendar-month",
+  );
+
+  const nextMonthButton = document.querySelector("#next-calendar-month");
+
+  previousMonthButton?.addEventListener("click", () => {
+    currentCalendarDate.setMonth(currentCalendarDate.getMonth() - 1);
+
+    renderCalendar();
+  });
+
+  nextMonthButton?.addEventListener("click", () => {
+    currentCalendarDate.setMonth(currentCalendarDate.getMonth() + 1);
+
+    renderCalendar();
+  });
 }
