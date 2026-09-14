@@ -24,11 +24,12 @@ export function renderCalendar() {
         </div>
 
         <button
-          type="button"
-          class="rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-indigo-700"
-        >
-          Today
-        </button>
+  id="today-calendar-btn"
+  type="button"
+  class="rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-indigo-700"
+>
+  Today
+</button>
 
       </div>
 
@@ -191,6 +192,14 @@ export function renderCalendar() {
 
   nextMonthButton?.addEventListener("click", () => {
     currentCalendarDate.setMonth(currentCalendarDate.getMonth() + 1);
+
+    renderCalendar();
+  });
+
+  const todayCalendarButton = document.querySelector("#today-calendar-btn");
+
+  todayCalendarButton?.addEventListener("click", () => {
+    currentCalendarDate = new Date();
 
     renderCalendar();
   });
