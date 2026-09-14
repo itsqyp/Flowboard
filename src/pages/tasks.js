@@ -358,30 +358,57 @@ export function renderTasks() {
 
         <div class="divide-y divide-slate-100">
 
-          ${
-            filteredTasks.length === 0
-              ? `
-                <div class="px-5 py-12 text-center">
-                  <p class="text-sm font-medium text-slate-900">
-                    No tasks found
-                  </p>
+      ${
+        filteredTasks.length === 0
+          ? `
+      <div class="px-5 py-12 text-center">
 
-                  <p class="mt-1 text-sm text-slate-500">
-                    Create your first task to get started.
-                  </p>
-                </div>
-              `
-              : visibleTasks
-                  .map((task) => {
-                    const project = projects.find(
-                      (item) => item.id === task.projectId,
-                    );
+        <div class="mx-auto flex size-12 items-center justify-center rounded-full bg-slate-100 text-slate-400">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="m21 21-4.35-4.35m0 0A7.5 7.5 0 1 0 6.045 6.045a7.5 7.5 0 0 0 10.605 10.605Z"
+            />
+          </svg>
+        </div>
 
-                    const assignee = teamMembers.find(
-                      (member) => member.id === task.assigneeId,
-                    );
+        <p class="mt-4 text-sm font-semibold text-slate-900">
+          No tasks found
+        </p>
 
-                    return `
+        <p class="mx-auto mt-1 max-w-sm text-sm text-slate-500">
+          Try adjusting your search or filters to find what you're looking for.
+        </p>
+
+        <button
+          id="clear-task-filters"
+          type="button"
+          class="mt-4 rounded-lg bg-indigo-600 px-4 py-2 text-xs font-semibold text-white transition hover:bg-indigo-700"
+        >
+          Clear Filters
+        </button>
+
+      </div>
+    `
+          : visibleTasks
+              .map((task) => {
+                const project = projects.find(
+                  (item) => item.id === task.projectId,
+                );
+
+                const assignee = teamMembers.find(
+                  (member) => member.id === task.assigneeId,
+                );
+
+                return `
                       <div
                         class="flex flex-col gap-4 px-5 py-4 transition hover:bg-slate-50 sm:flex-row sm:items-center sm:justify-between"
                       >
@@ -584,9 +611,9 @@ export function renderTasks() {
 
                       </div>
                     `;
-                  })
-                  .join("")
-          }
+              })
+              .join("")
+      }
             ${
               sortedTasks.length > 0
                 ? `
@@ -833,5 +860,20 @@ export function renderTasks() {
       currentPage = Number(button.dataset.page);
       renderTasks();
     });
+  });
+  const clearTaskFiltersButton = document.querySelector("#clear-task-filters");
+
+  clearTaskFiltersButton?.addEventListener("click", () => {
+    taskFilters = {
+      search: "",
+      status: "all",
+      priority: "all",
+      project: "all",
+      sort: "newest",
+    };
+
+    currentPage = 1;
+
+    renderTasks();
   });
 }
