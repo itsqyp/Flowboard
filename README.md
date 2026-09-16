@@ -12,106 +12,106 @@ The project is built with vanilla JavaScript and Tailwind CSS, with a component-
 
 ### Dashboard
 
-* Overview of total projects
-* Active task statistics
-* Completed task statistics
-* Team member statistics
-* Projects overview
-* My tasks
-* Upcoming deadlines
-* Recent activity
-* Create new project
-* Real-time UI updates after creating projects
-* Task completion feedback with toast notifications
+- Overview of total projects
+- Active task statistics
+- Completed task statistics
+- Team member statistics
+- Projects overview
+- My tasks
+- Upcoming deadlines
+- Recent activity
+- Create new project
+- Real-time UI updates after creating projects
+- Task completion feedback with toast notifications
 
 ### Projects
 
-* View all projects
-* Search projects
-* Filter projects by status
-* Sort projects
-* Project statistics
-* Project cards with progress information
-* Create projects
-* Edit projects
-* Delete projects
-* Project due dates
-* Project priorities
-* Project status tracking
-* Project team members
+- View all projects
+- Search projects
+- Filter projects by status
+- Sort projects
+- Project statistics
+- Project cards with progress information
+- Create projects
+- Edit projects
+- Delete projects
+- Project due dates
+- Project priorities
+- Project status tracking
+- Project team members
 
 ### Project Details
 
-* Dedicated project detail pages
-* Project information
-* Project progress
-* Project team members
-* Project task list
-* Create tasks
-* Edit tasks
-* Delete tasks
-* Change task status
-* Mark tasks as completed
-* Assign tasks to team members
-* Task priority management
-* Task due dates
+- Dedicated project detail pages
+- Project information
+- Project progress
+- Project team members
+- Project task list
+- Create tasks
+- Edit tasks
+- Delete tasks
+- Change task status
+- Mark tasks as completed
+- Assign tasks to team members
+- Task priority management
+- Task due dates
 
 ### Tasks
 
-* Global task management
-* Search tasks
-* Filter by status
-* Filter by priority
-* Filter by project
-* Sort by creation date
-* Sort by due date
-* Sort by priority
-* Pagination
-* Task count
-* Task completion
-* Task editing
-* Task deletion
-* Assignee information
-* Project information
-* Priority indicators
-* Empty states
-* Clear filters
-* Pagination edge-case handling
+- Global task management
+- Search tasks
+- Filter by status
+- Filter by priority
+- Filter by project
+- Sort by creation date
+- Sort by due date
+- Sort by priority
+- Pagination
+- Task count
+- Task completion
+- Task editing
+- Task deletion
+- Assignee information
+- Project information
+- Priority indicators
+- Empty states
+- Clear filters
+- Pagination edge-case handling
 
 ### Team
 
-* Team member management
-* Add team members
-* Edit team members
-* Delete team members
-* Role information
-* Member status
-* Member initials/avatar display
+- Team member management
+- Add team members
+- Edit team members
+- Delete team members
+- Role information
+- Member status
+- Member initials/avatar display
 
 ### Calendar
 
-* Monthly calendar view
-* Dynamic month generation
-* Previous month navigation
-* Next month navigation
-* Today navigation
-* Correct day positioning
-* Dynamic month/year display
-* Responsive calendar layout
+- Monthly calendar view
+- Dynamic month generation
+- Previous month navigation
+- Next month navigation
+- Today navigation
+- Correct day positioning
+- Dynamic month/year display
+- Responsive calendar layout
 
 ### Navigation & UI
 
-* SPA-style client-side routing
-* Dynamic active navigation state
-* Responsive desktop sidebar
-* Mobile navigation drawer
-* Responsive layout
-* Reusable UI components
-* Toast notification system
-* Form modals
-* Confirmation modals
-* Empty states
-* Responsive Tailwind CSS styling
+- SPA-style client-side routing
+- Dynamic active navigation state
+- Responsive desktop sidebar
+- Mobile navigation drawer
+- Responsive layout
+- Reusable UI components
+- Toast notification system
+- Form modals
+- Confirmation modals
+- Empty states
+- Responsive Tailwind CSS styling
 
 ---
 
@@ -119,22 +119,22 @@ The project is built with vanilla JavaScript and Tailwind CSS, with a component-
 
 ### Frontend
 
-* HTML5
-* CSS3
-* JavaScript (ES Modules)
-* Tailwind CSS
-* Vite
+- HTML5
+- CSS3
+- JavaScript (ES Modules)
+- Tailwind CSS
+- Vite
 
 ### Development Tools
 
-* npm
-* VS Code
-* Git
-* GitHub
+- npm
+- VS Code
+- Git
+- GitHub
 
 ### Typography
 
-* Quicksand Variable via Fontsource
+- Quicksand Variable via Fontsource
 
 ---
 
@@ -340,18 +340,18 @@ Flowboard includes a reusable toast notification system for user feedback.
 
 Supported notification types include:
 
-* Success
-* Error
-* Warning
-* Info
+- Success
+- Error
+- Warning
+- Info
 
 The toast system also includes:
 
-* Automatic dismissal
-* Manual close
-* Fade transitions
-* Timer pause on hover
-* Timer resume after hover
+- Automatic dismissal
+- Manual close
+- Fade transitions
+- Timer pause on hover
+- Timer resume after hover
 
 ---
 
@@ -359,9 +359,9 @@ The toast system also includes:
 
 The interface is designed to work across:
 
-* Desktop
-* Tablet
-* Mobile
+- Desktop
+- Tablet
+- Mobile
 
 The desktop experience uses a persistent sidebar, while smaller screens use a mobile navigation drawer.
 
@@ -425,22 +425,22 @@ Flowboard is actively being developed.
 
 Planned improvements include:
 
-* [ ] Connect calendar with task deadlines
-* [ ] Calendar task interactions
-* [ ] Calendar project deadlines
-* [ ] Complete Settings page
-* [ ] Notification center
-* [ ] Persistent application state
-* [ ] LocalStorage integration
-* [ ] Loading states
-* [ ] Error states
-* [ ] Improved accessibility
-* [ ] Advanced task interactions
-* [ ] Authentication
-* [ ] Backend/API integration
-* [ ] Database integration
-* [ ] Real-time collaboration
-* [ ] Production deployment
+- [ ] Connect calendar with task deadlines
+- [ ] Calendar task interactions
+- [ ] Calendar project deadlines
+- [ ] Complete Settings page
+- [ ] Notification center
+- [ ] Persistent application state
+- [ ] LocalStorage integration
+- [ ] Loading states
+- [ ] Error states
+- [ ] Improved accessibility
+- [ ] Advanced task interactions
+- [ ] Authentication
+- [ ] Backend/API integration
+- [ ] Database integration
+- [ ] Real-time collaboration
+- [ ] Production deployment
 
 ---
 
@@ -450,18 +450,18 @@ Flowboard is being built as a production-oriented frontend project rather than a
 
 The main goals are to practice:
 
-* Scalable frontend architecture
-* Component-based JavaScript
-* SPA routing
-* State management
-* Data relationships
-* CRUD workflows
-* Responsive UI development
-* UX patterns
-* Form validation
-* Reusable components
-* Production-style edge-case handling
-* Git/GitHub workflow
+- Scalable frontend architecture
+- Component-based JavaScript
+- SPA routing
+- State management
+- Data relationships
+- CRUD workflows
+- Responsive UI development
+- UX patterns
+- Form validation
+- Reusable components
+- Production-style edge-case handling
+- Git/GitHub workflow
 
 ---
 
@@ -469,20 +469,20 @@ The main goals are to practice:
 
 Flowboard currently provides a functional project-management workspace with:
 
-* Dashboard
-* Projects
-* Project details
-* Tasks
-* Team management
-* Calendar foundation
-* SPA navigation
-* Responsive UI
-* CRUD workflows
-* Search and filtering
-* Sorting
-* Pagination
-* Toast notifications
-* Reusable components
+- Dashboard
+- Projects
+- Project details
+- Tasks
+- Team management
+- Calendar foundation
+- SPA navigation
+- Responsive UI
+- CRUD workflows
+- Search and filtering
+- Sorting
+- Pagination
+- Toast notifications
+- Reusable components
 
 The project is still under active development, with additional SaaS functionality planned.
 
@@ -499,3 +499,8 @@ Built as a frontend portfolio project to explore production-oriented web applica
 ## 📄 License
 
 This project is currently intended as a personal portfolio and learning project.
+asdkasdjaslkdjaslkdjaslkdjalskjdalksjdalksjdalksjdlaksjdlakjdlkas
+aslkdjasldkjalkdjalkdjalkdjalkjdlkajdlkasjldkas
+asldkjaslkdjalkdjaslkdjlkasjdlmvskvsdlkjsdlkjlksf
+asdlkajsdlkajsldkjaslkdjalskdjaslkdj
+dask
