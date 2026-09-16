@@ -1,4 +1,29 @@
+import { projects } from "../data/projects.js";
+import { tasks } from "../data/tasks.js";
+
 let currentCalendarDate = new Date();
+
+function getCalendarEvents() {
+  const projectEvents = projects.map((project) => ({
+    id: `project-${project.id}`,
+    type: "project",
+    title: project.name,
+    date: project.dueDate,
+    projectId: project.id,
+  }));
+
+  const taskEvents = tasks.map((task) => ({
+    id: task.id,
+    type: "task",
+    title: task.title,
+    date: task.dueDate,
+    projectId: task.projectId,
+    status: task.status,
+    priority: task.priority,
+  }));
+
+  return [...projectEvents, ...taskEvents];
+}
 
 export function renderCalendar() {
   const app = document.querySelector("#app");
@@ -6,6 +31,8 @@ export function renderCalendar() {
   if (!app) {
     return;
   }
+
+  const calendarEvents = getCalendarEvents();
 
   app.innerHTML = `
     <div class="space-y-6">
@@ -24,25 +51,25 @@ export function renderCalendar() {
         </div>
 
         <button
-  id="today-calendar-btn"
-  type="button"
-  class="rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-indigo-700"
->
-  Today
-</button>
+          id="today-calendar-btn"
+          type="button"
+          class="rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-indigo-700"
+        >
+          Today
+        </button>
 
       </div>
 
 
       <!-- Calendar -->
-      <div  class="overflow-hidden rounded-xl border p-4 border-slate-200 bg-white shadow-sm">
+      <div class="overflow-hidden rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
 
         <!-- Calendar Header -->
         <div class="flex items-center justify-between border-b border-slate-200 px-5 py-4">
 
-         <button
-  id="previous-calendar-month"
-  type="button"
+          <button
+            id="previous-calendar-month"
+            type="button"
             class="rounded-lg p-2 text-slate-500 transition hover:bg-slate-100 hover:text-slate-900"
             aria-label="Previous month"
           >
@@ -64,16 +91,16 @@ export function renderCalendar() {
 
 
           <h2 class="text-base font-bold text-slate-900">
-  ${currentCalendarDate.toLocaleDateString("en-US", {
-    month: "long",
-    year: "numeric",
-  })}
-</h2>
+            ${currentCalendarDate.toLocaleDateString("en-US", {
+              month: "long",
+              year: "numeric",
+            })}
+          </h2>
 
 
-         <button
-  id="next-calendar-month"
-  type="button"
+          <button
+            id="next-calendar-month"
+            type="button"
             class="rounded-lg p-2 text-slate-500 transition hover:bg-slate-100 hover:text-slate-900"
             aria-label="Next month"
           >
@@ -88,7 +115,7 @@ export function renderCalendar() {
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                d="m8.25 4.5 7.5 7.5-7.5 7.5"
+                d="m8.25 4.5 7.5 7.5"
               />
             </svg>
           </button>
@@ -130,59 +157,87 @@ export function renderCalendar() {
         </div>
 
 
-       <!-- Calendar Grid -->
-<div class="grid grid-cols-7">
+        <!-- Calendar Grid -->
+        <div class="grid grid-cols-7">
 
-  ${(() => {
-    const year = currentCalendarDate.getFullYear();
-    const month = currentCalendarDate.getMonth();
+          ${(() => {
+            const year = currentCalendarDate.getFullYear();
+            const month = currentCalendarDate.getMonth();
 
-    const firstDay = new Date(year, month, 1).getDay();
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
+            const firstDay = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-    const totalCells = Math.ceil((firstDay + daysInMonth) / 7) * 7;
+            const totalCells = Math.ceil((firstDay + daysInMonth) / 7) * 7;
 
-    return Array.from({ length: totalCells }, (_, index) => {
-      const dayNumber = index - firstDay + 1;
+            return Array.from({ length: totalCells }, (_, index) => {
+              const dayNumber = index - firstDay + 1;
 
-      const isCurrentMonth = dayNumber >= 1 && dayNumber <= daysInMonth;
+              const isCurrentMonth = dayNumber >= 1 && dayNumber <= daysInMonth;
 
-      return `
-        <div
-          class="min-h-28 border-b border-r border-slate-100 p-3 ${
-            isCurrentMonth ? "bg-white" : "bg-slate-50"
-          }"
-        >
+              const dateString = isCurrentMonth
+                ? `${year}-${String(month + 1).padStart(2, "0")}-${String(dayNumber).padStart(2, "0")}`
+                : "";
 
-          ${
-            isCurrentMonth
-              ? `
-                <span
-                  class="flex size-7 items-center justify-center rounded-full text-sm font-medium text-slate-700"
-                >
-                  ${dayNumber}
-                </span>
-              `
-              : ""
-          }
+              const dayEvents = calendarEvents.filter(
+                (event) => event.date === dateString,
+              );
+
+              return `
+                  <div
+                    class="min-h-28 border-b border-r border-slate-100 p-3 ${
+                      isCurrentMonth ? "bg-white" : "bg-slate-50"
+                    }"
+                  >
+
+                    ${
+                      isCurrentMonth
+                        ? `
+                          <span
+                            class="flex size-7 items-center justify-center rounded-full text-sm font-medium text-slate-700"
+                          >
+                            ${dayNumber}
+                          </span>
+
+                          ${
+                            dayEvents.length > 0
+                              ? `
+                                <div class="mt-2 space-y-1">
+                                  ${dayEvents
+                                    .map(
+                                      (event) => `
+                                        <div
+                                          class="truncate rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700"
+                                          title="${event.title}"
+                                        >
+                                          ${event.title}
+                                        </div>
+                                      `,
+                                    )
+                                    .join("")}
+                                </div>
+                              `
+                              : ""
+                          }
+                        `
+                        : ""
+                    }
+
+                  </div>
+                `;
+            }).join("");
+          })()}
 
         </div>
-      `;
-    }).join("");
-  })()}
-
-</div>
 
       </div>
 
     </div>
   `;
 
+  // Previous Month
   const previousMonthButton = document.querySelector(
     "#previous-calendar-month",
   );
-
-  const nextMonthButton = document.querySelector("#next-calendar-month");
 
   previousMonthButton?.addEventListener("click", () => {
     currentCalendarDate.setMonth(currentCalendarDate.getMonth() - 1);
@@ -190,12 +245,16 @@ export function renderCalendar() {
     renderCalendar();
   });
 
+  // Next Month
+  const nextMonthButton = document.querySelector("#next-calendar-month");
+
   nextMonthButton?.addEventListener("click", () => {
     currentCalendarDate.setMonth(currentCalendarDate.getMonth() + 1);
 
     renderCalendar();
   });
 
+  // Today
   const todayCalendarButton = document.querySelector("#today-calendar-btn");
 
   todayCalendarButton?.addEventListener("click", () => {
