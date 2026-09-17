@@ -112,11 +112,13 @@ export function renderCalendar() {
               stroke="currentColor"
               class="size-5"
             >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="m8.25 4.5 7.5 7.5"
-              />
+             <path
+  d="m8.25 4.5 7.5 7.5-7.5 7.5"
+  stroke="currentColor"
+  stroke-width="1.5"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+/>
             </svg>
           </button>
 
@@ -198,26 +200,48 @@ export function renderCalendar() {
                             ${dayNumber}
                           </span>
 
-                          ${
-                            dayEvents.length > 0
-                              ? `
-                                <div class="mt-2 space-y-1">
-                                  ${dayEvents
-                                    .map(
-                                      (event) => `
-                                        <div
-                                          class="truncate rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700"
-                                          title="${event.title}"
-                                        >
-                                          ${event.title}
-                                        </div>
-                                      `,
-                                    )
-                                    .join("")}
-                                </div>
-                              `
-                              : ""
-                          }
+                        ${
+                          dayEvents.length > 0
+                            ? `
+  <div class="mt-2 space-y-1">
+    ${dayEvents
+      .map(
+        (event) => `
+      <div
+        class="flex items-center gap-1.5 truncate rounded-md px-2 py-1 text-xs font-medium ${
+          event.type === "project"
+            ? "bg-indigo-50 text-indigo-700"
+            : "bg-slate-50 text-slate-600"
+        }"
+        title="${event.title}"
+      >
+        ${
+          event.type === "project"
+            ? `
+              <span class="size-1.5 shrink-0 rounded-full bg-indigo-500"></span>
+            `
+            : `
+              <span class="size-1.5 shrink-0 rounded-full ${
+                event.priority === "high"
+                  ? "bg-red-500"
+                  : event.priority === "medium"
+                    ? "bg-amber-500"
+                    : "bg-slate-400"
+              }"></span>
+            `
+        }
+
+        <span class="truncate">
+          ${event.title}
+        </span>
+      </div>
+    `,
+      )
+      .join("")}
+  </div>
+`
+                            : ""
+                        }
                         `
                         : ""
                     }
