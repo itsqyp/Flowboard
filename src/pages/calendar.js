@@ -207,14 +207,17 @@ export function renderCalendar() {
     ${dayEvents
       .map(
         (event) => `
-      <div
-        class="flex items-center gap-1.5 truncate rounded-md px-2 py-1 text-xs font-medium ${
-          event.type === "project"
-            ? "bg-indigo-50 text-indigo-700"
-            : "bg-slate-50 text-slate-600"
-        }"
-        title="${event.title}"
-      >
+    <div
+  class="calendar-event flex cursor-pointer items-center gap-1.5 truncate rounded-md px-2 py-1 text-xs font-medium transition hover:opacity-80 ${
+    event.type === "project"
+      ? "bg-indigo-50 text-indigo-700"
+      : "bg-slate-50 text-slate-600"
+  }"
+  data-event-type="${event.type}"
+  data-event-id="${event.id}"
+  data-project-id="${event.projectId}"
+  title="${event.title}"
+>
         ${
           event.type === "project"
             ? `
@@ -285,5 +288,19 @@ export function renderCalendar() {
     currentCalendarDate = new Date();
 
     renderCalendar();
+  });
+
+  document.querySelectorAll(".calendar-event").forEach((eventElement) => {
+    eventElement.addEventListener("click", () => {
+      const projectId = eventElement.dataset.projectId;
+
+      if (!projectId) return;
+
+      window.history.pushState({}, "", `/projects/${projectId}`);
+
+      import("../router.js").then(({ router }) => {
+        router();
+      });
+    });
   });
 }
