@@ -200,51 +200,62 @@ export function renderCalendar() {
                             ${dayNumber}
                           </span>
 
-                        ${
-                          dayEvents.length > 0
-                            ? `
+                       ${
+                         dayEvents.length > 0
+                           ? `
   <div class="mt-2 space-y-1">
     ${dayEvents
+      .slice(0, 3)
       .map(
         (event) => `
-    <div
-  class="calendar-event flex cursor-pointer items-center gap-1.5 truncate rounded-md px-2 py-1 text-xs font-medium transition hover:opacity-80 ${
-    event.type === "project"
-      ? "bg-indigo-50 text-indigo-700"
-      : "bg-slate-50 text-slate-600"
-  }"
-  data-event-type="${event.type}"
-  data-event-id="${event.id}"
-  data-project-id="${event.projectId}"
-  title="${event.title}"
->
-        ${
-          event.type === "project"
-            ? `
-              <span class="size-1.5 shrink-0 rounded-full bg-indigo-500"></span>
-            `
-            : `
-              <span class="size-1.5 shrink-0 rounded-full ${
-                event.priority === "high"
-                  ? "bg-red-500"
-                  : event.priority === "medium"
-                    ? "bg-amber-500"
-                    : "bg-slate-400"
-              }"></span>
-            `
-        }
+        <div
+          class="calendar-event flex cursor-pointer items-center gap-1.5 truncate rounded-md px-2 py-1 text-xs font-medium transition hover:opacity-80 ${
+            event.type === "project"
+              ? "bg-indigo-50 text-indigo-700"
+              : "bg-slate-50 text-slate-600"
+          }"
+          data-event-type="${event.type}"
+          data-event-id="${event.id}"
+          data-project-id="${event.projectId}"
+          title="${event.title}"
+        >
+          ${
+            event.type === "project"
+              ? `
+                <span class="size-1.5 shrink-0 rounded-full bg-indigo-500"></span>
+              `
+              : `
+                <span class="size-1.5 shrink-0 rounded-full ${
+                  event.priority === "high"
+                    ? "bg-red-500"
+                    : event.priority === "medium"
+                      ? "bg-amber-500"
+                      : "bg-slate-400"
+                }"></span>
+              `
+          }
 
-        <span class="truncate">
-          ${event.title}
-        </span>
-      </div>
-    `,
+          <span class="truncate">
+            ${event.title}
+          </span>
+        </div>
+      `,
       )
       .join("")}
+
+    ${
+      dayEvents.length > 3
+        ? `
+          <div class="px-2 pt-0.5 text-xs font-medium text-slate-500">
+            + ${dayEvents.length - 3} more
+          </div>
+        `
+        : ""
+    }
   </div>
 `
-                            : ""
-                        }
+                           : ""
+                       }
                         `
                         : ""
                     }
