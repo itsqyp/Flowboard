@@ -266,6 +266,27 @@ export function renderCalendar() {
           })()}
 
         </div>
+        <div class="flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-slate-200 px-4 py-3 text-xs text-slate-500">
+  <div class="flex items-center gap-2">
+    <span class="size-2 rounded-full bg-indigo-500"></span>
+    <span>Project</span>
+  </div>
+
+  <div class="flex items-center gap-2">
+    <span class="size-2 rounded-full bg-red-500"></span>
+    <span>High priority</span>
+  </div>
+
+  <div class="flex items-center gap-2">
+    <span class="size-2 rounded-full bg-amber-500"></span>
+    <span>Medium priority</span>
+  </div>
+
+  <div class="flex items-center gap-2">
+    <span class="size-2 rounded-full bg-slate-400"></span>
+    <span>Low priority</span>
+  </div>
+</div>
 
       </div>
 
