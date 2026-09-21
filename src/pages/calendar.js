@@ -159,8 +159,10 @@ export function renderCalendar() {
         </div>
 
 
-        <!-- Calendar Grid -->
-        <div class="grid grid-cols-7">
+      <!-- Calendar Grid -->
+<div class="overflow-x-auto">
+  <div class="min-w-[900px]">
+    <div class="grid grid-cols-7">
 
           ${(() => {
             const year = currentCalendarDate.getFullYear();
@@ -266,6 +268,9 @@ export function renderCalendar() {
           })()}
 
         </div>
+        </div>
+        </div>
+        <!-- Calendar Legend -->
         <div class="flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-slate-200 px-4 py-3 text-xs text-slate-500">
   <div class="flex items-center gap-2">
     <span class="size-2 rounded-full bg-indigo-500"></span>
@@ -288,9 +293,7 @@ export function renderCalendar() {
   </div>
 </div>
 
-      </div>
-
-    </div>
+      
   `;
 
   // Previous Month
