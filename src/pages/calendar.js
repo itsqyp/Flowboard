@@ -188,9 +188,11 @@ export function renderCalendar() {
 
               return `
                   <div
-                    class="min-h-28 border-b border-r border-slate-100 p-3 ${
-                      isCurrentMonth ? "bg-white" : "bg-slate-50"
-                    }"
+                   class="group min-h-28 border-b border-r border-slate-100 p-3 transition-colors ${
+                     isCurrentMonth
+                       ? "bg-white hover:bg-slate-50"
+                       : "bg-slate-50"
+                   }"
                   >
 
                     ${
