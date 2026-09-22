@@ -196,11 +196,25 @@ export function renderCalendar() {
                     ${
                       isCurrentMonth
                         ? `
-                          <span
-                            class="flex size-7 items-center justify-center rounded-full text-sm font-medium text-slate-700"
-                          >
-                            ${dayNumber}
-                          </span>
+                        ${(() => {
+                          const today = new Date();
+
+                          const isToday =
+                            isCurrentMonth &&
+                            dayNumber === today.getDate() &&
+                            month === today.getMonth() &&
+                            year === today.getFullYear();
+
+                          return `
+    <span
+      class="flex size-7 items-center justify-center rounded-full text-sm font-medium ${
+        isToday ? "bg-indigo-600 text-white" : "text-slate-700"
+      }"
+    >
+      ${dayNumber}
+    </span>
+  `;
+                        })()}
 
                        ${
                          dayEvents.length > 0
