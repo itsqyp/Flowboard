@@ -2,6 +2,7 @@ import { projects } from "../data/projects.js";
 import { tasks } from "../data/tasks.js";
 
 let currentCalendarDate = new Date();
+let calendarEventsModal = null;
 
 function getCalendarEvents() {
   const projectEvents = projects.map((project) => ({
@@ -264,9 +265,12 @@ export function renderCalendar() {
     ${
       dayEvents.length > 3
         ? `
-          <div class="px-2 pt-0.5 text-xs font-medium text-slate-500">
-            + ${dayEvents.length - 3} more
-          </div>
+          <div
+  class="calendar-more cursor-pointer px-2 pt-0.5 text-xs font-medium text-slate-500 hover:text-indigo-600"
+  data-date="${dateString}"
+>
+  + ${dayEvents.length - 3} more
+</div>
         `
         : ""
     }
@@ -312,6 +316,155 @@ export function renderCalendar() {
       
   `;
 
+  function renderCalendarEventsModal(events, date) {
+    calendarEventsModal?.remove();
+
+    const formattedDate = new Date(`${date}T00:00:00`).toLocaleDateString(
+      "en-US",
+      {
+        weekday: "long",
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+      },
+    );
+
+    calendarEventsModal = document.createElement("div");
+
+    calendarEventsModal.innerHTML = `
+    <div
+      class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 p-4"
+      data-calendar-modal-backdrop
+    >
+      <div
+        class="w-full max-w-lg overflow-hidden rounded-xl bg-white shadow-xl"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="calendar-events-title"
+      >
+
+        <div class="flex items-center justify-between border-b border-slate-200 px-5 py-4">
+          <div>
+            <h2
+              id="calendar-events-title"
+              class="text-base font-semibold text-slate-900"
+            >
+              ${formattedDate}
+            </h2>
+
+            <p class="mt-1 text-sm text-slate-500">
+              ${events.length} ${events.length === 1 ? "event" : "events"}
+            </p>
+          </div>
+
+          <button
+            type="button"
+            data-calendar-modal-close
+            class="flex size-8 items-center justify-center rounded-lg text-slate-400 transition hover:bg-slate-100 hover:text-slate-700"
+            aria-label="Close"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="size-5"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M6 18 18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <div class="max-h-[60vh] space-y-2 overflow-y-auto p-5">
+
+          ${events
+            .map(
+              (event) => `
+                <div
+                  class="calendar-modal-event flex cursor-pointer items-center gap-3 rounded-lg border border-slate-200 p-3 transition hover:bg-slate-50"
+                  data-project-id="${event.projectId}"
+                >
+
+                  <span
+                    class="size-2 shrink-0 rounded-full ${
+                      event.type === "project"
+                        ? "bg-indigo-500"
+                        : event.priority === "high"
+                          ? "bg-red-500"
+                          : event.priority === "medium"
+                            ? "bg-amber-500"
+                            : "bg-slate-400"
+                    }"
+                  ></span>
+
+                  <div class="min-w-0 flex-1">
+                    <p class="truncate text-sm font-medium text-slate-900">
+                      ${event.title}
+                    </p>
+
+                    <p class="mt-0.5 text-xs text-slate-500">
+                      ${
+                        event.type === "project"
+                          ? "Project deadline"
+                          : "Task deadline"
+                      }
+                    </p>
+                  </div>
+
+                </div>
+              `,
+            )
+            .join("")}
+
+        </div>
+
+      </div>
+    </div>
+  `;
+
+    document.body.appendChild(calendarEventsModal);
+
+    const closeModal = () => {
+      calendarEventsModal?.remove();
+      calendarEventsModal = null;
+    };
+
+    calendarEventsModal
+      .querySelector("[data-calendar-modal-close]")
+      ?.addEventListener("click", closeModal);
+
+    calendarEventsModal
+      .querySelector("[data-calendar-modal-backdrop]")
+      ?.addEventListener("click", (event) => {
+        if (event.target === event.currentTarget) {
+          closeModal();
+        }
+      });
+
+    calendarEventsModal
+      .querySelectorAll(".calendar-modal-event")
+      .forEach((eventElement) => {
+        eventElement.addEventListener("click", () => {
+          const projectId = eventElement.dataset.projectId;
+
+          if (!projectId) return;
+
+          closeModal();
+
+          window.history.pushState({}, "", `/projects/${projectId}`);
+
+          import("../router.js").then(({ router }) => {
+            router();
+          });
+        });
+      });
+  }
+
   // Previous Month
   const previousMonthButton = document.querySelector(
     "#previous-calendar-month",
@@ -352,6 +505,20 @@ export function renderCalendar() {
       import("../router.js").then(({ router }) => {
         router();
       });
+    });
+  });
+
+  document.querySelectorAll(".calendar-more").forEach((moreElement) => {
+    moreElement.addEventListener("click", () => {
+      const date = moreElement.dataset.date;
+
+      if (!date) return;
+
+      const eventsForDate = calendarEvents.filter(
+        (event) => event.date === date,
+      );
+
+      renderCalendarEventsModal(eventsForDate, date);
     });
   });
 }
