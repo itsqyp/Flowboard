@@ -1,6 +1,35 @@
+const PROFILE_STORAGE_KEY = "flowboard-profile";
+
+const DEFAULT_PROFILE = {
+  name: "Abir",
+  email: "abir@example.com",
+  role: "Admin",
+};
+
+function getProfile() {
+  const storedProfile = localStorage.getItem(PROFILE_STORAGE_KEY);
+
+  if (!storedProfile) {
+    return DEFAULT_PROFILE;
+  }
+
+  try {
+    return {
+      ...DEFAULT_PROFILE,
+      ...JSON.parse(storedProfile),
+    };
+  } catch {
+    return DEFAULT_PROFILE;
+  }
+}
+
+function saveProfile(profile) {
+  localStorage.setItem(PROFILE_STORAGE_KEY, JSON.stringify(profile));
+}
+
 export function renderSettings() {
   const app = document.querySelector("#app");
-
+  const profile = getProfile();
   if (!app) return;
 
   app.innerHTML = `
@@ -177,7 +206,7 @@ export function renderSettings() {
                     <input
                       id="settings-name"
                       type="text"
-                      value="Abir"
+                      value="${profile.name}"
                       class="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
                     />
                   </div>
@@ -193,7 +222,7 @@ export function renderSettings() {
                     <input
                       id="settings-email"
                       type="email"
-                      value="abir@example.com"
+                     value="${profile.email}"
                       class="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
                     />
                   </div>
@@ -211,7 +240,7 @@ export function renderSettings() {
                   <input
                     id="settings-role"
                     type="text"
-                    value="Admin"
+                    value="${profile.role}"
                     class="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
                   />
                 </div>
@@ -246,7 +275,6 @@ export function renderSettings() {
 function setupSettings() {
   const tabs = document.querySelectorAll(".settings-tab");
   const content = document.querySelector("#settings-content");
-  const profileForm = document.querySelector("#profile-form");
 
   tabs.forEach((tab) => {
     tab.addEventListener("click", () => {
@@ -296,25 +324,11 @@ function setupSettings() {
     });
   });
 
-  profileForm?.addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    const name = document.querySelector("#settings-name")?.value.trim();
-
-    if (!name) return;
-
-    window.dispatchEvent(
-      new CustomEvent("flowboard:toast", {
-        detail: {
-          message: "Profile updated successfully.",
-          type: "success",
-        },
-      }),
-    );
-  });
+  setupProfileForm();
 }
 
 function renderProfileSettings(content) {
+  const profile = getProfile();
   content.innerHTML = `
     <section class="rounded-xl border border-slate-200 bg-white shadow-sm">
 
@@ -345,7 +359,7 @@ function renderProfileSettings(content) {
               <input
                 id="settings-name"
                 type="text"
-                value="Abir"
+                value="${profile.name}"
                 class="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm text-slate-900 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
               />
             </div>
@@ -361,7 +375,7 @@ function renderProfileSettings(content) {
               <input
                 id="settings-email"
                 type="email"
-                value="abir@example.com"
+                value="${profile.email}"
                 class="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm text-slate-900 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
               />
             </div>
@@ -379,7 +393,7 @@ function renderProfileSettings(content) {
             <input
               id="settings-role"
               type="text"
-              value="Admin"
+              value="${profile.role}"
               class="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm text-slate-900 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
             />
           </div>
@@ -412,8 +426,32 @@ function setupProfileForm() {
     event.preventDefault();
 
     const name = document.querySelector("#settings-name")?.value.trim();
+    const email = document.querySelector("#settings-email")?.value.trim();
+    const role = document.querySelector("#settings-role")?.value.trim();
 
-    if (!name) return;
+    if (!name || !email || !role) {
+      window.dispatchEvent(
+        new CustomEvent("flowboard:toast", {
+          detail: {
+            message: "Please fill in all profile fields.",
+            type: "error",
+          },
+        }),
+      );
+
+      return;
+    }
+    // console.log("Saving profile:", {
+    //   name,
+    //   email,
+    //   role,
+    // });
+
+    saveProfile({
+      name,
+      email,
+      role,
+    });
 
     window.dispatchEvent(
       new CustomEvent("flowboard:toast", {
