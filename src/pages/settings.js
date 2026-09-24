@@ -18,6 +18,12 @@ const DEFAULT_NOTIFICATIONS = {
   dueDateReminders: true,
 };
 
+const APPEARANCE_STORAGE_KEY = "flowboard-appearance";
+
+const DEFAULT_APPEARANCE = {
+  theme: "light",
+};
+
 function getNotifications() {
   const storedNotifications = localStorage.getItem(NOTIFICATION_STORAGE_KEY);
 
@@ -255,6 +261,263 @@ function setupNotificationsForm() {
       }),
     );
   });
+}
+
+function getAppearance() {
+  const storedAppearance = localStorage.getItem(APPEARANCE_STORAGE_KEY);
+
+  if (!storedAppearance) {
+    return DEFAULT_APPEARANCE;
+  }
+
+  try {
+    return {
+      ...DEFAULT_APPEARANCE,
+      ...JSON.parse(storedAppearance),
+    };
+  } catch {
+    return DEFAULT_APPEARANCE;
+  }
+}
+
+function saveAppearance(appearance) {
+  localStorage.setItem(APPEARANCE_STORAGE_KEY, JSON.stringify(appearance));
+}
+
+function renderAppearanceSettings(content) {
+  const appearance = getAppearance();
+
+  content.innerHTML = `
+    <section class="rounded-xl border border-slate-200 bg-white shadow-sm">
+
+      <!-- Header -->
+      <div class="border-b border-slate-200 px-6 py-5">
+        <h2 class="text-base font-semibold text-slate-900">
+          Appearance
+        </h2>
+
+        <p class="mt-1 text-sm text-slate-500">
+          Customize the look and feel of your workspace.
+        </p>
+      </div>
+
+      <!-- Theme -->
+      <div class="p-6">
+
+        <div>
+          <h3 class="text-sm font-semibold text-slate-900">
+            Theme
+          </h3>
+
+          <p class="mt-1 text-sm text-slate-500">
+            Choose how Flowboard should appear.
+          </p>
+        </div>
+
+        <div class="mt-5 grid gap-4 sm:grid-cols-3">
+
+          <!-- Light -->
+          <label
+            class="cursor-pointer rounded-xl border p-4 transition
+              ${
+                appearance.theme === "light"
+                  ? "border-indigo-500 bg-indigo-50"
+                  : "border-slate-200 hover:border-slate-300"
+              }"
+          >
+            <input
+              type="radio"
+              name="theme"
+              value="light"
+              ${appearance.theme === "light" ? "checked" : ""}
+              class="sr-only"
+            />
+
+            <div class="flex items-center gap-3">
+
+              <div class="flex size-10 items-center justify-center rounded-lg bg-white shadow-sm ring-1 ring-slate-200">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="size-5 text-slate-700"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-6.364-.386 1.591-1.591M3 12h2.25m.386-6.364 1.591 1.591M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"
+                  />
+                </svg>
+              </div>
+
+              <div>
+                <p class="text-sm font-semibold text-slate-900">
+                  Light
+                </p>
+
+                <p class="text-xs text-slate-500">
+                  Always use light mode
+                </p>
+              </div>
+
+            </div>
+          </label>
+
+          <!-- Dark -->
+          <label
+            class="cursor-pointer rounded-xl border p-4 transition
+              ${
+                appearance.theme === "dark"
+                  ? "border-indigo-500 bg-indigo-50"
+                  : "border-slate-200 hover:border-slate-300"
+              }"
+          >
+            <input
+              type="radio"
+              name="theme"
+              value="dark"
+              ${appearance.theme === "dark" ? "checked" : ""}
+              class="sr-only"
+            />
+
+            <div class="flex items-center gap-3">
+
+              <div class="flex size-10 items-center justify-center rounded-lg bg-slate-900 shadow-sm">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="size-5 text-white"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M21.752 15.002A9.718 9.718 0 0 1 18 15.75 9.75 9.75 0 0 1 8.25 6c0-1.34.27-2.616.752-3.752A9.753 9.753 0 1 0 21.752 15.002Z"
+                  />
+                </svg>
+              </div>
+
+              <div>
+                <p class="text-sm font-semibold text-slate-900">
+                  Dark
+                </p>
+
+                <p class="text-xs text-slate-500">
+                  Always use dark mode
+                </p>
+              </div>
+
+            </div>
+          </label>
+
+          <!-- System -->
+          <label
+            class="cursor-pointer rounded-xl border p-4 transition
+              ${
+                appearance.theme === "system"
+                  ? "border-indigo-500 bg-indigo-50"
+                  : "border-slate-200 hover:border-slate-300"
+              }"
+          >
+            <input
+              type="radio"
+              name="theme"
+              value="system"
+              ${appearance.theme === "system" ? "checked" : ""}
+              class="sr-only"
+            />
+
+            <div class="flex items-center gap-3">
+
+              <div class="flex size-10 items-center justify-center rounded-lg bg-slate-100 shadow-sm ring-1 ring-slate-200">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="size-5 text-slate-700"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M9.75 17.25h4.5m-7.5 3h10.5M6 3.75h12A1.5 1.5 0 0 1 19.5 5.25v7.5a1.5 1.5 0 0 1-1.5 1.5H6a1.5 1.5 0 0 1-1.5-1.5v-7.5A1.5 1.5 0 0 1 6 3.75Z"
+                  />
+                </svg>
+              </div>
+
+              <div>
+                <p class="text-sm font-semibold text-slate-900">
+                  System
+                </p>
+
+                <p class="text-xs text-slate-500">
+                  Follow system preference
+                </p>
+              </div>
+
+            </div>
+          </label>
+
+        </div>
+
+      </div>
+
+    </section>
+  `;
+
+  setupAppearanceForm();
+}
+
+function setupAppearanceForm() {
+  const themeInputs = document.querySelectorAll('input[name="theme"]');
+
+  themeInputs.forEach((input) => {
+    input.addEventListener("change", () => {
+      const theme = input.value;
+
+      saveAppearance({
+        theme,
+      });
+
+      applyTheme(theme);
+
+      renderAppearanceSettings(document.querySelector("#settings-content"));
+
+      window.dispatchEvent(new CustomEvent("flowboard:appearance-updated"));
+
+      window.dispatchEvent(
+        new CustomEvent("flowboard:toast", {
+          detail: {
+            message: "Appearance updated.",
+            type: "success",
+          },
+        }),
+      );
+    });
+  });
+}
+
+function applyTheme(theme) {
+  const root = document.documentElement;
+
+  if (theme === "dark") {
+    root.classList.add("dark");
+    return;
+  }
+
+  if (theme === "light") {
+    root.classList.remove("dark");
+    return;
+  }
+
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+  root.classList.toggle("dark", prefersDark);
 }
 
 function getProfile() {
@@ -564,11 +827,7 @@ function setupSettings() {
       }
 
       if (selectedTab === "appearance") {
-        renderComingSoonSettings(
-          content,
-          "Appearance",
-          "Customize the look and feel of your workspace.",
-        );
+        renderAppearanceSettings(content);
       }
 
       if (selectedTab === "workspace") {
