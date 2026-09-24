@@ -1,3 +1,4 @@
+let profileSyncInitialized = false;
 const PROFILE_STORAGE_KEY = "flowboard-profile";
 
 const DEFAULT_PROFILE = {
@@ -335,6 +336,23 @@ function setupSettings() {
   });
 
   setupProfileForm();
+  if (!profileSyncInitialized) {
+    window.addEventListener("flowboard:profile-updated", () => {
+      const activeTab = document.querySelector(
+        '[data-settings-tab="profile"].bg-indigo-50',
+      );
+
+      if (!activeTab) return;
+
+      const content = document.querySelector("#settings-content");
+
+      if (!content) return;
+
+      renderProfileSettings(content);
+    });
+
+    profileSyncInitialized = true;
+  }
 }
 
 function renderProfileSettings(content) {
@@ -486,6 +504,7 @@ function setupProfileForm() {
       email,
       role,
     });
+    window.dispatchEvent(new CustomEvent("flowboard:profile-updated"));
 
     window.dispatchEvent(
       new CustomEvent("flowboard:toast", {

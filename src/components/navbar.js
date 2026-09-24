@@ -1,3 +1,5 @@
+let profileSyncInitialized = false;
+
 const PROFILE_STORAGE_KEY = "flowboard-profile";
 
 const DEFAULT_PROFILE = {
@@ -303,6 +305,14 @@ ${profile.name}        </span>
         </header>
     `;
   setupUserMenu();
+
+  if (!profileSyncInitialized) {
+    window.addEventListener("flowboard:profile-updated", () => {
+      renderNavbar();
+    });
+
+    profileSyncInitialized = true;
+  }
 }
 
 function setupUserMenu() {
