@@ -7,6 +7,256 @@ const DEFAULT_PROFILE = {
   role: "Admin",
 };
 
+const NOTIFICATION_STORAGE_KEY = "flowboard-notifications";
+
+const DEFAULT_NOTIFICATIONS = {
+  taskAssignments: true,
+  taskUpdates: true,
+  projectUpdates: true,
+  mentions: true,
+  comments: true,
+  dueDateReminders: true,
+};
+
+function getNotifications() {
+  const storedNotifications = localStorage.getItem(NOTIFICATION_STORAGE_KEY);
+
+  if (!storedNotifications) {
+    return DEFAULT_NOTIFICATIONS;
+  }
+
+  try {
+    return {
+      ...DEFAULT_NOTIFICATIONS,
+      ...JSON.parse(storedNotifications),
+    };
+  } catch {
+    return DEFAULT_NOTIFICATIONS;
+  }
+}
+
+function saveNotifications(notifications) {
+  localStorage.setItem(NOTIFICATION_STORAGE_KEY, JSON.stringify(notifications));
+}
+
+function renderNotificationsSettings(content) {
+  const notifications = getNotifications();
+
+  content.innerHTML = `
+    <section class="rounded-xl border border-slate-200 bg-white shadow-sm">
+
+      <div class="border-b border-slate-200 px-6 py-5">
+        <h2 class="text-base font-semibold text-slate-900">
+          Notifications
+        </h2>
+
+        <p class="mt-1 text-sm text-slate-500">
+          Choose how you want to receive notifications.
+        </p>
+      </div>
+
+      <form id="notifications-form">
+
+        <!-- Email Notifications -->
+        <div class="border-b border-slate-200 p-6">
+
+          <h3 class="text-sm font-semibold text-slate-900">
+            Email notifications
+          </h3>
+
+          <p class="mt-1 text-sm text-slate-500">
+            Receive important updates through email.
+          </p>
+
+          <div class="mt-5 space-y-4">
+
+            <label class="flex cursor-pointer items-start justify-between gap-4">
+              <div>
+                <p class="text-sm font-medium text-slate-900">
+                  Task assignments
+                </p>
+
+                <p class="mt-0.5 text-xs text-slate-500">
+                  Get notified when a task is assigned to you.
+                </p>
+              </div>
+
+              <input
+                type="checkbox"
+                name="taskAssignments"
+                ${notifications.taskAssignments ? "checked" : ""}
+                class="mt-0.5 size-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
+              />
+            </label>
+
+            <label class="flex cursor-pointer items-start justify-between gap-4">
+              <div>
+                <p class="text-sm font-medium text-slate-900">
+                  Task updates
+                </p>
+
+                <p class="mt-0.5 text-xs text-slate-500">
+                  Receive updates when tasks assigned to you change.
+                </p>
+              </div>
+
+              <input
+                type="checkbox"
+                name="taskUpdates"
+                ${notifications.taskUpdates ? "checked" : ""}
+                class="mt-0.5 size-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
+              />
+            </label>
+
+            <label class="flex cursor-pointer items-start justify-between gap-4">
+              <div>
+                <p class="text-sm font-medium text-slate-900">
+                  Project updates
+                </p>
+
+                <p class="mt-0.5 text-xs text-slate-500">
+                  Receive important updates about your projects.
+                </p>
+              </div>
+
+              <input
+                type="checkbox"
+                name="projectUpdates"
+                ${notifications.projectUpdates ? "checked" : ""}
+                class="mt-0.5 size-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
+              />
+            </label>
+
+          </div>
+        </div>
+
+        <!-- In-App Notifications -->
+        <div class="p-6">
+
+          <h3 class="text-sm font-semibold text-slate-900">
+            In-app notifications
+          </h3>
+
+          <p class="mt-1 text-sm text-slate-500">
+            Control which notifications appear inside Flowboard.
+          </p>
+
+          <div class="mt-5 space-y-4">
+
+            <label class="flex cursor-pointer items-start justify-between gap-4">
+              <div>
+                <p class="text-sm font-medium text-slate-900">
+                  Mentions
+                </p>
+
+                <p class="mt-0.5 text-xs text-slate-500">
+                  Get notified when someone mentions you.
+                </p>
+              </div>
+
+              <input
+                type="checkbox"
+                name="mentions"
+                ${notifications.mentions ? "checked" : ""}
+                class="mt-0.5 size-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
+              />
+            </label>
+
+            <label class="flex cursor-pointer items-start justify-between gap-4">
+              <div>
+                <p class="text-sm font-medium text-slate-900">
+                  Comments
+                </p>
+
+                <p class="mt-0.5 text-xs text-slate-500">
+                  Get notified when someone comments on your work.
+                </p>
+              </div>
+
+              <input
+                type="checkbox"
+                name="comments"
+                ${notifications.comments ? "checked" : ""}
+                class="mt-0.5 size-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
+              />
+            </label>
+
+            <label class="flex cursor-pointer items-start justify-between gap-4">
+              <div>
+                <p class="text-sm font-medium text-slate-900">
+                  Due-date reminders
+                </p>
+
+                <p class="mt-0.5 text-xs text-slate-500">
+                  Receive reminders about upcoming deadlines.
+                </p>
+              </div>
+
+              <input
+                type="checkbox"
+                name="dueDateReminders"
+                ${notifications.dueDateReminders ? "checked" : ""}
+                class="mt-0.5 size-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
+              />
+            </label>
+
+          </div>
+        </div>
+
+        <!-- Save -->
+        <div class="flex justify-end border-t border-slate-200 px-6 py-5">
+
+          <button
+            type="submit"
+            class="rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+          >
+            Save preferences
+          </button>
+
+        </div>
+
+      </form>
+
+    </section>
+  `;
+
+  setupNotificationsForm();
+}
+
+function setupNotificationsForm() {
+  const form = document.querySelector("#notifications-form");
+
+  if (!form) return;
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(form);
+
+    const notifications = {
+      taskAssignments: formData.get("taskAssignments") === "on",
+      taskUpdates: formData.get("taskUpdates") === "on",
+      projectUpdates: formData.get("projectUpdates") === "on",
+      mentions: formData.get("mentions") === "on",
+      comments: formData.get("comments") === "on",
+      dueDateReminders: formData.get("dueDateReminders") === "on",
+    };
+
+    saveNotifications(notifications);
+
+    window.dispatchEvent(new CustomEvent("flowboard:notifications-updated"));
+
+    window.dispatchEvent(
+      new CustomEvent("flowboard:toast", {
+        detail: {
+          message: "Notification preferences saved.",
+          type: "success",
+        },
+      }),
+    );
+  });
+}
+
 function getProfile() {
   const storedProfile = localStorage.getItem(PROFILE_STORAGE_KEY);
 
@@ -310,11 +560,7 @@ function setupSettings() {
       }
 
       if (selectedTab === "notifications") {
-        renderComingSoonSettings(
-          content,
-          "Notifications",
-          "Manage how and when Flowboard notifies you.",
-        );
+        renderNotificationsSettings(content);
       }
 
       if (selectedTab === "appearance") {
