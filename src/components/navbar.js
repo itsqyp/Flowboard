@@ -46,7 +46,7 @@ export function renderNavbar() {
   }
 
   navbar.innerHTML = `
-        <header class="h-16 border-b bg-white">
+       <header class="h-16 border-b border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950">
             <div class="h-full px-4 sm:px-6 flex items-center justify-between">
 
                 <!-- Logo -->
@@ -57,7 +57,7 @@ export function renderNavbar() {
     <button
         type="button"
         id="mobile-menu-button"
-        class="inline-flex size-10 items-center justify-center rounded-lg text-slate-500 hover:bg-slate-100 hover:text-slate-900 transition-colors md:hidden"
+       class="inline-flex size-10 items-center justify-center rounded-lg text-slate-500 hover:bg-slate-100 hover:text-slate-900 transition-colors dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white md:hidden"
         aria-label="Open navigation menu"
         aria-expanded="false"
         aria-controls="mobile-navigation"
@@ -88,7 +88,7 @@ export function renderNavbar() {
             F
         </div>
 
-        <span class="text-lg font-bold tracking-tight">
+      <span class="text-lg font-bold tracking-tight text-slate-900 dark:text-white">
             Flowboard
         </span>
     </a>
@@ -101,7 +101,7 @@ export function renderNavbar() {
                     <!-- Search -->
                     <button
                         type="button"
-                        class="size-10 rounded-lg flex items-center justify-center text-slate-500 hover:bg-slate-100 hover:text-slate-900 transition-colors"
+                        class="size-10 rounded-lg flex items-center justify-center text-slate-500 hover:bg-slate-100 hover:text-slate-900 transition-colors dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white"
                         aria-label="Search"
                     >
                         <svg
@@ -120,7 +120,7 @@ export function renderNavbar() {
                     <!-- Notifications -->
                     <button
                         type="button"
-                        class="relative size-10 rounded-lg flex items-center justify-center text-slate-500 hover:bg-slate-100 hover:text-slate-900 transition-colors"
+                        class="relative size-10 rounded-lg flex items-center justify-center text-slate-500 hover:bg-slate-100 hover:text-slate-900 transition-colors dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white"
                         aria-label="Notifications"
                     >
                         <svg
@@ -149,19 +149,19 @@ export function renderNavbar() {
     <button
         type="button"
         id="user-menu-button"
-        class="ml-1 flex items-center gap-2 rounded-lg p-1.5 hover:bg-slate-100 transition-colors"
+        class="ml-1 flex items-center gap-2 rounded-lg p-1.5 hover:bg-slate-100 transition-colors dark:hover:bg-slate-800"
         aria-label="Open user menu"
         aria-expanded="false"
         aria-haspopup="true"
         aria-controls="user-menu"
     >
         <div
-            class="size-8 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center text-sm font-bold"
+            class="size-8 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center text-sm font-bold dark:bg-indigo-500/20 dark:text-indigo-300"
         >
            ${initials}
         </div>
 
-        <span class="hidden sm:block text-sm font-semibold text-slate-700">
+        <span class="hidden sm:block text-sm font-semibold text-slate-700 dark:text-slate-200">
 ${profile.name}        </span>
 
         <svg
@@ -170,7 +170,7 @@ ${profile.name}        </span>
             fill="none"
             stroke="currentColor"
             stroke-width="2"
-            class="hidden sm:block size-4 text-slate-400 transition-transform duration-200"
+            class="hidden sm:block size-4 text-slate-400 transition-transform duration-200 dark:text-slate-500"
             id="user-menu-chevron"
         >
             <path d="m6 9 6 6 6-6"></path>
@@ -180,18 +180,18 @@ ${profile.name}        </span>
     <!-- Dropdown -->
     <div
         id="user-menu"
-        class="absolute right-0 top-full z-50 mt-2 hidden w-64 overflow-hidden rounded-xl border bg-white shadow-lg"
+        class="absolute right-0 top-full z-50 mt-2 hidden w-64 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-lg dark:border-slate-700 dark:bg-slate-900"
         role="menu"
     >
 
         <!-- User Info -->
-        <div class="border-b px-4 py-3">
+       <div class="border-b border-slate-200 px-4 py-3 dark:border-slate-700">
 
-            <p class="text-sm font-semibold text-slate-900">
+            <p class="text-sm font-semibold text-slate-900 dark:text-white">
                 ${profile.name}
             </p>
 
-            <p class="mt-0.5 truncate text-xs text-slate-500">
+            <p class="mt-0.5 truncate text-xs text-slate-500 dark:text-slate-400">
                 ${profile.email}
             </p>
 
@@ -202,7 +202,7 @@ ${profile.name}        </span>
 
             <a
                 href="#"
-                class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-slate-700 hover:bg-slate-100"
+                class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800"
                 role="menuitem"
             >
                 <svg
@@ -211,7 +211,7 @@ ${profile.name}        </span>
                     fill="none"
                     stroke="currentColor"
                     stroke-width="2"
-                    class="size-4.5 text-slate-500"
+                  class="size-4.5 text-slate-500 dark:text-slate-400"
                 >
                     <circle cx="12" cy="8" r="4"></circle>
                     <path d="M4 21a8 8 0 0 1 16 0"></path>
@@ -231,7 +231,7 @@ ${profile.name}        </span>
                     fill="none"
                     stroke="currentColor"
                     stroke-width="2"
-                    class="size-4.5 text-slate-500"
+                    class="size-4.5 text-slate-500 dark:text-slate-400"
                 >
                     <circle cx="12" cy="12" r="3"></circle>
                     <path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-1.7 1.7-.06-.06A1.7 1.7 0 0 0 16.16 19a1.7 1.7 0 0 0-1.06 1.55V21h-2.4v-.45A1.7 1.7 0 0 0 11.64 19a1.7 1.7 0 0 0-1.88.34l-.06.06-1.7-1.7.06-.06A1.7 1.7 0 0 0 8.4 15a1.7 1.7 0 0 0-1.55-1.06H6v-2.4h.45A1.7 1.7 0 0 0 8.4 10a1.7 1.7 0 0 0-.34-1.88L8 8.06l1.7-1.7.06.06A1.7 1.7 0 0 0 11.64 6 1.7 1.7 0 0 0 12.7 4.45V4h2.4v.45A1.7 1.7 0 0 0 16.16 6a1.7 1.7 0 0 0 1.88-.34l.06-.06 1.7 1.7-.06.06A1.7 1.7 0 0 0 19.4 10a1.7 1.7 0 0 0 1.55 1.06H21v2.4h-.45A1.7 1.7 0 0 0 19.4 15Z"></path>
@@ -242,7 +242,7 @@ ${profile.name}        </span>
 
             <button
                 type="button"
-                class="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-slate-700 hover:bg-slate-100"
+               class="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800"
                 role="menuitem"
             >
                 <svg
@@ -251,7 +251,7 @@ ${profile.name}        </span>
                     fill="none"
                     stroke="currentColor"
                     stroke-width="2"
-                    class="size-4.5 text-slate-500"
+                   class="size-4.5 text-slate-500 dark:text-slate-400"
                 >
                     <circle cx="12" cy="12" r="4"></circle>
                     <path d="M12 2v2"></path>
@@ -270,7 +270,7 @@ ${profile.name}        </span>
         </div>
 
         <!-- Logout -->
-        <div class="border-t p-1.5">
+       <div class="border-t border-slate-200 p-1.5 dark:border-slate-700">
 
             <button
                 type="button"
