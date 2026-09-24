@@ -23,6 +23,16 @@ function getProfile() {
   }
 }
 
+function getInitials(name) {
+  return name
+    .trim()
+    .split(/\s+/)
+    .map((word) => word[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
+}
+
 function saveProfile(profile) {
   localStorage.setItem(PROFILE_STORAGE_KEY, JSON.stringify(profile));
 }
@@ -172,7 +182,7 @@ export function renderSettings() {
                 <div
                   class="flex size-16 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-lg font-semibold text-indigo-700"
                 >
-                  AB
+                   ${getInitials(profile.name)}
                 </div>
 
                 <div>
@@ -343,6 +353,30 @@ function renderProfileSettings(content) {
       </div>
 
       <div class="p-6">
+
+      <!-- Avatar -->
+  <div class="flex items-center gap-4">
+
+    <div
+      class="flex size-16 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-lg font-semibold text-indigo-700"
+    >
+      ${getInitials(profile.name)}
+    </div>
+
+    <div>
+      <button
+        type="button"
+        class="rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50"
+      >
+        Change avatar
+      </button>
+
+      <p class="mt-1 text-xs text-slate-500">
+        JPG, PNG or GIF. Maximum 2MB.
+      </p>
+    </div>
+
+  </div>
 
         <form id="profile-form" class="space-y-5">
 
