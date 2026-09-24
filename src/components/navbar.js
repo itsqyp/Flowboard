@@ -1,4 +1,41 @@
+const PROFILE_STORAGE_KEY = "flowboard-profile";
+
+const DEFAULT_PROFILE = {
+  name: "Abir",
+  email: "abir@example.com",
+  role: "Admin",
+};
+
+function getProfile() {
+  const storedProfile = localStorage.getItem(PROFILE_STORAGE_KEY);
+
+  if (!storedProfile) {
+    return DEFAULT_PROFILE;
+  }
+
+  try {
+    return {
+      ...DEFAULT_PROFILE,
+      ...JSON.parse(storedProfile),
+    };
+  } catch {
+    return DEFAULT_PROFILE;
+  }
+}
+
+function getInitials(name) {
+  return name
+    .trim()
+    .split(/\s+/)
+    .map((word) => word[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
+}
+
 export function renderNavbar() {
+  const profile = getProfile();
+  const initials = getInitials(profile.name);
   const navbar = document.querySelector("#navbar");
 
   if (!navbar) {
@@ -119,12 +156,11 @@ export function renderNavbar() {
         <div
             class="size-8 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center text-sm font-bold"
         >
-            A
+           ${initials}
         </div>
 
         <span class="hidden sm:block text-sm font-semibold text-slate-700">
-            Abir
-        </span>
+${profile.name}        </span>
 
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -150,11 +186,11 @@ export function renderNavbar() {
         <div class="border-b px-4 py-3">
 
             <p class="text-sm font-semibold text-slate-900">
-                Abir
+                ${profile.name}
             </p>
 
             <p class="mt-0.5 truncate text-xs text-slate-500">
-                abir@example.com
+                ${profile.email}
             </p>
 
         </div>
