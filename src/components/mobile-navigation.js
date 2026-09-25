@@ -18,11 +18,11 @@ export function renderMobileNavigation() {
         <!-- Drawer -->
         <aside
             id="mobile-navigation-drawer"
-            class="fixed inset-y-0 left-0 z-50 flex w-72 -translate-x-full flex-col bg-white shadow-xl transition-transform duration-300"
+          class="fixed inset-y-0 left-0 z-50 flex w-72 -translate-x-full flex-col bg-white shadow-xl transition-transform duration-300 dark:bg-slate-950"
         >
 
             <!-- Drawer Header -->
-            <div class="flex h-16 items-center justify-between border-b px-4">
+       <div class="flex h-16 items-center justify-between border-b border-slate-200 px-4 dark:border-slate-800">
 
                 <div class="flex items-center gap-2">
 
@@ -32,7 +32,7 @@ export function renderMobileNavigation() {
                         F
                     </div>
 
-                    <span class="text-lg font-bold tracking-tight">
+                <span class="text-lg font-bold tracking-tight text-slate-900 dark:text-white">
                         Flowboard
                     </span>
 
@@ -41,7 +41,7 @@ export function renderMobileNavigation() {
                 <button
                     type="button"
                     id="mobile-menu-close"
-                    class="flex size-10 items-center justify-center rounded-lg text-slate-500 hover:bg-slate-100 hover:text-slate-900"
+                  class="flex size-10 items-center justify-center rounded-lg text-slate-500 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white"
                     aria-label="Close navigation menu"
                 >
                     <svg
@@ -71,8 +71,8 @@ export function renderMobileNavigation() {
                 href="${item.href}"
                 class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm ${
                   index === 0
-                    ? "bg-indigo-50 font-semibold text-indigo-700"
-                    : "font-medium text-slate-600 hover:bg-slate-100 hover:text-slate-900"
+                    ? "bg-indigo-50 font-semibold text-indigo-700 dark:bg-indigo-500/10 dark:text-indigo-300"
+                    : "font-medium text-slate-600 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100"
                 }"
             >
                 ${item.icon}
@@ -87,7 +87,7 @@ export function renderMobileNavigation() {
 
     <div class="mt-8">
 
-        <p class="px-3 text-xs font-semibold uppercase tracking-wider text-slate-400">
+    <p class="px-3 text-xs font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">
             Workspace
         </p>
 
@@ -98,7 +98,7 @@ export function renderMobileNavigation() {
                 (item) => `
                 <a
                     href="${item.href}"
-                    class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 hover:bg-slate-100 hover:text-slate-900"
+                  class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100"
                 >
                     ${item.icon}
 
