@@ -11,15 +11,15 @@ export function renderWelcomeHeader() {
 
       <div>
 
-        <p class="text-sm font-semibold text-indigo-600">
+     <p class="text-sm font-semibold text-indigo-600 dark:text-indigo-400">
           Sunday, August 30, 2026
         </p>
 
-        <h1 class="mt-1 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+      <h1 class="mt-1 text-2xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-3xl">
           Good evening, Abir.
         </h1>
 
-        <p class="mt-2 max-w-2xl text-sm leading-6 text-slate-500">
+      <p class="mt-2 max-w-2xl text-sm leading-6 text-slate-500 dark:text-slate-400">
           Here's what's happening across your workspace today.
         </p>
 
