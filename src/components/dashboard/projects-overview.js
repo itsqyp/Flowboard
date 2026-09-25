@@ -47,24 +47,24 @@ export function renderProjectsOverview() {
   });
 
   container.innerHTML = `
-    <section class="rounded-xl border bg-white shadow-sm">
+    <section class="rounded-xl border bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
 
       <!-- Section Header -->
-      <div class="flex items-center justify-between border-b px-5 py-4 sm:px-6">
+      <div class="flex items-center justify-between border-b px-5 py-4 sm:px-6 dark:border-slate-800">
 
         <div>
-          <h2 class="text-base font-bold text-slate-900">
+          <h2 class="text-base font-bold text-slate-900 dark:text-white">
             Projects
           </h2>
 
-          <p class="mt-1 text-xs text-slate-500">
+          <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">
             Track the progress of your active projects.
           </p>
         </div>
 
         <a
           href="#"
-          class="text-sm font-semibold text-indigo-600 transition-colors hover:text-indigo-700"
+        class="text-sm font-semibold text-indigo-600 transition-colors hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-300"
         >
           View all
         </a>
@@ -72,12 +72,12 @@ export function renderProjectsOverview() {
       </div>
 
       <!-- Project List -->
-      <div class="divide-y">
+ <div class="divide-y dark:divide-slate-800">
 
         ${dashboardProjects
           .map(
             (project) => `
-              <article class="p-5 transition-colors hover:bg-slate-50 sm:p-6">
+              <article class="p-5 transition-colors hover:bg-slate-50 sm:p-6 dark:hover:bg-slate-800/50">
 
                 <!-- Project Top -->
                 <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
@@ -87,18 +87,18 @@ export function renderProjectsOverview() {
                     <div class="flex items-center gap-3">
 
                       <div
-                        class="flex size-10 shrink-0 items-center justify-center rounded-lg bg-indigo-50 text-sm font-bold text-indigo-600"
+                      class="flex size-10 shrink-0 items-center justify-center rounded-lg bg-indigo-50 text-sm font-bold text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400"
                       >
                         ${project.name.charAt(0)}
                       </div>
 
                       <div class="min-w-0">
 
-                        <h3 class="truncate text-sm font-bold text-slate-900">
+                        <h3 class="truncate text-sm font-bold text-slate-900 dark:text-white">
                           ${project.name}
                         </h3>
 
-                        <p class="mt-1 text-xs text-slate-500">
+                        <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">
                           ${project.description}
                         </p>
 
@@ -112,7 +112,7 @@ export function renderProjectsOverview() {
 
                     ${getStatusBadge(project)}
 
-                    <span class="text-sm font-bold text-slate-700">
+                    <span class="text-sm font-bold text-slate-700 dark:text-slate-200">
                       ${project.progress}%
                     </span>
 
@@ -123,7 +123,7 @@ export function renderProjectsOverview() {
                 <!-- Progress -->
                 <div class="mt-5">
 
-                  <div class="h-2 overflow-hidden rounded-full bg-slate-100">
+                  <div class="h-2 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
 
                     <div
                       class="h-full rounded-full bg-indigo-600 transition-all duration-500"
@@ -135,7 +135,7 @@ export function renderProjectsOverview() {
                 </div>
 
                 <!-- Project Meta -->
-                <div class="mt-4 flex flex-col gap-3 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+                <div class="mt-4 flex flex-col gap-3 text-xs text-slate-500 dark:text-slate-400 sm:flex-row sm:items-center sm:justify-between">
 
                   <div class="flex items-center gap-4">
 
@@ -196,9 +196,12 @@ export function renderProjectsOverview() {
 
 function getStatusBadge(project) {
   const styles = {
-    progress: "bg-indigo-50 text-indigo-700",
-    warning: "bg-amber-50 text-amber-700",
-    success: "bg-emerald-50 text-emerald-700",
+    progress:
+      "bg-indigo-50 text-indigo-700 dark:bg-indigo-500/10 dark:text-indigo-300",
+    warning:
+      "bg-amber-50 text-amber-700 dark:bg-amber-500/10 dark:text-amber-300",
+    success:
+      "bg-emerald-50 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-300",
   };
 
   return `
