@@ -19,17 +19,17 @@ export function renderStatCards() {
         .map(
           (stat) => `
             <article
-              class="rounded-xl border bg-white p-5 shadow-sm transition-shadow hover:shadow-md"
+             class="rounded-xl border bg-white p-5 shadow-sm transition-shadow hover:shadow-md dark:border-slate-800 dark:bg-slate-900"
             >
 
               <div class="flex items-start justify-between">
 
-                <p class="text-sm font-medium text-slate-500">
+                <p class="text-sm font-medium text-slate-500 dark:text-slate-400">
                   ${stat.label}
                 </p>
 
                 <div
-                  class="flex size-9 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600"
+              class="flex size-9 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400"
                 >
                   ${getStatIcon(stat.label)}
                 </div>
@@ -38,7 +38,7 @@ export function renderStatCards() {
 
               <div class="mt-4 flex items-end gap-2">
 
-                <p class="text-2xl font-bold tracking-tight text-slate-900">
+                <p class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
                   ${stat.value}
                 </p>
 
@@ -51,7 +51,7 @@ export function renderStatCards() {
 
               </div>
 
-              <p class="mt-1 text-xs text-slate-400">
+              <p class="mt-1 text-xs text-slate-400 dark:text-slate-500">
                 ${stat.description}
               </p>
 
