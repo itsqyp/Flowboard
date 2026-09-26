@@ -35,34 +35,34 @@ export function renderUpcomingDeadlines() {
     .slice(0, 3);
 
   container.innerHTML = `
-    <section class="h-full rounded-xl border bg-white shadow-sm">
+    <section class="h-full rounded-xl border bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
 
       <!-- Header -->
-      <div class="border-b px-5 py-4 sm:px-6">
+      <div class="border-b px-5 py-4 sm:px-6 dark:border-slate-800">
 
-        <h2 class="text-base font-bold text-slate-900">
+        <h2 class="text-base font-bold text-slate-900 dark:text-white">
           Upcoming Deadlines
         </h2>
 
-        <p class="mt-1 text-xs text-slate-500">
+        <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">
           Keep an eye on what's coming up.
         </p>
 
       </div>
 
       <!-- Deadline List -->
-      <div class="divide-y">
+    <div class="divide-y dark:divide-slate-800">
 
         ${upcomingDeadlines
           .map(
             (deadline) => `
-              <article class="p-5 transition-colors hover:bg-slate-50">
+              <article class="p-5 transition-colors hover:bg-slate-50 dark:hover:bg-slate-800/50">
 
                 <div class="flex items-start gap-3">
 
                   <!-- Calendar Icon -->
                   <div
-                    class="flex size-9 shrink-0 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600"
+                    class="flex size-9 shrink-0 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -89,11 +89,11 @@ export function renderUpcomingDeadlines() {
                   <!-- Deadline Content -->
                   <div class="min-w-0 flex-1">
 
-                    <h3 class="truncate text-sm font-semibold text-slate-800">
+                    <h3 class="truncate text-sm font-semibold text-slate-800 dark:text-slate-100">
                       ${deadline.title}
                     </h3>
 
-                    <p class="mt-1 text-xs text-slate-500">
+                    <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">
                       ${deadline.date}
                     </p>
 
@@ -104,7 +104,7 @@ export function renderUpcomingDeadlines() {
                 <!-- Days Remaining -->
                 <div class="mt-4 flex items-center justify-between">
 
-                  <span class="text-xs text-slate-400">
+                  <span class="text-xs text-slate-400 dark:text-slate-500">
                     Time remaining
                   </span>
 
@@ -130,11 +130,11 @@ export function renderUpcomingDeadlines() {
       </div>
 
       <!-- Footer -->
-      <div class="border-t p-4">
+     <div class="border-t p-4 dark:border-slate-800">
 
         <a
           href="#"
-          class="flex items-center justify-center gap-1 text-sm font-semibold text-indigo-600 transition-colors hover:text-indigo-700"
+          class="flex items-center justify-center gap-1 text-sm font-semibold text-indigo-600 transition-colors hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-300"
         >
           View calendar
 
