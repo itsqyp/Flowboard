@@ -5,34 +5,38 @@ export function renderProjectCard(project) {
   const statusConfig = {
     planning: {
       label: "Planning",
-      classes: "bg-blue-50 text-blue-700",
+      classes:
+        "bg-blue-50 text-blue-700 dark:bg-blue-500/10 dark:text-blue-300",
     },
     "in-progress": {
       label: "In Progress",
-      classes: "bg-indigo-50 text-indigo-700",
+      classes:
+        "bg-indigo-50 text-indigo-700 dark:bg-indigo-500/10 dark:text-indigo-300",
     },
     completed: {
       label: "Completed",
-      classes: "bg-green-50 text-green-700",
+      classes:
+        "bg-green-50 text-green-700 dark:bg-green-500/10 dark:text-green-300",
     },
     "on-hold": {
       label: "On Hold",
-      classes: "bg-amber-50 text-amber-700",
+      classes:
+        "bg-amber-50 text-amber-700 dark:bg-amber-500/10 dark:text-amber-300",
     },
   };
 
   const priorityConfig = {
     low: {
       label: "Low",
-      classes: "text-slate-500",
+      classes: "text-slate-500 dark:text-slate-400",
     },
     medium: {
       label: "Medium",
-      classes: "text-amber-600",
+      classes: "text-amber-600 dark:text-amber-400",
     },
     high: {
       label: "High",
-      classes: "text-red-600",
+      classes: "text-red-600 dark:text-red-400",
     },
   };
 
@@ -61,7 +65,7 @@ export function renderProjectCard(project) {
 
   return `
     <article
-      class="group flex flex-col rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md"
+      class="group flex flex-col rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md dark:border-slate-800 dark:bg-slate-900 dark:hover:border-slate-700"
       data-project-id="${project.id}"
     >
 
@@ -69,7 +73,7 @@ export function renderProjectCard(project) {
       <div class="flex items-start justify-between gap-4">
 
         <div class="min-w-0">
-          <h2 class="truncate text-base font-bold text-slate-900">
+          <h2 class="truncate text-base font-bold text-slate-900 dark:text-white">
             ${project.name}
           </h2>
 
@@ -88,7 +92,7 @@ export function renderProjectCard(project) {
 
 
       <!-- Description -->
-      <p class="mt-4 line-clamp-2 text-sm leading-6 text-slate-500">
+      <p class="mt-4 line-clamp-2 text-sm leading-6 text-slate-500 dark:text-slate-400">
         ${project.description}
       </p>
 
@@ -97,16 +101,16 @@ export function renderProjectCard(project) {
       <div class="mt-5">
 
         <div class="flex items-center justify-between">
-          <span class="text-xs font-semibold text-slate-600">
+          <span class="text-xs font-semibold text-slate-600 dark:text-slate-400">
             Progress
           </span>
 
-          <span class="text-xs font-bold text-slate-900">
+          <span class="text-xs font-bold text-slate-900 dark:text-slate-100">
             ${progress}%
           </span>
         </div>
 
-        <div class="mt-2 h-2 overflow-hidden rounded-full bg-slate-100">
+        <div class="mt-2 h-2 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
           <div
             class="h-full rounded-full bg-indigo-600 transition-all duration-500"
             style="width: ${progress}%"
@@ -117,7 +121,9 @@ export function renderProjectCard(project) {
 
 
       <!-- Project Meta -->
-      <div class="mt-5 flex items-center justify-between border-t border-slate-100 pt-4">
+      <div
+        class="mt-5 flex items-center justify-between border-t border-slate-100 pt-4 dark:border-slate-800"
+      >
 
         <!-- Members -->
         <div class="flex items-center">
@@ -129,7 +135,7 @@ export function renderProjectCard(project) {
                 (member) => `
                   <div
                     title="${member.name}"
-                    class="flex size-8 items-center justify-center rounded-full border-2 border-white bg-slate-200 text-[10px] font-bold text-slate-700"
+                    class="flex size-8 items-center justify-center rounded-full border-2 border-white bg-slate-200 text-[10px] font-bold text-slate-700 dark:border-slate-900 dark:bg-slate-800 dark:text-slate-200"
                   >
                     ${member.initials}
                   </div>
@@ -141,7 +147,7 @@ export function renderProjectCard(project) {
           ${
             members.length > 4
               ? `
-                <span class="ml-2 text-xs font-medium text-slate-400">
+                <span class="ml-2 text-xs font-medium text-slate-400 dark:text-slate-500">
                   +${members.length - 4}
                 </span>
               `
@@ -152,7 +158,7 @@ export function renderProjectCard(project) {
 
 
         <!-- Due Date -->
-        <div class="flex items-center gap-1.5 text-xs font-medium text-slate-500">
+        <div class="flex items-center gap-1.5 text-xs font-medium text-slate-500 dark:text-slate-400">
 
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -179,13 +185,13 @@ export function renderProjectCard(project) {
       <!-- Footer -->
       <div class="mt-4 flex items-center justify-between">
 
-        <span class="text-xs text-slate-400">
-         ${completedTasks} of ${totalTasks} tasks
+        <span class="text-xs text-slate-400 dark:text-slate-500">
+          ${completedTasks} of ${totalTasks} tasks
         </span>
 
         <a
           href="/projects/${project.id}"
-          class="project-view-btn rounded-lg px-3 py-1.5 text-xs font-semibold text-indigo-600 transition hover:bg-indigo-50 hover:text-indigo-700"
+          class="project-view-btn rounded-lg px-3 py-1.5 text-xs font-semibold text-indigo-600 transition hover:bg-indigo-50 hover:text-indigo-700 dark:text-indigo-400 dark:hover:bg-indigo-500/10 dark:hover:text-indigo-300"
         >
           View Project
         </a>
