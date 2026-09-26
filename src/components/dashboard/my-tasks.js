@@ -12,24 +12,24 @@ export function renderMyTasks() {
   }
 
   container.innerHTML = `
-    <section class="rounded-xl border bg-white shadow-sm">
+    <section class="rounded-xl border bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
 
       <!-- Header -->
-      <div class="flex items-center justify-between border-b px-5 py-4 sm:px-6">
+      <div class="flex items-center justify-between border-b px-5 py-4 sm:px-6 dark:border-slate-800">
 
         <div>
-          <h2 class="text-base font-bold text-slate-900">
+          <h2 class="text-base font-bold text-slate-900 dark:text-white">
             My Tasks
           </h2>
 
-          <p class="mt-1 text-xs text-slate-500">
+          <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">
             Tasks that need your attention.
           </p>
         </div>
 
         <a
           href="#"
-          class="text-sm font-semibold text-indigo-600 transition-colors hover:text-indigo-700"
+          class="text-sm font-semibold text-indigo-600 transition-colors hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-300"
         >
           View all
         </a>
@@ -37,7 +37,7 @@ export function renderMyTasks() {
       </div>
 
       <!-- Task List -->
-      <div class="divide-y">
+      <div class="divide-y dark:divide-slate-800">
 
       ${tasks
         .map((task) => {
@@ -45,7 +45,7 @@ export function renderMyTasks() {
 
           return `
       <article
-        class="flex gap-3 px-5 py-4 transition-colors hover:bg-slate-50 sm:px-6"
+        class="flex gap-3 px-5 py-4 transition-colors hover:bg-slate-50 sm:px-6 dark:hover:bg-slate-800/50"
       >
 
         <!-- Checkbox -->
@@ -54,7 +54,7 @@ export function renderMyTasks() {
           class="task-checkbox mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-md border ${
             task.status === "completed"
               ? "border-indigo-600 bg-indigo-600 text-white"
-              : "border-slate-300 bg-white hover:border-indigo-500"
+              : ":border-slate-300 bg-white hover:border-indigo-500 dark:border-slate-600 dark:bg-slate-900 dark:hover:border-indigo-400"
           }"
           data-task-id="${task.id}"
           aria-label="${
@@ -91,8 +91,8 @@ export function renderMyTasks() {
             <h3
               class="truncate text-sm font-semibold ${
                 task.status === "completed"
-                  ? "text-slate-400 line-through"
-                  : "text-slate-800"
+                  ? "text-slate-400 line-through dark:text-slate-500"
+                  : "text-slate-800 dark:text-slate-100"
               }"
             >
               ${task.title}
@@ -102,7 +102,7 @@ export function renderMyTasks() {
 
           </div>
 
-          <div class="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-400">
+          <div class="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-400 dark:text-slate-500">
 
             <span>
               ${project ? project.name : "Unknown project"}
@@ -135,9 +135,10 @@ export function renderMyTasks() {
 
 function getPriorityBadge(task) {
   const styles = {
-    high: "bg-red-50 text-red-600",
-    medium: "bg-amber-50 text-amber-600",
-    low: "bg-slate-100 text-slate-500",
+    high: "bg-red-50 text-red-600 dark:bg-red-500/10 dark:text-red-400",
+    medium:
+      "bg-amber-50 text-amber-600 dark:bg-amber-500/10 dark:text-amber-400",
+    low: "bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-400",
   };
 
   return `
