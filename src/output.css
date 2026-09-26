@@ -1510,6 +1510,9 @@
   .dark\:text-slate-200:where(.dark, .dark *) {
     color: var(--color-slate-200);
   }
+  .dark\:text-slate-300:where(.dark, .dark *) {
+    color: var(--color-slate-300);
+  }
   .dark\:text-slate-400:where(.dark, .dark *) {
     color: var(--color-slate-400);
   }

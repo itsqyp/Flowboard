@@ -44,24 +44,24 @@ export function renderRecentActivity() {
     .slice(-4)
     .reverse();
   container.innerHTML = `
-    <section class="rounded-xl border bg-white shadow-sm">
+    <section class="rounded-xl border bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
 
       <!-- Header -->
-      <div class="flex items-center justify-between border-b px-5 py-4 sm:px-6">
+      <div class="flex items-center justify-between border-b px-5 py-4 sm:px-6 dark:border-slate-800">
 
         <div>
-          <h2 class="text-base font-bold text-slate-900">
+          <h2 class="text-base font-bold text-slate-900 dark:text-white">
             Recent Activity
           </h2>
 
-          <p class="mt-1 text-xs text-slate-500">
+          <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">
             Recent updates from your workspace.
           </p>
         </div>
 
         <button
           type="button"
-          class="text-sm font-semibold text-indigo-600 transition-colors hover:text-indigo-700"
+        class="text-sm font-semibold text-indigo-600 transition-colors hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-300"
         >
           View all
         </button>
@@ -69,7 +69,7 @@ export function renderRecentActivity() {
       </div>
 
       <!-- Activity List -->
-      <div class="divide-y">
+     <div class="divide-y dark:divide-slate-800">
 
         ${recentActivity
           .map(
@@ -78,7 +78,7 @@ export function renderRecentActivity() {
 
                 <!-- Avatar -->
                 <div
-                  class="flex size-9 shrink-0 items-center justify-center rounded-full bg-indigo-50 text-xs font-bold text-indigo-600"
+                  class="flex size-9 shrink-0 items-center justify-center rounded-full bg-indigo-50 text-xs font-bold text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400"
                 >
                   ${activity.avatar}
                 </div>
@@ -86,21 +86,21 @@ export function renderRecentActivity() {
                 <!-- Activity -->
                 <div class="min-w-0 flex-1">
 
-                  <p class="text-sm leading-6 text-slate-600">
+                  <p class="text-sm leading-6 text-slate-600 dark:text-slate-300"
 
-                    <span class="font-semibold text-slate-900">
+                    <span class="font-semibold text-slate-900 dark:text-white">
                       ${activity.user}
                     </span>
 
                     ${activity.action}
 
-                    <span class="font-semibold text-slate-800">
+                    <span class="font-semibold text-slate-800 dark:text-slate-100">
                       ${activity.target}
                     </span>
 
                   </p>
 
-                  <div class="mt-1 flex flex-wrap items-center gap-x-2 text-xs text-slate-400">
+                  <div class="mt-1 flex flex-wrap items-center gap-x-2 text-xs text-slate-400 dark:text-slate-500">
 
                     <span>
                       ${activity.project}
