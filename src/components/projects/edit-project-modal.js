@@ -22,21 +22,21 @@ export function renderEditProjectModal(callback) {
         class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/40 p-4"
       >
         <div
-          class="w-full max-w-lg rounded-2xl bg-white shadow-xl"
+          class="w-full max-w-lg rounded-2xl bg-white shadow-xl dark:bg-slate-900"
           role="dialog"
           aria-modal="true"
           aria-labelledby="edit-project-modal-title"
         >
-          <div class="flex items-center justify-between border-b border-slate-100 px-5 py-4">
+          <div class="flex items-center justify-between border-b border-slate-100 px-5 py-4 dark:border-slate-800">
             <div>
               <h2
                 id="edit-project-modal-title"
-                class="text-base font-bold text-slate-900"
+                class="text-base font-bold text-slate-900 dark:text-white"
               >
                 Edit Project
               </h2>
 
-              <p class="mt-1 text-sm text-slate-500">
+              <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
                 Update the project details.
               </p>
             </div>
@@ -44,7 +44,7 @@ export function renderEditProjectModal(callback) {
             <button
               id="close-edit-project-modal"
               type="button"
-              class="flex size-8 items-center justify-center rounded-lg text-slate-400 transition hover:bg-slate-100 hover:text-slate-700"
+              class="flex size-8 items-center justify-center rounded-lg text-slate-400 transition hover:bg-slate-100 hover:text-slate-700 dark:hover:bg-slate-800 dark:hover:text-slate-200"
               aria-label="Close edit project modal"
             >
               <svg
@@ -70,7 +70,7 @@ export function renderEditProjectModal(callback) {
               <div>
                 <label
                   for="edit-project-name"
-                  class="mb-1.5 block text-sm font-semibold text-slate-700"
+                  class="mb-1.5 block text-sm font-semibold text-slate-700 dark:text-slate-200"
                 >
                   Project name
                 </label>
@@ -80,7 +80,7 @@ export function renderEditProjectModal(callback) {
                   name="name"
                   type="text"
                   required
-                  class="w-full rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+                  class="w-full rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:placeholder:text-slate-500"
                   placeholder="Enter project name"
                 />
               </div>
@@ -88,7 +88,7 @@ export function renderEditProjectModal(callback) {
               <div>
                 <label
                   for="edit-project-description"
-                  class="mb-1.5 block text-sm font-semibold text-slate-700"
+                  class="mb-1.5 block text-sm font-semibold text-slate-700 dark:text-slate-200"
                 >
                   Description
                 </label>
@@ -97,7 +97,7 @@ export function renderEditProjectModal(callback) {
                   id="edit-project-description"
                   name="description"
                   rows="4"
-                  class="w-full resize-none rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+                  class="w-full resize-none rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:placeholder:text-slate-500"
                   placeholder="Describe the project"
                 ></textarea>
               </div>
@@ -107,7 +107,7 @@ export function renderEditProjectModal(callback) {
                 <div>
                   <label
                     for="edit-project-status"
-                    class="mb-1.5 block text-sm font-semibold text-slate-700"
+                    class="mb-1.5 block text-sm font-semibold text-slate-700 dark:text-slate-200"
                   >
                     Status
                   </label>
@@ -115,7 +115,7 @@ export function renderEditProjectModal(callback) {
                   <select
                     id="edit-project-status"
                     name="status"
-                    class="w-full rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-700 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+                    class="w-full rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-700 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200"
                   >
                     <option value="planning">Planning</option>
                     <option value="in-progress">In Progress</option>
@@ -127,7 +127,7 @@ export function renderEditProjectModal(callback) {
                 <div>
                   <label
                     for="edit-project-priority"
-                    class="mb-1.5 block text-sm font-semibold text-slate-700"
+                    class="mb-1.5 block text-sm font-semibold text-slate-700 dark:text-slate-200"
                   >
                     Priority
                   </label>
@@ -135,7 +135,7 @@ export function renderEditProjectModal(callback) {
                   <select
                     id="edit-project-priority"
                     name="priority"
-                    class="w-full rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-700 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+                    class="w-full rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-700 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200"
                   >
                     <option value="high">High</option>
                     <option value="medium">Medium</option>
@@ -148,7 +148,7 @@ export function renderEditProjectModal(callback) {
               <div>
                 <label
                   for="edit-project-due-date"
-                  class="mb-1.5 block text-sm font-semibold text-slate-700"
+                  class="mb-1.5 block text-sm font-semibold text-slate-700 dark:text-slate-200"
                 >
                   Due date
                 </label>
@@ -158,67 +158,67 @@ export function renderEditProjectModal(callback) {
                   name="dueDate"
                   type="date"
                   required
-                  class="w-full rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+                  class="w-full rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
                 />
               </div>
 
               <!-- Project Members -->
-<div>
-  <label
-    class="mb-1.5 block text-sm font-semibold text-slate-700"
-  >
-    Project Members
-  </label>
+              <div>
+                <label
+                  class="mb-1.5 block text-sm font-semibold text-slate-700 dark:text-slate-200"
+                >
+                  Project Members
+                </label>
 
-  <div
-    class="mt-2 max-h-40 space-y-2 overflow-y-auto rounded-lg border border-slate-200 p-3"
-  >
-    ${teamMembers
-      .map(
-        (member) => `
-          <label
-            class="flex cursor-pointer items-center gap-3 rounded-lg px-2 py-2 transition hover:bg-slate-50"
-          >
-            <input
-              type="checkbox"
-              name="memberIds"
-              value="${member.id}"
-              class="edit-project-member size-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
-            />
+                <div
+                  class="mt-2 max-h-40 space-y-2 overflow-y-auto rounded-lg border border-slate-200 p-3 dark:border-slate-700"
+                >
+                  ${teamMembers
+                    .map(
+                      (member) => `
+                        <label
+                          class="flex cursor-pointer items-center gap-3 rounded-lg px-2 py-2 transition hover:bg-slate-50 dark:hover:bg-slate-800"
+                        >
+                          <input
+                            type="checkbox"
+                            name="memberIds"
+                            value="${member.id}"
+                            class="edit-project-member size-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 dark:border-slate-600"
+                          />
 
-            <div
-              class="flex size-8 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-xs font-bold text-indigo-700"
-            >
-              ${member.initials}
+                          <div
+                            class="flex size-8 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-xs font-bold text-indigo-700 dark:bg-indigo-500/10 dark:text-indigo-300"
+                          >
+                            ${member.initials}
+                          </div>
+
+                          <div class="min-w-0">
+                            <p class="truncate text-sm font-semibold text-slate-800 dark:text-slate-100">
+                              ${member.name}
+                            </p>
+
+                            <p class="truncate text-xs text-slate-500 dark:text-slate-400">
+                              ${member.role}
+                            </p>
+                          </div>
+                        </label>
+                      `,
+                    )
+                    .join("")}
+                </div>
+
+                <p class="mt-1.5 text-xs text-slate-500 dark:text-slate-400">
+                  Select the members who will work on this project.
+                </p>
+              </div>
+
             </div>
 
-            <div class="min-w-0">
-              <p class="truncate text-sm font-semibold text-slate-800">
-                ${member.name}
-              </p>
-
-              <p class="truncate text-xs text-slate-500">
-                ${member.role}
-              </p>
-            </div>
-          </label>
-        `,
-      )
-      .join("")}
-  </div>
-
-  <p class="mt-1.5 text-xs text-slate-500">
-    Select the members who will work on this project.
-  </p>
-</div>
-
-            </div>
-
-            <div class="flex justify-end gap-3 border-t border-slate-100 px-5 py-4">
+            <div class="flex justify-end gap-3 border-t border-slate-100 px-5 py-4 dark:border-slate-800">
               <button
                 id="cancel-edit-project"
                 type="button"
-                class="rounded-lg border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-600 transition hover:bg-slate-50"
+                class="rounded-lg border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-600 transition hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-slate-100"
               >
                 Cancel
               </button>
@@ -238,6 +238,7 @@ export function renderEditProjectModal(callback) {
 
   setupEditProjectModal();
 }
+
 function setupEditProjectModal() {
   const modal = document.querySelector("#edit-project-modal");
   const form = document.querySelector("#edit-project-form");
