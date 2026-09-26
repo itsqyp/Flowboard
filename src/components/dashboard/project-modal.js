@@ -41,21 +41,23 @@ export function renderProjectModal() {
           role="dialog"
           aria-modal="true"
           aria-labelledby="project-modal-title"
-          class="w-full max-w-lg rounded-2xl bg-white shadow-2xl"
+          class="w-full max-w-lg rounded-2xl bg-white shadow-2xl dark:bg-slate-900"
         >
 
           <!-- Header -->
-          <div class="flex items-start justify-between border-b px-5 py-4 sm:px-6">
+          <div
+            class="flex items-start justify-between border-b px-5 py-4 sm:px-6 dark:border-slate-800"
+          >
 
             <div>
               <h2
                 id="project-modal-title"
-                class="text-lg font-bold text-slate-900"
+                class="text-lg font-bold text-slate-900 dark:text-white"
               >
                 Create New Project
               </h2>
 
-              <p class="mt-1 text-sm text-slate-500">
+              <p class="mt-1 text-sm text-slate-400">
                 Create a project to start organizing your work.
               </p>
             </div>
@@ -63,7 +65,7 @@ export function renderProjectModal() {
             <button
               type="button"
               id="project-modal-close"
-              class="flex size-9 items-center justify-center rounded-lg text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-700"
+              class="flex size-9 items-center justify-center rounded-lg text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-700 dark:hover:bg-slate-800 dark:hover:text-slate-200"
               aria-label="Close project modal"
             >
               <svg
@@ -88,7 +90,7 @@ export function renderProjectModal() {
             <div>
               <label
                 for="project-name"
-                class="block text-sm font-semibold text-slate-700"
+                class="block text-sm font-semibold text-slate-700 dark:text-slate-200"
               >
                 Project name
               </label>
@@ -99,7 +101,7 @@ export function renderProjectModal() {
                 type="text"
                 placeholder="e.g. Website Redesign"
                 autocomplete="off"
-                class="mt-2 block w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+                class="mt-2 block w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:placeholder:text-slate-500"
               />
 
               <p
@@ -113,7 +115,7 @@ export function renderProjectModal() {
 
               <label
                 for="project-description"
-                class="block text-sm font-semibold text-slate-700"
+                class="block text-sm font-semibold text-slate-700 dark:text-slate-200"
               >
                 Description
               </label>
@@ -123,7 +125,7 @@ export function renderProjectModal() {
                 name="projectDescription"
                 rows="3"
                 placeholder="What is this project about?"
-                class="mt-2 block w-full resize-none rounded-lg border border-slate-300 px-3 py-2.5 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+                class="mt-2 block w-full resize-none rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:placeholder:text-slate-500"
               ></textarea>
 
               <p
@@ -138,7 +140,7 @@ export function renderProjectModal() {
 
               <label
                 for="project-due-date"
-                class="block text-sm font-semibold text-slate-700"
+                class="block text-sm font-semibold text-slate-700 dark:text-slate-200"
               >
                 Due date
               </label>
@@ -147,7 +149,7 @@ export function renderProjectModal() {
                 id="project-due-date"
                 name="projectDueDate"
                 type="date"
-                class="mt-2 block w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm text-slate-900 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+                class="mt-2 block w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
               />
 
               <p
@@ -157,57 +159,59 @@ export function renderProjectModal() {
 
             </div>
 
+            <!-- Project Members -->
+            <div class="mt-5">
 
-
-<!-- Project Members -->
-<div class="mt-5">
-  <p class="block text-sm font-semibold text-slate-700">
-    Project members
-  </p>
-
-  <div class="mt-2 max-h-52 space-y-2 overflow-y-auto pr-1">
-    ${teamMembers
-      .map(
-        (member) => `
-          <label
-            class="flex cursor-pointer items-center gap-3 rounded-lg border border-slate-200 px-3 py-2.5 transition hover:bg-slate-50"
-          >
-            <input
-              type="checkbox"
-              name="memberIds"
-              value="${member.id}"
-              class="size-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
-              ${member.id === 1 ? "checked" : ""}
-            />
-
-            <div class="flex size-8 items-center justify-center rounded-full bg-indigo-100 text-xs font-bold text-indigo-700">
-              ${member.initials}
-            </div>
-
-            <div>
-              <p class="text-sm font-semibold text-slate-800">
-                ${member.name}
+              <p class="block text-sm font-semibold text-slate-700 dark:text-slate-200">
+                Project members
               </p>
 
-              <p class="text-xs text-slate-500">
-                ${member.role}
-              </p>
+              <div class="mt-2 max-h-52 space-y-2 overflow-y-auto pr-1">
+
+                ${teamMembers
+                  .map(
+                    (member) => `
+                      <label
+                        class="flex cursor-pointer items-center gap-3 rounded-lg border border-slate-200 px-3 py-2.5 transition hover:bg-slate-50 dark:border-slate-700 dark:hover:bg-slate-800"
+                      >
+
+                        <input
+                          type="checkbox"
+                          name="memberIds"
+                          value="${member.id}"
+                          class="size-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 dark:border-slate-600"
+                          ${member.id === 1 ? "checked" : ""}
+                        />
+
+                        <div
+                          class="flex size-8 items-center justify-center rounded-full bg-indigo-100 text-xs font-bold text-indigo-700 dark:bg-indigo-500/10 dark:text-indigo-300"
+                        >
+                          ${member.initials}
+                        </div>
+
+                        <div>
+                          <p class="text-sm font-semibold text-slate-800 dark:text-slate-100">
+                            ${member.name}
+                          </p>
+
+                          <p class="text-xs text-slate-500 dark:text-slate-400">
+                            ${member.role}
+                          </p>
+                        </div>
+
+                      </label>
+                    `,
+                  )
+                  .join("")}
+
+              </div>
+
+              <p
+                id="project-members-error"
+                class="mt-1.5 hidden text-xs font-medium text-red-600"
+              ></p>
+
             </div>
-          </label>
-        `,
-      )
-      .join("")}
-  </div>
-
-  <p
-    id="project-members-error"
-    class="mt-1.5 hidden text-xs font-medium text-red-600"
-  ></p>
-</div>
-
-
-
-
 
             <!-- Actions -->
             <div class="mt-7 flex flex-col-reverse gap-3 sm:flex-row sm:justify-end">
@@ -215,7 +219,7 @@ export function renderProjectModal() {
               <button
                 type="button"
                 id="project-modal-cancel"
-                class="rounded-lg border border-slate-300 px-4 py-2.5 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-50"
+                class="rounded-lg border border-slate-300 px-4 py-2.5 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
               >
                 Cancel
               </button>
