@@ -21,24 +21,26 @@ export function renderProjectModal(createCallback) {
 
     <!-- Modal -->
     <div
-      class="relative z-10 w-full max-w-lg overflow-hidden rounded-2xl bg-white shadow-2xl"
+      class="relative z-10 w-full max-w-lg overflow-hidden rounded-2xl bg-white shadow-2xl dark:bg-slate-900"
       role="dialog"
       aria-modal="true"
       aria-labelledby="project-modal-title"
     >
 
       <!-- Header -->
-      <div class="flex items-center justify-between border-b border-slate-100 px-6 py-5">
+      <div
+        class="flex items-center justify-between border-b border-slate-100 px-6 py-5 dark:border-slate-800"
+      >
 
         <div>
           <h2
             id="project-modal-title"
-            class="text-lg font-bold text-slate-900"
+            class="text-lg font-bold text-slate-900 dark:text-white"
           >
             Create Project
           </h2>
 
-          <p class="mt-1 text-sm text-slate-500">
+          <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
             Add a new project to your workspace.
           </p>
         </div>
@@ -46,7 +48,7 @@ export function renderProjectModal(createCallback) {
         <button
           id="close-project-modal"
           type="button"
-          class="rounded-lg p-2 text-slate-400 transition hover:bg-slate-100 hover:text-slate-700"
+          class="rounded-lg p-2 text-slate-400 transition hover:bg-slate-100 hover:text-slate-700 dark:hover:bg-slate-800 dark:hover:text-slate-200"
           aria-label="Close modal"
         >
           <svg
@@ -77,7 +79,7 @@ export function renderProjectModal(createCallback) {
           <div>
             <label
               for="project-name"
-              class="block text-sm font-semibold text-slate-700"
+              class="block text-sm font-semibold text-slate-700 dark:text-slate-200"
             >
               Project Name
             </label>
@@ -89,7 +91,7 @@ export function renderProjectModal(createCallback) {
               required
               maxlength="80"
               placeholder="e.g. Website Redesign"
-              class="mt-2 w-full rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100"
+              class="mt-2 w-full rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:placeholder:text-slate-500 dark:focus:ring-indigo-500/20"
             />
           </div>
 
@@ -98,7 +100,7 @@ export function renderProjectModal(createCallback) {
           <div>
             <label
               for="project-description"
-              class="block text-sm font-semibold text-slate-700"
+              class="block text-sm font-semibold text-slate-700 dark:text-slate-200"
             >
               Description
             </label>
@@ -109,7 +111,7 @@ export function renderProjectModal(createCallback) {
               rows="3"
               maxlength="300"
               placeholder="What is this project about?"
-              class="mt-2 w-full resize-none rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100"
+              class="mt-2 w-full resize-none rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:placeholder:text-slate-500 dark:focus:ring-indigo-500/20"
             ></textarea>
           </div>
 
@@ -120,7 +122,7 @@ export function renderProjectModal(createCallback) {
             <div>
               <label
                 for="project-due-date"
-                class="block text-sm font-semibold text-slate-700"
+                class="block text-sm font-semibold text-slate-700 dark:text-slate-200"
               >
                 Due Date
               </label>
@@ -130,7 +132,7 @@ export function renderProjectModal(createCallback) {
                 name="dueDate"
                 type="date"
                 required
-                class="mt-2 w-full rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-900 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100"
+                class="mt-2 w-full rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-900 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:ring-indigo-500/20"
               />
             </div>
 
@@ -138,7 +140,7 @@ export function renderProjectModal(createCallback) {
             <div>
               <label
                 for="project-priority"
-                class="block text-sm font-semibold text-slate-700"
+                class="block text-sm font-semibold text-slate-700 dark:text-slate-200"
               >
                 Priority
               </label>
@@ -146,7 +148,7 @@ export function renderProjectModal(createCallback) {
               <select
                 id="project-priority"
                 name="priority"
-                class="mt-2 w-full rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-900 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100"
+                class="mt-2 w-full rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-900 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:ring-indigo-500/20"
               >
                 <option value="low">Low</option>
                 <option value="medium" selected>Medium</option>
@@ -155,65 +157,83 @@ export function renderProjectModal(createCallback) {
             </div>
 
           </div>
+
+
           <!-- Project Members -->
-<div>
-  <label
-    class="block text-sm font-semibold text-slate-700"
-  >
-    Project Members
-  </label>
+          <div>
 
-  <div
-    class="mt-2 max-h-40 space-y-2 overflow-y-auto rounded-lg border border-slate-200 p-3"
-  >
-    ${teamMembers
-      .map(
-        (member) => `
-          <label
-            class="flex cursor-pointer items-center gap-3 rounded-lg px-2 py-2 transition hover:bg-slate-50"
-          >
-            <input
-              type="checkbox"
-              name="memberIds"
-              value="${member.id}"
-              ${member.id === 1 ? "checked" : ""}
-              class="size-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
-            />
+            <label
+              class="block text-sm font-semibold text-slate-700 dark:text-slate-200"
+            >
+              Project Members
+            </label>
 
-            <div class="flex size-8 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-xs font-bold text-indigo-700">
-              ${member.initials}
+            <div
+              class="mt-2 max-h-40 space-y-2 overflow-y-auto rounded-lg border border-slate-200 p-3 dark:border-slate-700"
+            >
+
+              ${teamMembers
+                .map(
+                  (member) => `
+                    <label
+                      class="flex cursor-pointer items-center gap-3 rounded-lg px-2 py-2 transition hover:bg-slate-50 dark:hover:bg-slate-800"
+                    >
+
+                      <input
+                        type="checkbox"
+                        name="memberIds"
+                        value="${member.id}"
+                        ${member.id === 1 ? "checked" : ""}
+                        class="size-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 dark:border-slate-600"
+                      />
+
+                      <div
+                        class="flex size-8 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-xs font-bold text-indigo-700 dark:bg-indigo-500/10 dark:text-indigo-300"
+                      >
+                        ${member.initials}
+                      </div>
+
+                      <div class="min-w-0">
+
+                        <p
+                          class="truncate text-sm font-semibold text-slate-800 dark:text-slate-100"
+                        >
+                          ${member.name}
+                        </p>
+
+                        <p
+                          class="truncate text-xs text-slate-500 dark:text-slate-400"
+                        >
+                          ${member.role}
+                        </p>
+
+                      </div>
+
+                    </label>
+                  `,
+                )
+                .join("")}
+
             </div>
 
-            <div class="min-w-0">
-              <p class="truncate text-sm font-semibold text-slate-800">
-                ${member.name}
-              </p>
+            <p class="mt-1.5 text-xs text-slate-500 dark:text-slate-400">
+              Select the members who will work on this project.
+            </p>
 
-              <p class="truncate text-xs text-slate-500">
-                ${member.role}
-              </p>
-            </div>
-          </label>
-        `,
-      )
-      .join("")}
-  </div>
-
-  <p class="mt-1.5 text-xs text-slate-500">
-    Select the members who will work on this project.
-  </p>
-</div>
+          </div>
 
         </div>
 
 
         <!-- Footer -->
-        <div class="flex items-center justify-end gap-3 border-t border-slate-100 bg-slate-50 px-6 py-4">
+        <div
+          class="flex items-center justify-end gap-3 border-t border-slate-100 bg-slate-50 px-6 py-4 dark:border-slate-800 dark:bg-slate-950"
+        >
 
           <button
             id="cancel-project-modal"
             type="button"
-            class="rounded-lg px-4 py-2.5 text-sm font-semibold text-slate-600 transition hover:bg-slate-200 hover:text-slate-900"
+            class="rounded-lg px-4 py-2.5 text-sm font-semibold text-slate-600 transition hover:bg-slate-200 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white"
           >
             Cancel
           </button>
