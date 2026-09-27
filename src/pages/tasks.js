@@ -111,18 +111,18 @@ export function renderTasks() {
       <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
 
         <div>
-          <h1 class="text-2xl font-bold text-slate-900">
+          <h1 class="text-2xl font-bold text-slate-900 dark:text-white">
   Tasks
 </h1>
 
 <div class="mt-1 flex flex-wrap items-center gap-2">
-  <p class="text-sm text-slate-500">
+  <p class="text-sm text-slate-500 dark:text-slate-400">
     Manage and track all tasks across your projects.
   </p>
 
-  <span class="text-slate-300">•</span>
+  <span class="text-slate-300 dark:text-slate-700">•</span>
 
-  <span class="text-sm font-semibold text-slate-700">
+  <span class="text-sm font-semibold text-slate-700 dark:text-slate-200">
     ${filteredTasks.length}
     ${filteredTasks.length === 1 ? "task" : "tasks"}
   </span>
@@ -158,42 +158,42 @@ export function renderTasks() {
       <!-- Task Summary -->
       <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
 
-        <div class="rounded-xl border border-slate-200 bg-white p-5">
-          <p class="text-sm font-medium text-slate-500">
+        <div class="rounded-xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900">
+          <p class="text-sm font-medium text-slate-500 dark:text-slate-400">
             Total Tasks
           </p>
 
-          <p class="mt-2 text-2xl font-bold text-slate-900">
+          <p class="mt-2 text-2xl font-bold text-slate-900 dark:text-white">
             ${tasks.length}
           </p>
         </div>
 
-        <div class="rounded-xl border border-slate-200 bg-white p-5">
-          <p class="text-sm font-medium text-slate-500">
+        <div class="rounded-xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900">
+          <p class="text-sm font-medium text-slate-500 dark:text-slate-400">
             To Do
           </p>
 
-          <p class="mt-2 text-2xl font-bold text-slate-900">
+          <p class="mt-2 text-2xl font-bold text-slate-900 dark:text-white">
             ${tasks.filter((task) => task.status === "todo").length}
           </p>
         </div>
 
-        <div class="rounded-xl border border-slate-200 bg-white p-5">
-          <p class="text-sm font-medium text-slate-500">
+        <div class="rounded-xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900">
+          <p class="text-sm font-medium text-slate-500 dark:text-slate-400">
             In Progress
           </p>
 
-          <p class="mt-2 text-2xl font-bold text-slate-900">
+          <p class="mt-2 text-2xl font-bold text-slate-900 dark:text-white">
             ${tasks.filter((task) => task.status === "in-progress").length}
           </p>
         </div>
 
-        <div class="rounded-xl border border-slate-200 bg-white p-5">
-          <p class="text-sm font-medium text-slate-500">
+        <div class="rounded-xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900">
+          <p class="text-sm font-medium text-slate-500 dark:text-slate-400">
             Completed
           </p>
 
-          <p class="mt-2 text-2xl font-bold text-slate-900">
+          <p class="mt-2 text-2xl font-bold text-slate-900 dark:text-white">
             ${tasks.filter((task) => task.status === "completed").length}
           </p>
         </div>
@@ -202,17 +202,17 @@ export function renderTasks() {
 
 
       <!-- Task List -->
-      <div class="mt-6 overflow-hidden rounded-xl border border-slate-200 bg-white">
+      <div class="mt-6 overflow-hidden rounded-xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900">
 
-       <div class="border-b border-slate-200 px-5 py-4">
+       <div class="border-b border-slate-200 px-5 py-4 dark:border-slate-800">
   <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
 
     <div>
-      <h2 class="text-sm font-bold text-slate-900">
+      <h2 class="text-sm font-bold text-slate-900 dark:text-white">
         All Tasks
       </h2>
 
-      <p class="mt-1 text-xs text-slate-500">
+      <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">
         ${tasks.length} tasks across ${projects.length} projects
       </p>
     </div>
@@ -242,14 +242,14 @@ export function renderTasks() {
           type="search"
            value="${taskFilters.search}"
           placeholder="Search tasks..."
-          class="w-full rounded-lg border border-slate-200 bg-white py-2 pl-9 pr-3 text-sm text-slate-700 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 sm:w-56"
+          class="w-full rounded-lg border border-slate-200 bg-white py-2 pl-9 pr-3 text-sm text-slate-700 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 sm:w-56 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:placeholder:text-slate-500"
         />
       </div>
 
       <!-- Status -->
       <select
         id="task-status-filter"
-        class="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-600 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+        class="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-600 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200"
       >
         <option value="all" ${taskFilters.status === "all" ? "selected" : ""}>
   All Status
@@ -271,7 +271,7 @@ export function renderTasks() {
       <!-- Priority -->
       <select
         id="task-priority-filter"
-        class="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-600 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+        class="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-600 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200"
       >
        <option value="all" ${taskFilters.priority === "all" ? "selected" : ""}>
   All Priority
@@ -291,7 +291,7 @@ export function renderTasks() {
       </select>
       <select
   id="task-project-filter"
-  class="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-600 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+  class="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-600 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200"
 >
   <option
     value="all"
@@ -315,7 +315,7 @@ export function renderTasks() {
 </select>
 <select
   id="task-sort"
-  class="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-600 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+  class="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-600 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200"
 >
   <option
     value="newest"
@@ -365,14 +365,14 @@ export function renderTasks() {
 </div>
 
 
-        <div class="divide-y divide-slate-100">
+        <div class="divide-y divide-slate-100 dark:divide-slate-800">
 
       ${
         filteredTasks.length === 0
           ? `
       <div class="px-5 py-12 text-center">
 
-        <div class="mx-auto flex size-12 items-center justify-center rounded-full bg-slate-100 text-slate-400">
+        <div class="mx-auto flex size-12 items-center justify-center rounded-full bg-slate-100 text-slate-400 dark:bg-slate-800 dark:text-slate-500">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -389,11 +389,11 @@ export function renderTasks() {
           </svg>
         </div>
 
-        <p class="mt-4 text-sm font-semibold text-slate-900">
+        <p class="mt-4 text-sm font-semibold text-slate-900 dark:text-white">
           No tasks found
         </p>
 
-        <p class="mx-auto mt-1 max-w-sm text-sm text-slate-500">
+        <p class="mx-auto mt-1 max-w-sm text-sm text-slate-500 dark:text-slate-400">
           Try adjusting your search or filters to find what you're looking for.
         </p>
 
@@ -419,7 +419,7 @@ export function renderTasks() {
 
                 return `
                       <div
-                        class="flex flex-col gap-4 px-5 py-4 transition hover:bg-slate-50 sm:flex-row sm:items-center sm:justify-between"
+                      class="flex flex-col gap-4 px-5 py-4 transition hover:bg-slate-50 dark:hover:bg-slate-800/50 sm:flex-row sm:items-center sm:justify-between"
                       >
 
                         <!-- Task Info -->
@@ -433,7 +433,7 @@ export function renderTasks() {
                               class="task-complete-btn mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-md border transition ${
                                 task.status === "completed"
                                   ? "border-indigo-600 bg-indigo-600 text-white"
-                                  : "border-slate-300 bg-white text-transparent hover:border-indigo-400"
+                                  : ":border-slate-300 bg-white text-transparent hover:border-indigo-400 dark:border-slate-600 dark:bg-slate-900"
                               }"
                               data-task-id="${task.id}"
                               aria-label="${
@@ -471,13 +471,13 @@ export function renderTasks() {
                                 class="truncate text-sm font-semibold ${
                                   task.status === "completed"
                                     ? "text-slate-400 line-through"
-                                    : "text-slate-900"
+                                    : "text-slate-900 dark:text-slate-200"
                                 }"
                               >
                                 ${task.title}
                               </h3>
 
-                              <p class="mt-1 line-clamp-2 text-sm text-slate-500">
+                            <p class="mt-1 line-clamp-2 text-sm text-slate-500 dark:text-slate-400">
                                 ${task.description}
                               </p>
 
@@ -488,7 +488,7 @@ export function renderTasks() {
                                 ${
                                   project
                                     ? `
-                                      <span class="rounded-md bg-slate-100 px-2 py-1 text-xs font-medium text-slate-600">
+                                      <span class="rounded-md bg-slate-100 px-2 py-1 text-xs font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-300">
                                         ${project.name}
                                       </span>
                                     `
@@ -498,10 +498,10 @@ export function renderTasks() {
                                <span
   class="inline-flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium ${
     task.priority === "high"
-      ? "bg-red-50 text-red-700"
+      ? "bg-red-50 text-red-700 dark:bg-red-500/10 dark:text-red-400"
       : task.priority === "medium"
-        ? "bg-amber-50 text-amber-700"
-        : "bg-slate-100 text-slate-600"
+        ? "bg-amber-50 text-amber-700 dark:bg-amber-500/10 dark:text-amber-400"
+        : "bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400"
   }"
 >
   <span
@@ -520,10 +520,10 @@ export function renderTasks() {
                                 <span
                                   class="rounded-md px-2 py-1 text-xs font-medium ${
                                     task.status === "completed"
-                                      ? "bg-green-50 text-green-700"
+                                      ? "bg-green-50 text-green-700 dark:bg-green-500/10 dark:text-green-400"
                                       : task.status === "in-progress"
-                                        ? "bg-indigo-50 text-indigo-700"
-                                        : "bg-slate-100 text-slate-600"
+                                        ? "bg-indigo-50 text-indigo-700 dark:bg-indigo-500/10 dark:text-indigo-400"
+                                        : "bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400"
                                   }"
                                 >
                                   ${
@@ -535,7 +535,7 @@ export function renderTasks() {
                                   }
                                 </span>
 
-                                <span class="text-xs text-slate-400">
+                            <span class="text-xs text-slate-400 dark:text-slate-500">
                                   Due ${task.dueDate}
                                 </span>
 
@@ -557,13 +557,13 @@ export function renderTasks() {
       ? `
         <div class="flex items-center gap-2">
           <div
-            class="flex size-8 items-center justify-center rounded-full bg-indigo-100 text-xs font-bold text-indigo-700"
+         class="flex size-8 items-center justify-center rounded-full bg-indigo-100 text-xs font-bold text-indigo-700 dark:bg-indigo-500/10 dark:text-indigo-300"
             title="${assignee.name}"
           >
             ${assignee.initials}
           </div>
 
-          <span class="text-sm font-medium text-slate-600">
+          <span class="text-sm font-medium text-slate-600 dark:text-slate-300">
             ${assignee.name}
           </span>
         </div>
@@ -574,7 +574,7 @@ export function renderTasks() {
   <!-- Edit -->
   <button
     type="button"
-    class="edit-task-btn rounded-lg p-2 text-slate-400 transition hover:bg-slate-100 hover:text-indigo-600"
+  class="edit-task-btn rounded-lg p-2 text-slate-400 transition hover:bg-slate-100 hover:text-indigo-600 dark:hover:bg-slate-800 dark:hover:text-indigo-400"
     data-task-id="${task.id}"
     aria-label="Edit task"
     title="Edit task"
@@ -602,7 +602,7 @@ export function renderTasks() {
   <!-- Delete -->
 <button
   type="button"
-  class="delete-task-btn rounded-lg p-2 text-slate-400 transition hover:bg-slate-100 hover:text-red-600"
+  class="delete-task-btn rounded-lg p-2 text-slate-400 transition hover:bg-slate-100 hover:text-red-600 dark:hover:bg-slate-800 dark:hover:text-red-400"
   data-task-id="${task.id}"
   aria-label="Delete task"
   title="Delete task"
@@ -633,20 +633,20 @@ export function renderTasks() {
             ${
               sortedTasks.length > 0
                 ? `
-      <div class="flex flex-col gap-3 border-t border-slate-200 px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
+      <div class="flex flex-col gap-3 border-t border-slate-200 dark:border-slate-800 px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
 
         <!-- Results Info -->
-        <p class="text-xs text-slate-500">
+        <p class="text-xs text-slate-500 dark:text-slate-400">
           Showing
-          <span class="font-semibold text-slate-700">
+          <span class="font-semibold text-slate-700 dark:text-slate-200">
             ${startIndex + 1}
           </span>
           -
-          <span class="font-semibold text-slate-700">
+          <span class="font-semibold text-slate-700 dark:text-slate-200">
             ${Math.min(endIndex, sortedTasks.length)}
           </span>
           of
-          <span class="font-semibold text-slate-700">
+          <span class="font-semibold text-slate-700 dark:text-slate-200">
             ${sortedTasks.length}
           </span>
           tasks
@@ -660,7 +660,7 @@ export function renderTasks() {
           <button
             id="previous-task-page"
             type="button"
-            class="rounded-lg border border-slate-200 px-3 py-2 text-xs font-semibold text-slate-600 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40"
+           class="rounded-lg border border-slate-200 px-3 py-2 text-xs font-semibold text-slate-600 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
             ${currentPage === 1 ? "disabled" : ""}
           >
             Previous
@@ -677,7 +677,7 @@ export function renderTasks() {
                   class="task-page-btn rounded-lg px-3 py-2 text-xs font-semibold transition ${
                     currentPage === page
                       ? "bg-indigo-600 text-white"
-                      : "text-slate-600 hover:bg-slate-100"
+                      : "text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
                   }"
                   data-page="${page}"
                 >
@@ -691,7 +691,7 @@ export function renderTasks() {
           <button
             id="next-task-page"
             type="button"
-            class="rounded-lg border border-slate-200 px-3 py-2 text-xs font-semibold text-slate-600 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40"
+           class="rounded-lg border border-slate-200 px-3 py-2 text-xs font-semibold text-slate-600 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
             ${currentPage === totalPages ? "disabled" : ""}
           >
             Next
