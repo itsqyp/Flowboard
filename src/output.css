@@ -1512,6 +1512,12 @@
   .dark\:bg-slate-950:where(.dark, .dark *) {
     background-color: var(--color-slate-950);
   }
+  .dark\:bg-slate-950\/50:where(.dark, .dark *) {
+    background-color: color-mix(in srgb, oklch(12.9% 0.042 264.695) 50%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-slate-950) 50%, transparent);
+    }
+  }
   .dark\:text-amber-300:where(.dark, .dark *) {
     color: var(--color-amber-300);
   }

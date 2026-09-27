@@ -25,27 +25,28 @@ export function renderTaskModal(createCallback) {
       class="task-modal-backdrop absolute inset-0 bg-slate-900/50 backdrop-blur-sm"
     ></div>
 
-
     <!-- Modal -->
     <div
-      class="relative z-10 w-full max-w-lg overflow-hidden rounded-2xl bg-white shadow-2xl"
+      class="relative z-10 w-full max-w-lg overflow-hidden rounded-2xl bg-white shadow-2xl dark:bg-slate-900"
       role="dialog"
       aria-modal="true"
       aria-labelledby="task-modal-title"
     >
 
       <!-- Header -->
-      <div class="flex items-start justify-between border-b border-slate-100 px-6 py-5">
+      <div
+        class="flex items-start justify-between border-b border-slate-100 px-6 py-5 dark:border-slate-800"
+      >
 
         <div>
           <h2
             id="task-modal-title"
-            class="text-lg font-bold text-slate-900"
+            class="text-lg font-bold text-slate-900 dark:text-white"
           >
             Add Task
           </h2>
 
-          <p class="mt-1 text-sm text-slate-500">
+          <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
             Create a new task for this project.
           </p>
         </div>
@@ -53,7 +54,7 @@ export function renderTaskModal(createCallback) {
         <button
           id="close-task-modal"
           type="button"
-          class="rounded-lg p-1.5 text-slate-400 transition hover:bg-slate-100 hover:text-slate-700"
+          class="rounded-lg p-1.5 text-slate-400 transition hover:bg-slate-100 hover:text-slate-700 dark:hover:bg-slate-800 dark:hover:text-slate-200"
           aria-label="Close modal"
         >
           <svg
@@ -74,7 +75,6 @@ export function renderTaskModal(createCallback) {
 
       </div>
 
-
       <!-- Form -->
       <form id="task-form">
 
@@ -84,7 +84,7 @@ export function renderTaskModal(createCallback) {
           <div>
             <label
               for="task-title"
-              class="block text-sm font-semibold text-slate-700"
+              class="block text-sm font-semibold text-slate-700 dark:text-slate-200"
             >
               Task title
             </label>
@@ -95,16 +95,15 @@ export function renderTaskModal(createCallback) {
               type="text"
               placeholder="e.g. Design login page"
               autocomplete="off"
-              class="mt-2 w-full rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+              class="mt-2 w-full rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:placeholder:text-slate-500"
             />
           </div>
-
 
           <!-- Description -->
           <div>
             <label
               for="task-description"
-              class="block text-sm font-semibold text-slate-700"
+              class="block text-sm font-semibold text-slate-700 dark:text-slate-200"
             >
               Description
             </label>
@@ -114,115 +113,119 @@ export function renderTaskModal(createCallback) {
               name="description"
               rows="3"
               placeholder="Describe what needs to be done..."
-              class="mt-2 w-full resize-none rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+              class="mt-2 w-full resize-none rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:placeholder:text-slate-500"
             ></textarea>
           </div>
 
-<!-- Assignee + Priority -->
-<!-- Project -->
-<div>
-  <label
-    for="task-project"
-    class="block text-sm font-semibold text-slate-700"
-  >
-    Project
-  </label>
+          <!-- Project -->
+          <div>
+            <label
+              for="task-project"
+              class="block text-sm font-semibold text-slate-700 dark:text-slate-200"
+            >
+              Project
+            </label>
 
-  <select
-    id="task-project"
-    name="projectId"
-    class="mt-2 w-full rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-700 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
-  >
-    <option value="">Select a project</option>
+            <select
+              id="task-project"
+              name="projectId"
+              class="mt-2 w-full rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-700 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200"
+            >
+              <option value="">Select a project</option>
 
-    ${projects
-      .map(
-        (project) => `
-          <option value="${project.id}">
-            ${project.name}
-          </option>
-        `,
-      )
-      .join("")}
-  </select>
-</div>
-<div class="grid gap-5 sm:grid-cols-2">
+              ${projects
+                .map(
+                  (project) => `
+                    <option value="${project.id}">
+                      ${project.name}
+                    </option>
+                  `,
+                )
+                .join("")}
+            </select>
+          </div>
 
-  <!-- Assignee -->
-  <div>
-    <label
-      for="task-assignee"
-      class="block text-sm font-semibold text-slate-700"
-    >
-      Assignee
-    </label>
+          <!-- Assignee + Priority -->
+          <div class="grid gap-5 sm:grid-cols-2">
 
-    <select
-      id="task-assignee"
-      name="assigneeId"
-      class="mt-2 w-full rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-700 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
-    >
-      ${teamMembers
-        .map(
-          (member) => `
-            <option value="${member.id}" ${member.id === 1 ? "selected" : ""}>
-              ${member.name}
-            </option>
-          `,
-        )
-        .join("")}
-    </select>
-  </div>
+            <!-- Assignee -->
+            <div>
+              <label
+                for="task-assignee"
+                class="block text-sm font-semibold text-slate-700 dark:text-slate-200"
+              >
+                Assignee
+              </label>
 
-  <!-- Priority -->
-  <div>
-    <label
-      for="task-priority"
-      class="block text-sm font-semibold text-slate-700"
-    >
-      Priority
-    </label>
+              <select
+                id="task-assignee"
+                name="assigneeId"
+                class="mt-2 w-full rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-700 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200"
+              >
+                ${teamMembers
+                  .map(
+                    (member) => `
+                      <option value="${member.id}" ${
+                        member.id === 1 ? "selected" : ""
+                      }>
+                        ${member.name}
+                      </option>
+                    `,
+                  )
+                  .join("")}
+              </select>
+            </div>
 
-    <select
-      id="task-priority"
-      name="priority"
-      class="mt-2 w-full rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-700 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
-    >
-      <option value="low">Low</option>
-      <option value="medium" selected>Medium</option>
-      <option value="high">High</option>
-    </select>
-  </div>
+            <!-- Priority -->
+            <div>
+              <label
+                for="task-priority"
+                class="block text-sm font-semibold text-slate-700 dark:text-slate-200"
+              >
+                Priority
+              </label>
 
-</div>
+              <select
+                id="task-priority"
+                name="priority"
+                class="mt-2 w-full rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-700 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200"
+              >
+                <option value="low">Low</option>
+                <option value="medium" selected>Medium</option>
+                <option value="high">High</option>
+              </select>
+            </div>
 
-<!-- Due Date -->
-<div>
-  <label
-    for="task-due-date"
-    class="block text-sm font-semibold text-slate-700"
-  >
-    Due date
-  </label>
+          </div>
 
-  <input
-    id="task-due-date"
-    name="dueDate"
-    type="date"
-    class="mt-2 w-full rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-700 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
-  />
-</div>
+          <!-- Due Date -->
+          <div>
+            <label
+              for="task-due-date"
+              class="block text-sm font-semibold text-slate-700 dark:text-slate-200"
+            >
+              Due date
+            </label>
 
-        
+            <input
+              id="task-due-date"
+              name="dueDate"
+              type="date"
+              class="mt-2 w-full rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-700 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
+            />
+          </div>
 
+        </div>
 
         <!-- Footer -->
-        <div class="flex justify-end gap-2 border-t border-slate-100 bg-slate-50/50 px-6 py-4">
+        <div
+          class="flex justify-end gap-2 border-t border-slate-100 bg-slate-50/50 px-6 py-4 dark:border-slate-800 dark:bg-slate-950/50"
+        >
 
           <button
             id="cancel-task-modal"
             type="button"
-            class="rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
+            class="rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-slate-100"
           >
             Cancel
           </button>
@@ -245,7 +248,6 @@ export function renderTaskModal(createCallback) {
 
   setupModalEvents();
 }
-
 function setupModalEvents() {
   const closeButton = modal.querySelector("#close-task-modal");
   const cancelButton = modal.querySelector("#cancel-task-modal");
