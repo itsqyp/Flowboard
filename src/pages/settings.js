@@ -1,3 +1,5 @@
+import { getAppearance, saveAppearance, applyTheme } from "../theme.js";
+
 let profileSyncInitialized = false;
 const PROFILE_STORAGE_KEY = "flowboard-profile";
 
@@ -16,12 +18,6 @@ const DEFAULT_NOTIFICATIONS = {
   mentions: true,
   comments: true,
   dueDateReminders: true,
-};
-
-const APPEARANCE_STORAGE_KEY = "flowboard-appearance";
-
-const DEFAULT_APPEARANCE = {
-  theme: "light",
 };
 
 function getNotifications() {
@@ -44,19 +40,18 @@ function getNotifications() {
 function saveNotifications(notifications) {
   localStorage.setItem(NOTIFICATION_STORAGE_KEY, JSON.stringify(notifications));
 }
-
 function renderNotificationsSettings(content) {
   const notifications = getNotifications();
 
   content.innerHTML = `
-    <section class="rounded-xl border border-slate-200 bg-white shadow-sm">
+    <section class="rounded-xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
 
-      <div class="border-b border-slate-200 px-6 py-5">
-        <h2 class="text-base font-semibold text-slate-900">
+      <div class="border-b border-slate-200 px-6 py-5 dark:border-slate-800">
+        <h2 class="text-base font-semibold text-slate-900 dark:text-white">
           Notifications
         </h2>
 
-        <p class="mt-1 text-sm text-slate-500">
+        <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
           Choose how you want to receive notifications.
         </p>
       </div>
@@ -64,13 +59,13 @@ function renderNotificationsSettings(content) {
       <form id="notifications-form">
 
         <!-- Email Notifications -->
-        <div class="border-b border-slate-200 p-6">
+        <div class="border-b border-slate-200 p-6 dark:border-slate-800">
 
-          <h3 class="text-sm font-semibold text-slate-900">
+          <h3 class="text-sm font-semibold text-slate-900 dark:text-white">
             Email notifications
           </h3>
 
-          <p class="mt-1 text-sm text-slate-500">
+          <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
             Receive important updates through email.
           </p>
 
@@ -78,11 +73,11 @@ function renderNotificationsSettings(content) {
 
             <label class="flex cursor-pointer items-start justify-between gap-4">
               <div>
-                <p class="text-sm font-medium text-slate-900">
+                <p class="text-sm font-medium text-slate-900 dark:text-slate-100">
                   Task assignments
                 </p>
 
-                <p class="mt-0.5 text-xs text-slate-500">
+                <p class="mt-0.5 text-xs text-slate-500 dark:text-slate-400">
                   Get notified when a task is assigned to you.
                 </p>
               </div>
@@ -91,17 +86,17 @@ function renderNotificationsSettings(content) {
                 type="checkbox"
                 name="taskAssignments"
                 ${notifications.taskAssignments ? "checked" : ""}
-                class="mt-0.5 size-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
+                class="mt-0.5 size-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 dark:border-slate-600 dark:bg-slate-950 dark:focus:ring-indigo-500"
               />
             </label>
 
             <label class="flex cursor-pointer items-start justify-between gap-4">
               <div>
-                <p class="text-sm font-medium text-slate-900">
+                <p class="text-sm font-medium text-slate-900 dark:text-slate-100">
                   Task updates
                 </p>
 
-                <p class="mt-0.5 text-xs text-slate-500">
+                <p class="mt-0.5 text-xs text-slate-500 dark:text-slate-400">
                   Receive updates when tasks assigned to you change.
                 </p>
               </div>
@@ -110,17 +105,17 @@ function renderNotificationsSettings(content) {
                 type="checkbox"
                 name="taskUpdates"
                 ${notifications.taskUpdates ? "checked" : ""}
-                class="mt-0.5 size-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
+                class="mt-0.5 size-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 dark:border-slate-600 dark:bg-slate-950 dark:focus:ring-indigo-500"
               />
             </label>
 
             <label class="flex cursor-pointer items-start justify-between gap-4">
               <div>
-                <p class="text-sm font-medium text-slate-900">
+                <p class="text-sm font-medium text-slate-900 dark:text-slate-100">
                   Project updates
                 </p>
 
-                <p class="mt-0.5 text-xs text-slate-500">
+                <p class="mt-0.5 text-xs text-slate-500 dark:text-slate-400">
                   Receive important updates about your projects.
                 </p>
               </div>
@@ -129,7 +124,7 @@ function renderNotificationsSettings(content) {
                 type="checkbox"
                 name="projectUpdates"
                 ${notifications.projectUpdates ? "checked" : ""}
-                class="mt-0.5 size-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
+                class="mt-0.5 size-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 dark:border-slate-600 dark:bg-slate-950 dark:focus:ring-indigo-500"
               />
             </label>
 
@@ -139,11 +134,11 @@ function renderNotificationsSettings(content) {
         <!-- In-App Notifications -->
         <div class="p-6">
 
-          <h3 class="text-sm font-semibold text-slate-900">
+          <h3 class="text-sm font-semibold text-slate-900 dark:text-white">
             In-app notifications
           </h3>
 
-          <p class="mt-1 text-sm text-slate-500">
+          <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
             Control which notifications appear inside Flowboard.
           </p>
 
@@ -151,11 +146,11 @@ function renderNotificationsSettings(content) {
 
             <label class="flex cursor-pointer items-start justify-between gap-4">
               <div>
-                <p class="text-sm font-medium text-slate-900">
+                <p class="text-sm font-medium text-slate-900 dark:text-slate-100">
                   Mentions
                 </p>
 
-                <p class="mt-0.5 text-xs text-slate-500">
+                <p class="mt-0.5 text-xs text-slate-500 dark:text-slate-400">
                   Get notified when someone mentions you.
                 </p>
               </div>
@@ -164,17 +159,17 @@ function renderNotificationsSettings(content) {
                 type="checkbox"
                 name="mentions"
                 ${notifications.mentions ? "checked" : ""}
-                class="mt-0.5 size-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
+                class="mt-0.5 size-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 dark:border-slate-600 dark:bg-slate-950 dark:focus:ring-indigo-500"
               />
             </label>
 
             <label class="flex cursor-pointer items-start justify-between gap-4">
               <div>
-                <p class="text-sm font-medium text-slate-900">
+                <p class="text-sm font-medium text-slate-900 dark:text-slate-100">
                   Comments
                 </p>
 
-                <p class="mt-0.5 text-xs text-slate-500">
+                <p class="mt-0.5 text-xs text-slate-500 dark:text-slate-400">
                   Get notified when someone comments on your work.
                 </p>
               </div>
@@ -183,17 +178,17 @@ function renderNotificationsSettings(content) {
                 type="checkbox"
                 name="comments"
                 ${notifications.comments ? "checked" : ""}
-                class="mt-0.5 size-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
+                class="mt-0.5 size-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 dark:border-slate-600 dark:bg-slate-950 dark:focus:ring-indigo-500"
               />
             </label>
 
             <label class="flex cursor-pointer items-start justify-between gap-4">
               <div>
-                <p class="text-sm font-medium text-slate-900">
+                <p class="text-sm font-medium text-slate-900 dark:text-slate-100">
                   Due-date reminders
                 </p>
 
-                <p class="mt-0.5 text-xs text-slate-500">
+                <p class="mt-0.5 text-xs text-slate-500 dark:text-slate-400">
                   Receive reminders about upcoming deadlines.
                 </p>
               </div>
@@ -202,7 +197,7 @@ function renderNotificationsSettings(content) {
                 type="checkbox"
                 name="dueDateReminders"
                 ${notifications.dueDateReminders ? "checked" : ""}
-                class="mt-0.5 size-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
+                class="mt-0.5 size-4 rounded border-slate-300 text-indigo-600 dark:border-slate-600 dark:bg-slate-950 dark:focus:ring-indigo-500"
               />
             </label>
 
@@ -210,11 +205,11 @@ function renderNotificationsSettings(content) {
         </div>
 
         <!-- Save -->
-        <div class="flex justify-end border-t border-slate-200 px-6 py-5">
+        <div class="flex justify-end border-t border-slate-200 px-6 py-5 dark:border-slate-800">
 
           <button
             type="submit"
-            class="rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+            class="rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900"
           >
             Save preferences
           </button>
@@ -263,26 +258,28 @@ function setupNotificationsForm() {
   });
 }
 
-function getAppearance() {
-  const storedAppearance = localStorage.getItem(APPEARANCE_STORAGE_KEY);
+// export function getAppearance() {
+//   const storedAppearance = localStorage.getItem(APPEARANCE_STORAGE_KEY);
 
-  if (!storedAppearance) {
-    return DEFAULT_APPEARANCE;
-  }
+//   if (!storedAppearance) {
+//     return DEFAULT_APPEARANCE;
+//   }
 
-  try {
-    return {
-      ...DEFAULT_APPEARANCE,
-      ...JSON.parse(storedAppearance),
-    };
-  } catch {
-    return DEFAULT_APPEARANCE;
-  }
-}
+//   try {
+//     return {
+//       ...DEFAULT_APPEARANCE,
+//       ...JSON.parse(storedAppearance),
+//     };
+//   } catch {
+//     return DEFAULT_APPEARANCE;
+//   }
+// }
 
-function saveAppearance(appearance) {
-  localStorage.setItem(APPEARANCE_STORAGE_KEY, JSON.stringify(appearance));
-}
+// function saveAppearance(appearance) {
+//   localStorage.setItem(APPEARANCE_STORAGE_KEY, JSON.stringify(appearance));
+// }
+
+///We start Dark Mode from here.
 
 function renderAppearanceSettings(content) {
   const appearance = getAppearance();
@@ -502,23 +499,23 @@ function setupAppearanceForm() {
   });
 }
 
-function applyTheme(theme) {
-  const root = document.documentElement;
+// export function applyTheme(theme) {
+//   const root = document.documentElement;
 
-  if (theme === "dark") {
-    root.classList.add("dark");
-    return;
-  }
+//   if (theme === "dark") {
+//     root.classList.add("dark");
+//     return;
+//   }
 
-  if (theme === "light") {
-    root.classList.remove("dark");
-    return;
-  }
+//   if (theme === "light") {
+//     root.classList.remove("dark");
+//     return;
+//   }
 
-  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+//   const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 
-  root.classList.toggle("dark", prefersDark);
-}
+//   root.classList.toggle("dark", prefersDark);
+// }
 
 function getProfile() {
   const storedProfile = localStorage.getItem(PROFILE_STORAGE_KEY);

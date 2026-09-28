@@ -1632,11 +1632,17 @@
   .dark\:focus\:bg-slate-950:where(.dark, .dark *):focus {
     background-color: var(--color-slate-950);
   }
+  .dark\:focus\:ring-indigo-500:where(.dark, .dark *):focus {
+    --tw-ring-color: var(--color-indigo-500);
+  }
   .dark\:focus\:ring-indigo-500\/20:where(.dark, .dark *):focus {
     --tw-ring-color: color-mix(in srgb, oklch(58.5% 0.233 277.117) 20%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
       --tw-ring-color: color-mix(in oklab, var(--color-indigo-500) 20%, transparent);
     }
+  }
+  .dark\:focus\:ring-offset-slate-900:where(.dark, .dark *):focus {
+    --tw-ring-offset-color: var(--color-slate-900);
   }
 }
 @keyframes abir-color {
