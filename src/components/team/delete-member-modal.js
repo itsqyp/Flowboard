@@ -20,15 +20,16 @@ export function renderDeleteMemberModal(callback) {
         class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/40 p-4"
       >
         <div
-          class="w-full max-w-md rounded-2xl bg-white shadow-xl"
+          class="w-full max-w-md rounded-2xl bg-white shadow-xl dark:bg-slate-900"
           role="dialog"
           aria-modal="true"
           aria-labelledby="delete-member-modal-title"
         >
           <div class="px-5 py-5">
             <div class="flex items-start gap-4">
+
               <div
-                class="flex size-10 shrink-0 items-center justify-center rounded-full bg-red-50 text-red-600"
+                class="flex size-10 shrink-0 items-center justify-center rounded-full bg-red-50 text-red-600 dark:bg-red-500/10 dark:text-red-400"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -47,36 +48,38 @@ export function renderDeleteMemberModal(callback) {
               </div>
 
               <div class="min-w-0">
+
                 <h2
                   id="delete-member-modal-title"
-                  class="text-base font-bold text-slate-900"
+                  class="text-base font-bold text-slate-900 dark:text-white"
                 >
                   Remove team member?
                 </h2>
 
-                <p class="mt-1 text-sm leading-6 text-slate-500">
+                <p class="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">
                   Are you sure you want to remove
                   <span
                     id="delete-member-name"
-                    class="font-semibold text-slate-700"
+                    class="font-semibold text-slate-700 dark:text-slate-200"
                   ></span>
                   from the team?
                 </p>
 
-                <p class="mt-2 text-sm leading-6 text-red-600">
+                <p class="mt-2 text-sm leading-6 text-red-600 dark:text-red-400">
                   This action cannot be undone.
                 </p>
+
               </div>
             </div>
           </div>
 
           <div
-            class="flex justify-end gap-3 border-t border-slate-100 px-5 py-4"
+            class="flex justify-end gap-3 border-t border-slate-100 px-5 py-4 dark:border-slate-800"
           >
             <button
               id="cancel-delete-member"
               type="button"
-              class="rounded-lg border border-slate-200 px-4 py-2.5 text-sm font-semibold text-slate-600 transition hover:bg-slate-50"
+              class="rounded-lg border border-slate-200 px-4 py-2.5 text-sm font-semibold text-slate-600 transition hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-slate-100"
             >
               Cancel
             </button>
@@ -89,6 +92,7 @@ export function renderDeleteMemberModal(callback) {
               Remove Member
             </button>
           </div>
+
         </div>
       </div>
     `,

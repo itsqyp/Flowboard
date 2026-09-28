@@ -20,21 +20,23 @@ export function renderEditMemberModal(callback) {
         class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/40 p-4"
       >
         <div
-          class="w-full max-w-md rounded-2xl bg-white shadow-xl"
+          class="w-full max-w-md rounded-2xl bg-white shadow-xl dark:bg-slate-900"
           role="dialog"
           aria-modal="true"
           aria-labelledby="edit-member-modal-title"
         >
-          <div class="flex items-center justify-between border-b border-slate-100 px-5 py-4">
+          <div
+            class="flex items-center justify-between border-b border-slate-100 px-5 py-4 dark:border-slate-800"
+          >
             <div>
               <h2
                 id="edit-member-modal-title"
-                class="text-lg font-bold text-slate-900"
+                class="text-lg font-bold text-slate-900 dark:text-white"
               >
                 Edit Team Member
               </h2>
 
-              <p class="mt-1 text-sm text-slate-500">
+              <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
                 Update this member's information.
               </p>
             </div>
@@ -43,7 +45,7 @@ export function renderEditMemberModal(callback) {
               id="close-edit-member-modal"
               type="button"
               aria-label="Close modal"
-              class="rounded-lg p-2 text-slate-400 transition hover:bg-slate-100 hover:text-slate-600"
+              class="rounded-lg p-2 text-slate-400 transition hover:bg-slate-100 hover:text-slate-600 dark:hover:bg-slate-800 dark:hover:text-slate-200"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -62,13 +64,16 @@ export function renderEditMemberModal(callback) {
             </button>
           </div>
 
+
           <form id="edit-member-form">
+
             <div class="space-y-4 px-5 py-5">
 
+              <!-- Name -->
               <div>
                 <label
                   for="edit-member-name"
-                  class="mb-1.5 block text-sm font-semibold text-slate-700"
+                  class="mb-1.5 block text-sm font-semibold text-slate-700 dark:text-slate-200"
                 >
                   Name
                 </label>
@@ -78,14 +83,16 @@ export function renderEditMemberModal(callback) {
                   name="name"
                   type="text"
                   required
-                  class="w-full rounded-lg border border-slate-200 px-3 py-2.5 text-sm text-slate-900 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100"
+                  class="w-full rounded-lg border border-slate-200 px-3 py-2.5 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:placeholder:text-slate-500 dark:focus:ring-indigo-500/20"
                 />
               </div>
 
+
+              <!-- Email -->
               <div>
                 <label
                   for="edit-member-email"
-                  class="mb-1.5 block text-sm font-semibold text-slate-700"
+                  class="mb-1.5 block text-sm font-semibold text-slate-700 dark:text-slate-200"
                 >
                   Email
                 </label>
@@ -95,14 +102,16 @@ export function renderEditMemberModal(callback) {
                   name="email"
                   type="email"
                   required
-                  class="w-full rounded-lg border border-slate-200 px-3 py-2.5 text-sm text-slate-900 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100"
+                  class="w-full rounded-lg border border-slate-200 px-3 py-2.5 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:placeholder:text-slate-500 dark:focus:ring-indigo-500/20"
                 />
               </div>
 
+
+              <!-- Role -->
               <div>
                 <label
                   for="edit-member-role"
-                  class="mb-1.5 block text-sm font-semibold text-slate-700"
+                  class="mb-1.5 block text-sm font-semibold text-slate-700 dark:text-slate-200"
                 >
                   Role
                 </label>
@@ -110,7 +119,7 @@ export function renderEditMemberModal(callback) {
                 <select
                   id="edit-member-role"
                   name="role"
-                  class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100"
+                  class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200 dark:focus:ring-indigo-500/20"
                 >
                   <option value="Developer">Developer</option>
                   <option value="Designer">Designer</option>
@@ -120,10 +129,12 @@ export function renderEditMemberModal(callback) {
                 </select>
               </div>
 
+
+              <!-- Status -->
               <div>
                 <label
                   for="edit-member-status"
-                  class="mb-1.5 block text-sm font-semibold text-slate-700"
+                  class="mb-1.5 block text-sm font-semibold text-slate-700 dark:text-slate-200"
                 >
                   Status
                 </label>
@@ -131,7 +142,7 @@ export function renderEditMemberModal(callback) {
                 <select
                   id="edit-member-status"
                   name="status"
-                  class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100"
+                  class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200 dark:focus:ring-indigo-500/20"
                 >
                   <option value="active">Active</option>
                   <option value="inactive">Inactive</option>
@@ -140,11 +151,14 @@ export function renderEditMemberModal(callback) {
 
             </div>
 
-            <div class="flex justify-end gap-3 border-t border-slate-100 px-5 py-4">
+
+            <div
+              class="flex justify-end gap-3 border-t border-slate-100 px-5 py-4 dark:border-slate-800"
+            >
               <button
                 id="cancel-edit-member"
                 type="button"
-                class="rounded-lg border border-slate-200 px-4 py-2.5 text-sm font-semibold text-slate-600 transition hover:bg-slate-50"
+                class="rounded-lg border border-slate-200 px-4 py-2.5 text-sm font-semibold text-slate-600 transition hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-slate-100"
               >
                 Cancel
               </button>
@@ -156,6 +170,7 @@ export function renderEditMemberModal(callback) {
                 Save Changes
               </button>
             </div>
+
           </form>
         </div>
       </div>
