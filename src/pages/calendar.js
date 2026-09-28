@@ -42,11 +42,11 @@ export function renderCalendar() {
       <div class="flex flex-col gap-4 p-4 sm:flex-row sm:items-center sm:justify-between">
 
         <div>
-          <h1 class="text-2xl font-bold text-slate-900">
+          <h1 class="text-2xl font-bold text-slate-900 dark:text-white">
             Calendar
           </h1>
 
-          <p class="mt-1 text-sm text-slate-500">
+          <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
             View and manage your project deadlines and tasks.
           </p>
         </div>
@@ -63,15 +63,19 @@ export function renderCalendar() {
 
 
       <!-- Calendar -->
-      <div class="overflow-hidden rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+      <div
+        class="overflow-hidden rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900"
+      >
 
         <!-- Calendar Header -->
-        <div class="flex items-center justify-between border-b border-slate-200 px-5 py-4">
+        <div
+          class="flex items-center justify-between border-b border-slate-200 px-5 py-4 dark:border-slate-800"
+        >
 
           <button
             id="previous-calendar-month"
             type="button"
-            class="rounded-lg p-2 text-slate-500 transition hover:bg-slate-100 hover:text-slate-900"
+            class="rounded-lg p-2 text-slate-500 transition hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100"
             aria-label="Previous month"
           >
             <svg
@@ -91,7 +95,7 @@ export function renderCalendar() {
           </button>
 
 
-          <h2 class="text-base font-bold text-slate-900">
+          <h2 class="text-base font-bold text-slate-900 dark:text-white">
             ${currentCalendarDate.toLocaleDateString("en-US", {
               month: "long",
               year: "numeric",
@@ -102,7 +106,7 @@ export function renderCalendar() {
           <button
             id="next-calendar-month"
             type="button"
-            class="rounded-lg p-2 text-slate-500 transition hover:bg-slate-100 hover:text-slate-900"
+            class="rounded-lg p-2 text-slate-500 transition hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100"
             aria-label="Next month"
           >
             <svg
@@ -113,13 +117,13 @@ export function renderCalendar() {
               stroke="currentColor"
               class="size-5"
             >
-             <path
-  d="m8.25 4.5 7.5 7.5-7.5 7.5"
-  stroke="currentColor"
-  stroke-width="1.5"
-  stroke-linecap="round"
-  stroke-linejoin="round"
-/>
+              <path
+                d="m8.25 4.5 7.5 7.5-7.5 7.5"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
             </svg>
           </button>
 
@@ -127,193 +131,199 @@ export function renderCalendar() {
 
 
         <!-- Weekdays -->
-        <div class="grid grid-cols-7 border-b border-slate-200">
+        <div class="grid grid-cols-7 border-b border-slate-200 dark:border-slate-800">
 
-          <div class="px-2 py-3 text-center text-xs font-semibold text-slate-500">
+          <div class="px-2 py-3 text-center text-xs font-semibold text-slate-500 dark:text-slate-400">
             Sun
           </div>
 
-          <div class="px-2 py-3 text-center text-xs font-semibold text-slate-500">
+          <div class="px-2 py-3 text-center text-xs font-semibold text-slate-500 dark:text-slate-400">
             Mon
           </div>
 
-          <div class="px-2 py-3 text-center text-xs font-semibold text-slate-500">
+          <div class="px-2 py-3 text-center text-xs font-semibold text-slate-500 dark:text-slate-400">
             Tue
           </div>
 
-          <div class="px-2 py-3 text-center text-xs font-semibold text-slate-500">
+          <div class="px-2 py-3 text-center text-xs font-semibold text-slate-500 dark:text-slate-400">
             Wed
           </div>
 
-          <div class="px-2 py-3 text-center text-xs font-semibold text-slate-500">
+          <div class="px-2 py-3 text-center text-xs font-semibold text-slate-500 dark:text-slate-400">
             Thu
           </div>
 
-          <div class="px-2 py-3 text-center text-xs font-semibold text-slate-500">
+          <div class="px-2 py-3 text-center text-xs font-semibold text-slate-500 dark:text-slate-400">
             Fri
           </div>
 
-          <div class="px-2 py-3 text-center text-xs font-semibold text-slate-500">
+          <div class="px-2 py-3 text-center text-xs font-semibold text-slate-500 dark:text-slate-400">
             Sat
           </div>
 
         </div>
 
 
-      <!-- Calendar Grid -->
+     <!-- Calendar Grid -->
 <div class="overflow-x-auto">
   <div class="min-w-[900px]">
     <div class="grid grid-cols-7">
 
-          ${(() => {
-            const year = currentCalendarDate.getFullYear();
-            const month = currentCalendarDate.getMonth();
+      ${(() => {
+        const year = currentCalendarDate.getFullYear();
+        const month = currentCalendarDate.getMonth();
 
-            const firstDay = new Date(year, month, 1).getDay();
-            const daysInMonth = new Date(year, month + 1, 0).getDate();
+        const firstDay = new Date(year, month, 1).getDay();
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-            const totalCells = Math.ceil((firstDay + daysInMonth) / 7) * 7;
+        const totalCells = Math.ceil((firstDay + daysInMonth) / 7) * 7;
 
-            return Array.from({ length: totalCells }, (_, index) => {
-              const dayNumber = index - firstDay + 1;
+        return Array.from({ length: totalCells }, (_, index) => {
+          const dayNumber = index - firstDay + 1;
 
-              const isCurrentMonth = dayNumber >= 1 && dayNumber <= daysInMonth;
+          const isCurrentMonth = dayNumber >= 1 && dayNumber <= daysInMonth;
 
-              const dateString = isCurrentMonth
-                ? `${year}-${String(month + 1).padStart(2, "0")}-${String(dayNumber).padStart(2, "0")}`
-                : "";
+          const dateString = isCurrentMonth
+            ? `${year}-${String(month + 1).padStart(2, "0")}-${String(dayNumber).padStart(2, "0")}`
+            : "";
 
-              const dayEvents = calendarEvents.filter(
-                (event) => event.date === dateString,
-              );
+          const dayEvents = calendarEvents.filter(
+            (event) => event.date === dateString,
+          );
 
-              return `
-                  <div
-                   class="group min-h-28 border-b border-r border-slate-100 p-3 transition-colors ${
-                     isCurrentMonth
-                       ? "bg-white hover:bg-slate-50"
-                       : "bg-slate-50"
-                   }"
-                  >
+          return `
+            <div
+              class="group min-h-28 border-b border-r border-slate-100 p-3 transition-colors dark:border-slate-800 ${
+                isCurrentMonth
+                  ? "bg-white hover:bg-slate-50 dark:bg-slate-900 dark:hover:bg-slate-800/50"
+                  : "bg-slate-50 dark:bg-slate-950"
+              }"
+            >
+
+              ${
+                isCurrentMonth
+                  ? `
+                    ${(() => {
+                      const today = new Date();
+
+                      const isToday =
+                        isCurrentMonth &&
+                        dayNumber === today.getDate() &&
+                        month === today.getMonth() &&
+                        year === today.getFullYear();
+
+                      return `
+                        <span
+                          class="flex size-7 items-center justify-center rounded-full text-sm font-medium ${
+                            isToday
+                              ? "bg-indigo-600 text-white"
+                              : "text-slate-700 dark:text-slate-200"
+                          }"
+                        >
+                          ${dayNumber}
+                        </span>
+                      `;
+                    })()}
 
                     ${
-                      isCurrentMonth
+                      dayEvents.length > 0
                         ? `
-                        ${(() => {
-                          const today = new Date();
+                          <div class="mt-2 space-y-1">
+                            ${dayEvents
+                              .slice(0, 3)
+                              .map(
+                                (event) => `
+                                  <div
+                                    class="calendar-event flex cursor-pointer items-center gap-1.5 truncate rounded-md px-2 py-1 text-xs font-medium transition hover:opacity-80 ${
+                                      event.type === "project"
+                                        ? "bg-indigo-50 text-indigo-700 dark:bg-indigo-500/10 dark:text-indigo-300"
+                                        : "bg-slate-50 text-slate-600 dark:bg-slate-800 dark:text-slate-300"
+                                    }"
+                                    data-event-type="${event.type}"
+                                    data-event-id="${event.id}"
+                                    data-project-id="${event.projectId}"
+                                    title="${event.title}"
+                                  >
+                                    ${
+                                      event.type === "project"
+                                        ? `
+                                          <span class="size-1.5 shrink-0 rounded-full bg-indigo-500"></span>
+                                        `
+                                        : `
+                                          <span
+                                            class="size-1.5 shrink-0 rounded-full ${
+                                              event.priority === "high"
+                                                ? "bg-red-500"
+                                                : event.priority === "medium"
+                                                  ? "bg-amber-500"
+                                                  : "bg-slate-400"
+                                            }"
+                                          ></span>
+                                        `
+                                    }
 
-                          const isToday =
-                            isCurrentMonth &&
-                            dayNumber === today.getDate() &&
-                            month === today.getMonth() &&
-                            year === today.getFullYear();
+                                    <span class="truncate">
+                                      ${event.title}
+                                    </span>
+                                  </div>
+                                `,
+                              )
+                              .join("")}
 
-                          return `
-    <span
-      class="flex size-7 items-center justify-center rounded-full text-sm font-medium ${
-        isToday ? "bg-indigo-600 text-white" : "text-slate-700"
-      }"
-    >
-      ${dayNumber}
-    </span>
-  `;
-                        })()}
-
-                       ${
-                         dayEvents.length > 0
-                           ? `
-  <div class="mt-2 space-y-1">
-    ${dayEvents
-      .slice(0, 3)
-      .map(
-        (event) => `
-        <div
-          class="calendar-event flex cursor-pointer items-center gap-1.5 truncate rounded-md px-2 py-1 text-xs font-medium transition hover:opacity-80 ${
-            event.type === "project"
-              ? "bg-indigo-50 text-indigo-700"
-              : "bg-slate-50 text-slate-600"
-          }"
-          data-event-type="${event.type}"
-          data-event-id="${event.id}"
-          data-project-id="${event.projectId}"
-          title="${event.title}"
-        >
-          ${
-            event.type === "project"
-              ? `
-                <span class="size-1.5 shrink-0 rounded-full bg-indigo-500"></span>
-              `
-              : `
-                <span class="size-1.5 shrink-0 rounded-full ${
-                  event.priority === "high"
-                    ? "bg-red-500"
-                    : event.priority === "medium"
-                      ? "bg-amber-500"
-                      : "bg-slate-400"
-                }"></span>
-              `
-          }
-
-          <span class="truncate">
-            ${event.title}
-          </span>
-        </div>
-      `,
-      )
-      .join("")}
-
-    ${
-      dayEvents.length > 3
-        ? `
-          <div
-  class="calendar-more cursor-pointer px-2 pt-0.5 text-xs font-medium text-slate-500 hover:text-indigo-600"
-  data-date="${dateString}"
->
-  + ${dayEvents.length - 3} more
-</div>
-        `
-        : ""
-    }
-  </div>
-`
-                           : ""
-                       }
+                            ${
+                              dayEvents.length > 3
+                                ? `
+                                  <div
+                                    class="calendar-more cursor-pointer px-2 pt-0.5 text-xs font-medium text-slate-500 hover:text-indigo-600 dark:text-slate-400 dark:hover:text-indigo-400"
+                                    data-date="${dateString}"
+                                  >
+                                    + ${dayEvents.length - 3} more
+                                  </div>
+                                `
+                                : ""
+                            }
+                          </div>
                         `
                         : ""
                     }
+                  `
+                  : ""
+              }
 
-                  </div>
-                `;
-            }).join("");
-          })()}
+            </div>
+          `;
+        }).join("");
+      })()}
+             </div>
+        </div>
+        </div>
 
-        </div>
-        </div>
-        </div>
         <!-- Calendar Legend -->
-        <div class="flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-slate-200 px-4 py-3 text-xs text-slate-500">
-  <div class="flex items-center gap-2">
-    <span class="size-2 rounded-full bg-indigo-500"></span>
-    <span>Project</span>
-  </div>
+        <div
+          class="flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-slate-200 px-4 py-3 text-xs text-slate-500 dark:border-slate-800 dark:text-slate-400"
+        >
+          <div class="flex items-center gap-2">
+            <span class="size-2 rounded-full bg-indigo-500"></span>
+            <span>Project</span>
+          </div>
 
-  <div class="flex items-center gap-2">
-    <span class="size-2 rounded-full bg-red-500"></span>
-    <span>High priority</span>
-  </div>
+          <div class="flex items-center gap-2">
+            <span class="size-2 rounded-full bg-red-500"></span>
+            <span>High priority</span>
+          </div>
 
-  <div class="flex items-center gap-2">
-    <span class="size-2 rounded-full bg-amber-500"></span>
-    <span>Medium priority</span>
-  </div>
+          <div class="flex items-center gap-2">
+            <span class="size-2 rounded-full bg-amber-500"></span>
+            <span>Medium priority</span>
+          </div>
 
-  <div class="flex items-center gap-2">
-    <span class="size-2 rounded-full bg-slate-400"></span>
-    <span>Low priority</span>
-  </div>
-</div>
+          <div class="flex items-center gap-2">
+            <span class="size-2 rounded-full bg-slate-400"></span>
+            <span>Low priority</span>
+          </div>
+        </div>
 
-      
+
   `;
 
   function renderCalendarEventsModal(events, date) {
@@ -332,100 +342,105 @@ export function renderCalendar() {
     calendarEventsModal = document.createElement("div");
 
     calendarEventsModal.innerHTML = `
-    <div
-      class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 p-4"
-      data-calendar-modal-backdrop
-    >
       <div
-        class="w-full max-w-lg overflow-hidden rounded-xl bg-white shadow-xl"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="calendar-events-title"
+        class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 p-4"
+        data-calendar-modal-backdrop
       >
+        <div
+          class="w-full max-w-lg overflow-hidden rounded-xl bg-white shadow-xl dark:bg-slate-900"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="calendar-events-title"
+        >
 
-        <div class="flex items-center justify-between border-b border-slate-200 px-5 py-4">
-          <div>
-            <h2
-              id="calendar-events-title"
-              class="text-base font-semibold text-slate-900"
+          <div
+            class="flex items-center justify-between border-b border-slate-200 px-5 py-4 dark:border-slate-800"
+          >
+            <div>
+              <h2
+                id="calendar-events-title"
+                class="text-base font-semibold text-slate-900 dark:text-white"
+              >
+                ${formattedDate}
+              </h2>
+
+              <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
+                ${events.length} ${events.length === 1 ? "event" : "events"}
+              </p>
+            </div>
+
+            <button
+              type="button"
+              data-calendar-modal-close
+              class="flex size-8 items-center justify-center rounded-lg text-slate-400 transition hover:bg-slate-100 hover:text-slate-700 dark:hover:bg-slate-800 dark:hover:text-slate-200"
+              aria-label="Close"
             >
-              ${formattedDate}
-            </h2>
-
-            <p class="mt-1 text-sm text-slate-500">
-              ${events.length} ${events.length === 1 ? "event" : "events"}
-            </p>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="size-5"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6 18 18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
           </div>
 
-          <button
-            type="button"
-            data-calendar-modal-close
-            class="flex size-8 items-center justify-center rounded-lg text-slate-400 transition hover:bg-slate-100 hover:text-slate-700"
-            aria-label="Close"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="size-5"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M6 18 18 6M6 6l12 12"
-              />
-            </svg>
-          </button>
-        </div>
 
-        <div class="max-h-[60vh] space-y-2 overflow-y-auto p-5">
+          <div class="max-h-[60vh] space-y-2 overflow-y-auto p-5">
 
-          ${events
-            .map(
-              (event) => `
-                <div
-                  class="calendar-modal-event flex cursor-pointer items-center gap-3 rounded-lg border border-slate-200 p-3 transition hover:bg-slate-50"
-                  data-project-id="${event.projectId}"
-                >
+            ${events
+              .map(
+                (event) => `
+                  <div
+                    class="calendar-modal-event flex cursor-pointer items-center gap-3 rounded-lg border border-slate-200 p-3 transition hover:bg-slate-50 dark:border-slate-700 dark:hover:bg-slate-800"
+                    data-project-id="${event.projectId}"
+                  >
 
-                  <span
-                    class="size-2 shrink-0 rounded-full ${
-                      event.type === "project"
-                        ? "bg-indigo-500"
-                        : event.priority === "high"
-                          ? "bg-red-500"
-                          : event.priority === "medium"
-                            ? "bg-amber-500"
-                            : "bg-slate-400"
-                    }"
-                  ></span>
-
-                  <div class="min-w-0 flex-1">
-                    <p class="truncate text-sm font-medium text-slate-900">
-                      ${event.title}
-                    </p>
-
-                    <p class="mt-0.5 text-xs text-slate-500">
-                      ${
+                    <span
+                      class="size-2 shrink-0 rounded-full ${
                         event.type === "project"
-                          ? "Project deadline"
-                          : "Task deadline"
-                      }
-                    </p>
-                  </div>
+                          ? "bg-indigo-500"
+                          : event.priority === "high"
+                            ? "bg-red-500"
+                            : event.priority === "medium"
+                              ? "bg-amber-500"
+                              : "bg-slate-400"
+                      }"
+                    ></span>
 
-                </div>
-              `,
-            )
-            .join("")}
+                    <div class="min-w-0 flex-1">
+                      <p
+                        class="truncate text-sm font-medium text-slate-900 dark:text-slate-100"
+                      >
+                        ${event.title}
+                      </p>
+
+                      <p class="mt-0.5 text-xs text-slate-500 dark:text-slate-400">
+                        ${
+                          event.type === "project"
+                            ? "Project deadline"
+                            : "Task deadline"
+                        }
+                      </p>
+                    </div>
+
+                  </div>
+                `,
+              )
+              .join("")}
+
+          </div>
 
         </div>
-
       </div>
-    </div>
-  `;
+    `;
 
     document.body.appendChild(calendarEventsModal);
 
