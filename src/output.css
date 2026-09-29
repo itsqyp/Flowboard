@@ -1441,6 +1441,9 @@
   :where(.dark\:divide-slate-800:where(.dark, .dark *) > :not(:last-child)) {
     border-color: var(--color-slate-800);
   }
+  .dark\:border-indigo-400:where(.dark, .dark *) {
+    border-color: var(--color-indigo-400);
+  }
   .dark\:border-red-500\/30:where(.dark, .dark *) {
     border-color: color-mix(in srgb, oklch(63.7% 0.237 25.331) 30%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
@@ -1570,12 +1573,18 @@
   .dark\:text-white:where(.dark, .dark *) {
     color: var(--color-white);
   }
+  .dark\:ring-slate-700:where(.dark, .dark *) {
+    --tw-ring-color: var(--color-slate-700);
+  }
   .dark\:placeholder\:text-slate-500:where(.dark, .dark *)::placeholder {
     color: var(--color-slate-500);
   }
   @media (hover: hover) {
     .dark\:hover\:border-indigo-400:where(.dark, .dark *):hover {
       border-color: var(--color-indigo-400);
+    }
+    .dark\:hover\:border-slate-600:where(.dark, .dark *):hover {
+      border-color: var(--color-slate-600);
     }
     .dark\:hover\:border-slate-700:where(.dark, .dark *):hover {
       border-color: var(--color-slate-700);

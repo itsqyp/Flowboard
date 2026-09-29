@@ -285,15 +285,15 @@ function renderAppearanceSettings(content) {
   const appearance = getAppearance();
 
   content.innerHTML = `
-    <section class="rounded-xl border border-slate-200 bg-white shadow-sm">
+    <section class="rounded-xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
 
       <!-- Header -->
-      <div class="border-b border-slate-200 px-6 py-5">
-        <h2 class="text-base font-semibold text-slate-900">
+      <div class="border-b border-slate-200 px-6 py-5 dark:border-slate-800">
+        <h2 class="text-base font-semibold text-slate-900 dark:text-white">
           Appearance
         </h2>
 
-        <p class="mt-1 text-sm text-slate-500">
+        <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
           Customize the look and feel of your workspace.
         </p>
       </div>
@@ -302,11 +302,11 @@ function renderAppearanceSettings(content) {
       <div class="p-6">
 
         <div>
-          <h3 class="text-sm font-semibold text-slate-900">
+          <h3 class="text-sm font-semibold text-slate-900 dark:text-white">
             Theme
           </h3>
 
-          <p class="mt-1 text-sm text-slate-500">
+          <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
             Choose how Flowboard should appear.
           </p>
         </div>
@@ -318,8 +318,8 @@ function renderAppearanceSettings(content) {
             class="cursor-pointer rounded-xl border p-4 transition
               ${
                 appearance.theme === "light"
-                  ? "border-indigo-500 bg-indigo-50"
-                  : "border-slate-200 hover:border-slate-300"
+                  ? "border-indigo-500 bg-indigo-50 dark:border-indigo-400 dark:bg-indigo-500/10"
+                  : "border-slate-200 hover:border-slate-300 dark:border-slate-700 dark:hover:border-slate-600"
               }"
           >
             <input
@@ -332,14 +332,16 @@ function renderAppearanceSettings(content) {
 
             <div class="flex items-center gap-3">
 
-              <div class="flex size-10 items-center justify-center rounded-lg bg-white shadow-sm ring-1 ring-slate-200">
+              <div
+                class="flex size-10 items-center justify-center rounded-lg bg-white shadow-sm ring-1 ring-slate-200 dark:bg-slate-800 dark:ring-slate-700"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke-width="1.5"
                   stroke="currentColor"
-                  class="size-5 text-slate-700"
+                  class="size-5 text-slate-700 dark:text-slate-200"
                 >
                   <path
                     stroke-linecap="round"
@@ -350,11 +352,11 @@ function renderAppearanceSettings(content) {
               </div>
 
               <div>
-                <p class="text-sm font-semibold text-slate-900">
+                <p class="text-sm font-semibold text-slate-900 dark:text-white">
                   Light
                 </p>
 
-                <p class="text-xs text-slate-500">
+                <p class="text-xs text-slate-500 dark:text-slate-400">
                   Always use light mode
                 </p>
               </div>
@@ -367,8 +369,8 @@ function renderAppearanceSettings(content) {
             class="cursor-pointer rounded-xl border p-4 transition
               ${
                 appearance.theme === "dark"
-                  ? "border-indigo-500 bg-indigo-50"
-                  : "border-slate-200 hover:border-slate-300"
+                  ? "border-indigo-500 bg-indigo-50 dark:border-indigo-400 dark:bg-indigo-500/10"
+                  : "border-slate-200 hover:border-slate-300 dark:border-slate-700 dark:hover:border-slate-600"
               }"
           >
             <input
@@ -381,7 +383,9 @@ function renderAppearanceSettings(content) {
 
             <div class="flex items-center gap-3">
 
-              <div class="flex size-10 items-center justify-center rounded-lg bg-slate-900 shadow-sm">
+              <div
+                class="flex size-10 items-center justify-center rounded-lg bg-slate-900 shadow-sm dark:bg-slate-950"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -399,11 +403,11 @@ function renderAppearanceSettings(content) {
               </div>
 
               <div>
-                <p class="text-sm font-semibold text-slate-900">
+                <p class="text-sm font-semibold text-slate-900 dark:text-white">
                   Dark
                 </p>
 
-                <p class="text-xs text-slate-500">
+                <p class="text-xs text-slate-500 dark:text-slate-400">
                   Always use dark mode
                 </p>
               </div>
@@ -416,8 +420,8 @@ function renderAppearanceSettings(content) {
             class="cursor-pointer rounded-xl border p-4 transition
               ${
                 appearance.theme === "system"
-                  ? "border-indigo-500 bg-indigo-50"
-                  : "border-slate-200 hover:border-slate-300"
+                  ? "border-indigo-500 bg-indigo-50 dark:border-indigo-400 dark:bg-indigo-500/10"
+                  : "border-slate-200 hover:border-slate-300 dark:border-slate-700 dark:hover:border-slate-600"
               }"
           >
             <input
@@ -430,14 +434,16 @@ function renderAppearanceSettings(content) {
 
             <div class="flex items-center gap-3">
 
-              <div class="flex size-10 items-center justify-center rounded-lg bg-slate-100 shadow-sm ring-1 ring-slate-200">
+              <div
+                class="flex size-10 items-center justify-center rounded-lg bg-slate-100 shadow-sm ring-1 ring-slate-200 dark:bg-slate-800 dark:ring-slate-700"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke-width="1.5"
                   stroke="currentColor"
-                  class="size-5 text-slate-700"
+                  class="size-5 text-slate-700 dark:text-slate-200"
                 >
                   <path
                     stroke-linecap="round"
@@ -448,11 +454,11 @@ function renderAppearanceSettings(content) {
               </div>
 
               <div>
-                <p class="text-sm font-semibold text-slate-900">
+                <p class="text-sm font-semibold text-slate-900 dark:text-white">
                   System
                 </p>
 
-                <p class="text-xs text-slate-500">
+                <p class="text-xs text-slate-500 dark:text-slate-400">
                   Follow system preference
                 </p>
               </div>
@@ -558,11 +564,11 @@ export function renderSettings() {
 
       <!-- Page Header -->
       <div>
-        <h1 class="text-2xl font-bold tracking-tight text-slate-900">
+        <h1 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
           Settings
         </h1>
 
-        <p class="mt-1 text-sm text-slate-500">
+        <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
           Manage your account and workspace preferences.
         </p>
       </div>
@@ -577,7 +583,7 @@ export function renderSettings() {
             <button
               type="button"
               data-settings-tab="profile"
-              class="settings-tab flex w-full items-center gap-3 rounded-lg bg-indigo-50 px-3 py-2.5 text-left text-sm font-semibold text-indigo-700"
+              class="settings-tab flex w-full items-center gap-3 rounded-lg bg-indigo-50 px-3 py-2.5 text-left text-sm font-semibold text-indigo-700 dark:bg-indigo-500/10 dark:text-indigo-300"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -600,7 +606,7 @@ export function renderSettings() {
             <button
               type="button"
               data-settings-tab="notifications"
-              class="settings-tab flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-900"
+              class="settings-tab flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -623,7 +629,7 @@ export function renderSettings() {
             <button
               type="button"
               data-settings-tab="appearance"
-              class="settings-tab flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-900"
+              class="settings-tab flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -646,7 +652,7 @@ export function renderSettings() {
             <button
               type="button"
               data-settings-tab="workspace"
-              class="settings-tab flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-900"
+              class="settings-tab flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -673,14 +679,14 @@ export function renderSettings() {
         <div id="settings-content">
 
           <!-- Profile -->
-          <section class="rounded-xl border border-slate-200 bg-white shadow-sm">
+          <section class="rounded-xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
 
-            <div class="border-b border-slate-200 px-6 py-5">
-              <h2 class="text-base font-semibold text-slate-900">
+            <div class="border-b border-slate-200 px-6 py-5 dark:border-slate-800">
+              <h2 class="text-base font-semibold text-slate-900 dark:text-white">
                 Profile
               </h2>
 
-              <p class="mt-1 text-sm text-slate-500">
+              <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
                 Update your personal information and account details.
               </p>
             </div>
@@ -691,20 +697,20 @@ export function renderSettings() {
               <div class="flex items-center gap-4">
 
                 <div
-                  class="flex size-16 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-lg font-semibold text-indigo-700"
+                  class="flex size-16 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-lg font-semibold text-indigo-700 dark:bg-indigo-500/10 dark:text-indigo-300"
                 >
-                   ${getInitials(profile.name)}
+                  ${getInitials(profile.name)}
                 </div>
 
                 <div>
                   <button
                     type="button"
-                    class="rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50"
+                    class="rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-slate-100"
                   >
                     Change avatar
                   </button>
 
-                  <p class="mt-1 text-xs text-slate-500">
+                  <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">
                     JPG, PNG or GIF. Maximum 2MB.
                   </p>
                 </div>
@@ -719,7 +725,7 @@ export function renderSettings() {
                   <div>
                     <label
                       for="settings-name"
-                      class="mb-1.5 block text-sm font-medium text-slate-700"
+                      class="mb-1.5 block text-sm font-medium text-slate-700 dark:text-slate-200"
                     >
                       Full name
                     </label>
@@ -728,14 +734,14 @@ export function renderSettings() {
                       id="settings-name"
                       type="text"
                       value="${profile.name}"
-                      class="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+                      class="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:placeholder:text-slate-500 dark:focus:ring-indigo-500/20"
                     />
                   </div>
 
                   <div>
                     <label
                       for="settings-email"
-                      class="mb-1.5 block text-sm font-medium text-slate-700"
+                      class="mb-1.5 block text-sm font-medium text-slate-700 dark:text-slate-200"
                     >
                       Email address
                     </label>
@@ -743,8 +749,8 @@ export function renderSettings() {
                     <input
                       id="settings-email"
                       type="email"
-                     value="${profile.email}"
-                      class="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+                      value="${profile.email}"
+                      class="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:placeholder:text-slate-500 dark:focus:ring-indigo-500/20"
                     />
                   </div>
 
@@ -753,7 +759,7 @@ export function renderSettings() {
                 <div>
                   <label
                     for="settings-role"
-                    class="mb-1.5 block text-sm font-medium text-slate-700"
+                    class="mb-1.5 block text-sm font-medium text-slate-700 dark:text-slate-200"
                   >
                     Role
                   </label>
@@ -762,15 +768,15 @@ export function renderSettings() {
                     id="settings-role"
                     type="text"
                     value="${profile.role}"
-                    class="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+                    class="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:placeholder:text-slate-500 dark:focus:ring-indigo-500/20"
                   />
                 </div>
 
-                <div class="flex justify-end border-t border-slate-200 pt-5">
+                <div class="flex justify-end border-t border-slate-200 pt-5 dark:border-slate-800">
 
                   <button
                     type="submit"
-                    class="rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                    class="rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900"
                   >
                     Save changes
                   </button>
@@ -856,47 +862,47 @@ function setupSettings() {
     profileSyncInitialized = true;
   }
 }
-
 function renderProfileSettings(content) {
   const profile = getProfile();
-  content.innerHTML = `
-    <section class="rounded-xl border border-slate-200 bg-white shadow-sm">
 
-      <div class="border-b border-slate-200 px-6 py-5">
-        <h2 class="text-base font-semibold text-slate-900">
+  content.innerHTML = `
+    <section class="rounded-xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
+
+      <div class="border-b border-slate-200 px-6 py-5 dark:border-slate-800">
+        <h2 class="text-base font-semibold text-slate-900 dark:text-white">
           Profile
         </h2>
 
-        <p class="mt-1 text-sm text-slate-500">
+        <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
           Update your personal information and account details.
         </p>
       </div>
 
       <div class="p-6">
 
-      <!-- Avatar -->
-  <div class="flex items-center gap-4">
+        <!-- Avatar -->
+        <div class="flex items-center gap-4">
 
-    <div
-      class="flex size-16 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-lg font-semibold text-indigo-700"
-    >
-      ${getInitials(profile.name)}
-    </div>
+          <div
+            class="flex size-16 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-lg font-semibold text-indigo-700 dark:bg-indigo-500/10 dark:text-indigo-300"
+          >
+            ${getInitials(profile.name)}
+          </div>
 
-    <div>
-      <button
-        type="button"
-        class="rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50"
-      >
-        Change avatar
-      </button>
+          <div>
+            <button
+              type="button"
+              class="rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-slate-100"
+            >
+              Change avatar
+            </button>
 
-      <p class="mt-1 text-xs text-slate-500">
-        JPG, PNG or GIF. Maximum 2MB.
-      </p>
-    </div>
+            <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">
+              JPG, PNG or GIF. Maximum 2MB.
+            </p>
+          </div>
 
-  </div>
+        </div>
 
         <form id="profile-form" class="space-y-5">
 
@@ -905,7 +911,7 @@ function renderProfileSettings(content) {
             <div>
               <label
                 for="settings-name"
-                class="mb-1.5 block text-sm font-medium text-slate-700"
+                class="mb-1.5 block text-sm font-medium text-slate-700 dark:text-slate-200"
               >
                 Full name
               </label>
@@ -914,14 +920,14 @@ function renderProfileSettings(content) {
                 id="settings-name"
                 type="text"
                 value="${profile.name}"
-                class="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm text-slate-900 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+                class="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm text-slate-900 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:placeholder:text-slate-500 dark:focus:ring-indigo-500/20"
               />
             </div>
 
             <div>
               <label
                 for="settings-email"
-                class="mb-1.5 block text-sm font-medium text-slate-700"
+                class="mb-1.5 block text-sm font-medium text-slate-700 dark:text-slate-200"
               >
                 Email address
               </label>
@@ -930,7 +936,7 @@ function renderProfileSettings(content) {
                 id="settings-email"
                 type="email"
                 value="${profile.email}"
-                class="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm text-slate-900 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+                class="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm text-slate-900 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:placeholder:text-slate-500 dark:focus:ring-indigo-500/20"
               />
             </div>
 
@@ -939,7 +945,7 @@ function renderProfileSettings(content) {
           <div>
             <label
               for="settings-role"
-              class="mb-1.5 block text-sm font-medium text-slate-700"
+              class="mb-1.5 block text-sm font-medium text-slate-700 dark:text-slate-200"
             >
               Role
             </label>
@@ -948,15 +954,15 @@ function renderProfileSettings(content) {
               id="settings-role"
               type="text"
               value="${profile.role}"
-              class="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm text-slate-900 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+              class="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm text-slate-900 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:placeholder:text-slate-500 dark:focus:ring-indigo-500/20"
             />
           </div>
 
-          <div class="flex justify-end border-t border-slate-200 pt-5">
+          <div class="flex justify-end border-t border-slate-200 pt-5 dark:border-slate-800">
 
             <button
               type="submit"
-              class="rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-indigo-700"
+              class="rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900"
             >
               Save changes
             </button>
@@ -1021,14 +1027,14 @@ function setupProfileForm() {
 
 function renderComingSoonSettings(content, title, description) {
   content.innerHTML = `
-    <section class="rounded-xl border border-slate-200 bg-white shadow-sm">
+    <section class="rounded-xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
 
-      <div class="border-b border-slate-200 px-6 py-5">
-        <h2 class="text-base font-semibold text-slate-900">
+      <div class="border-b border-slate-200 px-6 py-5 dark:border-slate-800">
+        <h2 class="text-base font-semibold text-slate-900 dark:text-white">
           ${title}
         </h2>
 
-        <p class="mt-1 text-sm text-slate-500">
+        <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
           ${description}
         </p>
       </div>
@@ -1037,14 +1043,16 @@ function renderComingSoonSettings(content, title, description) {
 
         <div class="text-center">
 
-          <div class="mx-auto flex size-12 items-center justify-center rounded-full bg-slate-100">
+          <div
+            class="mx-auto flex size-12 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              class="size-6 text-slate-500"
+              class="size-6 text-slate-500 dark:text-slate-400"
             >
               <path
                 stroke-linecap="round"
@@ -1054,11 +1062,11 @@ function renderComingSoonSettings(content, title, description) {
             </svg>
           </div>
 
-          <h3 class="mt-4 text-sm font-semibold text-slate-900">
+          <h3 class="mt-4 text-sm font-semibold text-slate-900 dark:text-white">
             Coming soon
           </h3>
 
-          <p class="mx-auto mt-1 max-w-sm text-sm text-slate-500">
+          <p class="mx-auto mt-1 max-w-sm text-sm text-slate-500 dark:text-slate-400">
             This settings section will be implemented in a future step.
           </p>
 
