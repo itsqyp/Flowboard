@@ -133,7 +133,7 @@ export function renderUpcomingDeadlines() {
      <div class="border-t p-4 dark:border-slate-800">
 
         <a
-          href="#"
+          href="/calendar"
           class="flex items-center justify-center gap-1 text-sm font-semibold text-indigo-600 transition-colors hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-300"
         >
           View calendar
