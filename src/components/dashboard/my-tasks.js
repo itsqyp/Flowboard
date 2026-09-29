@@ -28,7 +28,7 @@ export function renderMyTasks() {
         </div>
 
         <a
-          href="#"
+          href="/tasks"
           class="text-sm font-semibold text-indigo-600 transition-colors hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-300"
         >
           View all
@@ -54,7 +54,7 @@ export function renderMyTasks() {
           class="task-checkbox mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-md border ${
             task.status === "completed"
               ? "border-indigo-600 bg-indigo-600 text-white"
-              : ":border-slate-300 bg-white hover:border-indigo-500 dark:border-slate-600 dark:bg-slate-900 dark:hover:border-indigo-400"
+              : "border-slate-300 bg-white hover:border-indigo-500 dark:border-slate-600 dark:bg-slate-900 dark:hover:border-indigo-400"
           }"
           data-task-id="${task.id}"
           aria-label="${
