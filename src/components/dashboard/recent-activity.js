@@ -59,14 +59,9 @@ export function renderRecentActivity() {
           </p>
         </div>
 
-        <button
-          type="button"
-        class="text-sm font-semibold text-indigo-600 transition-colors hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-300"
-        >
-          View all
-        </button>
+       
 
-      </div>
+       </div>
 
       <!-- Activity List -->
      <div class="divide-y dark:divide-slate-800">
@@ -86,7 +81,7 @@ export function renderRecentActivity() {
                 <!-- Activity -->
                 <div class="min-w-0 flex-1">
 
-                  <p class="text-sm leading-6 text-slate-600 dark:text-slate-300"
+                  <p class="text-sm leading-6 text-slate-600 dark:text-slate-300">
 
                     <span class="font-semibold text-slate-900 dark:text-white">
                       ${activity.user}
