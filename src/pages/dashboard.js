@@ -1,3 +1,4 @@
+import { subscribe } from "../store/store.js";
 import { renderWelcomeHeader } from "../components/dashboard/welcome-header.js";
 import { renderStatCards } from "../components/dashboard/stat-cards.js";
 import { renderProjectsOverview } from "../components/dashboard/projects-overview.js";
@@ -58,4 +59,22 @@ export function renderDashboard() {
   renderRecentActivity();
   renderProjectModal();
   setupCreateProjectButton();
+}
+let dashboardSubscribed = false;
+
+export function setupDashboardStore() {
+  if (dashboardSubscribed) return;
+
+  subscribe(() => {
+    if (
+      window.location.pathname !== "/" &&
+      window.location.pathname !== "/dashboard"
+    ) {
+      return;
+    }
+
+    renderDashboard();
+  });
+
+  dashboardSubscribed = true;
 }

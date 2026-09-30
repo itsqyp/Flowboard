@@ -8,6 +8,7 @@ import { renderFooter } from "./components/footer.js";
 import { renderMobileNavigation } from "./components/mobile-navigation.js";
 import { renderToastContainer } from "./components/toast.js";
 import { router } from "./router.js";
+import { setupDashboardStore } from "./pages/dashboard.js";
 import { setupNavigation } from "./navigation.js";
 import { getAppearance, applyTheme } from "./theme.js";
 const appearance = getAppearance();
@@ -23,5 +24,5 @@ renderMobileNavigation();
 
 renderToastContainer();
 setupNavigation();
-
+setupDashboardStore();
 router();
