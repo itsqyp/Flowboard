@@ -433,7 +433,7 @@ export function renderTasks() {
                               class="task-complete-btn mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-md border transition ${
                                 task.status === "completed"
                                   ? "border-indigo-600 bg-indigo-600 text-white"
-                                  : ":border-slate-300 bg-white text-transparent hover:border-indigo-400 dark:border-slate-600 dark:bg-slate-900"
+                                  : "border-slate-300 bg-white text-transparent hover:border-indigo-400 dark:border-slate-600 dark:bg-slate-900"
                               }"
                               data-task-id="${task.id}"
                               aria-label="${
