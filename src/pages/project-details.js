@@ -1,5 +1,6 @@
-import { projects } from "../data/projects.js";
-import { tasks } from "../data/tasks.js";
+import { getState, notify } from "../store/store.js";
+
+const { projects, tasks } = getState();
 import { teamMembers } from "../data/team.js";
 import {
   renderTaskModal,
@@ -259,6 +260,7 @@ export function renderProjectDetails(projectId) {
   const completedTasks = projectTasks.filter(
     (task) => task.status === "completed",
   ).length;
+  notify();
 
   const totalTasks = projectTasks.length;
 
@@ -587,7 +589,7 @@ export function renderProjectDetails(projectId) {
 
   renderTaskModal((newTask) => {
     tasks.unshift(newTask);
-
+    notify();
     navigateTo(`/projects/${newTask.projectId}`);
   });
 
@@ -622,6 +624,7 @@ export function renderProjectDetails(projectId) {
     for (let i = tasks.length - 1; i >= 0; i--) {
       if (tasks[i].projectId === projectToDelete.id) {
         tasks.splice(i, 1);
+        notify();
       }
     }
 
@@ -644,7 +647,7 @@ export function renderProjectDetails(projectId) {
     if (taskIndex === -1) return;
 
     tasks.splice(taskIndex, 1);
-
+    notify();
     renderProjectDetails(projectId);
   });
 
@@ -656,6 +659,7 @@ export function renderProjectDetails(projectId) {
     task.title = updatedTask.title;
     task.description = updatedTask.description;
     task.status = updatedTask.status;
+    notify();
     task.priority = updatedTask.priority;
     task.dueDate = updatedTask.dueDate;
     task.assigneeId = updatedTask.assigneeId;
@@ -725,7 +729,7 @@ export function renderProjectDetails(projectId) {
     }
 
     task.status = task.status === "completed" ? "todo" : "completed";
-
+    notify();
     showToast(
       task.status === "completed"
         ? `"${task.title}" completed.`
@@ -752,7 +756,7 @@ export function renderProjectDetails(projectId) {
     }
 
     task.status = select.value;
-
+    notify();
     showToast(
       `"${task.title}" moved to ${
         task.status === "todo"
@@ -785,7 +789,7 @@ export function renderProjectDetails(projectId) {
 
       const matchesStatus =
         selectedStatus === "all" || task.status === selectedStatus;
-
+      notify();
       const matchesPriority =
         selectedPriority === "all" || task.priority === selectedPriority;
 
