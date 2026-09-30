@@ -1,4 +1,6 @@
-import { tasks } from "../data/tasks.js";
+import { getState, notify } from "../store/store.js";
+
+const { tasks } = getState();
 import { projects } from "../data/projects.js";
 import { teamMembers } from "../data/team.js";
 import {
@@ -716,6 +718,7 @@ export function renderTasks() {
 
   renderTaskModal((newTask) => {
     tasks.unshift(newTask);
+    notify();
     renderTasks();
   });
   renderEditTaskModal((updatedTask) => {
@@ -726,7 +729,7 @@ export function renderTasks() {
     }
 
     tasks[taskIndex] = updatedTask;
-
+    notify();
     renderTasks();
   });
 
@@ -738,7 +741,7 @@ export function renderTasks() {
     }
 
     tasks.splice(taskIndex, 1);
-
+    notify();
     renderTasks();
   });
   const editTaskButtons = document.querySelectorAll(".edit-task-btn");
@@ -790,6 +793,7 @@ export function renderTasks() {
 
       task.status = task.status === "completed" ? "todo" : "completed";
 
+      notify();
       renderTasks();
     });
   });
