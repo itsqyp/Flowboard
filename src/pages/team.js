@@ -1,4 +1,6 @@
-import { teamMembers } from "../data/team.js";
+import { getState, notify } from "../store/store.js";
+
+const { teamMembers } = getState();
 import { projects } from "../data/projects.js";
 import { tasks } from "../data/tasks.js";
 import {
@@ -72,7 +74,7 @@ export function renderTeam() {
 
   renderMemberModal((newMember) => {
     teamMembers.push(newMember);
-
+    notify();
     renderTeam();
   });
 
@@ -84,7 +86,7 @@ export function renderTeam() {
     if (memberIndex === -1) return;
 
     teamMembers[memberIndex] = updatedMember;
-
+    notify();
     renderTeam();
   });
 
