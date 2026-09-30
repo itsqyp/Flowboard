@@ -116,6 +116,7 @@ export function renderTeam() {
     // Remove the member from the team
     teamMembers.splice(memberIndex, 1);
 
+    notify();
     renderTeam();
   });
 
