@@ -1,5 +1,7 @@
-import { projects } from "../data/projects.js";
+import { getState, notify } from "../store/store.js";
 import { tasks } from "../data/tasks.js";
+
+const { projects } = getState();
 import { renderProjectCard } from "../components/projects/project-card.js";
 
 import {
@@ -250,9 +252,9 @@ export function renderProjects() {
       .map((project) => renderProjectCard(project))
       .join("");
   }
-
   renderProjectModal((newProject) => {
     projects.unshift(newProject);
+    notify();
     updateProjects();
   });
 
