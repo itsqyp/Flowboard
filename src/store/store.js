@@ -1,7 +1,9 @@
-import { projects as initialProjects } from "../data/projects.js";
-import { tasks as initialTasks } from "../data/tasks.js";
-import { teamMembers as initialTeamMembers } from "../data/team.js";
-
+import { projects as seedProjects } from "../data/projects.js";
+import { tasks as seedTasks } from "../data/tasks.js";
+import { teamMembers as seedTeamMembers } from "../data/team.js";
+const initialProjects = structuredClone(seedProjects);
+const initialTasks = structuredClone(seedTasks);
+const initialTeamMembers = structuredClone(seedTeamMembers);
 const STORAGE_KEY = "flowboard-state";
 
 function loadState() {
@@ -68,4 +70,12 @@ export function notify() {
   listeners.forEach((listener) => {
     listener(state);
   });
+}
+
+export function resetState() {
+  state.projects.splice(0, state.projects.length, ...initialProjects);
+  state.tasks.splice(0, state.tasks.length, ...initialTasks);
+  state.teamMembers.splice(0, state.teamMembers.length, ...initialTeamMembers);
+
+  notify();
 }

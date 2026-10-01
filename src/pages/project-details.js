@@ -260,7 +260,6 @@ export function renderProjectDetails(projectId) {
   const completedTasks = projectTasks.filter(
     (task) => task.status === "completed",
   ).length;
-  notify();
 
   const totalTasks = projectTasks.length;
 
@@ -619,18 +618,21 @@ export function renderProjectDetails(projectId) {
 
     if (projectIndex === -1) return;
 
+    // Delete the project
     projects.splice(projectIndex, 1);
 
+    // Delete all tasks belonging to the project
     for (let i = tasks.length - 1; i >= 0; i--) {
       if (tasks[i].projectId === projectToDelete.id) {
         tasks.splice(i, 1);
-        notify();
       }
     }
 
+    // Persist the complete change
+    notify();
+
     navigateTo("/projects");
   });
-
   // renderDeleteTaskModal((taskId) => {
   //   const taskIndex = tasks.findIndex((item) => item.id === taskId);
 
@@ -659,10 +661,11 @@ export function renderProjectDetails(projectId) {
     task.title = updatedTask.title;
     task.description = updatedTask.description;
     task.status = updatedTask.status;
-    notify();
     task.priority = updatedTask.priority;
     task.dueDate = updatedTask.dueDate;
     task.assigneeId = updatedTask.assigneeId;
+
+    notify();
 
     renderProjectDetails(projectId);
   });
@@ -789,7 +792,7 @@ export function renderProjectDetails(projectId) {
 
       const matchesStatus =
         selectedStatus === "all" || task.status === selectedStatus;
-      notify();
+
       const matchesPriority =
         selectedPriority === "all" || task.priority === selectedPriority;
 
