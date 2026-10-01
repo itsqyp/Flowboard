@@ -1,13 +1,12 @@
 import { showToast } from "../toast.js";
-import { teamMembers } from "../../data/team.js";
-import { projects } from "../../data/projects.js";
+import { getState } from "../../store/store.js";
 
 let modal = null;
 let onCreate = null;
 
 export function renderTaskModal(createCallback) {
   onCreate = createCallback;
-
+  const { projects, teamMembers } = getState();
   // Prevent duplicate modal creation
   if (document.querySelector("#task-modal")) {
     return;
@@ -262,11 +261,44 @@ function setupModalEvents() {
 
   document.addEventListener("keydown", handleEscape);
 }
+function refreshTaskModalOptions() {
+  const { projects, teamMembers } = getState();
 
+  const projectSelect = modal.querySelector("#task-project");
+  const assigneeSelect = modal.querySelector("#task-assignee");
+
+  projectSelect.innerHTML = `
+    <option value="">Select a project</option>
+
+    ${projects
+      .map(
+        (project) => `
+          <option value="${project.id}">
+            ${project.name}
+          </option>
+        `,
+      )
+      .join("")}
+  `;
+
+  assigneeSelect.innerHTML = `
+    ${teamMembers
+      .map(
+        (member) => `
+          <option value="${member.id}">
+            ${member.name}
+          </option>
+        `,
+      )
+      .join("")}
+  `;
+}
 export function openTaskModal() {
   if (!modal) {
     return;
   }
+
+  refreshTaskModalOptions();
 
   modal.classList.remove("hidden");
   modal.classList.add("flex");

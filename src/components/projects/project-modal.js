@@ -1,12 +1,12 @@
 import { showToast } from "../toast.js";
-import { teamMembers } from "../../data/team.js";
+import { getState } from "../../store/store.js";
 
 let modal = null;
 let onCreate = null;
 
 export function renderProjectModal(createCallback) {
   onCreate = createCallback;
-
+  const { teamMembers } = getState();
   modal = document.createElement("div");
 
   modal.id = "project-modal";
@@ -272,10 +272,68 @@ function setupModalEvents() {
   document.addEventListener("keydown", handleEscape);
 }
 
+function refreshProjectMemberOptions() {
+  const { teamMembers } = getState();
+
+  const container = modal.querySelector("#project-form .max-h-40");
+
+  if (!container) return;
+
+  const selectedMemberIds = new Set(
+    [...container.querySelectorAll('input[name="memberIds"]:checked')].map(
+      (input) => Number(input.value),
+    ),
+  );
+
+  container.innerHTML = teamMembers
+    .map(
+      (member) => `
+        <label
+          class="flex cursor-pointer items-center gap-3 rounded-lg px-2 py-2 transition hover:bg-slate-50 dark:hover:bg-slate-800"
+        >
+          <input
+            type="checkbox"
+            name="memberIds"
+            value="${member.id}"
+            ${
+              selectedMemberIds.has(member.id) || member.id === 1
+                ? "checked"
+                : ""
+            }
+            class="size-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 dark:border-slate-600"
+          />
+
+          <div
+            class="flex size-8 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-xs font-bold text-indigo-700 dark:bg-indigo-500/10 dark:text-indigo-300"
+          >
+            ${member.initials}
+          </div>
+
+          <div class="min-w-0">
+            <p
+              class="truncate text-sm font-semibold text-slate-800 dark:text-slate-100"
+            >
+              ${member.name}
+            </p>
+
+            <p
+              class="truncate text-xs text-slate-500 dark:text-slate-400"
+            >
+              ${member.role}
+            </p>
+          </div>
+        </label>
+      `,
+    )
+    .join("");
+}
+
 export function openProjectModal() {
   if (!modal) {
     return;
   }
+
+  refreshProjectMemberOptions();
 
   modal.classList.remove("hidden");
   modal.classList.add("flex");
