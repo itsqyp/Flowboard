@@ -1,8 +1,8 @@
-import { projects } from "./projects.js";
-import { tasks } from "./tasks.js";
-import { teamMembers } from "./team.js";
+import { getState } from "../store/store.js";
 
 export function getDashboardStats() {
+  const { projects, tasks, teamMembers } = getState();
+
   return [
     {
       label: "Total Projects",
