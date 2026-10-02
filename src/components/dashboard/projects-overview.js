@@ -1,6 +1,4 @@
-import { projects } from "../../data/projects.js";
-import { teamMembers } from "../../data/team.js";
-import { tasks } from "../../data/tasks.js";
+import { getState } from "../../store/store.js";
 export function renderProjectsOverview() {
   const container = document.querySelector("#dashboard-projects");
 
@@ -8,7 +6,7 @@ export function renderProjectsOverview() {
     console.error("Dashboard projects mount point not found.");
     return;
   }
-
+  const { projects, teamMembers, tasks } = getState();
   const dashboardProjects = projects.slice(0, 4).map((project) => {
     const projectTasks = tasks.filter((task) => task.projectId === project.id);
 
