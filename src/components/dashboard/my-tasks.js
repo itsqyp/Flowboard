@@ -1,7 +1,5 @@
-import { tasks } from "../../data/tasks.js";
-import { projects } from "../../data/projects.js";
+import { getState, notify } from "../../store/store.js";
 import { showToast } from "../toast.js";
-import { renderStatCards } from "./stat-cards.js";
 
 export function renderMyTasks() {
   const container = document.querySelector("#dashboard-tasks");
@@ -10,7 +8,7 @@ export function renderMyTasks() {
     console.error("Dashboard tasks mount point not found.");
     return;
   }
-
+  const { tasks, projects } = getState();
   container.innerHTML = `
     <section class="rounded-xl border bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
 
@@ -159,15 +157,17 @@ function setupTaskInteractions() {
     checkbox.addEventListener("click", () => {
       const taskId = checkbox.dataset.taskId;
 
+      const { tasks } = getState();
+
       const task = tasks.find((item) => item.id === taskId);
 
       if (!task) {
         return;
       }
+
       task.status = task.status === "completed" ? "todo" : "completed";
 
-      renderMyTasks();
-      renderStatCards();
+      notify();
 
       if (task.status === "completed") {
         showToast(`"${task.title}" has been completed.`, "success");
