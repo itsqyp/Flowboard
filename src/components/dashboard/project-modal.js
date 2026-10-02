@@ -1,7 +1,5 @@
 import { showToast } from "../toast.js";
-import { projects } from "../../data/projects.js";
-import { teamMembers } from "../../data/team.js";
-import { renderProjectsOverview } from "./projects-overview.js";
+import { getState, notify } from "../../store/store.js";
 
 let modal = null;
 
@@ -23,7 +21,7 @@ export function renderProjectModal() {
 
     return;
   }
-
+  const { teamMembers } = getState();
   const container = document.createElement("div");
 
   container.id = "project-modal";
@@ -298,6 +296,11 @@ function openProjectModal() {
     renderProjectModal();
   }
 
+  if (!modal) {
+    console.error("Project modal could not be initialized.");
+    return;
+  }
+
   modal.backdrop.classList.remove("hidden");
 
   requestAnimationFrame(() => {
@@ -308,7 +311,6 @@ function openProjectModal() {
 
   modal.nameInput.focus();
 }
-
 function handleEscape(event) {
   if (event.key === "Escape") {
     if (!modal?.backdrop.classList.contains("hidden")) {
@@ -389,9 +391,11 @@ function handleProjectSubmit(event) {
     createdAt: new Date().toISOString().split("T")[0],
   };
 
+  const { projects } = getState();
+
   projects.unshift(newProject);
 
-  renderProjectsOverview();
+  notify();
 
   closeProjectModal();
 
@@ -436,5 +440,5 @@ export function setupCreateProjectButton() {
     return;
   }
 
-  button.addEventListener("click", openProjectModal);
+  button.onclick = openProjectModal;
 }
