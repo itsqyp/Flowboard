@@ -1,5 +1,4 @@
-import { projects } from "../../data/projects.js";
-
+import { getState } from "../../store/store.js";
 export function renderUpcomingDeadlines() {
   const container = document.querySelector("#dashboard-deadlines");
 
@@ -7,7 +6,7 @@ export function renderUpcomingDeadlines() {
     console.error("Dashboard deadlines mount point not found.");
     return;
   }
-
+  const { projects } = getState();
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
