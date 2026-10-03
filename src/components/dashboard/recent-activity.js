@@ -1,6 +1,4 @@
-import { tasks } from "../../data/tasks.js";
-import { projects } from "../../data/projects.js";
-import { teamMembers } from "../../data/team.js";
+import { getState } from "../../store/store.js";
 
 export function renderRecentActivity() {
   const container = document.querySelector("#dashboard-activity");
@@ -9,6 +7,8 @@ export function renderRecentActivity() {
     console.error("Dashboard activity mount point not found.");
     return;
   }
+
+  const { tasks, projects, teamMembers } = getState();
   const recentActivity = tasks
     .map((task) => {
       const project = projects.find((item) => item.id === task.projectId);
