@@ -1,4 +1,5 @@
 import { getState } from "../../store/store.js";
+
 export function renderUpcomingDeadlines() {
   const container = document.querySelector("#dashboard-deadlines");
 
@@ -6,11 +7,13 @@ export function renderUpcomingDeadlines() {
     console.error("Dashboard deadlines mount point not found.");
     return;
   }
-  const { projects } = getState();
+
+  const { projects, tasks } = getState();
+
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
-  const upcomingDeadlines = projects
+  const projectDeadlines = projects
     .filter((project) => project.dueDate)
     .map((project) => {
       const dueDate = new Date(`${project.dueDate}T00:00:00`);
@@ -21,6 +24,7 @@ export function renderUpcomingDeadlines() {
 
       return {
         title: project.name,
+        type: "Project",
         date: dueDate.toLocaleDateString("en-US", {
           month: "short",
           day: "2-digit",
@@ -28,8 +32,31 @@ export function renderUpcomingDeadlines() {
         }),
         daysRemaining,
       };
-    })
-    .filter((project) => project.daysRemaining >= 0)
+    });
+
+  const taskDeadlines = tasks
+    .filter((task) => task.dueDate)
+    .map((task) => {
+      const dueDate = new Date(`${task.dueDate}T00:00:00`);
+
+      const daysRemaining = Math.ceil(
+        (dueDate - today) / (1000 * 60 * 60 * 24),
+      );
+
+      return {
+        title: task.title,
+        type: "Task",
+        date: dueDate.toLocaleDateString("en-US", {
+          month: "short",
+          day: "2-digit",
+          year: "numeric",
+        }),
+        daysRemaining,
+      };
+    });
+
+  const upcomingDeadlines = [...projectDeadlines, ...taskDeadlines]
+    .filter((deadline) => deadline.daysRemaining >= 0)
     .sort((a, b) => a.daysRemaining - b.daysRemaining)
     .slice(0, 3);
 
@@ -50,86 +77,102 @@ export function renderUpcomingDeadlines() {
       </div>
 
       <!-- Deadline List -->
-    <div class="divide-y dark:divide-slate-800">
+      <div class="divide-y dark:divide-slate-800">
 
-        ${upcomingDeadlines
-          .map(
-            (deadline) => `
-              <article class="p-5 transition-colors hover:bg-slate-50 dark:hover:bg-slate-800/50">
+        ${
+          upcomingDeadlines.length === 0
+            ? `
+              <div class="px-5 py-8 text-center">
+                <p class="text-sm font-medium text-slate-500 dark:text-slate-400">
+                  No upcoming deadlines.
+                </p>
+              </div>
+            `
+            : upcomingDeadlines
+                .map(
+                  (deadline) => `
+                    <article class="p-5 transition-colors hover:bg-slate-50 dark:hover:bg-slate-800/50">
 
-                <div class="flex items-start gap-3">
+                      <div class="flex items-start gap-3">
 
-                  <!-- Calendar Icon -->
-                  <div
-                    class="flex size-9 shrink-0 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      class="size-4"
-                    >
-                      <rect
-                        width="18"
-                        height="18"
-                        x="3"
-                        y="4"
-                        rx="2"
-                      ></rect>
+                        <!-- Calendar Icon -->
+                        <div
+                          class="flex size-9 shrink-0 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            class="size-4"
+                          >
+                            <rect
+                              width="18"
+                              height="18"
+                              x="3"
+                              y="4"
+                              rx="2"
+                            ></rect>
 
-                      <path d="M16 2v4"></path>
-                      <path d="M8 2v4"></path>
-                      <path d="M3 10h18"></path>
-                    </svg>
-                  </div>
+                            <path d="M16 2v4"></path>
+                            <path d="M8 2v4"></path>
+                            <path d="M3 10h18"></path>
+                          </svg>
+                        </div>
 
-                  <!-- Deadline Content -->
-                  <div class="min-w-0 flex-1">
+                        <!-- Deadline Content -->
+                        <div class="min-w-0 flex-1">
 
-                    <h3 class="truncate text-sm font-semibold text-slate-800 dark:text-slate-100">
-                      ${deadline.title}
-                    </h3>
+                          <h3 class="truncate text-sm font-semibold text-slate-800 dark:text-slate-100">
+                            ${deadline.title}
+                          </h3>
 
-                    <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">
-                      ${deadline.date}
-                    </p>
+                          <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">
+                            ${deadline.type} • ${deadline.date}
+                          </p>
 
-                  </div>
+                        </div>
 
-                </div>
+                      </div>
 
-                <!-- Days Remaining -->
-                <div class="mt-4 flex items-center justify-between">
+                      <!-- Days Remaining -->
+                      <div class="mt-4 flex items-center justify-between">
 
-                  <span class="text-xs text-slate-400 dark:text-slate-500">
-                    Time remaining
-                  </span>
+                        <span class="text-xs text-slate-400 dark:text-slate-500">
+                          Time remaining
+                        </span>
 
-                  <span
-                    class="text-xs font-semibold ${
-                      deadline.daysRemaining <= 7
-                        ? "text-red-600"
-                        : deadline.daysRemaining <= 14
-                          ? "text-amber-600"
-                          : "text-emerald-600"
-                    }"
-                  >
-                    ${deadline.daysRemaining} days
-                  </span>
+                        <span
+                          class="text-xs font-semibold ${
+                            deadline.daysRemaining <= 7
+                              ? "text-red-600"
+                              : deadline.daysRemaining <= 14
+                                ? "text-amber-600"
+                                : "text-emerald-600"
+                          }"
+                        >
+                          ${
+                            deadline.daysRemaining === 0
+                              ? "Today"
+                              : deadline.daysRemaining === 1
+                                ? "1 day"
+                                : `${deadline.daysRemaining} days`
+                          }
+                        </span>
 
-                </div>
+                      </div>
 
-              </article>
-            `,
-          )
-          .join("")}
+                    </article>
+                  `,
+                )
+                .join("")
+        }
 
       </div>
 
       <!-- Footer -->
-     <div class="border-t p-4 dark:border-slate-800">
+      <div class="border-t p-4 dark:border-slate-800">
 
         <a
           href="/calendar"

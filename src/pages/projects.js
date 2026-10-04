@@ -1,7 +1,4 @@
 import { getState, notify } from "../store/store.js";
-import { tasks } from "../data/tasks.js";
-
-const { projects } = getState();
 import { renderProjectCard } from "../components/projects/project-card.js";
 
 import {
@@ -16,7 +13,7 @@ export function renderProjects() {
     console.error("App mount point not found.");
     return;
   }
-
+  const { projects, tasks } = getState();
   app.innerHTML = `
     <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
 
