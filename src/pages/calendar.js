@@ -1,7 +1,7 @@
-import { getState } from "../store/store.js";
+import { getState, subscribe } from "../store/store.js";
 let currentCalendarDate = new Date();
 let calendarEventsModal = null;
-
+let calendarSubscribed = false;
 function getCalendarEvents() {
   const { projects, tasks } = getState();
 
@@ -30,7 +30,22 @@ function getCalendarEvents() {
   return [...projectEvents, ...taskEvents];
 }
 
+function setupCalendarStore() {
+  if (calendarSubscribed) return;
+
+  subscribe(() => {
+    if (window.location.pathname !== "/calendar") {
+      return;
+    }
+
+    renderCalendar();
+  });
+
+  calendarSubscribed = true;
+}
+
 export function renderCalendar() {
+  setupCalendarStore();
   const app = document.querySelector("#app");
 
   if (!app) {
