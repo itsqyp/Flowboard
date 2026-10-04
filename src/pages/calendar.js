@@ -1,27 +1,31 @@
-import { projects } from "../data/projects.js";
-import { tasks } from "../data/tasks.js";
-
+import { getState } from "../store/store.js";
 let currentCalendarDate = new Date();
 let calendarEventsModal = null;
 
 function getCalendarEvents() {
-  const projectEvents = projects.map((project) => ({
-    id: `project-${project.id}`,
-    type: "project",
-    title: project.name,
-    date: project.dueDate,
-    projectId: project.id,
-  }));
+  const { projects, tasks } = getState();
 
-  const taskEvents = tasks.map((task) => ({
-    id: task.id,
-    type: "task",
-    title: task.title,
-    date: task.dueDate,
-    projectId: task.projectId,
-    status: task.status,
-    priority: task.priority,
-  }));
+  const projectEvents = projects
+    .filter((project) => project.dueDate)
+    .map((project) => ({
+      id: `project-${project.id}`,
+      type: "project",
+      title: project.name,
+      date: project.dueDate,
+      projectId: project.id,
+    }));
+
+  const taskEvents = tasks
+    .filter((task) => task.dueDate)
+    .map((task) => ({
+      id: task.id,
+      type: "task",
+      title: task.title,
+      date: task.dueDate,
+      projectId: task.projectId,
+      status: task.status,
+      priority: task.priority,
+    }));
 
   return [...projectEvents, ...taskEvents];
 }
