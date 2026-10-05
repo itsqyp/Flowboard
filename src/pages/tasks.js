@@ -1,8 +1,4 @@
 import { getState, notify } from "../store/store.js";
-
-const { tasks } = getState();
-import { projects } from "../data/projects.js";
-import { teamMembers } from "../data/team.js";
 import {
   renderTaskModal,
   openTaskModal,
@@ -40,6 +36,7 @@ export function renderTasks() {
     console.error("App mount point not found.");
     return;
   }
+  const { tasks, projects, teamMembers } = getState();
   const filteredTasks = tasks.filter((task) => {
     const searchTerm = taskFilters.search.toLowerCase();
 
