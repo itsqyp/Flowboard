@@ -1,10 +1,9 @@
 import { showToast } from "../toast.js";
-import { teamMembers } from "../../data/team.js";
+import { getState } from "../../store/store.js";
 
 let editCallback = null;
 let editingTaskId = null;
 let editingTaskProjectId = null;
-// let editingTaskAssigneeId = null;
 
 export function renderEditTaskModal(callback) {
   editCallback = callback;
@@ -165,17 +164,7 @@ export function renderEditTaskModal(callback) {
                   id="edit-task-assignee"
                   name="assigneeId"
                   class="w-full rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-700 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200"
-                >
-                  ${teamMembers
-                    .map(
-                      (member) => `
-                        <option value="${member.id}">
-                          ${member.name}
-                        </option>
-                      `,
-                    )
-                    .join("")}
-                </select>
+                ></select>
               </div>
 
               <!-- Due Date -->
@@ -226,13 +215,39 @@ export function renderEditTaskModal(callback) {
   setupEditTaskModal();
 }
 
+function refreshTaskAssignees(selectedAssigneeId = null) {
+  const { teamMembers } = getState();
+
+  const assigneeSelect = document.querySelector("#edit-task-assignee");
+
+  if (!assigneeSelect) return;
+
+  assigneeSelect.innerHTML = teamMembers
+    .map(
+      (member) => `
+        <option
+          value="${member.id}"
+          ${Number(member.id) === Number(selectedAssigneeId) ? "selected" : ""}
+        >
+          ${member.name}
+        </option>
+      `,
+    )
+    .join("");
+}
+
 function setupEditTaskModal() {
   const modal = document.querySelector("#edit-task-modal");
   const form = document.querySelector("#edit-task-form");
   const closeButton = document.querySelector("#close-edit-task-modal");
   const cancelButton = document.querySelector("#cancel-edit-task");
 
+  if (!modal || !form || !closeButton || !cancelButton) {
+    return;
+  }
+
   closeButton.addEventListener("click", closeEditTaskModal);
+
   cancelButton.addEventListener("click", closeEditTaskModal);
 
   modal.addEventListener("click", (event) => {
@@ -246,20 +261,33 @@ function setupEditTaskModal() {
 
     const formData = new FormData(form);
 
+    const title = formData.get("title").trim();
+
+    const description =
+      formData.get("description").trim() || "No description provided.";
+
+    const status = formData.get("status");
+
+    const priority = formData.get("priority");
+
+    const dueDate = formData.get("dueDate");
+
+    const assigneeValue = formData.get("assigneeId");
+
     const updatedTask = {
       id: editingTaskId,
       projectId: editingTaskProjectId,
-      title: formData.get("title").trim(),
-      description:
-        formData.get("description").trim() || "No description provided.",
-      status: formData.get("status"),
-      priority: formData.get("priority"),
-      dueDate: formData.get("dueDate"),
-      assigneeId: Number(formData.get("assigneeId")),
+      title,
+      description,
+      status,
+      priority,
+      dueDate,
+      assigneeId: assigneeValue ? Number(assigneeValue) : null,
     };
 
     if (!updatedTask.title || !updatedTask.dueDate) {
       showToast("Please fill in all required fields.", "error");
+
       return;
     }
 
@@ -274,21 +302,31 @@ function setupEditTaskModal() {
 }
 
 export function openEditTaskModal(task) {
-  editingTaskId = task.id;
-  editingTaskProjectId = task.projectId;
-  document.querySelector("#edit-task-assignee").value = String(
-    task.assigneeId ?? "",
-  );
   const modal = document.querySelector("#edit-task-modal");
 
   if (!modal) return;
 
-  document.querySelector("#edit-task-title").value = task.title;
+  editingTaskId = task.id;
+  editingTaskProjectId = task.projectId;
+
+  document.querySelector("#edit-task-title").value = task.title || "";
+
   document.querySelector("#edit-task-description").value =
     task.description || "";
-  document.querySelector("#edit-task-status").value = task.status;
-  document.querySelector("#edit-task-priority").value = task.priority;
-  document.querySelector("#edit-task-due-date").value = task.dueDate;
+
+  document.querySelector("#edit-task-status").value = task.status || "todo";
+
+  document.querySelector("#edit-task-priority").value =
+    task.priority || "medium";
+
+  document.querySelector("#edit-task-due-date").value = task.dueDate || "";
+
+  /*
+   * IMPORTANT:
+   * Get the latest team members from the store
+   * every time the edit modal is opened.
+   */
+  refreshTaskAssignees(task.assigneeId ?? null);
 
   modal.classList.remove("hidden");
   modal.classList.add("flex");
@@ -306,5 +344,4 @@ export function closeEditTaskModal() {
 
   editingTaskId = null;
   editingTaskProjectId = null;
-  // editingTaskAssigneeId = null;
 }
