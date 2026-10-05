@@ -1,4 +1,4 @@
-import { getState, notify } from "../store/store.js";
+import { getState, notify, subscribe } from "../store/store.js";
 import {
   renderTaskModal,
   openTaskModal,
@@ -25,8 +25,20 @@ let taskFilters = {
 let currentPage = 1;
 
 const TASKS_PER_PAGE = 10;
-
+let tasksSubscribed = false;
 export function renderTasks() {
+  if (!tasksSubscribed) {
+    subscribe(() => {
+      if (window.location.pathname !== "/tasks") {
+        return;
+      }
+
+      renderTasks();
+    });
+
+    tasksSubscribed = true;
+  }
+
   const app = document.querySelector("#app");
   // const searchInput = document.querySelector("#task-search");
   // const statusFilter = document.querySelector("#task-status-filter");
