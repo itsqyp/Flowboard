@@ -1,10 +1,16 @@
 import { getState, notify } from "../store/store.js";
+
 import { renderProjectCard } from "../components/projects/project-card.js";
 
 import {
   renderProjectModal,
   openProjectModal,
 } from "../components/projects/project-modal.js";
+
+import {
+  renderEditProjectModal,
+  openEditProjectModal,
+} from "../components/projects/edit-project-modal.js";
 
 export function renderProjects() {
   const app = document.querySelector("#app");
@@ -13,7 +19,9 @@ export function renderProjects() {
     console.error("App mount point not found.");
     return;
   }
+
   const { projects, tasks } = getState();
+
   app.innerHTML = `
     <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
 
@@ -55,7 +63,6 @@ export function renderProjects() {
 
       </div>
 
-
       <!-- Toolbar -->
       <div
         class="mt-6 rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900"
@@ -66,7 +73,9 @@ export function renderProjects() {
           <!-- Search -->
           <div class="relative flex-1">
 
-            <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+            <div
+              class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -92,7 +101,6 @@ export function renderProjects() {
 
           </div>
 
-
           <!-- Status Filter -->
           <select
             id="project-status-filter"
@@ -104,7 +112,6 @@ export function renderProjects() {
             <option value="completed">Completed</option>
             <option value="on-hold">On Hold</option>
           </select>
-
 
           <!-- Sort -->
           <select
@@ -123,17 +130,15 @@ export function renderProjects() {
 
       </div>
 
-
       <!-- Project Count -->
       <div class="mt-6">
         <p
           id="project-count"
           class="text-sm font-medium text-slate-500 dark:text-slate-400"
         >
-          5 projects
+          0 projects
         </p>
       </div>
-
 
       <!-- Projects Grid -->
       <div
@@ -165,13 +170,14 @@ export function renderProjects() {
 
   function updateProjects() {
     const searchTerm = searchInput.value.trim().toLowerCase();
+
     const selectedStatus = statusFilter.value;
     const selectedSort = sortSelect.value;
 
     let filteredProjects = projects.filter((project) => {
       const matchesSearch =
         project.name.toLowerCase().includes(searchTerm) ||
-        project.description.toLowerCase().includes(searchTerm);
+        (project.description || "").toLowerCase().includes(searchTerm);
 
       const matchesStatus =
         selectedStatus === "all" || project.status === selectedStatus;
@@ -231,11 +237,15 @@ export function renderProjects() {
             </svg>
           </div>
 
-          <h2 class="mt-4 text-sm font-semibold text-slate-900 dark:text-white">
+          <h2
+            class="mt-4 text-sm font-semibold text-slate-900 dark:text-white"
+          >
             No projects found
           </h2>
 
-          <p class="mx-auto mt-1 max-w-sm text-sm text-slate-500 dark:text-slate-400">
+          <p
+            class="mx-auto mt-1 max-w-sm text-sm text-slate-500 dark:text-slate-400"
+          >
             Try changing your search or status filter to find what you're looking for.
           </p>
 
@@ -249,18 +259,84 @@ export function renderProjects() {
       .map((project) => renderProjectCard(project))
       .join("");
   }
+
+  /*
+   * Create Project
+   */
   renderProjectModal((newProject) => {
     projects.unshift(newProject);
+
     notify();
+
+    updateProjects();
+  });
+
+  /*
+   * Edit Project
+   */
+  renderEditProjectModal((updatedProject) => {
+    const projectIndex = projects.findIndex(
+      (project) => project.id === updatedProject.id,
+    );
+
+    if (projectIndex === -1) {
+      showProjectUpdateError();
+      return;
+    }
+
+    /*
+     * Preserve fields that are not part of the edit form,
+     * such as createdAt or any future project metadata.
+     */
+    projects[projectIndex] = {
+      ...projects[projectIndex],
+      ...updatedProject,
+    };
+
+    /*
+     * Persist the updated project to localStorage.
+     */
+    notify();
+
+    /*
+     * Refresh the project cards immediately.
+     */
     updateProjects();
   });
 
   updateProjects();
 
   searchInput.addEventListener("input", updateProjects);
+
   statusFilter.addEventListener("change", updateProjects);
+
   sortSelect.addEventListener("change", updateProjects);
 
   const createProjectButton = document.querySelector("#create-project-btn");
+
   createProjectButton.addEventListener("click", openProjectModal);
+
+  /*
+   * Edit buttons
+   */
+  projectsGrid.addEventListener("click", (event) => {
+    const editButton = event.target.closest(".edit-project-btn");
+
+    if (!editButton) return;
+
+    const projectId = Number(editButton.dataset.editProjectId);
+
+    const project = projects.find((item) => item.id === projectId);
+
+    if (!project) {
+      showProjectUpdateError();
+      return;
+    }
+
+    openEditProjectModal(project);
+  });
+}
+
+function showProjectUpdateError() {
+  showToast("Project could not be updated.", "error");
 }
