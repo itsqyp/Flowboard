@@ -1,8 +1,4 @@
-import { getState, notify } from "../store/store.js";
-
-const { teamMembers } = getState();
-import { projects } from "../data/projects.js";
-import { tasks } from "../data/tasks.js";
+import { getState, notify, subscribe } from "../store/store.js";
 import {
   renderMemberModal,
   openMemberModal,
@@ -17,10 +13,27 @@ import {
   renderDeleteMemberModal,
   openDeleteMemberModal,
 } from "../components/team/delete-member-modal.js";
+let teamSubscribed = false;
 
 export function renderTeam() {
-  const app = document.querySelector("#app");
+  if (!teamSubscribed) {
+    subscribe(() => {
+      if (window.location.pathname !== "/team") {
+        return;
+      }
 
+      renderTeam();
+    });
+
+    teamSubscribed = true;
+  }
+  const app = document.querySelector("#app");
+  if (!app) {
+    console.error("App mount point not found.");
+    return;
+  }
+
+  const { teamMembers, projects, tasks } = getState();
   app.innerHTML = `
     <div class="mx-auto max-w-7xl p-5">
 
@@ -120,7 +133,7 @@ export function renderTeam() {
     renderTeam();
   });
 
-  setupTeamPage();
+  setupTeamPage(teamMembers);
 }
 function renderTeamMemberCard(member) {
   return `
@@ -224,7 +237,7 @@ function renderTeamMemberCard(member) {
   `;
 }
 
-function setupTeamPage() {
+function setupTeamPage(teamMembers) {
   const addMemberButton = document.querySelector("#add-team-member-btn");
 
   addMemberButton.addEventListener("click", openMemberModal);
