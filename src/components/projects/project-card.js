@@ -1,5 +1,4 @@
-import { teamMembers } from "../../data/team.js";
-import { tasks } from "../../data/tasks.js";
+import { getState } from "../../store/store.js";
 
 export function renderProjectCard(project) {
   const statusConfig = {
@@ -40,8 +39,11 @@ export function renderProjectCard(project) {
     },
   };
 
+  const { tasks, teamMembers } = getState();
+
   const status = statusConfig[project.status] || statusConfig.planning;
   const priority = priorityConfig[project.priority] || priorityConfig.medium;
+
   const projectTasks = tasks.filter((task) => task.projectId === project.id);
 
   const completedTasks = projectTasks.filter(
@@ -158,7 +160,9 @@ export function renderProjectCard(project) {
 
 
         <!-- Due Date -->
-        <div class="flex items-center gap-1.5 text-xs font-medium text-slate-500 dark:text-slate-400">
+        <div
+          class="flex items-center gap-1.5 text-xs font-medium text-slate-500 dark:text-slate-400"
+        >
 
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -189,12 +193,26 @@ export function renderProjectCard(project) {
           ${completedTasks} of ${totalTasks} tasks
         </span>
 
-        <a
-          href="/projects/${project.id}"
-          class="project-view-btn rounded-lg px-3 py-1.5 text-xs font-semibold text-indigo-600 transition hover:bg-indigo-50 hover:text-indigo-700 dark:text-indigo-400 dark:hover:bg-indigo-500/10 dark:hover:text-indigo-300"
-        >
-          View Project
-        </a>
+        <div class="flex items-center gap-2">
+
+          <!-- Edit Project -->
+          <button
+            type="button"
+            class="edit-project-btn rounded-lg px-3 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white"
+            data-edit-project-id="${project.id}"
+          >
+            Edit
+          </button>
+
+          <!-- View Project -->
+          <a
+            href="/projects/${project.id}"
+            class="project-view-btn rounded-lg px-3 py-1.5 text-xs font-semibold text-indigo-600 transition hover:bg-indigo-50 hover:text-indigo-700 dark:text-indigo-400 dark:hover:bg-indigo-500/10 dark:hover:text-indigo-300"
+          >
+            View Project
+          </a>
+
+        </div>
 
       </div>
 

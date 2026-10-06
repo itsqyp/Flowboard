@@ -1,6 +1,7 @@
 import { getState, notify } from "../store/store.js";
 
 import { renderProjectCard } from "../components/projects/project-card.js";
+import { showToast } from "../components/toast.js";
 
 import {
   renderProjectModal,
@@ -276,7 +277,7 @@ export function renderProjects() {
    */
   renderEditProjectModal((updatedProject) => {
     const projectIndex = projects.findIndex(
-      (project) => project.id === updatedProject.id,
+      (project) => String(project.id) === String(updatedProject.id),
     );
 
     if (projectIndex === -1) {
@@ -297,6 +298,12 @@ export function renderProjects() {
      * Persist the updated project to localStorage.
      */
     notify();
+    console.log("UPDATED PROJECT:", projects[projectIndex]);
+
+    console.log(
+      "SAVED STATE:",
+      JSON.parse(localStorage.getItem("flowboard-state")),
+    );
 
     /*
      * Refresh the project cards immediately.
@@ -324,9 +331,11 @@ export function renderProjects() {
 
     if (!editButton) return;
 
-    const projectId = Number(editButton.dataset.editProjectId);
+    const projectId = editButton.dataset.editProjectId;
 
-    const project = projects.find((item) => item.id === projectId);
+    const project = projects.find(
+      (item) => String(item.id) === String(projectId),
+    );
 
     if (!project) {
       showProjectUpdateError();
