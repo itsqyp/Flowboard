@@ -222,7 +222,7 @@ ${profile.name}        </span>
 
             <a
                 href="#"
-                class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-slate-700 hover:bg-slate-100"
+                class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800"
                 role="menuitem"
             >
                 <svg
