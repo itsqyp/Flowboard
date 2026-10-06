@@ -1,3 +1,15 @@
+const currentDate = new Date();
+
+const formattedDate = currentDate.toLocaleDateString("en-US", {
+  weekday: "long",
+  month: "long",
+  day: "numeric",
+  year: "numeric",
+});
+const settings = JSON.parse(localStorage.getItem("flowboard-profile")) || {};
+
+const fullName = settings.name || "User";
+
 export function renderWelcomeHeader() {
   const container = document.querySelector("#dashboard-welcome");
 
@@ -12,12 +24,12 @@ export function renderWelcomeHeader() {
       <div>
 
      <p class="text-sm font-semibold text-indigo-600 dark:text-indigo-400">
-          Sunday, August 30, 2026
+         ${formattedDate}
         </p>
 
-      <h1 class="mt-1 text-2xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-3xl">
-          Good evening, Abir.
-        </h1>
+     <h1 class="mt-1 text-2xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-3xl">
+  Good evening, ${fullName}.
+</h1>
 
       <p class="mt-2 max-w-2xl text-sm leading-6 text-slate-500 dark:text-slate-400">
           Here's what's happening across your workspace today.
