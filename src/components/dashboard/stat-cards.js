@@ -42,18 +42,11 @@ export function renderStatCards() {
                   ${stat.value}
                 </p>
 
-                <span
-                  class="mb-0.5 inline-flex items-center gap-1 text-xs font-semibold text-emerald-600"
-                >
-                  ${getTrendIcon(stat.trend)}
-                  ${stat.change}
-                </span>
+               
 
               </div>
 
-              <p class="mt-1 text-xs text-slate-400 dark:text-slate-500">
-                ${stat.description}
-              </p>
+          
 
             </article>
           `,
