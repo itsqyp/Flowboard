@@ -1,7 +1,7 @@
 import { getState, notify } from "../store/store.js";
 
 const { projects, tasks } = getState();
-import { teamMembers } from "../data/team.js";
+// import { teamMembers } from "../data/team.js";
 import {
   renderTaskModal,
   openTaskModal,
@@ -30,7 +30,7 @@ import {
 import { router, navigateTo } from "../router.js";
 import { showToast } from "../components/toast.js";
 
-function renderTaskList(taskList) {
+function renderTaskList(taskList, teamMembers) {
   if (taskList.length === 0) {
     return `
       <div class="px-5 py-12 text-center">
@@ -244,7 +244,7 @@ function renderTaskList(taskList) {
 
 export function renderProjectDetails(projectId) {
   const app = document.querySelector("#app");
-
+  const { projects, tasks, teamMembers } = getState();
   if (!app) {
     console.error("App mount point not found.");
     return;
@@ -578,7 +578,7 @@ export function renderProjectDetails(projectId) {
 
 
       <div id="task-list">
-        ${renderTaskList(projectTasks)}
+        ${renderTaskList(projectTasks, teamMembers)}
       </div>
 
     </div>
