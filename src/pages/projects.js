@@ -298,12 +298,6 @@ export function renderProjects() {
      * Persist the updated project to localStorage.
      */
     notify();
-    console.log("UPDATED PROJECT:", projects[projectIndex]);
-
-    console.log(
-      "SAVED STATE:",
-      JSON.parse(localStorage.getItem("flowboard-state")),
-    );
 
     /*
      * Refresh the project cards immediately.

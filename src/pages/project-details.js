@@ -594,10 +594,13 @@ export function renderProjectDetails(projectId) {
 
   renderEditProjectModal((updatedProject) => {
     const projectIndex = projects.findIndex(
-      (item) => item.id === updatedProject.id,
+      (item) => String(item.id) === String(updatedProject.id),
     );
 
-    if (projectIndex === -1) return;
+    if (projectIndex === -1) {
+      showToast("Project could not be updated.", "error");
+      return;
+    }
 
     const project = projects[projectIndex];
 
@@ -608,9 +611,14 @@ export function renderProjectDetails(projectId) {
     project.dueDate = updatedProject.dueDate;
     project.memberIds = updatedProject.memberIds;
 
-    renderProjectDetails(projectId);
-  });
+    // Save updated project to localStorage
+    notify();
 
+    // Re-render the project details page
+    renderProjectDetails(projectId);
+
+    showToast("Project updated successfully.", "success");
+  });
   renderDeleteProjectModal((projectToDelete) => {
     const projectIndex = projects.findIndex(
       (item) => item.id === projectToDelete.id,
