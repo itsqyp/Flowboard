@@ -1,4 +1,5 @@
 import { getState } from "../../store/store.js";
+import { navigateTo } from "../../router.js";
 export function renderProjectsOverview() {
   const container = document.querySelector("#dashboard-projects");
 
@@ -75,7 +76,10 @@ export function renderProjectsOverview() {
         ${dashboardProjects
           .map(
             (project) => `
-              <article class="p-5 transition-colors hover:bg-slate-50 sm:p-6 dark:hover:bg-slate-800/50">
+             <article
+  data-project-id="${project.id}"
+  class="dashboard-project-card cursor-pointer p-5 transition-colors hover:bg-slate-50 sm:p-6 dark:hover:bg-slate-800/50"
+>
 
                 <!-- Project Top -->
                 <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
@@ -190,6 +194,14 @@ export function renderProjectsOverview() {
 
     </section>
   `;
+
+  container.querySelectorAll(".dashboard-project-card").forEach((card) => {
+    card.addEventListener("click", () => {
+      const projectId = card.dataset.projectId;
+
+      navigateTo(`/projects/${projectId}`);
+    });
+  });
 }
 
 function getStatusBadge(project) {
