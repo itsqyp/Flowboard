@@ -12,6 +12,19 @@ const formattedDate = currentDate.toLocaleDateString("en-US", {
 const settings = JSON.parse(localStorage.getItem("flowboard-profile")) || {};
 
 const fullName = settings.name || "User";
+function getGreeting() {
+  const hour = new Date().getHours();
+
+  if (hour < 12) {
+    return "Good morning";
+  }
+
+  if (hour < 18) {
+    return "Good afternoon";
+  }
+
+  return "Good evening";
+}
 
 export function renderWelcomeHeader() {
   const container = document.querySelector("#dashboard-welcome");
@@ -31,7 +44,7 @@ export function renderWelcomeHeader() {
         </p>
 
         <h1 class="mt-1 text-2xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-3xl">
-          Good evening, ${fullName}.
+        ${getGreeting()}, ${fullName}.
         </h1>
 
         <p class="mt-2 max-w-2xl text-sm leading-6 text-slate-500 dark:text-slate-400">
