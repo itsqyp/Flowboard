@@ -299,6 +299,12 @@ export function renderProjects() {
       ...updatedProject,
     };
 
+    addActivity({
+      type: "project_updated",
+      user: "Abir",
+      target: updatedProject.name,
+    });
+
     /*
      * Persist the updated project to localStorage.
      */
