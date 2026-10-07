@@ -787,6 +787,9 @@ export function renderTasks() {
 
   const addTaskButton = document.querySelector("#add-task-btn");
 
+  addTaskButton?.addEventListener("click", () => {
+    openTaskModal();
+  });
   addTaskButton?.addEventListener("click", openTaskModal);
   const taskCompleteButtons = document.querySelectorAll(".task-complete-btn");
 

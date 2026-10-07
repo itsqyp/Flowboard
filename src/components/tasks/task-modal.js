@@ -300,24 +300,22 @@ export function openTaskModal(projectId = null) {
 
   const projectSelect = modal.querySelector("#task-project");
 
-  // Reset project selection state
+  // Always start with an unlocked project selector
   projectSelect.disabled = false;
+  projectSelect.classList.remove("pointer-events-none", "bg-slate-100");
+  projectSelect.removeAttribute("aria-disabled");
 
-  if (projectId) {
+  // If a project ID was provided from Project Details,
+  // automatically select and visually lock that project.
+  if (projectId && typeof projectId !== "object") {
     projectSelect.value = String(projectId);
 
-    // Visually lock the project selection
     projectSelect.classList.add("pointer-events-none", "bg-slate-100");
+
     projectSelect.setAttribute("aria-disabled", "true");
-
-    // Keep the selected project available to FormData
-    projectSelect.dataset.locked = "true";
   } else {
+    // Normal Tasks page flow
     projectSelect.value = "";
-
-    projectSelect.classList.remove("pointer-events-none", "bg-slate-100");
-    projectSelect.removeAttribute("aria-disabled");
-    delete projectSelect.dataset.locked;
   }
 
   modal.classList.remove("hidden");
@@ -345,12 +343,11 @@ export function closeTaskModal() {
 
   const projectSelect = modal.querySelector("#task-project");
 
+  // Always unlock the project selector after closing
   projectSelect.disabled = false;
   projectSelect.classList.remove("pointer-events-none", "bg-slate-100");
   projectSelect.removeAttribute("aria-disabled");
-  delete projectSelect.dataset.locked;
 }
-
 function handleEscape(event) {
   if (event.key === "Escape" && !modal.classList.contains("hidden")) {
     closeTaskModal();
