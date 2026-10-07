@@ -695,9 +695,16 @@ export function renderProjectDetails(projectId) {
   const secondaryAddTaskButton = document.querySelector(
     "#add-task-btn-secondary",
   );
+
   const editProjectButton = document.querySelector("#edit-project-btn");
-  addTaskButton.addEventListener("click", openTaskModal);
-  secondaryAddTaskButton.addEventListener("click", openTaskModal);
+
+  addTaskButton.addEventListener("click", () => {
+    openTaskModal(project.id);
+  });
+
+  secondaryAddTaskButton.addEventListener("click", () => {
+    openTaskModal(project.id);
+  });
 
   editProjectButton.addEventListener("click", () => {
     openEditProjectModal(project);

@@ -293,12 +293,32 @@ function refreshTaskModalOptions() {
       .join("")}
   `;
 }
-export function openTaskModal() {
+export function openTaskModal(projectId = null) {
   if (!modal) {
     return;
   }
 
-  refreshTaskModalOptions();
+  const projectSelect = modal.querySelector("#task-project");
+
+  // Reset project selection state
+  projectSelect.disabled = false;
+
+  if (projectId) {
+    projectSelect.value = String(projectId);
+
+    // Visually lock the project selection
+    projectSelect.classList.add("pointer-events-none", "bg-slate-100");
+    projectSelect.setAttribute("aria-disabled", "true");
+
+    // Keep the selected project available to FormData
+    projectSelect.dataset.locked = "true";
+  } else {
+    projectSelect.value = "";
+
+    projectSelect.classList.remove("pointer-events-none", "bg-slate-100");
+    projectSelect.removeAttribute("aria-disabled");
+    delete projectSelect.dataset.locked;
+  }
 
   modal.classList.remove("hidden");
   modal.classList.add("flex");
@@ -311,7 +331,6 @@ export function openTaskModal() {
     titleInput.focus();
   }, 50);
 }
-
 export function closeTaskModal() {
   if (!modal) {
     return;
@@ -323,6 +342,13 @@ export function closeTaskModal() {
   document.body.classList.remove("overflow-hidden");
 
   modal.querySelector("#task-form").reset();
+
+  const projectSelect = modal.querySelector("#task-project");
+
+  projectSelect.disabled = false;
+  projectSelect.classList.remove("pointer-events-none", "bg-slate-100");
+  projectSelect.removeAttribute("aria-disabled");
+  delete projectSelect.dataset.locked;
 }
 
 function handleEscape(event) {
