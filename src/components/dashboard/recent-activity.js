@@ -64,6 +64,8 @@ export function renderRecentActivity() {
       case "project_deleted":
         return "deleted project";
 
+      case "task_created":
+        return "created task";
       default:
         return "updated";
     }

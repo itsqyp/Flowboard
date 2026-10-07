@@ -1,4 +1,4 @@
-import { getState, notify, subscribe } from "../store/store.js";
+import { getState, notify, subscribe, addActivity } from "../store/store.js";
 import {
   renderTaskModal,
   openTaskModal,
@@ -727,6 +727,13 @@ export function renderTasks() {
 
   renderTaskModal((newTask) => {
     tasks.unshift(newTask);
+
+    addActivity({
+      type: "task_created",
+      user: "Abir",
+      target: newTask.title,
+    });
+
     notify();
     renderTasks();
   });
@@ -790,7 +797,6 @@ export function renderTasks() {
   addTaskButton?.addEventListener("click", () => {
     openTaskModal();
   });
-  addTaskButton?.addEventListener("click", openTaskModal);
   const taskCompleteButtons = document.querySelectorAll(".task-complete-btn");
 
   taskCompleteButtons.forEach((button) => {
