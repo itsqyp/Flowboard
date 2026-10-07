@@ -1,9 +1,12 @@
 import { projects as seedProjects } from "../data/projects.js";
 import { tasks as seedTasks } from "../data/tasks.js";
 import { teamMembers as seedTeamMembers } from "../data/team.js";
+
 const initialProjects = structuredClone(seedProjects);
 const initialTasks = structuredClone(seedTasks);
 const initialTeamMembers = structuredClone(seedTeamMembers);
+const initialActivities = [];
+
 const STORAGE_KEY = "flowboard-state";
 
 function loadState() {
@@ -14,6 +17,7 @@ function loadState() {
       projects: [...initialProjects],
       tasks: [...initialTasks],
       teamMembers: [...initialTeamMembers],
+      activities: [...initialActivities],
     };
   }
 
@@ -32,6 +36,10 @@ function loadState() {
       teamMembers: Array.isArray(parsedState.teamMembers)
         ? parsedState.teamMembers
         : [...initialTeamMembers],
+
+      activities: Array.isArray(parsedState.activities)
+        ? parsedState.activities
+        : [...initialActivities],
     };
   } catch (error) {
     console.error("Failed to load Flowboard state:", error);
@@ -40,6 +48,7 @@ function loadState() {
       projects: [...initialProjects],
       tasks: [...initialTasks],
       teamMembers: [...initialTeamMembers],
+      activities: [...initialActivities],
     };
   }
 }
@@ -72,10 +81,27 @@ export function notify() {
   });
 }
 
+export function addActivity(activity) {
+  state.activities.unshift({
+    id: crypto.randomUUID(),
+    ...activity,
+    createdAt: new Date().toISOString(),
+  });
+
+  // Keep only the latest 50 activities.
+  state.activities = state.activities.slice(0, 50);
+
+  notify();
+}
+
 export function resetState() {
   state.projects.splice(0, state.projects.length, ...initialProjects);
+
   state.tasks.splice(0, state.tasks.length, ...initialTasks);
+
   state.teamMembers.splice(0, state.teamMembers.length, ...initialTeamMembers);
+
+  state.activities.splice(0, state.activities.length, ...initialActivities);
 
   notify();
 }
