@@ -611,6 +611,12 @@ export function renderProjectDetails(projectId) {
     project.dueDate = updatedProject.dueDate;
     project.memberIds = updatedProject.memberIds;
 
+    addActivity({
+      type: "project_updated",
+      user: "Abir",
+      target: updatedProject.name,
+    });
+
     // Save updated project to localStorage
     notify();
 
