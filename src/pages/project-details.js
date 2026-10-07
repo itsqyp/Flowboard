@@ -1,4 +1,4 @@
-import { getState, notify } from "../store/store.js";
+import { getState, notify, addActivity } from "../store/store.js";
 
 const { projects, tasks } = getState();
 // import { teamMembers } from "../data/team.js";
@@ -625,6 +625,13 @@ export function renderProjectDetails(projectId) {
     );
 
     if (projectIndex === -1) return;
+
+    // Record the activity before deleting the project
+    addActivity({
+      type: "project_deleted",
+      user: "Abir",
+      target: projectToDelete.name,
+    });
 
     // Delete the project
     projects.splice(projectIndex, 1);
