@@ -1,4 +1,4 @@
-import { getState, notify } from "../store/store.js";
+import { getState, notify, addActivity } from "../store/store.js";
 
 import { renderProjectCard } from "../components/projects/project-card.js";
 import { showToast } from "../components/toast.js";
@@ -267,8 +267,13 @@ export function renderProjects() {
   renderProjectModal((newProject) => {
     projects.unshift(newProject);
 
-    notify();
+    addActivity({
+      type: "project_created",
+      user: "Abir",
+      target: newProject.name,
+    });
 
+    notify();
     updateProjects();
   });
 
