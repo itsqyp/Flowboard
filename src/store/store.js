@@ -80,7 +80,6 @@ export function notify() {
     listener(state);
   });
 }
-
 export function addActivity(activity) {
   state.activities.unshift({
     id: crypto.randomUUID(),
@@ -88,10 +87,7 @@ export function addActivity(activity) {
     createdAt: new Date().toISOString(),
   });
 
-  // Keep only the latest 50 activities.
-  state.activities = state.activities.slice(0, 50);
-
-  notify();
+  state.activities.splice(50);
 }
 
 export function resetState() {

@@ -1,4 +1,4 @@
-import { subscribe } from "../store/store.js";
+import { getState, notify, subscribe, addActivity } from "../store/store.js";
 import { renderWelcomeHeader } from "../components/dashboard/welcome-header.js";
 import { renderStatCards } from "../components/dashboard/stat-cards.js";
 import { renderProjectsOverview } from "../components/dashboard/projects-overview.js";
@@ -7,8 +7,8 @@ import { renderUpcomingDeadlines } from "../components/dashboard/upcoming-deadli
 import { renderRecentActivity } from "../components/dashboard/recent-activity.js";
 import {
   renderProjectModal,
-  setupCreateProjectButton,
-} from "../components/dashboard/project-modal.js";
+  openProjectModal,
+} from "../components/projects/project-modal.js";
 
 export function renderDashboard() {
   const app = document.querySelector("#app");
@@ -52,13 +52,32 @@ export function renderDashboard() {
   `;
 
   renderWelcomeHeader();
+
+  renderProjectModal((newProject) => {
+    const { projects } = getState();
+
+    projects.unshift(newProject);
+
+    addActivity({
+      type: "project_created",
+      user: "Abir",
+      target: newProject.name,
+    });
+
+    notify();
+  });
+
+  const createProjectButton = document.querySelector("#create-project-button");
+
+  if (createProjectButton) {
+    createProjectButton.addEventListener("click", openProjectModal);
+  }
+
   renderStatCards();
   renderProjectsOverview();
   renderMyTasks();
   renderUpcomingDeadlines();
   renderRecentActivity();
-  renderProjectModal();
-  setupCreateProjectButton();
 }
 let dashboardSubscribed = false;
 

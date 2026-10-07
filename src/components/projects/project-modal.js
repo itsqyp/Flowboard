@@ -411,11 +411,11 @@ function handleSubmit(event) {
     createdAt: new Date().toISOString().split("T")[0],
   };
 
+  closeProjectModal();
+
   if (onCreate) {
     onCreate(newProject);
   }
-
-  closeProjectModal();
 
   showToast(`"${name}" has been created successfully.`, "success");
 }

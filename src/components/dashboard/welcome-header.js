@@ -1,3 +1,5 @@
+import { openProjectModal } from "../projects/project-modal.js";
+
 const currentDate = new Date();
 
 const formattedDate = currentDate.toLocaleDateString("en-US", {
@@ -6,6 +8,7 @@ const formattedDate = currentDate.toLocaleDateString("en-US", {
   day: "numeric",
   year: "numeric",
 });
+
 const settings = JSON.parse(localStorage.getItem("flowboard-profile")) || {};
 
 const fullName = settings.name || "User";
@@ -23,15 +26,15 @@ export function renderWelcomeHeader() {
 
       <div>
 
-     <p class="text-sm font-semibold text-indigo-600 dark:text-indigo-400">
-         ${formattedDate}
+        <p class="text-sm font-semibold text-indigo-600 dark:text-indigo-400">
+          ${formattedDate}
         </p>
 
-     <h1 class="mt-1 text-2xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-3xl">
-  Good evening, ${fullName}.
-</h1>
+        <h1 class="mt-1 text-2xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-3xl">
+          Good evening, ${fullName}.
+        </h1>
 
-      <p class="mt-2 max-w-2xl text-sm leading-6 text-slate-500 dark:text-slate-400">
+        <p class="mt-2 max-w-2xl text-sm leading-6 text-slate-500 dark:text-slate-400">
           Here's what's happening across your workspace today.
         </p>
 
@@ -61,4 +64,29 @@ export function renderWelcomeHeader() {
 
     </section>
   `;
+
+  setupCreateProjectButton();
+
+  const createProjectButton = container.querySelector("#create-project-button");
+
+  if (createProjectButton) {
+    createProjectButton.addEventListener("click", openProjectModal);
+  }
+}
+
+function setupCreateProjectButton() {
+  const button = document.querySelector("#create-project-button");
+
+  if (!button) return;
+
+  button.addEventListener("click", () => {
+    const modal = document.querySelector("#project-modal");
+
+    if (!modal) {
+      console.error("Project modal not found.");
+      return;
+    }
+
+    modal.classList.remove("hidden");
+  });
 }
