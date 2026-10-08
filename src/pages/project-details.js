@@ -674,11 +674,18 @@ export function renderProjectDetails(projectId) {
 
     if (taskIndex === -1) return;
 
+    addActivity({
+      type: "task_deleted",
+      user: "Abir",
+      target: task.title,
+    });
+
     tasks.splice(taskIndex, 1);
+
     notify();
+
     renderProjectDetails(projectId);
   });
-
   renderEditTaskModal((updatedTask) => {
     const task = tasks.find((item) => item.id === updatedTask.id);
 
@@ -690,6 +697,12 @@ export function renderProjectDetails(projectId) {
     task.priority = updatedTask.priority;
     task.dueDate = updatedTask.dueDate;
     task.assigneeId = updatedTask.assigneeId;
+
+    addActivity({
+      type: "task_updated",
+      user: "Abir",
+      target: updatedTask.title,
+    });
 
     notify();
 
@@ -764,8 +777,26 @@ export function renderProjectDetails(projectId) {
       return;
     }
 
-    task.status = task.status === "completed" ? "todo" : "completed";
+    const wasCompleted = task.status === "completed";
+
+    task.status = wasCompleted ? "todo" : "completed";
+
+    if (task.status === "completed") {
+      addActivity({
+        type: "task_completed",
+        user: "Abir",
+        target: task.title,
+      });
+    } else {
+      addActivity({
+        type: "task_status_changed",
+        user: "Abir",
+        target: task.title,
+      });
+    }
+
     notify();
+
     showToast(
       task.status === "completed"
         ? `"${task.title}" completed.`
@@ -791,8 +822,27 @@ export function renderProjectDetails(projectId) {
       return;
     }
 
+    const previousStatus = task.status;
     task.status = select.value;
+
+    if (previousStatus !== task.status) {
+      if (task.status === "completed") {
+        addActivity({
+          type: "task_completed",
+          user: "Abir",
+          target: task.title,
+        });
+      } else {
+        addActivity({
+          type: "task_status_changed",
+          user: "Abir",
+          target: task.title,
+        });
+      }
+    }
+
     notify();
+
     showToast(
       `"${task.title}" moved to ${
         task.status === "todo"

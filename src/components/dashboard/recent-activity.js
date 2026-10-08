@@ -52,7 +52,6 @@ export function renderRecentActivity() {
       year: "numeric",
     });
   }
-
   function getActivityText(activity) {
     switch (activity.type) {
       case "project_created":
@@ -66,6 +65,19 @@ export function renderRecentActivity() {
 
       case "task_created":
         return "created task";
+
+      case "task_updated":
+        return "updated task";
+
+      case "task_deleted":
+        return "deleted task";
+
+      case "task_completed":
+        return "completed task";
+
+      case "task_status_changed":
+        return "changed task status";
+
       default:
         return "updated";
     }
