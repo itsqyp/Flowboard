@@ -745,6 +745,13 @@ export function renderTasks() {
     }
 
     tasks[taskIndex] = updatedTask;
+
+    addActivity({
+      type: "task_updated",
+      user: "Abir",
+      target: updatedTask.title,
+    });
+
     notify();
     renderTasks();
   });
@@ -756,7 +763,14 @@ export function renderTasks() {
       return;
     }
 
+    addActivity({
+      type: "task_deleted",
+      user: "Abir",
+      target: taskToDelete.title,
+    });
+
     tasks.splice(taskIndex, 1);
+
     notify();
     renderTasks();
   });
@@ -809,7 +823,23 @@ export function renderTasks() {
         return;
       }
 
-      task.status = task.status === "completed" ? "todo" : "completed";
+      const wasCompleted = task.status === "completed";
+
+      task.status = wasCompleted ? "todo" : "completed";
+
+      if (task.status === "completed") {
+        addActivity({
+          type: "task_completed",
+          user: "Abir",
+          target: task.title,
+        });
+      } else {
+        addActivity({
+          type: "task_status_changed",
+          user: "Abir",
+          target: task.title,
+        });
+      }
 
       notify();
       renderTasks();
