@@ -585,13 +585,18 @@ export function renderProjectDetails(projectId) {
 
   </div>
 `;
-
   renderTaskModal((newTask) => {
     tasks.unshift(newTask);
+
+    addActivity({
+      type: "task_created",
+      user: "Abir",
+      target: newTask.title,
+    });
+
     notify();
     navigateTo(`/projects/${newTask.projectId}`);
   });
-
   renderEditProjectModal((updatedProject) => {
     const projectIndex = projects.findIndex(
       (item) => String(item.id) === String(updatedProject.id),
