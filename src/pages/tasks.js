@@ -1,4 +1,10 @@
-import { getState, notify, subscribe, addActivity } from "../store/store.js";
+import {
+  getState,
+  notify,
+  subscribe,
+  addActivity,
+  getCurrentUser,
+} from "../store/store.js";
 import {
   renderTaskModal,
   openTaskModal,
@@ -730,7 +736,7 @@ export function renderTasks() {
 
     addActivity({
       type: "task_created",
-      user: "Abir",
+      user: getCurrentUser().name,
       target: newTask.title,
     });
 
@@ -748,7 +754,7 @@ export function renderTasks() {
 
     addActivity({
       type: "task_updated",
-      user: "Abir",
+      user: getCurrentUser().name,
       target: updatedTask.title,
     });
 
@@ -765,7 +771,7 @@ export function renderTasks() {
 
     addActivity({
       type: "task_deleted",
-      user: "Abir",
+      user: getCurrentUser().name,
       target: taskToDelete.title,
     });
 
@@ -830,13 +836,13 @@ export function renderTasks() {
       if (task.status === "completed") {
         addActivity({
           type: "task_completed",
-          user: "Abir",
+          user: getCurrentUser().name,
           target: task.title,
         });
       } else {
         addActivity({
           type: "task_status_changed",
-          user: "Abir",
+          user: getCurrentUser().name,
           target: task.title,
         });
       }

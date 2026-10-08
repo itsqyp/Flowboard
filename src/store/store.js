@@ -1,3 +1,28 @@
+const PROFILE_STORAGE_KEY = "flowboard-profile";
+
+const DEFAULT_PROFILE = {
+  name: "Abir",
+  email: "abir@example.com",
+  role: "Admin",
+};
+
+export function getCurrentUser() {
+  const storedProfile = localStorage.getItem(PROFILE_STORAGE_KEY);
+
+  if (!storedProfile) {
+    return DEFAULT_PROFILE;
+  }
+
+  try {
+    return {
+      ...DEFAULT_PROFILE,
+      ...JSON.parse(storedProfile),
+    };
+  } catch {
+    return DEFAULT_PROFILE;
+  }
+}
+
 import { projects as seedProjects } from "../data/projects.js";
 import { tasks as seedTasks } from "../data/tasks.js";
 import { teamMembers as seedTeamMembers } from "../data/team.js";

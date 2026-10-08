@@ -1,4 +1,9 @@
-import { getState, notify, addActivity } from "../store/store.js";
+import {
+  getState,
+  notify,
+  addActivity,
+  getCurrentUser,
+} from "../store/store.js";
 
 const { projects, tasks } = getState();
 // import { teamMembers } from "../data/team.js";
@@ -590,7 +595,7 @@ export function renderProjectDetails(projectId) {
 
     addActivity({
       type: "task_created",
-      user: "Abir",
+      user: getCurrentUser().name,
       target: newTask.title,
     });
 
@@ -618,7 +623,7 @@ export function renderProjectDetails(projectId) {
 
     addActivity({
       type: "project_updated",
-      user: "Abir",
+      user: getCurrentUser().name,
       target: updatedProject.name,
     });
 
@@ -640,7 +645,7 @@ export function renderProjectDetails(projectId) {
     // Record the activity before deleting the project
     addActivity({
       type: "project_deleted",
-      user: "Abir",
+      user: getCurrentUser().name,
       target: projectToDelete.name,
     });
 
@@ -676,7 +681,7 @@ export function renderProjectDetails(projectId) {
 
     addActivity({
       type: "task_deleted",
-      user: "Abir",
+      user: getCurrentUser().name,
       target: task.title,
     });
 
@@ -700,7 +705,7 @@ export function renderProjectDetails(projectId) {
 
     addActivity({
       type: "task_updated",
-      user: "Abir",
+      user: getCurrentUser().name,
       target: updatedTask.title,
     });
 
@@ -784,13 +789,13 @@ export function renderProjectDetails(projectId) {
     if (task.status === "completed") {
       addActivity({
         type: "task_completed",
-        user: "Abir",
+        user: getCurrentUser().name,
         target: task.title,
       });
     } else {
       addActivity({
         type: "task_status_changed",
-        user: "Abir",
+        user: getCurrentUser().name,
         target: task.title,
       });
     }
@@ -829,13 +834,13 @@ export function renderProjectDetails(projectId) {
       if (task.status === "completed") {
         addActivity({
           type: "task_completed",
-          user: "Abir",
+          user: getCurrentUser().name,
           target: task.title,
         });
       } else {
         addActivity({
           type: "task_status_changed",
-          user: "Abir",
+          user: getCurrentUser().name,
           target: task.title,
         });
       }
