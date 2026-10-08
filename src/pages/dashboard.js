@@ -1,4 +1,10 @@
-import { getState, notify, subscribe, addActivity } from "../store/store.js";
+import {
+  getState,
+  notify,
+  subscribe,
+  addActivity,
+  getCurrentUser,
+} from "../store/store.js";
 import { renderWelcomeHeader } from "../components/dashboard/welcome-header.js";
 import { renderStatCards } from "../components/dashboard/stat-cards.js";
 import { renderProjectsOverview } from "../components/dashboard/projects-overview.js";
@@ -60,7 +66,7 @@ export function renderDashboard() {
 
     addActivity({
       type: "project_created",
-      user: "Abir",
+      user: getCurrentUser().name,
       target: newProject.name,
     });
 

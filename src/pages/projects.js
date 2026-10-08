@@ -1,4 +1,9 @@
-import { getState, notify, addActivity } from "../store/store.js";
+import {
+  getState,
+  notify,
+  addActivity,
+  getCurrentUser,
+} from "../store/store.js";
 
 import { renderProjectCard } from "../components/projects/project-card.js";
 import { showToast } from "../components/toast.js";
@@ -269,7 +274,7 @@ export function renderProjects() {
 
     addActivity({
       type: "project_created",
-      user: "Abir",
+      user: getCurrentUser().name,
       target: newProject.name,
     });
 
@@ -301,7 +306,7 @@ export function renderProjects() {
 
     addActivity({
       type: "project_updated",
-      user: "Abir",
+      user: getCurrentUser().name,
       target: updatedProject.name,
     });
 
