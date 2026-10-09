@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
     "css": "npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch"
   },
   "keywords": [],
