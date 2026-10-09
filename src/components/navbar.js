@@ -1,5 +1,6 @@
 import { getAppearance, saveAppearance, applyTheme } from "../theme.js";
 import { setupNotifications } from "./notifications.js";
+import { renderGlobalSearch } from "./global-search.js";
 let profileSyncInitialized = false;
 
 const PROFILE_STORAGE_KEY = "flowboard-profile";
@@ -103,8 +104,13 @@ export function renderNavbar() {
           <!-- Search -->
           <button
             type="button"
+            id="global-search-button"
             class="size-10 rounded-lg flex items-center justify-center text-slate-500 hover:bg-slate-100 hover:text-slate-900 transition-colors dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white"
-            aria-label="Search"
+            aria-label="Search Flowboard"
+              aria-expanded="false"
+  aria-controls="global-search-modal"
+  title="Search (Ctrl+K)"
+
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -357,6 +363,7 @@ export function renderNavbar() {
   setupUserMenu();
   setupThemeToggle();
   setupNotifications();
+  renderGlobalSearch();
 
   if (!profileSyncInitialized) {
     window.addEventListener("flowboard:profile-updated", () => {
