@@ -1,5 +1,5 @@
 import { getAppearance, saveAppearance, applyTheme } from "../theme.js";
-
+import { setupNotifications } from "./notifications.js";
 let profileSyncInitialized = false;
 
 const PROFILE_STORAGE_KEY = "flowboard-profile";
@@ -164,30 +164,52 @@ export function renderNavbar() {
           </button>
 
           <!-- Notifications -->
-          <button
-            type="button"
-            class="relative size-10 rounded-lg flex items-center justify-center text-slate-500 hover:bg-slate-100 hover:text-slate-900 transition-colors dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white"
-            aria-label="Notifications"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              class="size-5"
-              aria-hidden="true"
-            >
-              <circle cx="12" cy="12" r="9"></circle>
-              <path d="M12 8v4"></path>
-              <path d="M12 16h.01"></path>
-            </svg>
+          <!-- Notifications -->
+<div class="relative">
 
-            <span
-              class="absolute top-2 right-2 size-2 rounded-full bg-red-500"
-              aria-hidden="true"
-            ></span>
-          </button>
+  <button
+    type="button"
+    id="notifications-button"
+    class="relative size-10 rounded-lg flex items-center justify-center text-slate-500 hover:bg-slate-100 hover:text-slate-900 transition-colors dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white"
+    aria-label="Notifications"
+    aria-expanded="false"
+    aria-controls="notifications-panel"
+  >
+    <!-- Bell Icon -->
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      class="size-5"
+      aria-hidden="true"
+    >
+      <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path>
+      <path d="M10 21h4"></path>
+    </svg>
+
+    <!-- Unread Notification Badge -->
+    <span
+      id="notifications-badge"
+      class="absolute -right-0.5 -top-0.5 flex min-w-4 h-4 items-center justify-center rounded-full bg-red-500 px-1 text-[10px] font-bold text-white"
+      aria-hidden="true"
+    >
+      2
+    </span>
+  </button>
+
+  <!-- Notifications Dropdown -->
+  <div
+    id="notifications-panel"
+    class="absolute right-0 top-full z-50 mt-2 hidden w-[min(24rem,calc(100vw-2rem))] overflow-hidden rounded-xl border border-slate-200 bg-white shadow-xl dark:border-slate-700 dark:bg-slate-900"
+    role="region"
+    aria-label="Notifications"
+  >
+    <div id="notifications-container"></div>
+  </div>
+
+</div>
 
           <!-- User Menu -->
           <div class="relative">
@@ -334,6 +356,7 @@ export function renderNavbar() {
 
   setupUserMenu();
   setupThemeToggle();
+  setupNotifications();
 
   if (!profileSyncInitialized) {
     window.addEventListener("flowboard:profile-updated", () => {
