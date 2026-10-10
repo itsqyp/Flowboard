@@ -5,7 +5,7 @@ import {
   getCurrentUser,
 } from "../store/store.js";
 
-const { projects, tasks } = getState();
+const { projects, tasks, teamMembers } = getState();
 // import { teamMembers } from "../data/team.js";
 import {
   renderTaskModal,
@@ -916,8 +916,10 @@ export function renderProjectDetails(projectId) {
       }
     });
 
-    document.querySelector("#task-list").innerHTML =
-      renderTaskList(filteredTasks);
+    document.querySelector("#task-list").innerHTML = renderTaskList(
+      filteredTasks,
+      teamMembers,
+    );
 
     document.querySelector("#task-count").textContent =
       `${filteredTasks.length} ${
