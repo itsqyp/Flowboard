@@ -1,8 +1,8 @@
 const PROFILE_STORAGE_KEY = "flowboard-profile";
 
 const DEFAULT_PROFILE = {
-  name: "Abir",
-  email: "abir@example.com",
+  name: "User",
+  email: "user@example.com",
   role: "Admin",
 };
 

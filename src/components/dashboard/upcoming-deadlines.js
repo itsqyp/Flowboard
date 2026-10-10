@@ -58,7 +58,7 @@ export function renderUpcomingDeadlines() {
   const upcomingDeadlines = [...projectDeadlines, ...taskDeadlines]
     .filter((deadline) => deadline.daysRemaining >= 0)
     .sort((a, b) => a.daysRemaining - b.daysRemaining)
-    .slice(0, 3);
+    .slice(0, 8);
 
   container.innerHTML = `
     <section class="h-full rounded-xl border bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
