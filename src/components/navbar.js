@@ -6,8 +6,8 @@ let profileSyncInitialized = false;
 const PROFILE_STORAGE_KEY = "flowboard-profile";
 
 const DEFAULT_PROFILE = {
-  name: "Abir",
-  email: "abir@example.com",
+  name: "username",
+  email: "username@address",
   role: "Admin",
 };
 

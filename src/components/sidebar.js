@@ -34,7 +34,6 @@ export function renderSidebar() {
                     } transition-colors"
                   >
                     ${item.icon}
-
                     ${item.label}
                   </a>
                 `;
@@ -44,7 +43,7 @@ export function renderSidebar() {
 
           <div class="mt-8">
 
-        <p class="px-3 text-xs font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+            <p class="px-3 text-xs font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">
               Workspace
             </p>
 
@@ -63,7 +62,6 @@ export function renderSidebar() {
                       } transition-colors"
                     >
                       ${item.icon}
-
                       ${item.label}
                     </a>
                   `;
@@ -74,34 +72,6 @@ export function renderSidebar() {
           </div>
 
         </nav>
-
-        <!-- Sidebar Footer -->
-      <div class="border-t border-slate-200 p-4 dark:border-slate-800">
-
-       <div class="rounded-lg bg-slate-50 p-3 dark:bg-slate-900">
-
-         <p class="text-xs font-semibold text-slate-700 dark:text-slate-200">
-              Free Plan
-            </p>
-
-        <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">
-              3 of 5 projects used
-            </p>
-
-         <div class="mt-3 h-1.5 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-700">
-              <div class="h-full w-3/5 rounded-full bg-indigo-600"></div>
-            </div>
-
-            <button
-              type="button"
-          class="mt-3 text-xs font-semibold text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-300"
-            >
-              Upgrade plan
-            </button>
-
-          </div>
-
-        </div>
 
       </div>
     </aside>
