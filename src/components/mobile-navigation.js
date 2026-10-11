@@ -156,6 +156,12 @@ function setupMobileNavigation() {
   closeButton.addEventListener("click", closeMenu);
   backdrop.addEventListener("click", closeMenu);
 
+  // Close the drawer when a navigation link is clicked.
+  drawer.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", closeMenu);
+  });
+
+  // Close the drawer when the user presses Escape.
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
       closeMenu();
