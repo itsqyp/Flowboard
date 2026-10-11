@@ -231,11 +231,19 @@ export function renderNavbar() {
               aria-controls="user-menu"
             >
               <!-- Profile Avatar -->
-              <div
-                class="flex size-8 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-sm font-bold text-indigo-700 dark:bg-indigo-500/20 dark:text-indigo-300"
-              >
-                ${initials}
-              </div>
+            <div
+  class="flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-full bg-indigo-100 text-sm font-bold text-indigo-700 dark:bg-indigo-500/20 dark:text-indigo-300"
+>
+  ${
+    profile.avatar
+      ? `<img
+          src="${profile.avatar}"
+          alt="Profile avatar"
+          class="size-full object-cover"
+        />`
+      : initials
+  }
+</div>
 
               <!-- Profile Name: Hidden on Mobile -->
               <span class="hidden text-sm font-semibold text-slate-700 dark:text-slate-200 sm:block">

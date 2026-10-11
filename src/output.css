@@ -503,6 +503,10 @@
     width: calc(var(--spacing) * 16);
     height: calc(var(--spacing) * 16);
   }
+  .size-full {
+    width: 100%;
+    height: 100%;
+  }
   .h-1 {
     height: var(--spacing);
   }
@@ -960,6 +964,9 @@
   }
   .bg-white {
     background-color: var(--color-white);
+  }
+  .object-cover {
+    object-fit: cover;
   }
   .p-1 {
     padding: var(--spacing);
