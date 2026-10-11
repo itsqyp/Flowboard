@@ -216,7 +216,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
                     <path d="M12 11v5"></path>
                     <path d="M12 8h.01"></path>
                 </svg>
-            `}};return t[e]||t.info}var D,O=t((()=>{D=null}));function Ae(e){j=e;let{teamMembers:t}=_();A=document.createElement(`div`),A.id=`project-modal`,A.className=`fixed inset-0 z-[90] hidden items-center justify-center p-4`,A.innerHTML=`
+            `}};return t[e]||t.info}var D,O=t((()=>{D=null}));function Ae(e){j=e;let t=document.querySelector(`#project-modal`);if(t){A=t;return}let{teamMembers:n}=_();A=document.createElement(`div`),A.id=`project-modal`,A.className=`fixed inset-0 z-[90] hidden items-center justify-center p-4`,A.innerHTML=`
     <!-- Backdrop -->
     <div
       class="project-modal-backdrop absolute inset-0 bg-slate-900/50 backdrop-blur-sm"
@@ -375,7 +375,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
               class="mt-2 max-h-40 space-y-2 overflow-y-auto rounded-lg border border-slate-200 p-3 dark:border-slate-700"
             >
 
-              ${t.map(e=>`
+              ${n.map(e=>`
                     <label
                       class="flex cursor-pointer items-center gap-3 rounded-lg px-2 py-2 transition hover:bg-slate-50 dark:hover:bg-slate-800"
                     >

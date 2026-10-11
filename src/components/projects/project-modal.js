@@ -6,7 +6,17 @@ let onCreate = null;
 
 export function renderProjectModal(createCallback) {
   onCreate = createCallback;
+
+  // Reuse the existing modal instead of creating duplicates.
+  const existingModal = document.querySelector("#project-modal");
+
+  if (existingModal) {
+    modal = existingModal;
+    return;
+  }
+
   const { teamMembers } = getState();
+
   modal = document.createElement("div");
 
   modal.id = "project-modal";
