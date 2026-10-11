@@ -148,58 +148,6 @@ Stored information includes application state and profile preferences, allowing 
 
 ---
 
-## 🏗️ Architecture
-
-Flowboard uses a lightweight, component-based architecture built with Vanilla JavaScript.
-
-The application separates page composition, reusable interface components, and initial data definitions into dedicated modules.
-
-Flowboard/
-├── src/
-│ ├── components/
-│ │ ├── dashboard/
-│ │ ├── projects/
-│ │ ├── tasks/
-│ │ ├── team/
-│ │ ├── navbar.js
-│ │ ├── sidebar.js
-│ │ ├── footer.js
-│ │ ├── mobile-navigation.js
-│ │ └── toast.js
-│ │
-│ ├── data/
-│ │ ├── dashboard.js
-│ │ ├── projects.js
-│ │ ├── tasks.js
-│ │ ├── team.js
-│ │ └── navigation.js
-│ │
-│ ├── pages/
-│ │ ├── dashboard.js
-│ │ ├── projects.js
-│ │ ├── project-details.js
-│ │ ├── tasks.js
-│ │ ├── calendar.js
-│ │ ├── team.js
-│ │ └── settings.js
-│ │
-│ ├── store/
-│ │ └── store.js
-│ │
-│ ├── main.js
-│ ├── router.js
-│ ├── navigation.js
-│ ├── theme.js
-│ ├── input.css
-│ └── output.css
-│
-├── index.html
-├── package.json
-├── package-lock.json
-└── README.md
-
-_Note: This tree highlights the main application modules. Individual component files and other supporting modules are omitted for readability._
-
 ### Pages
 
 Page modules assemble the interface for specific routes and coordinate their associated components.
