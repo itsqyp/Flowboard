@@ -1,490 +1,403 @@
 # Flowboard
 
-Flowboard is a modern project management SaaS interface designed to help teams organize projects, manage tasks, track deadlines, and collaborate from a centralized workspace.
+A modern, responsive project management workspace built with **Vanilla JavaScript, Tailwind CSS, and Vite**.
 
-The project is built with vanilla JavaScript and Tailwind CSS, with a component-based frontend architecture and client-side SPA routing.
+Flowboard helps teams organize projects, manage tasks, track deadlines, and coordinate their work through a centralized interface. It features a component-based architecture, client-side SPA routing, reusable UI components, and persistent browser storage.
 
-> **Status:** Active development 🚧
+**Status:** Active Development 🚧
+
+**Live Demo:** [flowboard-abir.netlify.app](https://flowboard-abir.netlify.app/)
+
+**Repository:** [github.com/itsqyp/Flowboard](https://github.com/itsqyp/Flowboard)
 
 ---
 
 ## ✨ Features
 
-### Dashboard
+### 📊 Dashboard
 
-- Overview of total projects
-- Active task statistics
-- Completed task statistics
-- Team member statistics
-- Projects overview
-- My tasks
+- Overview of projects, tasks, and team members
+- Active and completed task statistics
+- Projects overview with progress information
+- Personal task overview
 - Upcoming deadlines
 - Recent activity
-- Create new project
-- Real-time UI updates after creating projects
-- Task completion feedback with toast notifications
+- Create projects directly from the dashboard
+- Interactive UI updates after project and task actions
+- Toast notifications for user feedback
 
-### Projects
+### 📁 Project Management
 
-- View all projects
+- View all projects in a centralized workspace
 - Search projects
 - Filter projects by status
 - Sort projects
-- Project statistics
-- Project cards with progress information
-- Create projects
-- Edit projects
-- Delete projects
-- Project due dates
-- Project priorities
-- Project status tracking
-- Project team members
+- View project statistics and progress
+- Create, edit, and delete projects
+- Manage project priorities and statuses
+- Set project due dates
+- Associate team members with projects
 
-### Project Details
+### 📝 Task Management
 
-- Dedicated project detail pages
-- Project information
-- Project progress
-- Project team members
-- Project task list
-- Create tasks
-- Edit tasks
-- Delete tasks
-- Change task status
+- View tasks across projects
+- Create, edit, and delete tasks
 - Mark tasks as completed
+- Update task statuses
 - Assign tasks to team members
-- Task priority management
-- Task due dates
-
-### Tasks
-
-- Global task management
+- Set task priorities and due dates
 - Search tasks
-- Filter by status
-- Filter by priority
-- Filter by project
-- Sort by creation date
-- Sort by due date
-- Sort by priority
-- Pagination
-- Task count
-- Task completion
-- Task editing
-- Task deletion
-- Assignee information
-- Project information
-- Priority indicators
-- Empty states
-- Clear filters
-- Pagination edge-case handling
+- Filter tasks by status, priority, and project
+- Sort tasks by creation date, due date, and priority
+- Navigate task lists using pagination
+- View task assignees and associated projects
+- Handle empty states and pagination edge cases
 
-### Team
+### 🔎 Project Details
 
-- Team member management
-- Add team members
-- Edit team members
-- Delete team members
-- Role information
-- Member status
-- Member initials/avatar display
+- Dedicated detail pages for individual projects
+- View project information and progress
+- Access project team members
+- Manage project-specific tasks
+- Update task statuses and priorities
+- Assign tasks to team members
+- Manage task due dates
 
-### Calendar
+### 👥 Team Management
 
-- Monthly calendar view
-- Dynamic month generation
-- Previous month navigation
-- Next month navigation
-- Today navigation
-- Correct day positioning
-- Dynamic month/year display
+- View team members
+- Add, edit, and delete team members
+- Display member initials or avatars
+- View member roles and status information
+
+### 📅 Calendar
+
+- Dynamic monthly calendar
+- Navigate between months
+- Return to the current date
+- Automatically position dates on the correct weekdays
+- Dynamic month and year display
 - Responsive calendar layout
 
-### Navigation & UI
+_Task-deadline and project-deadline integration with the calendar remains planned._
 
-- SPA-style client-side routing
-- Dynamic active navigation state
+### ⚙️ Settings & Profile
+
+- Customize profile information
+- Update profile name, email, and role
+- Upload a profile avatar from your device
+- Display the profile avatar in the settings page and navigation bar
+- Persist profile information in browser storage
+- Switch between light, dark, and system appearance preferences
+
+### 🧭 Navigation & User Interface
+
+- Client-side SPA routing
+- Dynamic active navigation states
 - Responsive desktop sidebar
 - Mobile navigation drawer
-- Responsive layout
 - Reusable UI components
-- Toast notification system
-- Form modals
-- Confirmation modals
+- Responsive layouts for desktop, tablet, and mobile
+- Modal-based forms and confirmation dialogs
+- Toast notifications
 - Empty states
-- Responsive Tailwind CSS styling
+- Consistent Tailwind CSS styling
 
----
+### 🔔 Toast Notifications
 
-## 🛠️ Tech Stack
+A reusable notification system provides feedback throughout the application.
 
-### Frontend
-
-- HTML5
-- CSS3
-- JavaScript (ES Modules)
-- Tailwind CSS
-- Vite
-
-### Development Tools
-
-- npm
-- VS Code
-- Git
-- GitHub
-
-### Typography
-
-- Quicksand Variable via Fontsource
-
----
-
-## 📁 Project Structure
-
-```text
-Flowboard/
-│
-├── src/
-│   │
-│   ├── components/
-│   │   ├── dashboard/
-│   │   │   ├── project-modal.js
-│   │   │   ├── projects-overview.js
-│   │   │   ├── recent-activity.js
-│   │   │   ├── stat-cards.js
-│   │   │   ├── upcoming-deadlines.js
-│   │   │   ├── welcome-header.js
-│   │   │   └── my-tasks.js
-│   │   │
-│   │   ├── projects/
-│   │   │   ├── project-card.js
-│   │   │   ├── project-modal.js
-│   │   │   ├── edit-project-modal.js
-│   │   │   └── delete-project-modal.js
-│   │   │
-│   │   ├── tasks/
-│   │   │   ├── task-modal.js
-│   │   │   ├── edit-task-modal.js
-│   │   │   └── delete-task-modal.js
-│   │   │
-│   │   ├── team/
-│   │   │   ├── member-modal.js
-│   │   │   ├── edit-member-modal.js
-│   │   │   └── delete-member-modal.js
-│   │   │
-│   │   ├── navbar.js
-│   │   ├── sidebar.js
-│   │   ├── footer.js
-│   │   ├── mobile-navigation.js
-│   │   └── toast.js
-│   │
-│   ├── data/
-│   │   ├── dashboard.js
-│   │   ├── projects.js
-│   │   ├── tasks.js
-│   │   ├── team.js
-│   │   └── navigation.js
-│   │
-│   ├── pages/
-│   │   ├── dashboard.js
-│   │   ├── projects.js
-│   │   ├── project-details.js
-│   │   ├── tasks.js
-│   │   ├── calendar.js
-│   │   ├── team.js
-│   │   └── settings.js
-│   │
-│   ├── main.js
-│   ├── router.js
-│   ├── navigation.js
-│   ├── input.css
-│   └── output.css
-│
-├── index.html
-├── package.json
-├── package-lock.json
-└── README.md
-```
-
----
-
-## 🏗️ Architecture
-
-Flowboard uses a lightweight component-based architecture built with vanilla JavaScript.
-
-Instead of placing the entire application inside a single HTML file, the interface is separated into:
-
-```text
-Pages
-  ↓
-Components
-  ↓
-Data
-```
-
-### Pages
-
-Pages are responsible for assembling the interface for each route.
-
-Examples:
-
-```text
-dashboard.js
-projects.js
-project-details.js
-tasks.js
-calendar.js
-team.js
-settings.js
-```
-
-### Components
-
-Reusable interface elements are separated into individual JavaScript modules.
-
-For example:
-
-```text
-navbar.js
-sidebar.js
-toast.js
-task-modal.js
-edit-task-modal.js
-project-card.js
-```
-
-### Data
-
-Application data is centralized into dedicated modules:
-
-```text
-projects.js
-tasks.js
-team.js
-dashboard.js
-```
-
-This allows different parts of the application to work with the same project, task, and team data.
-
----
-
-## 🧭 Routing
-
-Flowboard uses client-side SPA routing.
-
-Supported routes currently include:
-
-```text
-/                   → Dashboard
-/dashboard          → Dashboard
-/projects           → Projects
-/projects/:id       → Project Details
-/tasks              → Tasks
-/calendar           → Calendar
-/team               → Team
-/settings            → Settings
-```
-
-Navigation is handled through the browser History API, allowing page transitions without full browser reloads.
-
----
-
-## 📊 Data Relationships
-
-Projects, tasks, and team members are connected through IDs.
-
-### Project → Tasks
-
-```js
-{
-  id: "flowboard",
-  name: "Flowboard"
-}
-```
-
-Tasks reference the project:
-
-```js
-{
-  id: "task-1",
-  projectId: "flowboard"
-}
-```
-
-### Task → Team Member
-
-Tasks reference their assignee:
-
-```js
-{
-  id: "task-1",
-  assigneeId: 1
-}
-```
-
-Team members contain the corresponding ID:
-
-```js
-{
-  id: 1,
-  name: "Abir"
-}
-```
-
-This structure keeps the application data normalized and makes relationships easier to manage.
-
----
-
-## 🔔 Toast Notification System
-
-Flowboard includes a reusable toast notification system for user feedback.
-
-Supported notification types include:
+Supported types:
 
 - Success
 - Error
 - Warning
 - Info
 
-The toast system also includes:
+Additional behavior:
 
 - Automatic dismissal
-- Manual close
+- Manual close button
 - Fade transitions
-- Timer pause on hover
-- Timer resume after hover
+- Pause the dismissal timer on hover
+- Resume the timer when the pointer leaves
+
+### 💾 Local Data Persistence
+
+Flowboard uses browser `localStorage` to retain application data between page reloads.
+
+Stored information includes application state and profile preferences, allowing users to continue working with their data in the same browser.
+
+**Note:** This is a frontend-only implementation. Data is stored locally in the browser and is not synchronized across users or devices.
 
 ---
 
-## 📱 Responsive Design
+## 🛠️ Tech Stack
 
-The interface is designed to work across:
+| Technology              | Purpose                                 |
+| ----------------------- | --------------------------------------- |
+| HTML5                   | Application entry point and markup      |
+| CSS3                    | Custom styling                          |
+| JavaScript (ES Modules) | Application logic and interactivity     |
+| Tailwind CSS            | Utility-first styling                   |
+| Vite                    | Development server and production build |
+| Fontsource              | Quicksand Variable typography           |
+| npm                     | Package management                      |
+| Git & GitHub            | Version control and source hosting      |
+| Netlify                 | Deployment and hosting                  |
 
-- Desktop
-- Tablet
-- Mobile
+---
 
-The desktop experience uses a persistent sidebar, while smaller screens use a mobile navigation drawer.
+## 🏗️ Architecture
 
-Tailwind CSS responsive utilities are used throughout the application.
+Flowboard uses a lightweight, component-based architecture built with Vanilla JavaScript.
+
+The application separates page composition, reusable interface components, and initial data definitions into dedicated modules.
+
+Flowboard/
+├── src/
+│ ├── components/
+│ │ ├── dashboard/
+│ │ ├── projects/
+│ │ ├── tasks/
+│ │ ├── team/
+│ │ ├── navbar.js
+│ │ ├── sidebar.js
+│ │ ├── footer.js
+│ │ ├── mobile-navigation.js
+│ │ └── toast.js
+│ │
+│ ├── data/
+│ │ ├── dashboard.js
+│ │ ├── projects.js
+│ │ ├── tasks.js
+│ │ ├── team.js
+│ │ └── navigation.js
+│ │
+│ ├── pages/
+│ │ ├── dashboard.js
+│ │ ├── projects.js
+│ │ ├── project-details.js
+│ │ ├── tasks.js
+│ │ ├── calendar.js
+│ │ ├── team.js
+│ │ └── settings.js
+│ │
+│ ├── main.js
+│ ├── router.js
+│ ├── navigation.js
+│ ├── input.css
+│ └── output.css
+│
+├── index.html
+├── package.json
+├── package-lock.json
+└── README.md
+
+_The directory tree above highlights the main application modules; individual component files are omitted for readability._
+
+### Pages
+
+Page modules assemble the interface for specific routes and coordinate their associated components.
+
+Examples include:
+
+- `dashboard.js`
+- `projects.js`
+- `project-details.js`
+- `tasks.js`
+- `calendar.js`
+- `team.js`
+- `settings.js`
+
+### Components
+
+Reusable components keep the interface modular and easier to maintain.
+
+Examples include navigation components, project cards, task forms, confirmation dialogs, team member forms, and toast notifications.
+
+### Data & State
+
+Initial application data is organized into dedicated modules. A centralized state layer manages application data and persists it to browser storage.
+
+This separation helps different parts of the application work with shared project, task, and team information.
+
+---
+
+## 🧭 Application Routes
+
+Flowboard uses client-side routing to navigate between pages without performing a full browser reload for each navigation action.
+
+| Route           | Page            |
+| --------------- | --------------- |
+| `/`             | Dashboard       |
+| `/dashboard`    | Dashboard       |
+| `/projects`     | Projects        |
+| `/projects/:id` | Project Details |
+| `/tasks`        | Tasks           |
+| `/calendar`     | Calendar        |
+| `/team`         | Team            |
+| `/settings`     | Settings        |
+
+Navigation is handled through the browser History API.
+
+---
+
+## 📊 Data Relationships
+
+Projects, tasks, and team members are connected through identifiers.
+
+### Project → Tasks
+
+A project has its own identifier:
+
+{
+id: "flowboard",
+name: "Flowboard"
+}
+
+Tasks reference the project they belong to:
+
+{
+id: "task-1",
+projectId: "flowboard"
+}
+
+### Task → Team Member
+
+A task can reference an assigned team member:
+
+{
+id: "task-1",
+assigneeId: 1
+}
+
+The corresponding team member has a matching identifier:
+
+{
+id: 1,
+name: "Abir"
+}
+
+Using identifiers to represent relationships makes it easier to associate tasks with projects and team members.
 
 ---
 
 ## 🚀 Getting Started
 
+Follow these steps to run Flowboard locally.
+
+### Prerequisites
+
+Install the following:
+
+- [Node.js](https://nodejs.org/) — preferably a current LTS release
+- npm, which is included with Node.js
+- [Git](https://git-scm.com/)
+
 ### 1. Clone the repository
 
-```bash
-git clone https://github.com/your-username/flowboard.git
-```
+git clone https://github.com/itsqyp/Flowboard.git
 
-### 2. Navigate into the project
+### 2. Navigate to the project directory
 
-```bash
-cd flowboard
-```
+cd Flowboard
 
 ### 3. Install dependencies
 
-```bash
 npm install
-```
 
 ### 4. Start the development server
 
-```bash
 npm run dev
-```
 
-Vite will provide a local development URL, usually:
+Vite will display a local URL in the terminal, typically:
 
-```text
-http://localhost:5173
-```
+http://localhost:5173/
+
+Open that URL in your browser to use Flowboard.
 
 ---
 
-## 📦 Build for Production
+## 📦 Production Build
 
-Create a production build with:
+### Create a production build
 
-```bash
 npm run build
-```
 
-To preview the production build locally:
+Vite generates the production-ready files in the `dist/` directory.
 
-```bash
+### Preview the production build
+
 npm run preview
-```
+
+Use the local URL printed in the terminal to inspect the production build before deployment.
+
+---
+
+## 🌐 Deployment
+
+Flowboard is deployed on Netlify.
+
+**Live application:** https://flowboard-abir.netlify.app/
+
+The repository can be connected to Netlify for continuous deployment, allowing updates pushed to the configured Git branch to trigger new deployments.
 
 ---
 
 ## 🗺️ Roadmap
 
-Flowboard is actively being developed.
+Flowboard is an ongoing project. Planned improvements include:
 
-Planned improvements include:
-
-- [ ] Connect calendar with task deadlines
-- [ ] Calendar task interactions
-- [ ] Calendar project deadlines
-- [ ] Complete Settings page
-- [ ] Notification center
-- [ ] Persistent application state
-- [ ] LocalStorage integration
-- [ ] Loading states
-- [ ] Error states
-- [ ] Improved accessibility
-- [ ] Advanced task interactions
-- [ ] Authentication
-- [ ] Backend/API integration
-- [ ] Database integration
-- [ ] Real-time collaboration
-- [ ] Production deployment
+- [ ] Connect calendar events to task deadlines
+- [ ] Add calendar interactions for tasks and project deadlines
+- [ ] Build a notification center
+- [ ] Add loading and error states
+- [ ] Improve accessibility and keyboard navigation
+- [ ] Expand task interactions and workflow options
+- [ ] Implement authentication and authorization
+- [ ] Introduce a backend API
+- [ ] Integrate a database
+- [ ] Support real-time collaboration
+- [ ] Add automated testing
+- [ ] Improve production readiness and application security
 
 ---
 
 ## 🎯 Project Goals
 
-Flowboard is being built as a production-oriented frontend project rather than a simple CRUD application.
+Flowboard is designed as a portfolio project focused on practical frontend engineering rather than a basic CRUD application.
 
-The main goals are to practice:
+The project provides opportunities to practice:
 
-- Scalable frontend architecture
-- Component-based JavaScript
-- SPA routing
-- State management
+- Component-based application architecture
+- Vanilla JavaScript and ES modules
+- Client-side SPA routing
+- State management and persistence
 - Data relationships
 - CRUD workflows
-- Responsive UI development
-- UX patterns
+- Search, filtering, sorting, and pagination
 - Form validation
-- Reusable components
-- Production-style edge-case handling
-- Git/GitHub workflow
+- Reusable UI components
+- Responsive interface development
+- User feedback and interaction patterns
+- Edge-case handling
+- Git and GitHub workflows
+- Production builds and deployment
 
 ---
 
-## 📌 Current Status
+## ⚠️ Current Limitations
 
-Flowboard currently provides a functional project-management workspace with:
+Flowboard is currently a frontend-focused project.
 
-- Dashboard
-- Projects
-- Project details
-- Tasks
-- Team management
-- Calendar foundation
-- SPA navigation
-- Responsive UI
-- CRUD workflows
-- Search and filtering
-- Sorting
-- Pagination
-- Toast notifications
-- Reusable components
+- Application data is stored in the browser rather than a remote database.
+- Data is not synchronized between different users or devices.
+- Authentication and server-side authorization are not implemented.
+- Real-time collaboration is not available.
+- Calendar integration with task and project deadlines is still planned.
 
-The project is still under active development, with additional SaaS functionality planned.
+These limitations are part of the project's current development stage and provide opportunities for future improvements.
 
 ---
 
@@ -492,17 +405,10 @@ The project is still under active development, with additional SaaS functionalit
 
 **Abir**
 
-Built as a frontend portfolio project to explore production-oriented web application development using vanilla JavaScript and modern frontend tooling.
+Flowboard is a personal portfolio project built to explore modern frontend development practices and production-oriented web application architecture.
 
 ---
 
 ## 📄 License
 
-This project is currently intended as a personal portfolio and learning project.
-asdkasdjaslkdjaslkdjaslkdjalskjdalksjdalksjdalksjdlaksjdlakjdlkas
-aslkdjasldkjalkdjalkdjalkdjalkjdlkajdlkasjldkas
-asldkjaslkdjalkdjaslkdjlkasjdlmvskvsdlkjsdlkjlksf
-asdlkajsdlkajsldkjaslkdjalskdjaslkdj
-dask
-sdffffffffffffffffffffffffdsfsdfsdfsdfsdfsfsdfsfsdfsdfsefewew
-asdasd
+This project is currently intended as a personal portfolio and learning project. No open-source license has been specified yet.
