@@ -81,7 +81,7 @@ function renderTaskList(taskList, teamMembers) {
           );
 
           return `
-            <div class="flex flex-col gap-4 px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
+        <div class="flex min-w-0 flex-col gap-4 px-4 py-4 sm:px-5 lg:flex-row lg:items-center lg:justify-between">
 
               <div class="min-w-0">
 
@@ -148,7 +148,7 @@ function renderTaskList(taskList, teamMembers) {
 
               </div>
 
-              <div class="flex shrink-0 items-center gap-4 pl-8 sm:pl-0">
+          <div class="flex min-w-0 flex-wrap items-center gap-2 sm:gap-3 lg:shrink-0 lg:flex-nowrap lg:gap-4">
 
                 <!-- Edit -->
                 <button
@@ -170,7 +170,7 @@ function renderTaskList(taskList, teamMembers) {
 
                 <!-- Status -->
                 <select
-                  class="task-status-select rounded-full border-0 px-2.5 py-1 text-xs font-semibold outline-none ring-0 transition
+               class="task-status-select max-w-full rounded-full border-0 px-2 py-1 text-xs font-semibold outline-none ring-0 transition
                     ${
                       task.status === "completed"
                         ? "bg-green-50 text-green-700 dark:bg-green-500/10 dark:text-green-300"

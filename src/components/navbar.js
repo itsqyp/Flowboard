@@ -279,7 +279,7 @@ export function renderNavbar() {
 
                 <!-- Profile -->
                 <a
-                  href="#"
+                  href="/settings#profile"
                   class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800"
                   role="menuitem"
                 >
@@ -301,7 +301,7 @@ export function renderNavbar() {
 
                 <!-- Settings -->
                 <a
-                  href="#"
+                  href="/settings"
                   class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800"
                   role="menuitem"
                 >
@@ -323,33 +323,7 @@ export function renderNavbar() {
 
               </div>
 
-              <!-- Logout -->
-              <div class="border-t border-slate-200 p-1.5 dark:border-slate-700">
-
-                <button
-                  type="button"
-                  id="logout-button"
-                  class="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-red-600 hover:bg-red-50"
-                  role="menuitem"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    class="size-4.5"
-                    aria-hidden="true"
-                  >
-                    <path d="M10 17l5-5-5-5"></path>
-                    <path d="M15 12H3"></path>
-                    <path d="M21 19V5a2 2 0 0 0-2-2h-6"></path>
-                  </svg>
-
-                  Log out
-                </button>
-
-              </div>
+            
 
             </div>
 

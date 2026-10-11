@@ -8,116 +8,121 @@ export function renderMobileNavigation() {
     return;
   }
 
-  navigation.innerHTML = `
-        <!-- Backdrop -->
-        <div
-            id="mobile-navigation-backdrop"
-            class="fixed inset-0 z-40 hidden bg-black/40"
-        ></div>
+  const currentPath = window.location.pathname;
 
-        <!-- Drawer -->
-        <aside
-            id="mobile-navigation-drawer"
-          class="fixed inset-y-0 left-0 z-50 flex w-72 -translate-x-full flex-col bg-white shadow-xl transition-transform duration-300 dark:bg-slate-950"
-        >
+  function isNavigationActive(item) {
+    if (item.href === "/") {
+      return currentPath === "/" || currentPath === "/dashboard";
+    }
 
-            <!-- Drawer Header -->
-       <div class="flex h-16 items-center justify-between border-b border-slate-200 px-4 dark:border-slate-800">
+    if (item.href === "/projects") {
+      return (
+        currentPath === "/projects" || currentPath.startsWith("/projects/")
+      );
+    }
 
-                <div class="flex items-center gap-2">
+    return item.href === currentPath;
+  }
 
-                    <div
-                        class="flex size-9 items-center justify-center rounded-lg bg-indigo-600 font-bold text-white"
-                    >
-                        F
-                    </div>
+  function renderNavigationItem(item) {
+    const isActive = isNavigationActive(item);
 
-                <span class="text-lg font-bold tracking-tight text-slate-900 dark:text-white">
-                        Flowboard
-                    </span>
+    const activeClasses =
+      "bg-indigo-50 font-semibold text-indigo-700 dark:bg-indigo-500/10 dark:text-indigo-300";
 
-                </div>
+    const inactiveClasses =
+      "font-medium text-slate-600 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100";
 
-                <button
-                    type="button"
-                    id="mobile-menu-close"
-                  class="flex size-10 items-center justify-center rounded-lg text-slate-500 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white"
-                    aria-label="Close navigation menu"
-                >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        class="size-5"
-                    >
-                        <path d="M18 6 6 18"></path>
-                        <path d="m6 6 12 12"></path>
-                    </svg>
-                </button>
+    return `
+  <a
+    href="${item.href}"
+    class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition-colors ${
+      isActive ? activeClasses : inactiveClasses
+    }"
+    ${isActive ? 'aria-current="page"' : ""}
+  >
+    ${item.icon}
+    ${item.label}
+  </a>
+`;
+  }
 
-            </div>
+  navigation.innerHTML = ` <!-- Backdrop --> <div
+   id="mobile-navigation-backdrop"
+   class="fixed inset-0 z-40 hidden bg-black/40"
+ ></div>
 
-            <!-- Navigation -->
-            <nav class="flex-1 overflow-y-auto p-4">
 
+<!-- Drawer -->
+<aside
+  id="mobile-navigation-drawer"
+  class="fixed inset-y-0 left-0 z-50 flex w-72 max-w-[85vw] -translate-x-full flex-col bg-white shadow-xl transition-transform duration-300 dark:bg-slate-950"
+  aria-label="Mobile navigation"
+>
+  <!-- Drawer Header -->
+  <div
+    class="flex h-16 shrink-0 items-center justify-between border-b border-slate-200 px-4 dark:border-slate-800"
+  >
+    <div class="flex items-center gap-2">
+      <div
+        class="flex size-9 items-center justify-center rounded-lg bg-indigo-600 font-bold text-white"
+      >
+        F
+      </div>
+
+      <span class="text-lg font-bold tracking-tight text-slate-900 dark:text-white">
+        Flowboard
+      </span>
+    </div>
+
+    <button
+      type="button"
+      id="mobile-menu-close"
+      class="flex size-10 items-center justify-center rounded-lg text-slate-500 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white"
+      aria-label="Close navigation menu"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        class="size-5"
+        aria-hidden="true"
+      >
+        <path d="M18 6 6 18"></path>
+        <path d="m6 6 12 12"></path>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="min-h-0 flex-1 overflow-y-auto p-4">
+    <!-- Main Navigation -->
     <div class="space-y-1">
-
-        ${mainNavigation
-          .map(
-            (item, index) => `
-            <a
-                href="${item.href}"
-                class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm ${
-                  index === 0
-                    ? "bg-indigo-50 font-semibold text-indigo-700 dark:bg-indigo-500/10 dark:text-indigo-300"
-                    : "font-medium text-slate-600 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100"
-                }"
-            >
-                ${item.icon}
-
-                ${item.label}
-            </a>
-        `,
-          )
-          .join("")}
-
+      ${mainNavigation.map(renderNavigationItem).join("")}
     </div>
 
+    <!-- Workspace Navigation -->
     <div class="mt-8">
+      <p
+        class="px-3 text-xs font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500"
+      >
+        Workspace
+      </p>
 
-    <p class="px-3 text-xs font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">
-            Workspace
-        </p>
-
-        <div class="mt-2 space-y-1">
-
-            ${workspaceNavigation
-              .map(
-                (item) => `
-                <a
-                    href="${item.href}"
-                  class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100"
-                >
-                    ${item.icon}
-
-                    ${item.label}
-                </a>
-            `,
-              )
-              .join("")}
-
-        </div>
-
+      <div class="mt-2 space-y-1">
+        ${workspaceNavigation.map(renderNavigationItem).join("")}
+      </div>
     </div>
+  </nav>
+</aside>
 
-</nav>
-        </aside>
-    `;
+`;
 
   setupMobileNavigation();
 }
+
 function setupMobileNavigation() {
   const menuButton = document.querySelector("#mobile-menu-button");
   const closeButton = document.querySelector("#mobile-menu-close");
@@ -145,10 +150,10 @@ function setupMobileNavigation() {
     document.body.classList.remove("overflow-hidden");
   }
 
+  menuButton.setAttribute("aria-expanded", "false");
+
   menuButton.addEventListener("click", openMenu);
-
   closeButton.addEventListener("click", closeMenu);
-
   backdrop.addEventListener("click", closeMenu);
 
   document.addEventListener("keydown", (event) => {
