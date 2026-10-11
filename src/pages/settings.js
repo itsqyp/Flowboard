@@ -900,29 +900,50 @@ function renderProfileSettings(content) {
 
       <div class="p-6">
 
-        <!-- Avatar -->
-        <div class="flex items-center gap-4">
+      
+<!-- Avatar -->
+<div class="flex items-center gap-4">
 
-          <div
-            class="flex size-16 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-lg font-semibold text-indigo-700 dark:bg-indigo-500/10 dark:text-indigo-300"
-          >
-            ${getInitials(profile.name)}
-          </div>
+  <!-- Avatar Preview -->
+  <div
+    id="profile-avatar-preview"
+    class="flex size-16 shrink-0 items-center justify-center overflow-hidden rounded-full bg-indigo-100 text-lg font-semibold text-indigo-700 dark:bg-indigo-500/10 dark:text-indigo-300"
+  >
+    ${
+      profile.avatar
+        ? `<img
+            src="${profile.avatar}"
+            alt="Profile avatar"
+            class="size-full object-cover"
+          />`
+        : getInitials(profile.name)
+    }
+  </div>
 
-          <div>
-            <button
-              type="button"
-              class="rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-slate-100"
-            >
-              Change avatar
-            </button>
+  <!-- Avatar Controls -->
+  <div>
+    <input
+      type="file"
+      id="profile-avatar-input"
+      accept="image/jpeg,image/png,image/gif,image/webp"
+      class="hidden"
+    />
 
-            <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">
-              JPG, PNG or GIF. Maximum 2MB.
-            </p>
-          </div>
+    <button
+      type="button"
+      id="change-avatar-button"
+      class="rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-slate-100"
+    >
+      Change avatar
+    </button>
 
-        </div>
+    <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">
+      JPG, PNG, GIF or WebP. Maximum 2MB.
+    </p>
+  </div>
+
+</div>
+
 
         <form id="profile-form" class="space-y-5">
 
@@ -1028,11 +1049,15 @@ function setupProfileForm() {
     //   role,
     // });
 
+    const existingProfile = getProfile();
+
     saveProfile({
+      ...existingProfile,
       name,
       email,
       role,
     });
+
     window.dispatchEvent(new CustomEvent("flowboard:profile-updated"));
 
     window.dispatchEvent(
