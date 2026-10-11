@@ -183,9 +183,13 @@ Flowboard/
 │ │ ├── team.js
 │ │ └── settings.js
 │ │
+│ ├── store/
+│ │ └── store.js
+│ │
 │ ├── main.js
 │ ├── router.js
 │ ├── navigation.js
+│ ├── theme.js
 │ ├── input.css
 │ └── output.css
 │
@@ -194,7 +198,7 @@ Flowboard/
 ├── package-lock.json
 └── README.md
 
-_The directory tree above highlights the main application modules; individual component files are omitted for readability._
+_Note: This tree highlights the main application modules. Individual component files and other supporting modules are omitted for readability._
 
 ### Pages
 
