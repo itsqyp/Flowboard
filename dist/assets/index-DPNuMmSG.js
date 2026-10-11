@@ -1,4 +1,4 @@
-var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e=0)),t}catch(e){throw n=[e],e}},n=(e,t)=>()=>(t||(e((t={exports:{}}).exports,t),e=null),t.exports),r=(t,n)=>{let r={};for(var i in t)e(r,i,{get:t[i],enumerable:!0});return n||e(r,Symbol.toStringTag,{value:`Module`}),r};(function(){let e=document.createElement(`link`).relList;if(e&&e.supports&&e.supports(`modulepreload`))return;for(let e of document.querySelectorAll(`link[rel="modulepreload"]`))n(e);new MutationObserver(e=>{for(let t of e)if(t.type===`childList`)for(let e of t.addedNodes)e.tagName===`LINK`&&e.rel===`modulepreload`&&n(e)}).observe(document,{childList:!0,subtree:!0});function t(e){let t={};return e.integrity&&(t.integrity=e.integrity),e.referrerPolicy&&(t.referrerPolicy=e.referrerPolicy),t.credentials=e.crossOrigin===`use-credentials`?`include`:e.crossOrigin===`anonymous`?`omit`:`same-origin`,t}function n(e){if(e.ep)return;e.ep=!0;let n=t(e);fetch(e.href,n)}})();var i=t((()=>{})),a=t((()=>{}));function o(){let e=localStorage.getItem(l);if(!e)return u;try{return{...u,...JSON.parse(e)}}catch{return u}}function s(e){localStorage.setItem(l,JSON.stringify(e))}function c(e){let t=document.documentElement;if(e===`dark`){t.classList.add(`dark`);return}if(e===`light`){t.classList.remove(`dark`);return}let n=window.matchMedia(`(prefers-color-scheme: dark)`).matches;t.classList.toggle(`dark`,n)}var l,u,d=t((()=>{l=`flowboard-appearance`,u={theme:`light`}})),f,ee=t((()=>{f=[{id:`flowboard`,name:`Flowboard`,description:`Project management SaaS for teams to plan, organize, and track their work.`,status:`in-progress`,priority:`high`,dueDate:`2026-09-18`,memberIds:[1,2,3],createdAt:`2026-08-20`},{id:`gojotech`,name:`GojoTech`,description:`Modern e-commerce platform for discovering and purchasing technology products.`,status:`in-progress`,priority:`high`,dueDate:`2026-09-10`,memberIds:[1,4],createdAt:`2026-08-12`},{id:`marketing-site`,name:`Marketing Website`,description:`Company marketing website focused on product presentation and lead generation.`,status:`planning`,priority:`medium`,dueDate:`2026-10-05`,memberIds:[1,5],createdAt:`2026-08-28`},{id:`mobile-app`,name:`Mobile App`,description:`Mobile companion application for managing projects and tasks on the go.`,status:`completed`,priority:`medium`,dueDate:`2026-08-30`,memberIds:[1,6,7],createdAt:`2026-07-15`},{id:`design-system`,name:`Design System`,description:`Reusable UI component library and design guidelines for Flowboard products.`,status:`on-hold`,priority:`low`,dueDate:`2026-10-20`,memberIds:[1,8],createdAt:`2026-08-05`}]})),p,te=t((()=>{p=[{id:`task-1`,projectId:`flowboard`,title:`Design project dashboard`,description:`Create the main dashboard layout with project statistics, tasks, deadlines, and activity.`,status:`completed`,priority:`high`,dueDate:`2026-09-05`,assigneeId:1,createdAt:`2026-08-21`},{id:`task-2`,projectId:`flowboard`,title:`Build project management page`,description:`Implement project listing, search, filtering, sorting, and project creation.`,status:`in-progress`,priority:`high`,dueDate:`2026-09-08`,assigneeId:1,createdAt:`2026-08-22`},{id:`task-3`,projectId:`flowboard`,title:`Implement task management`,description:`Build task creation, completion, editing, filtering, and project task views.`,status:`todo`,priority:`high`,dueDate:`2026-09-12`,assigneeId:2,createdAt:`2026-08-25`},{id:`task-4`,projectId:`flowboard`,title:`Add responsive mobile navigation`,description:`Make the application navigation work properly across mobile and desktop layouts.`,status:`completed`,priority:`medium`,dueDate:`2026-08-30`,assigneeId:1,createdAt:`2026-08-23`},{id:`task-5`,projectId:`flowboard`,title:`Improve application accessibility`,description:`Review keyboard navigation, focus states, labels, and semantic HTML throughout the application.`,status:`todo`,priority:`medium`,dueDate:`2026-09-15`,assigneeId:2,createdAt:`2026-08-27`},{id:`task-6`,projectId:`gojotech`,title:`Implement product search`,description:`Add product search with real-time filtering across the product catalog.`,status:`completed`,priority:`high`,dueDate:`2026-08-25`,assigneeId:1,createdAt:`2026-08-15`},{id:`task-7`,projectId:`gojotech`,title:`Build shopping cart`,description:`Implement cart state, quantity controls, item removal, and total calculations.`,status:`completed`,priority:`high`,dueDate:`2026-08-28`,assigneeId:1,createdAt:`2026-08-18`},{id:`task-8`,projectId:`gojotech`,title:`Complete checkout flow`,description:`Build the checkout interface with customer information, shipping, and order summary.`,status:`in-progress`,priority:`high`,dueDate:`2026-09-06`,assigneeId:4,createdAt:`2026-08-20`},{id:`task-9`,projectId:`marketing-site`,title:`Create landing page`,description:`Build the main marketing landing page and responsive hero section.`,status:`in-progress`,priority:`medium`,dueDate:`2026-09-20`,assigneeId:1,createdAt:`2026-08-29`},{id:`task-10`,projectId:`marketing-site`,title:`Write product content`,description:`Prepare copy for the product, features, pricing, and company sections.`,status:`todo`,priority:`low`,dueDate:`2026-09-25`,assigneeId:5,createdAt:`2026-08-30`},{id:`task-11`,projectId:`mobile-app`,title:`Release production build`,description:`Prepare the final mobile application build for production release.`,status:`completed`,priority:`high`,dueDate:`2026-08-30`,assigneeId:6,createdAt:`2026-08-27`},{id:`task-12`,projectId:`design-system`,title:`Create button components`,description:`Design and document reusable button variants for the Flowboard design system.`,status:`in-progress`,priority:`medium`,dueDate:`2026-09-18`,assigneeId:8,createdAt:`2026-08-10`}]})),m,ne=t((()=>{m=[{id:1,name:`Abir`,email:`abir@example.com`,role:`Admin`,initials:`AB`,status:`active`},{id:2,name:`Sarah`,email:`sarah@example.com`,role:`Designer`,initials:`SM`,status:`active`},{id:4,name:`Daniel`,email:`daniel@example.com`,role:`Developer`,initials:`DB`,status:`active`},{id:5,name:`Emma`,email:`emma@example.com`,role:`Content Writer`,initials:`EW`,status:`active`},{id:6,name:`Michael`,email:`michael@example.com`,role:`Developer`,initials:`MK`,status:`active`},{id:7,name:`Nadia`,email:`nadia@example.com`,role:`Project Manager`,initials:`NR`,status:`active`},{id:8,name:`Olivia`,email:`olivia@example.com`,role:`Designer`,initials:`OR`,status:`active`}]}));function h(){let e=localStorage.getItem(ae);if(!e)return b;try{return{...b,...JSON.parse(e)}}catch{return b}}function re(){let e=localStorage.getItem(le);if(!e)return{projects:[...x],tasks:[...oe],teamMembers:[...se],activities:[...ce]};try{let t=JSON.parse(e);return{projects:Array.isArray(t.projects)?t.projects:[...x],tasks:Array.isArray(t.tasks)?t.tasks:[...oe],teamMembers:Array.isArray(t.teamMembers)?t.teamMembers:[...se],activities:Array.isArray(t.activities)?t.activities:[...ce]}}catch(e){return console.error(`Failed to load Flowboard state:`,e),{projects:[...x],tasks:[...oe],teamMembers:[...se],activities:[...ce]}}}function g(){localStorage.setItem(le,JSON.stringify(S))}function _(){return S}function ie(e){return ue.add(e),()=>{ue.delete(e)}}function v(){g(),ue.forEach(e=>{e(S)})}function y(e){S.activities.unshift({id:crypto.randomUUID(),...e,createdAt:new Date().toISOString()}),S.activities.splice(50)}var ae,b,x,oe,se,ce,le,S,ue,C=t((()=>{ee(),te(),ne(),ae=`flowboard-profile`,b={name:`Abir`,email:`abir@example.com`,role:`Admin`},x=structuredClone(f),oe=structuredClone(p),se=structuredClone(m),ce=[],le=`flowboard-state`,S=re(),ue=new Set}));function w(){let e=localStorage.getItem(Ce);if(!e)return[];try{let t=JSON.parse(e);return Array.isArray(t)?t.filter(e=>e&&!Te.has(e.id)):[]}catch{return[]}}function de(e){localStorage.setItem(Ce,JSON.stringify(e))}function fe(){try{let e=localStorage.getItem(we),t=e?JSON.parse(e):[];return Array.isArray(t)?t:[]}catch{return[]}}function pe(e,t,n){return Math.floor(Date.UTC(e,t,n)/864e5)}function me(e,t=new Date){if(!e)return null;let n=String(e).slice(0,10),r=/^(\d{4})-(\d{2})-(\d{2})$/.exec(n);if(!r)return null;let i=Number(r[1]),a=Number(r[2]),o=Number(r[3]),s=new Date(i,a-1,o);if(s.getFullYear()!==i||s.getMonth()!==a-1||s.getDate()!==o)return null;let c=pe(t.getFullYear(),t.getMonth(),t.getDate());return pe(i,a-1,o)-c}function he(e,t){return t===0?{title:`Task due today`,message:`"${e.title}" is due today.`}:t===1?{title:`Task due tomorrow`,message:`"${e.title}" is due tomorrow.`}:{title:`Task due in ${t} days`,message:`"${e.title}" is due in ${t} days.`}}function ge(){let e=_()||{},t=Array.isArray(e.tasks)?e.tasks:[],n=w(),r=new Set(fe()),i=new Set(n.map(e=>e.id)),a=!1;for(let e of t){if(!e||e.status===`completed`||!e.dueDate)continue;let t=me(e.dueDate);if(t===null||t<0||t>3)continue;let o=String(e.dueDate).slice(0,10),s=`deadline-${e.id}-${o}-${t}`;if(r.has(s))continue;let c=he(e,t);i.has(s)||(n.unshift({id:s,title:c.title,message:c.message,type:`deadline`,read:!1,createdAt:new Date().toISOString()}),i.add(s),a=!0),r.add(s)}de(n.slice(0,50)),localStorage.setItem(we,JSON.stringify([...r].slice(-500))),a&&T()}function _e(e){let t=Math.max(0,Math.floor((Date.now()-new Date(e).getTime())/1e3));if(Number.isNaN(t))return`Recently`;if(t<60)return`Just now`;let n=Math.floor(t/60);if(n<60)return`${n} minute${n===1?``:`s`} ago`;let r=Math.floor(n/60);if(r<24)return`${r} hour${r===1?``:`s`} ago`;let i=Math.floor(r/24);return i<7?`${i} day${i===1?``:`s`} ago`:new Date(e).toLocaleDateString()}function ve(e){let t={task:`
+var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e=0)),t}catch(e){throw n=[e],e}},n=(e,t)=>()=>(t||(e((t={exports:{}}).exports,t),e=null),t.exports),r=(t,n)=>{let r={};for(var i in t)e(r,i,{get:t[i],enumerable:!0});return n||e(r,Symbol.toStringTag,{value:`Module`}),r};(function(){let e=document.createElement(`link`).relList;if(e&&e.supports&&e.supports(`modulepreload`))return;for(let e of document.querySelectorAll(`link[rel="modulepreload"]`))n(e);new MutationObserver(e=>{for(let t of e)if(t.type===`childList`)for(let e of t.addedNodes)e.tagName===`LINK`&&e.rel===`modulepreload`&&n(e)}).observe(document,{childList:!0,subtree:!0});function t(e){let t={};return e.integrity&&(t.integrity=e.integrity),e.referrerPolicy&&(t.referrerPolicy=e.referrerPolicy),t.credentials=e.crossOrigin===`use-credentials`?`include`:e.crossOrigin===`anonymous`?`omit`:`same-origin`,t}function n(e){if(e.ep)return;e.ep=!0;let n=t(e);fetch(e.href,n)}})();var i=t((()=>{})),a=t((()=>{}));function o(){let e=localStorage.getItem(l);if(!e)return u;try{return{...u,...JSON.parse(e)}}catch{return u}}function s(e){localStorage.setItem(l,JSON.stringify(e))}function c(e){let t=document.documentElement;if(e===`dark`){t.classList.add(`dark`);return}if(e===`light`){t.classList.remove(`dark`);return}let n=window.matchMedia(`(prefers-color-scheme: dark)`).matches;t.classList.toggle(`dark`,n)}var l,u,d=t((()=>{l=`flowboard-appearance`,u={theme:`light`}})),f,ee=t((()=>{f=[]})),p,te=t((()=>{p=[]})),m,ne=t((()=>{m=[{id:1,name:`User`,email:`user@address`,role:`Admin`,initials:`U`,status:`active`}]}));function h(){let e=localStorage.getItem(ae);if(!e)return b;try{return{...b,...JSON.parse(e)}}catch{return b}}function re(){let e=localStorage.getItem(le);if(!e)return{projects:[...x],tasks:[...oe],teamMembers:[...se],activities:[...ce]};try{let t=JSON.parse(e);return{projects:Array.isArray(t.projects)?t.projects:[...x],tasks:Array.isArray(t.tasks)?t.tasks:[...oe],teamMembers:Array.isArray(t.teamMembers)?t.teamMembers:[...se],activities:Array.isArray(t.activities)?t.activities:[...ce]}}catch(e){return console.error(`Failed to load Flowboard state:`,e),{projects:[...x],tasks:[...oe],teamMembers:[...se],activities:[...ce]}}}function g(){localStorage.setItem(le,JSON.stringify(S))}function _(){return S}function ie(e){return ue.add(e),()=>{ue.delete(e)}}function v(){g(),ue.forEach(e=>{e(S)})}function y(e){S.activities.unshift({id:crypto.randomUUID(),...e,createdAt:new Date().toISOString()}),S.activities.splice(50)}var ae,b,x,oe,se,ce,le,S,ue,C=t((()=>{ee(),te(),ne(),ae=`flowboard-profile`,b={name:`User`,email:`user@example.com`,role:`Admin`},x=structuredClone(f),oe=structuredClone(p),se=structuredClone(m),ce=[],le=`flowboard-state`,S=re(),ue=new Set}));function w(){let e=localStorage.getItem(Ce);if(!e)return[];try{let t=JSON.parse(e);return Array.isArray(t)?t.filter(e=>e&&!Te.has(e.id)):[]}catch{return[]}}function de(e){localStorage.setItem(Ce,JSON.stringify(e))}function fe(){try{let e=localStorage.getItem(we),t=e?JSON.parse(e):[];return Array.isArray(t)?t:[]}catch{return[]}}function pe(e,t,n){return Math.floor(Date.UTC(e,t,n)/864e5)}function me(e,t=new Date){if(!e)return null;let n=String(e).slice(0,10),r=/^(\d{4})-(\d{2})-(\d{2})$/.exec(n);if(!r)return null;let i=Number(r[1]),a=Number(r[2]),o=Number(r[3]),s=new Date(i,a-1,o);if(s.getFullYear()!==i||s.getMonth()!==a-1||s.getDate()!==o)return null;let c=pe(t.getFullYear(),t.getMonth(),t.getDate());return pe(i,a-1,o)-c}function he(e,t){return t===0?{title:`Task due today`,message:`"${e.title}" is due today.`}:t===1?{title:`Task due tomorrow`,message:`"${e.title}" is due tomorrow.`}:{title:`Task due in ${t} days`,message:`"${e.title}" is due in ${t} days.`}}function ge(){let e=_()||{},t=Array.isArray(e.tasks)?e.tasks:[],n=w(),r=new Set(fe()),i=new Set(n.map(e=>e.id)),a=!1;for(let e of t){if(!e||e.status===`completed`||!e.dueDate)continue;let t=me(e.dueDate);if(t===null||t<0||t>3)continue;let o=String(e.dueDate).slice(0,10),s=`deadline-${e.id}-${o}-${t}`;if(r.has(s))continue;let c=he(e,t);i.has(s)||(n.unshift({id:s,title:c.title,message:c.message,type:`deadline`,read:!1,createdAt:new Date().toISOString()}),i.add(s),a=!0),r.add(s)}de(n.slice(0,50)),localStorage.setItem(we,JSON.stringify([...r].slice(-500))),a&&T()}function _e(e){let t=Math.max(0,Math.floor((Date.now()-new Date(e).getTime())/1e3));if(Number.isNaN(t))return`Recently`;if(t<60)return`Just now`;let n=Math.floor(t/60);if(n<60)return`${n} minute${n===1?``:`s`} ago`;let r=Math.floor(n/60);if(r<24)return`${r} hour${r===1?``:`s`} ago`;let i=Math.floor(r/24);return i<7?`${i} day${i===1?``:`s`} ago`:new Date(e).toLocaleDateString()}function ve(e){let t={task:`
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
@@ -760,13 +760,13 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
       </div>
 
     </section>
-  `,e.querySelectorAll(`.dashboard-project-card`).forEach(e=>{e.addEventListener(`click`,()=>{let t=e.dataset.projectId;Z(`/projects/${t}`)})})}function Xe(e){let t={progress:`bg-indigo-50 text-indigo-700 dark:bg-indigo-500/10 dark:text-indigo-300`,warning:`bg-amber-50 text-amber-700 dark:bg-amber-500/10 dark:text-amber-300`,success:`bg-emerald-50 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-300`};return`
+  `,e.querySelectorAll(`.dashboard-project-card`).forEach(e=>{e.addEventListener(`click`,()=>{let t=e.dataset.projectId;X(`/projects/${t}`)})})}function Xe(e){let t={progress:`bg-indigo-50 text-indigo-700 dark:bg-indigo-500/10 dark:text-indigo-300`,warning:`bg-amber-50 text-amber-700 dark:bg-amber-500/10 dark:text-amber-300`,success:`bg-emerald-50 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-300`};return`
     <span
       class="rounded-full px-2.5 py-1 text-xs font-semibold ${t[e.statusType]||t.progress}"
     >
       ${e.status}
     </span>
-  `}var Ze=t((()=>{C(),Q()}));function Qe(){let e=document.querySelector(`#dashboard-tasks`);if(!e){console.error(`Dashboard tasks mount point not found.`);return}let{tasks:t,projects:n}=_();e.innerHTML=`
+  `}var Ze=t((()=>{C(),Z()}));function Qe(){let e=document.querySelector(`#dashboard-tasks`);if(!e){console.error(`Dashboard tasks mount point not found.`);return}let{tasks:t,projects:n}=_();e.innerHTML=`
     <section class="rounded-xl border bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
 
       <!-- Header -->
@@ -867,7 +867,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
     >
       ${e.priority}
     </span>
-  `}function et(){document.querySelectorAll(`.task-checkbox`).forEach(e=>{e.addEventListener(`click`,()=>{let t=e.dataset.taskId,{tasks:n}=_(),r=n.find(e=>e.id===t);r&&(r.status=r.status===`completed`?`todo`:`completed`,v(),r.status===`completed`?E(`"${r.title}" has been completed.`,`success`):E(`"${r.title}" has been marked as incomplete.`,`info`))})})}var tt=t((()=>{C(),O()}));function nt(){let e=document.querySelector(`#dashboard-deadlines`);if(!e){console.error(`Dashboard deadlines mount point not found.`);return}let{projects:t,tasks:n}=_(),r=new Date;r.setHours(0,0,0,0);let i=t.filter(e=>e.dueDate).map(e=>{let t=new Date(`${e.dueDate}T00:00:00`),n=Math.ceil((t-r)/864e5);return{title:e.name,type:`Project`,date:t.toLocaleDateString(`en-US`,{month:`short`,day:`2-digit`,year:`numeric`}),daysRemaining:n}}),a=n.filter(e=>e.dueDate).map(e=>{let t=new Date(`${e.dueDate}T00:00:00`),n=Math.ceil((t-r)/864e5);return{title:e.title,type:`Task`,date:t.toLocaleDateString(`en-US`,{month:`short`,day:`2-digit`,year:`numeric`}),daysRemaining:n}}),o=[...i,...a].filter(e=>e.daysRemaining>=0).sort((e,t)=>e.daysRemaining-t.daysRemaining).slice(0,3);e.innerHTML=`
+  `}function et(){document.querySelectorAll(`.task-checkbox`).forEach(e=>{e.addEventListener(`click`,()=>{let t=e.dataset.taskId,{tasks:n}=_(),r=n.find(e=>e.id===t);r&&(r.status=r.status===`completed`?`todo`:`completed`,v(),r.status===`completed`?E(`"${r.title}" has been completed.`,`success`):E(`"${r.title}" has been marked as incomplete.`,`info`))})})}var tt=t((()=>{C(),O()}));function nt(){let e=document.querySelector(`#dashboard-deadlines`);if(!e){console.error(`Dashboard deadlines mount point not found.`);return}let{projects:t,tasks:n}=_(),r=new Date;r.setHours(0,0,0,0);let i=t.filter(e=>e.dueDate).map(e=>{let t=new Date(`${e.dueDate}T00:00:00`),n=Math.ceil((t-r)/864e5);return{title:e.name,type:`Project`,date:t.toLocaleDateString(`en-US`,{month:`short`,day:`2-digit`,year:`numeric`}),daysRemaining:n}}),a=n.filter(e=>e.dueDate).map(e=>{let t=new Date(`${e.dueDate}T00:00:00`),n=Math.ceil((t-r)/864e5);return{title:e.title,type:`Task`,date:t.toLocaleDateString(`en-US`,{month:`short`,day:`2-digit`,year:`numeric`}),daysRemaining:n}}),o=[...i,...a].filter(e=>e.daysRemaining>=0).sort((e,t)=>e.daysRemaining-t.daysRemaining).slice(0,8);e.innerHTML=`
     <section class="h-full rounded-xl border bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
 
       <!-- Header -->
@@ -1266,7 +1266,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
             </p>
           </div>
         </label>
-      `).join(``))}function ft(e){P=e;let t=document.querySelector(`#edit-project-modal`);t&&t.remove();let n=document.createElement(`div`);n.id=`edit-project-modal`,n.className=`fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/50 p-4 backdrop-blur-sm`,n.innerHTML=`
+      `).join(``))}function ft(e){mt=e;let t=document.querySelector(`#edit-project-modal`);t&&t.remove();let n=document.createElement(`div`);n.id=`edit-project-modal`,n.className=`fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/50 p-4 backdrop-blur-sm`,n.innerHTML=`
     <div
       class="w-full max-w-lg rounded-2xl border border-slate-200 bg-white shadow-2xl dark:border-slate-700 dark:bg-slate-900"
     >
@@ -1456,7 +1456,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
         </div>
       </form>
     </div>
-  `,document.body.appendChild(n);let r=n.querySelector(`#edit-project-form`),i=n.querySelector(`#close-edit-project-modal`),a=n.querySelector(`#cancel-edit-project-modal`);i.addEventListener(`click`,N),a.addEventListener(`click`,N),n.addEventListener(`click`,e=>{e.target===n&&N()}),r.addEventListener(`submit`,e=>{e.preventDefault();let t=new FormData(r),n=t.get(`name`).trim(),i=t.get(`description`).trim(),a=t.get(`status`),o=t.get(`priority`),s=t.get(`dueDate`),c=t.getAll(`memberIds`).map(Number);if(!n){E(`Project name is required.`,`error`);return}P&&P({id:F,name:n,description:i,status:a,priority:o,dueDate:s,memberIds:c}),N(),E(`Project updated successfully.`,`success`)})}function pt(e){let t=document.querySelector(`#edit-project-modal`);if(!t)return;F=e.id;let n=e.memberIds||[];document.querySelector(`#edit-project-name`).value=e.name||``,document.querySelector(`#edit-project-description`).value=e.description||``,document.querySelector(`#edit-project-status`).value=e.status||`planning`,document.querySelector(`#edit-project-priority`).value=e.priority||`medium`,document.querySelector(`#edit-project-due-date`).value=e.dueDate||``,dt(n),t.classList.remove(`hidden`),t.classList.add(`flex`),document.querySelector(`#edit-project-name`).focus()}function N(){let e=document.querySelector(`#edit-project-modal`);e&&(e.classList.add(`hidden`),e.classList.remove(`flex`),F=null)}var P,F,mt=t((()=>{O(),C(),P=null,F=null}));function ht(){let e=document.querySelector(`#app`);if(!e){console.error(`App mount point not found.`);return}let{projects:t,tasks:n}=_();e.innerHTML=`
+  `,document.body.appendChild(n);let r=n.querySelector(`#edit-project-form`),i=n.querySelector(`#close-edit-project-modal`),a=n.querySelector(`#cancel-edit-project-modal`);i.addEventListener(`click`,N),a.addEventListener(`click`,N),n.addEventListener(`click`,e=>{e.target===n&&N()}),r.addEventListener(`submit`,e=>{e.preventDefault();let t=new FormData(r),n=t.get(`name`).trim(),i=t.get(`description`).trim(),a=t.get(`status`),o=t.get(`priority`),s=t.get(`dueDate`),c=t.getAll(`memberIds`).map(Number);if(!n){E(`Project name is required.`,`error`);return}mt&&mt({id:ht,name:n,description:i,status:a,priority:o,dueDate:s,memberIds:c}),N(),E(`Project updated successfully.`,`success`)})}function pt(e){let t=document.querySelector(`#edit-project-modal`);if(!t)return;ht=e.id;let n=e.memberIds||[];document.querySelector(`#edit-project-name`).value=e.name||``,document.querySelector(`#edit-project-description`).value=e.description||``,document.querySelector(`#edit-project-status`).value=e.status||`planning`,document.querySelector(`#edit-project-priority`).value=e.priority||`medium`,document.querySelector(`#edit-project-due-date`).value=e.dueDate||``,dt(n),t.classList.remove(`hidden`),t.classList.add(`flex`),document.querySelector(`#edit-project-name`).focus()}function N(){let e=document.querySelector(`#edit-project-modal`);e&&(e.classList.add(`hidden`),e.classList.remove(`flex`),ht=null)}var mt,ht,gt=t((()=>{O(),C(),mt=null,ht=null}));function _t(){let e=document.querySelector(`#app`);if(!e){console.error(`App mount point not found.`);return}let{projects:t,tasks:n}=_();e.innerHTML=`
     <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
 
       <!-- Page Header -->
@@ -1619,7 +1619,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
           </p>
 
         </div>
-      `;return}r.innerHTML=u.map(e=>lt(e)).join(``)}Ae(e=>{t.unshift(e),y({type:`project_created`,user:h().name,target:e.name}),v(),l()}),ft(e=>{let n=t.findIndex(t=>String(t.id)===String(e.id));if(n===-1){gt();return}t[n]={...t[n],...e},y({type:`project_updated`,user:h().name,target:e.name}),v(),l()}),l(),i.addEventListener(`input`,l),a.addEventListener(`change`,l),o.addEventListener(`change`,l),document.querySelector(`#create-project-btn`).addEventListener(`click`,Ne),r.addEventListener(`click`,e=>{let n=e.target.closest(`.edit-project-btn`);if(!n)return;let r=n.dataset.editProjectId,i=t.find(e=>String(e.id)===String(r));if(!i){gt();return}pt(i)})}function gt(){E(`Project could not be updated.`,`error`)}var _t=t((()=>{C(),ut(),O(),Le(),mt()}));function vt(e){Ct=e;let{projects:t,teamMembers:n}=_();document.querySelector(`#task-modal`)||(L=document.createElement(`div`),L.id=`task-modal`,L.className=`fixed inset-0 z-[90] hidden items-center justify-center p-4`,L.innerHTML=`
+      `;return}r.innerHTML=u.map(e=>lt(e)).join(``)}Ae(e=>{t.unshift(e),y({type:`project_created`,user:h().name,target:e.name}),v(),l()}),ft(e=>{let n=t.findIndex(t=>String(t.id)===String(e.id));if(n===-1){vt();return}t[n]={...t[n],...e},y({type:`project_updated`,user:h().name,target:e.name}),v(),l()}),l(),i.addEventListener(`input`,l),a.addEventListener(`change`,l),o.addEventListener(`change`,l),document.querySelector(`#create-project-btn`).addEventListener(`click`,Ne),r.addEventListener(`click`,e=>{let n=e.target.closest(`.edit-project-btn`);if(!n)return;let r=n.dataset.editProjectId,i=t.find(e=>String(e.id)===String(r));if(!i){vt();return}pt(i)})}function vt(){E(`Project could not be updated.`,`error`)}var yt=t((()=>{C(),ut(),O(),Le(),gt()}));function bt(e){Tt=e;let{projects:t,teamMembers:n}=_();document.querySelector(`#task-modal`)||(F=document.createElement(`div`),F.id=`task-modal`,F.className=`fixed inset-0 z-[90] hidden items-center justify-center p-4`,F.innerHTML=`
     <!-- Backdrop -->
     <div
       class="task-modal-backdrop absolute inset-0 bg-slate-900/50 backdrop-blur-sm"
@@ -1832,7 +1832,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
       </form>
 
     </div>
-  `,document.body.appendChild(L),yt())}function yt(){let e=L.querySelector(`#close-task-modal`),t=L.querySelector(`#cancel-task-modal`),n=L.querySelector(`.task-modal-backdrop`),r=L.querySelector(`#task-form`);e.addEventListener(`click`,I),t.addEventListener(`click`,I),n.addEventListener(`click`,I),r.addEventListener(`submit`,St),document.addEventListener(`keydown`,xt)}function bt(e=null){if(!L)return;let t=L.querySelector(`#task-project`);t.disabled=!1,t.classList.remove(`pointer-events-none`,`bg-slate-100`),t.removeAttribute(`aria-disabled`),e&&typeof e!=`object`?(t.value=String(e),t.classList.add(`pointer-events-none`,`bg-slate-100`),t.setAttribute(`aria-disabled`,`true`)):t.value=``,L.classList.remove(`hidden`),L.classList.add(`flex`),document.body.classList.add(`overflow-hidden`);let n=L.querySelector(`#task-title`);setTimeout(()=>{n.focus()},50)}function I(){if(!L)return;L.classList.add(`hidden`),L.classList.remove(`flex`),document.body.classList.remove(`overflow-hidden`),L.querySelector(`#task-form`).reset();let e=L.querySelector(`#task-project`);e.disabled=!1,e.classList.remove(`pointer-events-none`,`bg-slate-100`),e.removeAttribute(`aria-disabled`)}function xt(e){e.key===`Escape`&&!L.classList.contains(`hidden`)&&I()}function St(e){e.preventDefault();let t=new FormData(e.currentTarget),n=t.get(`title`).trim(),r=t.get(`description`).trim(),i=t.get(`projectId`),a=t.get(`priority`),o=t.get(`dueDate`),s=Number(t.get(`assigneeId`));if(!n){E(`Please enter a task title.`,`warning`);return}if(!i){E(`Please select a project.`,`warning`);return}if(!o){E(`Please select a due date.`,`warning`);return}let c={id:`task-${Date.now()}`,projectId:i,title:n,description:r||`No description provided.`,status:`todo`,priority:a,dueDate:o,assigneeId:s,createdAt:new Date().toISOString().split(`T`)[0]};Ct&&Ct(c),I(),E(`"${n}" has been created successfully.`,`success`)}var L,Ct,wt=t((()=>{O(),C(),L=null,Ct=null}));function Tt(e){At=e;let t=document.querySelector(`#edit-task-modal`);t&&t.remove(),document.body.insertAdjacentHTML(`beforeend`,`
+  `,document.body.appendChild(F),xt())}function xt(){let e=F.querySelector(`#close-task-modal`),t=F.querySelector(`#cancel-task-modal`),n=F.querySelector(`.task-modal-backdrop`),r=F.querySelector(`#task-form`);e.addEventListener(`click`,P),t.addEventListener(`click`,P),n.addEventListener(`click`,P),r.addEventListener(`submit`,wt),document.addEventListener(`keydown`,Ct)}function St(e=null){if(!F)return;let t=F.querySelector(`#task-project`);t.disabled=!1,t.classList.remove(`pointer-events-none`,`bg-slate-100`),t.removeAttribute(`aria-disabled`),e&&typeof e!=`object`?(t.value=String(e),t.classList.add(`pointer-events-none`,`bg-slate-100`),t.setAttribute(`aria-disabled`,`true`)):t.value=``,F.classList.remove(`hidden`),F.classList.add(`flex`),document.body.classList.add(`overflow-hidden`);let n=F.querySelector(`#task-title`);setTimeout(()=>{n.focus()},50)}function P(){if(!F)return;F.classList.add(`hidden`),F.classList.remove(`flex`),document.body.classList.remove(`overflow-hidden`),F.querySelector(`#task-form`).reset();let e=F.querySelector(`#task-project`);e.disabled=!1,e.classList.remove(`pointer-events-none`,`bg-slate-100`),e.removeAttribute(`aria-disabled`)}function Ct(e){e.key===`Escape`&&!F.classList.contains(`hidden`)&&P()}function wt(e){e.preventDefault();let t=new FormData(e.currentTarget),n=t.get(`title`).trim(),r=t.get(`description`).trim(),i=t.get(`projectId`),a=t.get(`priority`),o=t.get(`dueDate`),s=Number(t.get(`assigneeId`));if(!n){E(`Please enter a task title.`,`warning`);return}if(!i){E(`Please select a project.`,`warning`);return}if(!o){E(`Please select a due date.`,`warning`);return}let c={id:`task-${Date.now()}`,projectId:i,title:n,description:r||`No description provided.`,status:`todo`,priority:a,dueDate:o,assigneeId:s,createdAt:new Date().toISOString().split(`T`)[0]};Tt&&Tt(c),P(),E(`"${n}" has been created successfully.`,`success`)}var F,Tt,Et=t((()=>{O(),C(),F=null,Tt=null}));function Dt(e){Mt=e;let t=document.querySelector(`#edit-task-modal`);t&&t.remove(),document.body.insertAdjacentHTML(`beforeend`,`
       <div
         id="edit-task-modal"
         class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/40 p-4"
@@ -2025,14 +2025,14 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
           </form>
         </div>
       </div>
-    `),Dt()}function Et(e=null){let{teamMembers:t}=_(),n=document.querySelector(`#edit-task-assignee`);n&&(n.innerHTML=t.map(t=>`
+    `),kt()}function Ot(e=null){let{teamMembers:t}=_(),n=document.querySelector(`#edit-task-assignee`);n&&(n.innerHTML=t.map(t=>`
         <option
           value="${t.id}"
           ${Number(t.id)===Number(e)?`selected`:``}
         >
           ${t.name}
         </option>
-      `).join(``))}function Dt(){let e=document.querySelector(`#edit-task-modal`),t=document.querySelector(`#edit-task-form`),n=document.querySelector(`#close-edit-task-modal`),r=document.querySelector(`#cancel-edit-task`);!e||!t||!n||!r||(n.addEventListener(`click`,kt),r.addEventListener(`click`,kt),e.addEventListener(`click`,t=>{t.target===e&&kt()}),t.addEventListener(`submit`,e=>{e.preventDefault();let n=new FormData(t),r=n.get(`title`).trim(),i=n.get(`description`).trim()||`No description provided.`,a=n.get(`status`),o=n.get(`priority`),s=n.get(`dueDate`),c=n.get(`assigneeId`),l={id:jt,projectId:R,title:r,description:i,status:a,priority:o,dueDate:s,assigneeId:c?Number(c):null};if(!l.title||!l.dueDate){E(`Please fill in all required fields.`,`error`);return}At&&At(l),kt(),E(`Task updated successfully.`,`success`)}))}function Ot(e){let t=document.querySelector(`#edit-task-modal`);t&&(jt=e.id,R=e.projectId,document.querySelector(`#edit-task-title`).value=e.title||``,document.querySelector(`#edit-task-description`).value=e.description||``,document.querySelector(`#edit-task-status`).value=e.status||`todo`,document.querySelector(`#edit-task-priority`).value=e.priority||`medium`,document.querySelector(`#edit-task-due-date`).value=e.dueDate||``,Et(e.assigneeId??null),t.classList.remove(`hidden`),t.classList.add(`flex`),document.querySelector(`#edit-task-title`).focus())}function kt(){let e=document.querySelector(`#edit-task-modal`);e&&(e.classList.add(`hidden`),e.classList.remove(`flex`),jt=null,R=null)}var At,jt,R,Mt=t((()=>{O(),C(),At=null,jt=null,R=null}));function Nt(e){Lt=e;let t=document.querySelector(`#delete-task-modal`);t&&t.remove(),document.body.insertAdjacentHTML(`beforeend`,`
+      `).join(``))}function kt(){let e=document.querySelector(`#edit-task-modal`),t=document.querySelector(`#edit-task-form`),n=document.querySelector(`#close-edit-task-modal`),r=document.querySelector(`#cancel-edit-task`);!e||!t||!n||!r||(n.addEventListener(`click`,jt),r.addEventListener(`click`,jt),e.addEventListener(`click`,t=>{t.target===e&&jt()}),t.addEventListener(`submit`,e=>{e.preventDefault();let n=new FormData(t),r=n.get(`title`).trim(),i=n.get(`description`).trim()||`No description provided.`,a=n.get(`status`),o=n.get(`priority`),s=n.get(`dueDate`),c=n.get(`assigneeId`),l={id:Nt,projectId:I,title:r,description:i,status:a,priority:o,dueDate:s,assigneeId:c?Number(c):null};if(!l.title||!l.dueDate){E(`Please fill in all required fields.`,`error`);return}Mt&&Mt(l),jt(),E(`Task updated successfully.`,`success`)}))}function At(e){let t=document.querySelector(`#edit-task-modal`);t&&(Nt=e.id,I=e.projectId,document.querySelector(`#edit-task-title`).value=e.title||``,document.querySelector(`#edit-task-description`).value=e.description||``,document.querySelector(`#edit-task-status`).value=e.status||`todo`,document.querySelector(`#edit-task-priority`).value=e.priority||`medium`,document.querySelector(`#edit-task-due-date`).value=e.dueDate||``,Ot(e.assigneeId??null),t.classList.remove(`hidden`),t.classList.add(`flex`),document.querySelector(`#edit-task-title`).focus())}function jt(){let e=document.querySelector(`#edit-task-modal`);e&&(e.classList.add(`hidden`),e.classList.remove(`flex`),Nt=null,I=null)}var Mt,Nt,I,Pt=t((()=>{O(),C(),Mt=null,Nt=null,I=null}));function Ft(e){zt=e;let t=document.querySelector(`#delete-task-modal`);t&&t.remove(),document.body.insertAdjacentHTML(`beforeend`,`
       <div
         id="delete-task-modal"
         class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/40 p-4"
@@ -2105,7 +2105,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
           </div>
         </div>
       </div>
-    `),Pt()}function Pt(){let e=document.querySelector(`#delete-task-modal`),t=document.querySelector(`#cancel-delete-task`),n=document.querySelector(`#confirm-delete-task`);t.addEventListener(`click`,It),e.addEventListener(`click`,t=>{t.target===e&&It()}),n.addEventListener(`click`,()=>{z&&=(Lt&&Lt(z),It(),E(`Task deleted successfully.`,`success`),null)})}function Ft(e){let t=document.querySelector(`#delete-task-modal`),n=document.querySelector(`#delete-task-name`);!t||!n||(z=e,n.textContent=`"${e.title}"`,t.classList.remove(`hidden`),t.classList.add(`flex`))}function It(){let e=document.querySelector(`#delete-task-modal`);e&&(e.classList.add(`hidden`),e.classList.remove(`flex`),z=null)}var Lt,z,Rt=t((()=>{O(),Lt=null,z=null}));function B(){Bt||=(ie(()=>{window.location.pathname===`/tasks`&&B()}),!0);let e=document.querySelector(`#app`);if(!e){console.error(`App mount point not found.`);return}let{tasks:t,projects:n,teamMembers:r}=_(),i=t.filter(e=>{let t=V.search.toLowerCase(),n=e.title.toLowerCase().includes(t)||e.description.toLowerCase().includes(t),r=V.status===`all`||e.status===V.status,i=V.priority===`all`||e.priority===V.priority,a=V.project===`all`||e.projectId===V.project;return n&&r&&i&&a}),a=[...i].sort((e,t)=>{switch(V.sort){case`oldest`:return new Date(e.createdAt)-new Date(t.createdAt);case`due-asc`:return new Date(e.dueDate)-new Date(t.dueDate);case`due-desc`:return new Date(t.dueDate)-new Date(e.dueDate);case`priority-high`:{let n={high:3,medium:2,low:1};return n[t.priority]-n[e.priority]}case`priority-low`:{let n={high:3,medium:2,low:1};return n[e.priority]-n[t.priority]}default:return new Date(t.createdAt)-new Date(e.createdAt)}}),o=Math.ceil(a.length/zt);o>0&&H>o&&(H=o);let s=(H-1)*zt,c=s+zt,l=a.slice(s,c);e.innerHTML=`
+    `),It()}function It(){let e=document.querySelector(`#delete-task-modal`),t=document.querySelector(`#cancel-delete-task`),n=document.querySelector(`#confirm-delete-task`);t.addEventListener(`click`,Rt),e.addEventListener(`click`,t=>{t.target===e&&Rt()}),n.addEventListener(`click`,()=>{L&&=(zt&&zt(L),Rt(),E(`Task deleted successfully.`,`success`),null)})}function Lt(e){let t=document.querySelector(`#delete-task-modal`),n=document.querySelector(`#delete-task-name`);!t||!n||(L=e,n.textContent=`"${e.title}"`,t.classList.remove(`hidden`),t.classList.add(`flex`))}function Rt(){let e=document.querySelector(`#delete-task-modal`);e&&(e.classList.add(`hidden`),e.classList.remove(`flex`),L=null)}var zt,L,Bt=t((()=>{O(),zt=null,L=null}));function R(){Ht||=(ie(()=>{window.location.pathname===`/tasks`&&R()}),!0);let e=document.querySelector(`#app`);if(!e){console.error(`App mount point not found.`);return}let{tasks:t,projects:n,teamMembers:r}=_(),i=t.filter(e=>{let t=z.search.toLowerCase(),n=e.title.toLowerCase().includes(t)||e.description.toLowerCase().includes(t),r=z.status===`all`||e.status===z.status,i=z.priority===`all`||e.priority===z.priority,a=z.project===`all`||e.projectId===z.project;return n&&r&&i&&a}),a=[...i].sort((e,t)=>{switch(z.sort){case`oldest`:return new Date(e.createdAt)-new Date(t.createdAt);case`due-asc`:return new Date(e.dueDate)-new Date(t.dueDate);case`due-desc`:return new Date(t.dueDate)-new Date(e.dueDate);case`priority-high`:{let n={high:3,medium:2,low:1};return n[t.priority]-n[e.priority]}case`priority-low`:{let n={high:3,medium:2,low:1};return n[e.priority]-n[t.priority]}default:return new Date(t.createdAt)-new Date(e.createdAt)}}),o=Math.ceil(a.length/Vt);o>0&&B>o&&(B=o);let s=(B-1)*Vt,c=s+Vt,l=a.slice(s,c);e.innerHTML=`
     <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
 
       <!-- Header -->
@@ -2241,7 +2241,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
         <input
           id="task-search"
           type="search"
-           value="${V.search}"
+           value="${z.search}"
           placeholder="Search tasks..."
           class="w-full rounded-lg border border-slate-200 bg-white py-2 pl-9 pr-3 text-sm text-slate-700 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 sm:w-56 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:placeholder:text-slate-500"
         />
@@ -2252,19 +2252,19 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
         id="task-status-filter"
         class="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-600 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200"
       >
-        <option value="all" ${V.status===`all`?`selected`:``}>
+        <option value="all" ${z.status===`all`?`selected`:``}>
   All Status
 </option>
 
-<option value="todo" ${V.status===`todo`?`selected`:``}>
+<option value="todo" ${z.status===`todo`?`selected`:``}>
   To Do
 </option>
 
-<option value="in-progress" ${V.status===`in-progress`?`selected`:``}>
+<option value="in-progress" ${z.status===`in-progress`?`selected`:``}>
   In Progress
 </option>
 
-<option value="completed" ${V.status===`completed`?`selected`:``}>
+<option value="completed" ${z.status===`completed`?`selected`:``}>
   Completed
 </option>
       </select>
@@ -2274,19 +2274,19 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
         id="task-priority-filter"
         class="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-600 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200"
       >
-       <option value="all" ${V.priority===`all`?`selected`:``}>
+       <option value="all" ${z.priority===`all`?`selected`:``}>
   All Priority
 </option>
 
-<option value="high" ${V.priority===`high`?`selected`:``}>
+<option value="high" ${z.priority===`high`?`selected`:``}>
   High
 </option>
 
-<option value="medium" ${V.priority===`medium`?`selected`:``}>
+<option value="medium" ${z.priority===`medium`?`selected`:``}>
   Medium
 </option>
 
-<option value="low" ${V.priority===`low`?`selected`:``}>
+<option value="low" ${z.priority===`low`?`selected`:``}>
   Low
 </option>
       </select>
@@ -2296,7 +2296,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
 >
   <option
     value="all"
-    ${V.project===`all`?`selected`:``}
+    ${z.project===`all`?`selected`:``}
   >
     All Projects
   </option>
@@ -2304,7 +2304,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
   ${n.map(e=>`
         <option
           value="${e.id}"
-          ${V.project===e.id?`selected`:``}
+          ${z.project===e.id?`selected`:``}
         >
           ${e.name}
         </option>
@@ -2316,42 +2316,42 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
 >
   <option
     value="newest"
-    ${V.sort===`newest`?`selected`:``}
+    ${z.sort===`newest`?`selected`:``}
   >
     Newest
   </option>
 
   <option
     value="oldest"
-    ${V.sort===`oldest`?`selected`:``}
+    ${z.sort===`oldest`?`selected`:``}
   >
     Oldest
   </option>
 
   <option
     value="due-asc"
-    ${V.sort===`due-asc`?`selected`:``}
+    ${z.sort===`due-asc`?`selected`:``}
   >
     Due Date ↑
   </option>
 
   <option
     value="due-desc"
-    ${V.sort===`due-desc`?`selected`:``}
+    ${z.sort===`due-desc`?`selected`:``}
   >
     Due Date ↓
   </option>
 
   <option
     value="priority-high"
-    ${V.sort===`priority-high`?`selected`:``}
+    ${z.sort===`priority-high`?`selected`:``}
   >
     Priority: High → Low
   </option>
 
   <option
     value="priority-low"
-    ${V.sort===`priority-low`?`selected`:``}
+    ${z.sort===`priority-low`?`selected`:``}
   >
     Priority: Low → High
   </option>
@@ -2592,7 +2592,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
             id="previous-task-page"
             type="button"
            class="rounded-lg border border-slate-200 px-3 py-2 text-xs font-semibold text-slate-600 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
-            ${H===1?`disabled`:``}
+            ${B===1?`disabled`:``}
           >
             Previous
           </button>
@@ -2602,7 +2602,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
           ${Array.from({length:o},(e,t)=>{let n=t+1;return`
                 <button
                   type="button"
-                  class="task-page-btn rounded-lg px-3 py-2 text-xs font-semibold transition ${H===n?`bg-indigo-600 text-white`:`text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800`}"
+                  class="task-page-btn rounded-lg px-3 py-2 text-xs font-semibold transition ${B===n?`bg-indigo-600 text-white`:`text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800`}"
                   data-page="${n}"
                 >
                   ${n}
@@ -2615,7 +2615,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
             id="next-task-page"
             type="button"
            class="rounded-lg border border-slate-200 px-3 py-2 text-xs font-semibold text-slate-600 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
-            ${H===o?`disabled`:``}
+            ${B===o?`disabled`:``}
           >
             Next
           </button>
@@ -2633,7 +2633,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
       </div>
 
     </div>
-  `,vt(e=>{t.unshift(e),y({type:`task_created`,user:h().name,target:e.title}),v(),B()}),Tt(e=>{let n=t.findIndex(t=>t.id===e.id);n!==-1&&(t[n]=e,y({type:`task_updated`,user:h().name,target:e.title}),v(),B())}),Nt(e=>{let n=t.findIndex(t=>t.id===e.id);n!==-1&&(y({type:`task_deleted`,user:h().name,target:e.title}),t.splice(n,1),v(),B())}),document.querySelectorAll(`.edit-task-btn`).forEach(e=>{e.addEventListener(`click`,()=>{let n=e.dataset.taskId,r=t.find(e=>e.id===n);r&&Ot(r)})}),document.querySelectorAll(`.delete-task-btn`).forEach(e=>{e.addEventListener(`click`,()=>{let n=e.dataset.taskId,r=t.find(e=>e.id===n);r&&Ft(r)})}),document.querySelector(`#add-task-btn`)?.addEventListener(`click`,()=>{bt()}),document.querySelectorAll(`.task-complete-btn`).forEach(e=>{e.addEventListener(`click`,()=>{let n=e.dataset.taskId,r=t.find(e=>e.id===n);r&&(r.status=r.status===`completed`?`todo`:`completed`,r.status===`completed`?y({type:`task_completed`,user:h().name,target:r.title}):y({type:`task_status_changed`,user:h().name,target:r.title}),v(),B())})});let u=document.querySelector(`#task-search`),d=document.querySelector(`#task-status-filter`),f=document.querySelector(`#task-priority-filter`),ee=document.querySelector(`#task-project-filter`),p=document.querySelector(`#task-sort`);u?.addEventListener(`input`,e=>{V.search=e.target.value,H=1,B();let t=document.querySelector(`#task-search`);t&&(t.focus(),t.setSelectionRange(t.value.length,t.value.length))}),d?.addEventListener(`change`,e=>{V.status=e.target.value,H=1,B()}),f?.addEventListener(`change`,e=>{V.priority=e.target.value,H=1,B()}),ee?.addEventListener(`change`,e=>{V.project=e.target.value,H=1,B()}),p?.addEventListener(`change`,e=>{V.sort=e.target.value,H=1,B()});let te=document.querySelector(`#previous-task-page`),m=document.querySelector(`#next-task-page`),ne=document.querySelectorAll(`.task-page-btn`);te?.addEventListener(`click`,()=>{H<=1||(--H,B())}),m?.addEventListener(`click`,()=>{H>=o||(H+=1,B())}),ne.forEach(e=>{e.addEventListener(`click`,()=>{H=Number(e.dataset.page),B()})}),document.querySelector(`#clear-task-filters`)?.addEventListener(`click`,()=>{V={search:``,status:`all`,priority:`all`,project:`all`,sort:`newest`},H=1,B()})}var V,H,zt,Bt,Vt=t((()=>{C(),wt(),Mt(),Rt(),V={search:``,status:`all`,priority:`all`,project:`all`,sort:`newest`},H=1,zt=10,Bt=!1})),Ht,Ut,Wt,Gt,Kt=t((()=>{Ht=`modulepreload`,Ut=function(e){return`/`+e},Wt={},Gt=function(e,t,n){let r=Promise.resolve();if(t&&t.length>0){let e=document.getElementsByTagName(`link`),i=document.querySelector(`meta[property=csp-nonce]`),a=i?.nonce||i?.getAttribute(`nonce`);function o(e){return Promise.all(e.map(e=>Promise.resolve(e).then(e=>({status:`fulfilled`,value:e}),e=>({status:`rejected`,reason:e}))))}function s(e){return import.meta.resolve?import.meta.resolve(e):new URL(e,import.meta.url).href}r=o(t.map(t=>{if(t=Ut(t,n),t=s(t),t in Wt)return;Wt[t]=!0;let r=t.endsWith(`.css`);for(let n=e.length-1;n>=0;n--){let i=e[n];if(i.href===t&&(!r||i.rel===`stylesheet`))return}let i=document.createElement(`link`);if(i.rel=r?`stylesheet`:Ht,r||(i.as=`script`),i.crossOrigin=``,i.href=t,a&&i.setAttribute(`nonce`,a),document.head.appendChild(i),r)return new Promise((e,n)=>{i.addEventListener(`load`,e),i.addEventListener(`error`,()=>n(Error(`Unable to preload CSS for ${t}`)))})}))}function i(e){let t=new Event(`vite:preloadError`,{cancelable:!0});if(t.payload=e,window.dispatchEvent(t),!t.defaultPrevented)throw e}return r.then(t=>{for(let e of t||[])e.status===`rejected`&&i(e.reason);return e().catch(i)})}}));function qt(){let{projects:e,tasks:t}=_(),n=e.filter(e=>e.dueDate).map(e=>({id:`project-${e.id}`,type:`project`,title:e.name,date:e.dueDate,projectId:e.id})),r=t.filter(e=>e.dueDate).map(e=>({id:e.id,type:`task`,title:e.title,date:e.dueDate,projectId:e.projectId,status:e.status,priority:e.priority}));return[...n,...r]}function Jt(){Yt||=(ie(()=>{window.location.pathname===`/calendar`&&U()}),!0)}function U(){Jt();let e=document.querySelector(`#app`);if(!e)return;let t=qt();e.innerHTML=`
+  `,bt(e=>{t.unshift(e),y({type:`task_created`,user:h().name,target:e.title}),v(),R()}),Dt(e=>{let n=t.findIndex(t=>t.id===e.id);n!==-1&&(t[n]=e,y({type:`task_updated`,user:h().name,target:e.title}),v(),R())}),Ft(e=>{let n=t.findIndex(t=>t.id===e.id);n!==-1&&(y({type:`task_deleted`,user:h().name,target:e.title}),t.splice(n,1),v(),R())}),document.querySelectorAll(`.edit-task-btn`).forEach(e=>{e.addEventListener(`click`,()=>{let n=e.dataset.taskId,r=t.find(e=>e.id===n);r&&At(r)})}),document.querySelectorAll(`.delete-task-btn`).forEach(e=>{e.addEventListener(`click`,()=>{let n=e.dataset.taskId,r=t.find(e=>e.id===n);r&&Lt(r)})}),document.querySelector(`#add-task-btn`)?.addEventListener(`click`,()=>{St()}),document.querySelectorAll(`.task-complete-btn`).forEach(e=>{e.addEventListener(`click`,()=>{let n=e.dataset.taskId,r=t.find(e=>e.id===n);r&&(r.status=r.status===`completed`?`todo`:`completed`,r.status===`completed`?y({type:`task_completed`,user:h().name,target:r.title}):y({type:`task_status_changed`,user:h().name,target:r.title}),v(),R())})});let u=document.querySelector(`#task-search`),d=document.querySelector(`#task-status-filter`),f=document.querySelector(`#task-priority-filter`),ee=document.querySelector(`#task-project-filter`),p=document.querySelector(`#task-sort`);u?.addEventListener(`input`,e=>{z.search=e.target.value,B=1,R();let t=document.querySelector(`#task-search`);t&&(t.focus(),t.setSelectionRange(t.value.length,t.value.length))}),d?.addEventListener(`change`,e=>{z.status=e.target.value,B=1,R()}),f?.addEventListener(`change`,e=>{z.priority=e.target.value,B=1,R()}),ee?.addEventListener(`change`,e=>{z.project=e.target.value,B=1,R()}),p?.addEventListener(`change`,e=>{z.sort=e.target.value,B=1,R()});let te=document.querySelector(`#previous-task-page`),m=document.querySelector(`#next-task-page`),ne=document.querySelectorAll(`.task-page-btn`);te?.addEventListener(`click`,()=>{B<=1||(--B,R())}),m?.addEventListener(`click`,()=>{B>=o||(B+=1,R())}),ne.forEach(e=>{e.addEventListener(`click`,()=>{B=Number(e.dataset.page),R()})}),document.querySelector(`#clear-task-filters`)?.addEventListener(`click`,()=>{z={search:``,status:`all`,priority:`all`,project:`all`,sort:`newest`},B=1,R()})}var z,B,Vt,Ht,Ut=t((()=>{C(),Et(),Pt(),Bt(),z={search:``,status:`all`,priority:`all`,project:`all`,sort:`newest`},B=1,Vt=10,Ht=!1})),Wt,Gt,Kt,qt,Jt=t((()=>{Wt=`modulepreload`,Gt=function(e){return`/`+e},Kt={},qt=function(e,t,n){let r=Promise.resolve();if(t&&t.length>0){let e=document.getElementsByTagName(`link`),i=document.querySelector(`meta[property=csp-nonce]`),a=i?.nonce||i?.getAttribute(`nonce`);function o(e){return Promise.all(e.map(e=>Promise.resolve(e).then(e=>({status:`fulfilled`,value:e}),e=>({status:`rejected`,reason:e}))))}function s(e){return import.meta.resolve?import.meta.resolve(e):new URL(e,import.meta.url).href}r=o(t.map(t=>{if(t=Gt(t,n),t=s(t),t in Kt)return;Kt[t]=!0;let r=t.endsWith(`.css`);for(let n=e.length-1;n>=0;n--){let i=e[n];if(i.href===t&&(!r||i.rel===`stylesheet`))return}let i=document.createElement(`link`);if(i.rel=r?`stylesheet`:Wt,r||(i.as=`script`),i.crossOrigin=``,i.href=t,a&&i.setAttribute(`nonce`,a),document.head.appendChild(i),r)return new Promise((e,n)=>{i.addEventListener(`load`,e),i.addEventListener(`error`,()=>n(Error(`Unable to preload CSS for ${t}`)))})}))}function i(e){let t=new Event(`vite:preloadError`,{cancelable:!0});if(t.payload=e,window.dispatchEvent(t),!t.defaultPrevented)throw e}return r.then(t=>{for(let e of t||[])e.status===`rejected`&&i(e.reason);return e().catch(i)})}}));function Yt(){let{projects:e,tasks:t}=_(),n=e.filter(e=>e.dueDate).map(e=>({id:`project-${e.id}`,type:`project`,title:e.name,date:e.dueDate,projectId:e.id})),r=t.filter(e=>e.dueDate).map(e=>({id:e.id,type:`task`,title:e.title,date:e.dueDate,projectId:e.projectId,status:e.status,priority:e.priority}));return[...n,...r]}function Xt(){Zt||=(ie(()=>{window.location.pathname===`/calendar`&&V()}),!0)}function V(){Xt();let e=document.querySelector(`#app`);if(!e)return;let t=Yt();e.innerHTML=`
     <div class="space-y-6">
 
       <!-- Header -->
@@ -2694,7 +2694,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
 
 
           <h2 class="text-base font-bold text-slate-900 dark:text-white">
-            ${W.toLocaleDateString(`en-US`,{month:`long`,year:`numeric`})}
+            ${H.toLocaleDateString(`en-US`,{month:`long`,year:`numeric`})}
           </h2>
 
 
@@ -2764,7 +2764,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
   <div class="min-w-[900px]">
     <div class="grid grid-cols-7">
 
-      ${(()=>{let e=W.getFullYear(),n=W.getMonth(),r=new Date(e,n,1).getDay(),i=new Date(e,n+1,0).getDate(),a=Math.ceil((r+i)/7)*7;return Array.from({length:a},(a,o)=>{let s=o-r+1,c=s>=1&&s<=i,l=c?`${e}-${String(n+1).padStart(2,`0`)}-${String(s).padStart(2,`0`)}`:``,u=t.filter(e=>e.date===l);return`
+      ${(()=>{let e=H.getFullYear(),n=H.getMonth(),r=new Date(e,n,1).getDay(),i=new Date(e,n+1,0).getDate(),a=Math.ceil((r+i)/7)*7;return Array.from({length:a},(a,o)=>{let s=o-r+1,c=s>=1&&s<=i,l=c?`${e}-${String(n+1).padStart(2,`0`)}-${String(s).padStart(2,`0`)}`:``,u=t.filter(e=>e.date===l);return`
             <div
               class="group min-h-28 border-b border-r border-slate-100 p-3 transition-colors dark:border-slate-800 ${c?`bg-white hover:bg-slate-50 dark:bg-slate-900 dark:hover:bg-slate-800/50`:`bg-slate-50 dark:bg-slate-950`}"
             >
@@ -2846,7 +2846,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
         </div>
 
 
-  `;function n(e,t){G?.remove();let n=new Date(`${t}T00:00:00`).toLocaleDateString(`en-US`,{weekday:`long`,month:`long`,day:`numeric`,year:`numeric`});G=document.createElement(`div`),G.innerHTML=`
+  `;function n(e,t){U?.remove();let n=new Date(`${t}T00:00:00`).toLocaleDateString(`en-US`,{weekday:`long`,month:`long`,day:`numeric`,year:`numeric`});U=document.createElement(`div`),U.innerHTML=`
       <div
         class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 p-4"
         data-calendar-modal-backdrop
@@ -2929,7 +2929,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
 
         </div>
       </div>
-    `,document.body.appendChild(G);let r=()=>{G?.remove(),G=null};G.querySelector(`[data-calendar-modal-close]`)?.addEventListener(`click`,r),G.querySelector(`[data-calendar-modal-backdrop]`)?.addEventListener(`click`,e=>{e.target===e.currentTarget&&r()}),G.querySelectorAll(`.calendar-modal-event`).forEach(e=>{e.addEventListener(`click`,()=>{let t=e.dataset.projectId;t&&(r(),window.history.pushState({},``,`/projects/${t}`),Gt(async()=>{let{router:e}=await Promise.resolve().then(()=>(Q(),Qn));return{router:e}},void 0).then(({router:e})=>{e()}))})})}document.querySelector(`#previous-calendar-month`)?.addEventListener(`click`,()=>{W.setMonth(W.getMonth()-1),U()}),document.querySelector(`#next-calendar-month`)?.addEventListener(`click`,()=>{W.setMonth(W.getMonth()+1),U()}),document.querySelector(`#today-calendar-btn`)?.addEventListener(`click`,()=>{W=new Date,U()}),document.querySelectorAll(`.calendar-event`).forEach(e=>{e.addEventListener(`click`,()=>{let t=e.dataset.projectId;t&&(window.history.pushState({},``,`/projects/${t}`),Gt(async()=>{let{router:e}=await Promise.resolve().then(()=>(Q(),Qn));return{router:e}},void 0).then(({router:e})=>{e()}))})}),document.querySelectorAll(`.calendar-more`).forEach(e=>{e.addEventListener(`click`,()=>{let r=e.dataset.date;r&&n(t.filter(e=>e.date===r),r)})})}var W,G,Yt,Xt=t((()=>{C(),Kt(),W=new Date,G=null,Yt=!1}));function Zt(e){nn=e;let t=document.querySelector(`#member-modal`);t&&t.remove(),document.body.insertAdjacentHTML(`beforeend`,`
+    `,document.body.appendChild(U);let r=()=>{U?.remove(),U=null};U.querySelector(`[data-calendar-modal-close]`)?.addEventListener(`click`,r),U.querySelector(`[data-calendar-modal-backdrop]`)?.addEventListener(`click`,e=>{e.target===e.currentTarget&&r()}),U.querySelectorAll(`.calendar-modal-event`).forEach(e=>{e.addEventListener(`click`,()=>{let t=e.dataset.projectId;t&&(r(),window.history.pushState({},``,`/projects/${t}`),qt(async()=>{let{router:e}=await Promise.resolve().then(()=>(Z(),cr));return{router:e}},void 0).then(({router:e})=>{e()}))})})}document.querySelector(`#previous-calendar-month`)?.addEventListener(`click`,()=>{H.setMonth(H.getMonth()-1),V()}),document.querySelector(`#next-calendar-month`)?.addEventListener(`click`,()=>{H.setMonth(H.getMonth()+1),V()}),document.querySelector(`#today-calendar-btn`)?.addEventListener(`click`,()=>{H=new Date,V()}),document.querySelectorAll(`.calendar-event`).forEach(e=>{e.addEventListener(`click`,()=>{let t=e.dataset.projectId;t&&(window.history.pushState({},``,`/projects/${t}`),qt(async()=>{let{router:e}=await Promise.resolve().then(()=>(Z(),cr));return{router:e}},void 0).then(({router:e})=>{e()}))})}),document.querySelectorAll(`.calendar-more`).forEach(e=>{e.addEventListener(`click`,()=>{let r=e.dataset.date;r&&n(t.filter(e=>e.date===r),r)})})}var H,U,Zt,Qt=t((()=>{C(),Jt(),H=new Date,U=null,Zt=!1}));function $t(e){an=e;let t=document.querySelector(`#member-modal`);t&&t.remove(),document.body.insertAdjacentHTML(`beforeend`,`
       <div
         id="member-modal"
         class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/40 p-4"
@@ -3071,7 +3071,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
           </form>
         </div>
       </div>
-    `),Qt()}function Qt(){let e=document.querySelector(`#member-modal`),t=document.querySelector(`#member-form`),n=document.querySelector(`#close-member-modal`),r=document.querySelector(`#cancel-member-modal`);n.addEventListener(`click`,tn),r.addEventListener(`click`,tn),e.addEventListener(`click`,t=>{t.target===e&&tn()}),t.addEventListener(`submit`,e=>{e.preventDefault();let n=new FormData(t),r=n.get(`name`).trim(),i=n.get(`email`).trim(),a=n.get(`role`),o={id:Date.now(),name:r,email:i,role:a,initials:$t(r),status:`active`};nn&&nn(o),tn(),E(`Team member added successfully.`,`success`),t.reset()})}function $t(e){return e.split(` `).filter(Boolean).map(e=>e[0]).join(``).slice(0,2).toUpperCase()}function en(){let e=document.querySelector(`#member-modal`);e&&(e.classList.remove(`hidden`),e.classList.add(`flex`),document.querySelector(`#member-name`)?.focus())}function tn(){let e=document.querySelector(`#member-modal`);e&&(e.classList.add(`hidden`),e.classList.remove(`flex`))}var nn,rn=t((()=>{O(),nn=null}));function an(e){un=e;let t=document.querySelector(`#edit-member-modal`);t&&t.remove(),document.body.insertAdjacentHTML(`beforeend`,`
+    `),en()}function en(){let e=document.querySelector(`#member-modal`),t=document.querySelector(`#member-form`),n=document.querySelector(`#close-member-modal`),r=document.querySelector(`#cancel-member-modal`);n.addEventListener(`click`,rn),r.addEventListener(`click`,rn),e.addEventListener(`click`,t=>{t.target===e&&rn()}),t.addEventListener(`submit`,e=>{e.preventDefault();let n=new FormData(t),r=n.get(`name`).trim(),i=n.get(`email`).trim(),a=n.get(`role`),o={id:Date.now(),name:r,email:i,role:a,initials:tn(r),status:`active`};an&&an(o),rn(),E(`Team member added successfully.`,`success`),t.reset()})}function tn(e){return e.split(` `).filter(Boolean).map(e=>e[0]).join(``).slice(0,2).toUpperCase()}function nn(){let e=document.querySelector(`#member-modal`);e&&(e.classList.remove(`hidden`),e.classList.add(`flex`),document.querySelector(`#member-name`)?.focus())}function rn(){let e=document.querySelector(`#member-modal`);e&&(e.classList.add(`hidden`),e.classList.remove(`flex`))}var an,on=t((()=>{O(),an=null}));function sn(e){fn=e;let t=document.querySelector(`#edit-member-modal`);t&&t.remove(),document.body.insertAdjacentHTML(`beforeend`,`
       <div
         id="edit-member-modal"
         class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/40 p-4"
@@ -3231,7 +3231,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
           </form>
         </div>
       </div>
-    `),on()}function on(){let e=document.querySelector(`#edit-member-modal`),t=document.querySelector(`#edit-member-form`),n=document.querySelector(`#close-edit-member-modal`),r=document.querySelector(`#cancel-edit-member`);n.addEventListener(`click`,ln),r.addEventListener(`click`,ln),e.addEventListener(`click`,t=>{t.target===e&&ln()}),t.addEventListener(`submit`,e=>{if(e.preventDefault(),K===null)return;let n=new FormData(t),r={id:K,name:n.get(`name`).trim(),email:n.get(`email`).trim(),role:n.get(`role`),status:n.get(`status`)};r.initials=sn(r.name),un&&un(r),ln(),E(`Team member updated successfully.`,`success`)})}function sn(e){return e.split(` `).filter(Boolean).map(e=>e[0]).join(``).slice(0,2).toUpperCase()}function cn(e){let t=document.querySelector(`#edit-member-modal`);t&&(K=e.id,document.querySelector(`#edit-member-name`).value=e.name,document.querySelector(`#edit-member-email`).value=e.email,document.querySelector(`#edit-member-role`).value=e.role,document.querySelector(`#edit-member-status`).value=e.status,t.classList.remove(`hidden`),t.classList.add(`flex`),document.querySelector(`#edit-member-name`)?.focus())}function ln(){let e=document.querySelector(`#edit-member-modal`);e&&(e.classList.add(`hidden`),e.classList.remove(`flex`),K=null)}var un,K,dn=t((()=>{O(),un=null,K=null}));function fn(e){gn=e;let t=document.querySelector(`#delete-member-modal`);t&&t.remove(),document.body.insertAdjacentHTML(`beforeend`,`
+    `),cn()}function cn(){let e=document.querySelector(`#edit-member-modal`),t=document.querySelector(`#edit-member-form`),n=document.querySelector(`#close-edit-member-modal`),r=document.querySelector(`#cancel-edit-member`);n.addEventListener(`click`,dn),r.addEventListener(`click`,dn),e.addEventListener(`click`,t=>{t.target===e&&dn()}),t.addEventListener(`submit`,e=>{if(e.preventDefault(),W===null)return;let n=new FormData(t),r={id:W,name:n.get(`name`).trim(),email:n.get(`email`).trim(),role:n.get(`role`),status:n.get(`status`)};r.initials=ln(r.name),fn&&fn(r),dn(),E(`Team member updated successfully.`,`success`)})}function ln(e){return e.split(` `).filter(Boolean).map(e=>e[0]).join(``).slice(0,2).toUpperCase()}function un(e){let t=document.querySelector(`#edit-member-modal`);t&&(W=e.id,document.querySelector(`#edit-member-name`).value=e.name,document.querySelector(`#edit-member-email`).value=e.email,document.querySelector(`#edit-member-role`).value=e.role,document.querySelector(`#edit-member-status`).value=e.status,t.classList.remove(`hidden`),t.classList.add(`flex`),document.querySelector(`#edit-member-name`)?.focus())}function dn(){let e=document.querySelector(`#edit-member-modal`);e&&(e.classList.add(`hidden`),e.classList.remove(`flex`),W=null)}var fn,W,pn=t((()=>{O(),fn=null,W=null}));function mn(e){vn=e;let t=document.querySelector(`#delete-member-modal`);t&&t.remove(),document.body.insertAdjacentHTML(`beforeend`,`
       <div
         id="delete-member-modal"
         class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/40 p-4"
@@ -3312,7 +3312,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
 
         </div>
       </div>
-    `),pn()}function pn(){let e=document.querySelector(`#delete-member-modal`),t=document.querySelector(`#cancel-delete-member`),n=document.querySelector(`#confirm-delete-member`);t.addEventListener(`click`,hn),e.addEventListener(`click`,t=>{t.target===e&&hn()}),n.addEventListener(`click`,()=>{q&&=(gn&&gn(q),hn(),E(`Team member removed successfully.`,`success`),null)})}function mn(e){let t=document.querySelector(`#delete-member-modal`),n=document.querySelector(`#delete-member-name`);!t||!n||(q=e,n.textContent=`"${e.name}"`,t.classList.remove(`hidden`),t.classList.add(`flex`))}function hn(){let e=document.querySelector(`#delete-member-modal`);e&&(e.classList.add(`hidden`),e.classList.remove(`flex`),q=null)}var gn,q,_n=t((()=>{O(),gn=null,q=null}));function J(){bn||=(ie(()=>{window.location.pathname===`/team`&&J()}),!0);let e=document.querySelector(`#app`);if(!e){console.error(`App mount point not found.`);return}let{teamMembers:t,projects:n,tasks:r}=_();e.innerHTML=`
+    `),hn()}function hn(){let e=document.querySelector(`#delete-member-modal`),t=document.querySelector(`#cancel-delete-member`),n=document.querySelector(`#confirm-delete-member`);t.addEventListener(`click`,_n),e.addEventListener(`click`,t=>{t.target===e&&_n()}),n.addEventListener(`click`,()=>{G&&=(vn&&vn(G),_n(),E(`Team member removed successfully.`,`success`),null)})}function gn(e){let t=document.querySelector(`#delete-member-modal`),n=document.querySelector(`#delete-member-name`);!t||!n||(G=e,n.textContent=`"${e.name}"`,t.classList.remove(`hidden`),t.classList.add(`flex`))}function _n(){let e=document.querySelector(`#delete-member-modal`);e&&(e.classList.add(`hidden`),e.classList.remove(`flex`),G=null)}var vn,G,yn=t((()=>{O(),vn=null,G=null}));function K(){Sn||=(ie(()=>{window.location.pathname===`/team`&&K()}),!0);let e=document.querySelector(`#app`);if(!e){console.error(`App mount point not found.`);return}let{teamMembers:t,projects:n,tasks:r}=_();e.innerHTML=`
     <div class="mx-auto max-w-7xl p-5">
 
       <!-- Header -->
@@ -3357,11 +3357,11 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
         id="team-grid"
         class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
       >
-        ${t.map(vn).join(``)}
+        ${t.map(bn).join(``)}
       </div>
 
     </div>
-  `,Zt(e=>{t.push(e),v(),J()}),an(e=>{let n=t.findIndex(t=>t.id===e.id);n!==-1&&(t[n]=e,v(),J())}),fn(e=>{let i=t.findIndex(t=>t.id===e.id);if(i===-1)return;let a=e.id;n.forEach(e=>{e.memberIds=(e.memberIds||[]).filter(e=>e!==a)}),r.forEach(e=>{e.assigneeId===a&&(e.assigneeId=null)}),t.splice(i,1),v(),J()}),yn(t)}function vn(e){return`
+  `,$t(e=>{t.push(e),v(),K()}),sn(e=>{let n=t.findIndex(t=>t.id===e.id);n!==-1&&(t[n]=e,v(),K())}),mn(e=>{let i=t.findIndex(t=>t.id===e.id);if(i===-1)return;let a=e.id;n.forEach(e=>{e.memberIds=(e.memberIds||[]).filter(e=>e!==a)}),r.forEach(e=>{e.assigneeId===a&&(e.assigneeId=null)}),t.splice(i,1),v(),K()}),xn(t)}function bn(e){return`
     <article
       class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-slate-800 dark:bg-slate-900"
     >
@@ -3455,7 +3455,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
       </div>
 
     </article>
-  `}function yn(e){document.querySelector(`#add-team-member-btn`).addEventListener(`click`,en),document.querySelector(`#team-grid`).addEventListener(`click`,t=>{let n=t.target.closest(`.edit-member-btn`);if(n){let t=Number(n.dataset.editMemberId),r=e.find(e=>e.id===t);if(!r)return;cn(r);return}let r=t.target.closest(`.delete-member-btn`);if(!r)return;let i=Number(r.dataset.deleteMemberId),a=e.find(e=>e.id===i);a&&mn(a)})}var bn,xn=t((()=>{C(),rn(),dn(),_n(),bn=!1}));function Sn(){let e=localStorage.getItem(zn);if(!e)return Bn;try{return{...Bn,...JSON.parse(e)}}catch{return Bn}}function Cn(e){localStorage.setItem(zn,JSON.stringify(e))}function wn(e){let t=Sn();e.innerHTML=`
+  `}function xn(e){document.querySelector(`#add-team-member-btn`).addEventListener(`click`,nn),document.querySelector(`#team-grid`).addEventListener(`click`,t=>{let n=t.target.closest(`.edit-member-btn`);if(n){let t=Number(n.dataset.editMemberId),r=e.find(e=>e.id===t);if(!r)return;un(r);return}let r=t.target.closest(`.delete-member-btn`);if(!r)return;let i=Number(r.dataset.deleteMemberId),a=e.find(e=>e.id===i);a&&gn(a)})}var Sn,Cn=t((()=>{C(),on(),pn(),yn(),Sn=!1}));function wn(){let e=localStorage.getItem(Hn);if(!e)return Un;try{return{...Un,...JSON.parse(e)}}catch{return Un}}function Tn(e){localStorage.setItem(Hn,JSON.stringify(e))}function En(e){let t=wn();e.innerHTML=`
     <section class="rounded-xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
 
       <div class="border-b border-slate-200 px-6 py-5 dark:border-slate-800">
@@ -3631,7 +3631,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
       </form>
 
     </section>
-  `,Tn()}function Tn(){let e=document.querySelector(`#notifications-form`);e&&e.addEventListener(`submit`,t=>{t.preventDefault();let n=new FormData(e);Cn({taskAssignments:n.get(`taskAssignments`)===`on`,taskUpdates:n.get(`taskUpdates`)===`on`,projectUpdates:n.get(`projectUpdates`)===`on`,mentions:n.get(`mentions`)===`on`,comments:n.get(`comments`)===`on`,dueDateReminders:n.get(`dueDateReminders`)===`on`}),window.dispatchEvent(new CustomEvent(`flowboard:notifications-updated`)),window.dispatchEvent(new CustomEvent(`flowboard:toast`,{detail:{message:`Notification preferences saved.`,type:`success`}}))})}function En(e){let t=o();e.innerHTML=`
+  `,Dn()}function Dn(){let e=document.querySelector(`#notifications-form`);e&&e.addEventListener(`submit`,t=>{t.preventDefault();let n=new FormData(e);Tn({taskAssignments:n.get(`taskAssignments`)===`on`,taskUpdates:n.get(`taskUpdates`)===`on`,projectUpdates:n.get(`projectUpdates`)===`on`,mentions:n.get(`mentions`)===`on`,comments:n.get(`comments`)===`on`,dueDateReminders:n.get(`dueDateReminders`)===`on`}),window.dispatchEvent(new CustomEvent(`flowboard:notifications-updated`)),window.dispatchEvent(new CustomEvent(`flowboard:toast`,{detail:{message:`Notification preferences saved.`,type:`success`}}))})}function On(e){let t=o();e.innerHTML=`
     <section class="rounded-xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
 
       <!-- Header -->
@@ -3806,7 +3806,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
       </div>
 
     </section>
-  `,Dn()}function Dn(){document.querySelectorAll(`input[name="theme"]`).forEach(e=>{e.addEventListener(`change`,()=>{let t=e.value;s({theme:t}),c(t),En(document.querySelector(`#settings-content`)),window.dispatchEvent(new CustomEvent(`flowboard:appearance-updated`)),window.dispatchEvent(new CustomEvent(`flowboard:toast`,{detail:{message:`Appearance updated.`,type:`success`}}))})})}function On(){let e=localStorage.getItem(Ln);if(!e)return Rn;try{return{...Rn,...JSON.parse(e)}}catch{return Rn}}function kn(e){return e.trim().split(/\s+/).map(e=>e[0]).join(``).slice(0,2).toUpperCase()}function An(e){localStorage.setItem(Ln,JSON.stringify(e))}function jn(){let e=document.querySelector(`#app`),t=On();e&&(e.innerHTML=`
+  `,kn()}function kn(){document.querySelectorAll(`input[name="theme"]`).forEach(e=>{e.addEventListener(`change`,()=>{let t=e.value;s({theme:t}),c(t),On(document.querySelector(`#settings-content`)),window.dispatchEvent(new CustomEvent(`flowboard:appearance-updated`)),window.dispatchEvent(new CustomEvent(`flowboard:toast`,{detail:{message:`Appearance updated.`,type:`success`}}))})})}function An(){let e=localStorage.getItem(Bn);if(!e)return Vn;try{return{...Vn,...JSON.parse(e)}}catch{return Vn}}function jn(e){return e.trim().split(/\s+/).map(e=>e[0]).join(``).slice(0,2).toUpperCase()}function Mn(e){localStorage.setItem(Bn,JSON.stringify(e))}function Nn(){let e=document.querySelector(`#app`),t=An();e&&(e.innerHTML=`
     <div class="mx-auto max-w-6xl space-y-6">
 
       <!-- Page Header -->
@@ -3940,29 +3940,44 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
 
             <div class="space-y-6 p-6">
 
-              <!-- Avatar -->
-              <div class="flex items-center gap-4">
+            <!-- Avatar -->
+<div class="flex items-center gap-4">
 
-                <div
-                  class="flex size-16 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-lg font-semibold text-indigo-700 dark:bg-indigo-500/10 dark:text-indigo-300"
-                >
-                  ${kn(t.name)}
-                </div>
+  <!-- Avatar Preview -->
+  <div
+    id="profile-avatar-preview"
+    class="flex size-16 shrink-0 items-center justify-center overflow-hidden rounded-full bg-indigo-100 text-lg font-semibold text-indigo-700 dark:bg-indigo-500/10 dark:text-indigo-300"
+  >
+    ${t.avatar?`<img
+            src="${t.avatar}"
+            alt="Profile avatar"
+            class="size-full object-cover"
+          />`:jn(t.name)}
+  </div>
 
-                <div>
-                  <button
-                    type="button"
-                    class="rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-slate-100"
-                  >
-                    Change avatar
-                  </button>
+  <!-- Avatar Controls -->
+  <div>
+    <input
+      type="file"
+      id="profile-avatar-input"
+      accept="image/jpeg,image/png,image/gif,image/webp"
+      class="hidden"
+    />
 
-                  <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">
-                    JPG, PNG or GIF. Maximum 2MB.
-                  </p>
-                </div>
+    <button
+      type="button"
+      id="change-avatar-button"
+      class="rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
+    >
+      Change avatar
+    </button>
 
-              </div>
+    <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">
+      JPG, PNG, GIF or WebP. Maximum 2MB.
+    </p>
+  </div>
+
+</div>
 
               <!-- Form -->
               <form id="profile-form" class="space-y-5">
@@ -4041,7 +4056,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
       </div>
 
     </div>
-  `,Mn())}function Mn(){let e=document.querySelectorAll(`.settings-tab`),t=document.querySelector(`#settings-content`);e.forEach(n=>{n.addEventListener(`click`,()=>{e.forEach(e=>{e.classList.remove(`bg-indigo-50`,`font-semibold`,`text-indigo-700`),e.classList.add(`font-medium`,`text-slate-600`)}),n.classList.add(`bg-indigo-50`,`font-semibold`,`text-indigo-700`),n.classList.remove(`font-medium`,`text-slate-600`);let r=n.dataset.settingsTab;r===`profile`&&Nn(t),r===`notifications`&&wn(t),r===`appearance`&&En(t),r===`workspace`&&Fn(t,`Workspace`,`Manage your workspace preferences and configuration.`)})}),Pn(),In||=(window.addEventListener(`flowboard:profile-updated`,()=>{if(!document.querySelector(`[data-settings-tab="profile"].bg-indigo-50`))return;let e=document.querySelector(`#settings-content`);e&&Nn(e)}),!0)}function Nn(e){let t=On();e.innerHTML=`
+  `,Pn(),Rn())}function Pn(){let e=document.querySelectorAll(`.settings-tab`),t=document.querySelector(`#settings-content`);e.forEach(n=>{n.addEventListener(`click`,()=>{e.forEach(e=>{e.classList.remove(`bg-indigo-50`,`font-semibold`,`text-indigo-700`),e.classList.add(`font-medium`,`text-slate-600`)}),n.classList.add(`bg-indigo-50`,`font-semibold`,`text-indigo-700`),n.classList.remove(`font-medium`,`text-slate-600`);let r=n.dataset.settingsTab;r===`profile`&&Fn(t),r===`notifications`&&En(t),r===`appearance`&&On(t),r===`workspace`&&Ln(t,`Workspace`,`Manage your workspace preferences and configuration.`)})}),In(),zn||=(window.addEventListener(`flowboard:profile-updated`,()=>{if(!document.querySelector(`[data-settings-tab="profile"].bg-indigo-50`))return;let e=document.querySelector(`#settings-content`);e&&Fn(e)}),!0)}function Fn(e){let t=An();e.innerHTML=`
     <section class="rounded-xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
 
       <div class="border-b border-slate-200 px-6 py-5 dark:border-slate-800">
@@ -4056,29 +4071,46 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
 
       <div class="p-6">
 
-        <!-- Avatar -->
-        <div class="flex items-center gap-4">
+      
+<!-- Avatar -->
+<div class="flex items-center gap-4">
 
-          <div
-            class="flex size-16 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-lg font-semibold text-indigo-700 dark:bg-indigo-500/10 dark:text-indigo-300"
-          >
-            ${kn(t.name)}
-          </div>
+  <!-- Avatar Preview -->
+  <div
+    id="profile-avatar-preview"
+    class="flex size-16 shrink-0 items-center justify-center overflow-hidden rounded-full bg-indigo-100 text-lg font-semibold text-indigo-700 dark:bg-indigo-500/10 dark:text-indigo-300"
+  >
+    ${t.avatar?`<img
+            src="${t.avatar}"
+            alt="Profile avatar"
+            class="size-full object-cover"
+          />`:jn(t.name)}
+  </div>
 
-          <div>
-            <button
-              type="button"
-              class="rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-slate-100"
-            >
-              Change avatar
-            </button>
+  <!-- Avatar Controls -->
+  <div>
+    <input
+      type="file"
+      id="profile-avatar-input"
+      accept="image/jpeg,image/png,image/gif,image/webp"
+      class="hidden"
+    />
 
-            <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">
-              JPG, PNG or GIF. Maximum 2MB.
-            </p>
-          </div>
+    <button
+      type="button"
+      id="change-avatar-button"
+      class="rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-slate-100"
+    >
+      Change avatar
+    </button>
 
-        </div>
+    <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">
+      JPG, PNG, GIF or WebP. Maximum 2MB.
+    </p>
+  </div>
+
+</div>
+
 
         <form id="profile-form" class="space-y-5">
 
@@ -4150,7 +4182,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
       </div>
 
     </section>
-  `,Pn()}function Pn(){document.querySelector(`#profile-form`)?.addEventListener(`submit`,e=>{e.preventDefault();let t=document.querySelector(`#settings-name`)?.value.trim(),n=document.querySelector(`#settings-email`)?.value.trim(),r=document.querySelector(`#settings-role`)?.value.trim();if(!t||!n||!r){window.dispatchEvent(new CustomEvent(`flowboard:toast`,{detail:{message:`Please fill in all profile fields.`,type:`error`}}));return}An({name:t,email:n,role:r}),window.dispatchEvent(new CustomEvent(`flowboard:profile-updated`)),window.dispatchEvent(new CustomEvent(`flowboard:toast`,{detail:{message:`Profile updated successfully.`,type:`success`}}))})}function Fn(e,t,n){e.innerHTML=`
+  `,In(),Rn()}function In(){document.querySelector(`#profile-form`)?.addEventListener(`submit`,e=>{e.preventDefault();let t=document.querySelector(`#settings-name`)?.value.trim(),n=document.querySelector(`#settings-email`)?.value.trim(),r=document.querySelector(`#settings-role`)?.value.trim();if(!t||!n||!r){window.dispatchEvent(new CustomEvent(`flowboard:toast`,{detail:{message:`Please fill in all profile fields.`,type:`error`}}));return}Mn({...An(),name:t,email:n,role:r}),window.dispatchEvent(new CustomEvent(`flowboard:profile-updated`)),window.dispatchEvent(new CustomEvent(`flowboard:toast`,{detail:{message:`Profile updated successfully.`,type:`success`}}))})}function Ln(e,t,n){e.innerHTML=`
     <section class="rounded-xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
 
       <div class="border-b border-slate-200 px-6 py-5 dark:border-slate-800">
@@ -4199,7 +4231,13 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
       </div>
 
     </section>
-  `}var In,Ln,Rn,zn,Bn,Vn=t((()=>{d(),In=!1,Ln=`flowboard-profile`,Rn={name:`Abir`,email:`abir@example.com`,role:`Admin`},zn=`flowboard-notifications`,Bn={taskAssignments:!0,taskUpdates:!0,projectUpdates:!0,mentions:!0,comments:!0,dueDateReminders:!0}}));function Hn(e){Kn=e;let t=document.querySelector(`#delete-project-modal`);t&&t.remove(),document.body.insertAdjacentHTML(`beforeend`,`
+  `}function Rn(){let e=document.querySelector(`#profile-avatar-input`),t=document.querySelector(`#change-avatar-button`),n=document.querySelector(`#profile-avatar-preview`);!e||!t||!n||(t.addEventListener(`click`,()=>{e.click()}),e.addEventListener(`change`,()=>{let t=e.files?.[0];if(!t)return;if(![`image/jpeg`,`image/png`,`image/gif`,`image/webp`].includes(t.type)){q(`Please select a JPG, PNG, GIF, or WebP image.`,`error`),e.value=``;return}if(t.size>2097152){q(`Your image must be smaller than 2MB.`,`error`),e.value=``;return}let r=new FileReader;r.onload=()=>{let e=r.result;if(typeof e!=`string`){q(`Unable to read the selected image.`,`error`);return}try{Mn({...An(),avatar:e}),n.innerHTML=`
+          <img
+            src="${e}"
+            alt="Profile avatar"
+            class="size-full object-cover"
+          />
+        `,window.dispatchEvent(new CustomEvent(`flowboard:profile-updated`)),q(`Profile photo updated successfully.`,`success`)}catch(e){console.error(`Failed to save profile avatar:`,e),q(`Unable to save this image. Please try a smaller file.`,`error`)}},r.onerror=()=>{q(`Unable to read the selected image.`,`error`)},r.readAsDataURL(t)}))}function q(e,t=`info`){window.dispatchEvent(new CustomEvent(`flowboard:toast`,{detail:{message:e,type:t}}))}var zn,Bn,Vn,Hn,Un,Wn=t((()=>{d(),zn=!1,Bn=`flowboard-profile`,Vn={name:`Abir`,email:`abir@example.com`,role:`Admin`},Hn=`flowboard-notifications`,Un={taskAssignments:!0,taskUpdates:!0,projectUpdates:!0,mentions:!0,comments:!0,dueDateReminders:!0}}));function Gn(e){Yn=e;let t=document.querySelector(`#delete-project-modal`);t&&t.remove(),document.body.insertAdjacentHTML(`beforeend`,`
       <div
         id="delete-project-modal"
         class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/40 p-4"
@@ -4272,7 +4310,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
           </div>
         </div>
       </div>
-    `),Un()}function Un(){let e=document.querySelector(`#delete-project-modal`),t=document.querySelector(`#cancel-delete-project`),n=document.querySelector(`#confirm-delete-project`);t.addEventListener(`click`,Gn),e.addEventListener(`click`,t=>{t.target===e&&Gn()}),n.addEventListener(`click`,()=>{Y&&=(Kn&&Kn(Y),Gn(),E(`Project deleted successfully.`,`success`),null)})}function Wn(e){let t=document.querySelector(`#delete-project-modal`),n=document.querySelector(`#delete-project-name`);!t||!n||(Y=e,n.textContent=`"${e.name}"`,t.classList.remove(`hidden`),t.classList.add(`flex`))}function Gn(){let e=document.querySelector(`#delete-project-modal`);e&&(e.classList.add(`hidden`),e.classList.remove(`flex`),Y=null)}var Kn,Y,qn=t((()=>{O(),Kn=null,Y=null}));function Jn(e,t){return e.length===0?`
+    `),Kn()}function Kn(){let e=document.querySelector(`#delete-project-modal`),t=document.querySelector(`#cancel-delete-project`),n=document.querySelector(`#confirm-delete-project`);t.addEventListener(`click`,Jn),e.addEventListener(`click`,t=>{t.target===e&&Jn()}),n.addEventListener(`click`,()=>{J&&=(Yn&&Yn(J),Jn(),E(`Project deleted successfully.`,`success`),null)})}function qn(e){let t=document.querySelector(`#delete-project-modal`),n=document.querySelector(`#delete-project-name`);!t||!n||(J=e,n.textContent=`"${e.name}"`,t.classList.remove(`hidden`),t.classList.add(`flex`))}function Jn(){let e=document.querySelector(`#delete-project-modal`);e&&(e.classList.add(`hidden`),e.classList.remove(`flex`),J=null)}var Yn,J,Xn=t((()=>{O(),Yn=null,J=null}));function Zn(e,t){return e.length===0?`
       <div class="px-5 py-12 text-center">
 
         <div
@@ -4307,7 +4345,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
     <div class="divide-y divide-slate-100 dark:divide-slate-800">
 
       ${e.map(e=>{let n=t.find(t=>t.id===e.assigneeId);return`
-            <div class="flex flex-col gap-4 px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
+        <div class="flex min-w-0 flex-col gap-4 px-4 py-4 sm:px-5 lg:flex-row lg:items-center lg:justify-between">
 
               <div class="min-w-0">
 
@@ -4354,7 +4392,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
 
               </div>
 
-              <div class="flex shrink-0 items-center gap-4 pl-8 sm:pl-0">
+          <div class="flex min-w-0 flex-wrap items-center gap-2 sm:gap-3 lg:shrink-0 lg:flex-nowrap lg:gap-4">
 
                 <!-- Edit -->
                 <button
@@ -4376,7 +4414,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
 
                 <!-- Status -->
                 <select
-                  class="task-status-select rounded-full border-0 px-2.5 py-1 text-xs font-semibold outline-none ring-0 transition
+               class="task-status-select max-w-full rounded-full border-0 px-2 py-1 text-xs font-semibold outline-none ring-0 transition
                     ${e.status===`completed`?`bg-green-50 text-green-700 dark:bg-green-500/10 dark:text-green-300`:e.status===`in-progress`?`bg-indigo-50 text-indigo-700 dark:bg-indigo-500/10 dark:text-indigo-300`:`bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300`}"
                   data-task-id="${e.id}"
                   aria-label="Change task status"
@@ -4430,7 +4468,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
           `}).join(``)}
 
     </div>
-  `}function X(e){let t=document.querySelector(`#app`),{projects:n,tasks:r,teamMembers:i}=_();if(!t){console.error(`App mount point not found.`);return}let a=n.find(t=>t.id===e),o=r.filter(t=>t.projectId===e),s=o.filter(e=>e.status===`completed`).length,c=o.length,l=c===0?0:Math.round(s/c*100);if(!a){t.innerHTML=`
+  `}function Y(e){let t=document.querySelector(`#app`),{projects:n,tasks:r,teamMembers:i}=_();if(!t){console.error(`App mount point not found.`);return}let a=n.find(t=>t.id===e),o=r.filter(t=>t.projectId===e),s=o.filter(e=>e.status===`completed`).length,c=o.length,l=c===0?0:Math.round(s/c*100);if(!a){t.innerHTML=`
     <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
       <div
         class="rounded-xl border border-slate-200 bg-white p-8 text-center shadow-sm dark:border-slate-800 dark:bg-slate-900"
@@ -4728,13 +4766,171 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
 
 
       <div id="task-list">
-        ${Jn(o,i)}
+        ${Zn(o,i)}
       </div>
 
     </div>
 
   </div>
-`,vt(e=>{r.unshift(e),y({type:`task_created`,user:h().name,target:e.title}),v(),Z(`/projects/${e.projectId}`)}),ft(t=>{let r=n.findIndex(e=>String(e.id)===String(t.id));if(r===-1){E(`Project could not be updated.`,`error`);return}let i=n[r];i.name=t.name,i.description=t.description,i.status=t.status,i.priority=t.priority,i.dueDate=t.dueDate,i.memberIds=t.memberIds,y({type:`project_updated`,user:h().name,target:t.name}),v(),X(e),E(`Project updated successfully.`,`success`)}),Hn(e=>{let t=n.findIndex(t=>t.id===e.id);if(t!==-1){y({type:`project_deleted`,user:h().name,target:e.name}),n.splice(t,1);for(let t=r.length-1;t>=0;t--)r[t].projectId===e.id&&r.splice(t,1);v(),Z(`/projects`)}}),Nt(t=>{let n=r.findIndex(e=>e.id===t.id);n!==-1&&(y({type:`task_deleted`,user:h().name,target:t.title}),r.splice(n,1),v(),X(e))}),Tt(t=>{let n=r.find(e=>e.id===t.id);n&&(n.title=t.title,n.description=t.description,n.status=t.status,n.priority=t.priority,n.dueDate=t.dueDate,n.assigneeId=t.assigneeId,y({type:`task_updated`,user:h().name,target:t.title}),v(),X(e))});let d=document.querySelector(`#add-task-btn`),f=document.querySelector(`#add-task-btn-secondary`),ee=document.querySelector(`#edit-project-btn`);d.addEventListener(`click`,()=>{bt(a.id)}),f.addEventListener(`click`,()=>{bt(a.id)}),ee.addEventListener(`click`,()=>{pt(a)}),document.querySelector(`#delete-project-btn`).addEventListener(`click`,()=>{Wn(a)});let p=document.querySelector(`#task-list`);p.addEventListener(`click`,t=>{let n=t.target.closest(`.task-edit-btn`);if(n){let e=n.dataset.taskId,t=r.find(t=>t.id===e);if(!t)return;Ot(t);return}let i=t.target.closest(`.task-delete-btn`);if(i){let e=i.dataset.taskId,t=r.find(t=>t.id===e);if(!t)return;Ft(t);return}let a=t.target.closest(`.task-complete-btn`);if(!a)return;let o=a.dataset.taskId,s=r.find(e=>e.id===o);s&&(s.status=s.status===`completed`?`todo`:`completed`,s.status===`completed`?y({type:`task_completed`,user:h().name,target:s.title}):y({type:`task_status_changed`,user:h().name,target:s.title}),v(),E(s.status===`completed`?`"${s.title}" completed.`:`"${s.title}" marked as incomplete.`,`success`),X(e))}),p.addEventListener(`change`,t=>{let n=t.target.closest(`.task-status-select`);if(!n)return;let i=n.dataset.taskId,a=r.find(e=>e.id===i);if(!a)return;let o=a.status;a.status=n.value,o!==a.status&&(a.status===`completed`?y({type:`task_completed`,user:h().name,target:a.title}):y({type:`task_status_changed`,user:h().name,target:a.title})),v(),E(`"${a.title}" moved to ${a.status===`todo`?`To Do`:a.status===`in-progress`?`In Progress`:`Completed`}.`,`success`),X(e)});let te=document.querySelector(`#task-search`),m=document.querySelector(`#task-status-filter`),ne=document.querySelector(`#task-priority-filter`),re=document.querySelector(`#task-sort`);function g(){let e=te.value.trim().toLowerCase(),t=m.value,n=ne.value,r=re.value,i=o.filter(r=>{let i=r.title.toLowerCase().includes(e)||r.description.toLowerCase().includes(e),a=t===`all`||r.status===t,o=n===`all`||r.priority===n;return i&&a&&o}),a={high:3,medium:2,low:1};i.sort((e,t)=>{switch(r){case`priority-high`:return a[t.priority]-a[e.priority];case`priority-low`:return a[e.priority]-a[t.priority];case`newest`:return new Date(t.createdAt)-new Date(e.createdAt);case`oldest`:return new Date(e.createdAt)-new Date(t.createdAt);case`title-asc`:return e.title.localeCompare(t.title);default:return new Date(e.dueDate)-new Date(t.dueDate)}}),document.querySelector(`#task-list`).innerHTML=Jn(i),document.querySelector(`#task-count`).textContent=`${i.length} ${i.length===1?`task`:`tasks`}`}te.addEventListener(`input`,g),m.addEventListener(`change`,g),ne.addEventListener(`change`,g),re.addEventListener(`change`,g)}var Yn,Xn,Zn=t((()=>{C(),wt(),Mt(),Rt(),mt(),qn(),Q(),O(),{projects:Yn,tasks:Xn}=_()})),Qn=r({navigateTo:()=>Z,router:()=>$n});function $n(){let e=window.location.pathname;if(e.startsWith(`/projects/`)){let t=e.split(`/`)[2];X(t);return}(er[e]||M)()}function Z(e){window.history.pushState({},``,e),$n()}var er,Q=t((()=>{ct(),_t(),Vt(),Xt(),xn(),Vn(),Zn(),er={"/":M,"/dashboard":M,"/projects":ht,"/tasks":B,"/calendar":U,"/team":J,"/settings":jn}}));function $(e){let t={"&":`&amp;`,"<":`&lt;`,">":`&gt;`,'"':`&quot;`,"'":`&#39;`};return String(e??``).replace(/[&<>"']/g,e=>t[e])}function tr(e){let{projects:t,tasks:n,teamMembers:r}=_(),i=e.trim().toLowerCase();return i?{projects:t.filter(e=>[e.name,e.description,e.status,e.priority].some(e=>String(e??``).toLowerCase().includes(i))).slice(0,5),tasks:n.filter(e=>{let n=t.find(t=>String(t.id)===String(e.projectId)),a=r.find(t=>String(t.id)===String(e.assigneeId));return[e.title,e.description,e.status,e.priority,n?.name,a?.name].some(e=>String(e??``).toLowerCase().includes(i))}).slice(0,5),teamMembers:r.filter(e=>[e.name,e.email,e.role].some(e=>String(e??``).toLowerCase().includes(i))).slice(0,5)}:{projects:[],tasks:[],teamMembers:[]}}function nr(e){return{project:`
+`,bt(e=>{r.unshift(e),y({type:`task_created`,user:h().name,target:e.title}),v(),X(`/projects/${e.projectId}`)}),ft(t=>{let r=n.findIndex(e=>String(e.id)===String(t.id));if(r===-1){E(`Project could not be updated.`,`error`);return}let i=n[r];i.name=t.name,i.description=t.description,i.status=t.status,i.priority=t.priority,i.dueDate=t.dueDate,i.memberIds=t.memberIds,y({type:`project_updated`,user:h().name,target:t.name}),v(),Y(e),E(`Project updated successfully.`,`success`)}),Gn(e=>{let t=n.findIndex(t=>t.id===e.id);if(t!==-1){y({type:`project_deleted`,user:h().name,target:e.name}),n.splice(t,1);for(let t=r.length-1;t>=0;t--)r[t].projectId===e.id&&r.splice(t,1);v(),X(`/projects`)}}),Ft(t=>{let n=r.findIndex(e=>e.id===t.id);n!==-1&&(y({type:`task_deleted`,user:h().name,target:t.title}),r.splice(n,1),v(),Y(e))}),Dt(t=>{let n=r.find(e=>e.id===t.id);n&&(n.title=t.title,n.description=t.description,n.status=t.status,n.priority=t.priority,n.dueDate=t.dueDate,n.assigneeId=t.assigneeId,y({type:`task_updated`,user:h().name,target:t.title}),v(),Y(e))});let d=document.querySelector(`#add-task-btn`),f=document.querySelector(`#add-task-btn-secondary`),ee=document.querySelector(`#edit-project-btn`);d.addEventListener(`click`,()=>{St(a.id)}),f.addEventListener(`click`,()=>{St(a.id)}),ee.addEventListener(`click`,()=>{pt(a)}),document.querySelector(`#delete-project-btn`).addEventListener(`click`,()=>{qn(a)});let p=document.querySelector(`#task-list`);p.addEventListener(`click`,t=>{let n=t.target.closest(`.task-edit-btn`);if(n){let e=n.dataset.taskId,t=r.find(t=>t.id===e);if(!t)return;At(t);return}let i=t.target.closest(`.task-delete-btn`);if(i){let e=i.dataset.taskId,t=r.find(t=>t.id===e);if(!t)return;Lt(t);return}let a=t.target.closest(`.task-complete-btn`);if(!a)return;let o=a.dataset.taskId,s=r.find(e=>e.id===o);s&&(s.status=s.status===`completed`?`todo`:`completed`,s.status===`completed`?y({type:`task_completed`,user:h().name,target:s.title}):y({type:`task_status_changed`,user:h().name,target:s.title}),v(),E(s.status===`completed`?`"${s.title}" completed.`:`"${s.title}" marked as incomplete.`,`success`),Y(e))}),p.addEventListener(`change`,t=>{let n=t.target.closest(`.task-status-select`);if(!n)return;let i=n.dataset.taskId,a=r.find(e=>e.id===i);if(!a)return;let o=a.status;a.status=n.value,o!==a.status&&(a.status===`completed`?y({type:`task_completed`,user:h().name,target:a.title}):y({type:`task_status_changed`,user:h().name,target:a.title})),v(),E(`"${a.title}" moved to ${a.status===`todo`?`To Do`:a.status===`in-progress`?`In Progress`:`Completed`}.`,`success`),Y(e)});let te=document.querySelector(`#task-search`),m=document.querySelector(`#task-status-filter`),ne=document.querySelector(`#task-priority-filter`),re=document.querySelector(`#task-sort`);function g(){let e=te.value.trim().toLowerCase(),t=m.value,n=ne.value,r=re.value,a=o.filter(r=>{let i=r.title.toLowerCase().includes(e)||r.description.toLowerCase().includes(e),a=t===`all`||r.status===t,o=n===`all`||r.priority===n;return i&&a&&o}),s={high:3,medium:2,low:1};a.sort((e,t)=>{switch(r){case`priority-high`:return s[t.priority]-s[e.priority];case`priority-low`:return s[e.priority]-s[t.priority];case`newest`:return new Date(t.createdAt)-new Date(e.createdAt);case`oldest`:return new Date(e.createdAt)-new Date(t.createdAt);case`title-asc`:return e.title.localeCompare(t.title);default:return new Date(e.dueDate)-new Date(t.dueDate)}}),document.querySelector(`#task-list`).innerHTML=Zn(a,i),document.querySelector(`#task-count`).textContent=`${a.length} ${a.length===1?`task`:`tasks`}`}te.addEventListener(`input`,g),m.addEventListener(`change`,g),ne.addEventListener(`change`,g),re.addEventListener(`change`,g)}var Qn,$n,er,tr=t((()=>{C(),Et(),Pt(),Bt(),gt(),Xn(),Z(),O(),{projects:Qn,tasks:$n,teamMembers:er}=_()})),nr,rr,ir=t((()=>{nr=[{label:`Dashboard`,href:`/`,icon:`
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                class="size-5"
+            >
+                <rect width="7" height="9" x="3" y="3" rx="1"></rect>
+                <rect width="7" height="5" x="14" y="3" rx="1"></rect>
+                <rect width="7" height="9" x="14" y="12" rx="1"></rect>
+                <rect width="7" height="5" x="3" y="16" rx="1"></rect>
+            </svg>
+        `},{label:`Projects`,href:`/projects`,icon:`
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                class="size-5"
+            >
+                <path d="M3 7h5l2 2h11v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <path d="M3 7V5a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v2"></path>
+            </svg>
+        `},{label:`My Tasks`,href:`/tasks`,icon:`
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                class="size-5"
+            >
+                <rect width="18" height="18" x="3" y="3" rx="2"></rect>
+                <path d="m9 12 2 2 4-4"></path>
+            </svg>
+        `},{label:`Calendar`,href:`/calendar`,icon:`
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                class="size-5"
+            >
+                <rect width="18" height="18" x="3" y="4" rx="2"></rect>
+                <path d="M16 2v4"></path>
+                <path d="M8 2v4"></path>
+                <path d="M3 10h18"></path>
+            </svg>
+        `},{label:`Team`,href:`/team`,icon:`
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                class="size-5"
+            >
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+        `}],rr=[{label:`Settings`,href:`/settings`,icon:`
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                class="size-5"
+            >
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-1.7 1.7-.06-.06A1.7 1.7 0 0 0 16.16 19a1.7 1.7 0 0 0-1.06 1.55V21h-2.4v-.45A1.7 1.7 0 0 0 11.64 19a1.7 1.7 0 0 0-1.88.34l-.06.06-1.7-1.7.06-.06A1.7 1.7 0 0 0 8.4 15a1.7 1.7 0 0 0-1.55-1.06H6v-2.4h.45A1.7 1.7 0 0 0 8.4 10a1.7 1.7 0 0 0-.34-1.88L8 8.06l1.7-1.7.06.06A1.7 1.7 0 0 0 11.64 6 1.7 1.7 0 0 0 12.7 4.45V4h2.4v.45A1.7 1.7 0 0 0 16.16 6a1.7 1.7 0 0 0 1.88-.34l.06-.06 1.7 1.7-.06.06A1.7 1.7 0 0 0 19.4 10a1.7 1.7 0 0 0 1.55 1.06H21v2.4h-.45A1.7 1.7 0 0 0 19.4 15Z"></path>
+            </svg>
+        `}]}));function ar(){let e=document.querySelector(`#mobile-navigation`);if(!e){console.error(`Mobile navigation mount point not found.`);return}let t=window.location.pathname;function n(e){return e.href===`/`?t===`/`||t===`/dashboard`:e.href===`/projects`?t===`/projects`||t.startsWith(`/projects/`):e.href===t}function r(e){let t=n(e);return`
+  <a
+    href="${e.href}"
+    class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition-colors ${t?`bg-indigo-50 font-semibold text-indigo-700 dark:bg-indigo-500/10 dark:text-indigo-300`:`font-medium text-slate-600 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100`}"
+    ${t?`aria-current="page"`:``}
+  >
+    ${e.icon}
+    ${e.label}
+  </a>
+`}e.innerHTML=` <!-- Backdrop --> <div
+   id="mobile-navigation-backdrop"
+   class="fixed inset-0 z-40 hidden bg-black/40"
+ ></div>
+
+
+<!-- Drawer -->
+<aside
+  id="mobile-navigation-drawer"
+  class="fixed inset-y-0 left-0 z-50 flex w-72 max-w-[85vw] -translate-x-full flex-col bg-white shadow-xl transition-transform duration-300 dark:bg-slate-950"
+  aria-label="Mobile navigation"
+>
+  <!-- Drawer Header -->
+  <div
+    class="flex h-16 shrink-0 items-center justify-between border-b border-slate-200 px-4 dark:border-slate-800"
+  >
+    <div class="flex items-center gap-2">
+      <div
+        class="flex size-9 items-center justify-center rounded-lg bg-indigo-600 font-bold text-white"
+      >
+        F
+      </div>
+
+      <span class="text-lg font-bold tracking-tight text-slate-900 dark:text-white">
+        Flowboard
+      </span>
+    </div>
+
+    <button
+      type="button"
+      id="mobile-menu-close"
+      class="flex size-10 items-center justify-center rounded-lg text-slate-500 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white"
+      aria-label="Close navigation menu"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        class="size-5"
+        aria-hidden="true"
+      >
+        <path d="M18 6 6 18"></path>
+        <path d="m6 6 12 12"></path>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="min-h-0 flex-1 overflow-y-auto p-4">
+    <!-- Main Navigation -->
+    <div class="space-y-1">
+      ${nr.map(r).join(``)}
+    </div>
+
+    <!-- Workspace Navigation -->
+    <div class="mt-8">
+      <p
+        class="px-3 text-xs font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500"
+      >
+        Workspace
+      </p>
+
+      <div class="mt-2 space-y-1">
+        ${rr.map(r).join(``)}
+      </div>
+    </div>
+  </nav>
+</aside>
+
+`,or()}function or(){let e=document.querySelector(`#mobile-menu-button`),t=document.querySelector(`#mobile-menu-close`),n=document.querySelector(`#mobile-navigation-backdrop`),r=document.querySelector(`#mobile-navigation-drawer`);if(!e||!t||!n||!r){console.error(`Mobile navigation elements not found.`);return}function i(){r.classList.remove(`-translate-x-full`),n.classList.remove(`hidden`),e.setAttribute(`aria-expanded`,`true`),document.body.classList.add(`overflow-hidden`)}function a(){r.classList.add(`-translate-x-full`),n.classList.add(`hidden`),e.setAttribute(`aria-expanded`,`false`),document.body.classList.remove(`overflow-hidden`)}e.setAttribute(`aria-expanded`,`false`),e.addEventListener(`click`,i),t.addEventListener(`click`,a),n.addEventListener(`click`,a),document.addEventListener(`keydown`,e=>{e.key===`Escape`&&a()})}var sr=t((()=>{ir()})),cr=r({navigateTo:()=>X,router:()=>lr});function lr(){let e=window.location.pathname;if(e.startsWith(`/projects/`)){let t=e.split(`/`)[2];Y(t)}else(ur[e]||M)();ar()}function X(e){window.history.pushState({},``,e),lr()}var ur,Z=t((()=>{ct(),yt(),Ut(),Qt(),Cn(),Wn(),tr(),sr(),ur={"/":M,"/dashboard":M,"/projects":_t,"/tasks":R,"/calendar":V,"/team":K,"/settings":Nn},window.addEventListener(`popstate`,lr)}));function Q(e){let t={"&":`&amp;`,"<":`&lt;`,">":`&gt;`,'"':`&quot;`,"'":`&#39;`};return String(e??``).replace(/[&<>"']/g,e=>t[e])}function dr(e){let{projects:t,tasks:n,teamMembers:r}=_(),i=e.trim().toLowerCase();return i?{projects:t.filter(e=>[e.name,e.description,e.status,e.priority].some(e=>String(e??``).toLowerCase().includes(i))).slice(0,5),tasks:n.filter(e=>{let n=t.find(t=>String(t.id)===String(e.projectId)),a=r.find(t=>String(t.id)===String(e.assigneeId));return[e.title,e.description,e.status,e.priority,n?.name,a?.name].some(e=>String(e??``).toLowerCase().includes(i))}).slice(0,5),teamMembers:r.filter(e=>[e.name,e.email,e.role].some(e=>String(e??``).toLowerCase().includes(i))).slice(0,5)}:{projects:[],tasks:[],teamMembers:[]}}function fr(e){return{project:`
       <svg xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24" fill="none"
         stroke="currentColor" stroke-width="1.8"
@@ -4758,29 +4954,29 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
         <circle cx="12" cy="8" r="4"></circle>
         <path d="M4 21a8 8 0 0 1 16 0"></path>
       </svg>
-    `}[e]??``}function rr(e){let{type:t,title:n,subtitle:r,path:i,id:a}=e;return`
+    `}[e]??``}function pr(e){let{type:t,title:n,subtitle:r,path:i,id:a}=e;return`
     <button
       type="button"
       class="global-search-result flex w-full items-center gap-3 rounded-xl px-3 py-3 text-left transition-colors hover:bg-slate-100 focus:bg-slate-100 focus:outline-none dark:hover:bg-slate-800 dark:focus:bg-slate-800"
-      data-result-type="${$(t)}"
-      data-result-id="${$(a)}"
-      data-result-path="${$(i)}"
+      data-result-type="${Q(t)}"
+      data-result-id="${Q(a)}"
+      data-result-path="${Q(i)}"
       role="option"
     >
       <span
         class="flex size-10 shrink-0 items-center justify-center rounded-lg
           ${t===`project`?`bg-indigo-50 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-300`:t===`task`?`bg-emerald-50 text-emerald-600 dark:bg-emerald-500/10 dark:text-emerald-300`:`bg-amber-50 text-amber-600 dark:bg-amber-500/10 dark:text-amber-300`}"
       >
-        ${nr(t===`person`?`person`:t)}
+        ${fr(t===`person`?`person`:t)}
       </span>
 
       <span class="min-w-0 flex-1">
         <span class="block truncate text-sm font-semibold text-slate-900 dark:text-white">
-          ${$(n)}
+          ${Q(n)}
         </span>
 
         <span class="mt-0.5 block truncate text-xs text-slate-500 dark:text-slate-400">
-          ${$(r)}
+          ${Q(r)}
         </span>
       </span>
 
@@ -4797,20 +4993,20 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
         <path d="M7 7h10v10"></path>
       </svg>
     </button>
-  `}function ir(e,t){return t.length?`
+  `}function mr(e,t){return t.length?`
     <section class="px-2 py-2">
       <h3 class="px-3 pb-2 pt-1 text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
-        ${$(e)}
+        ${Q(e)}
       </h3>
 
       <div class="space-y-1">
-        ${t.map(rr).join(``)}
+        ${t.map(pr).join(``)}
       </div>
     </section>
-  `:``}function ar(e){let t=document.querySelector(`#global-search-results`);if(!t)return;let n=e.trim();if(!n){t.innerHTML=`
+  `:``}function hr(e){let t=document.querySelector(`#global-search-results`);if(!t)return;let n=e.trim();if(!n){t.innerHTML=`
       <div class="px-6 py-12 text-center">
         <div class="mx-auto flex size-12 items-center justify-center rounded-2xl bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-300">
-          ${nr(`project`)}
+          ${fr(`project`)}
         </div>
 
         <p class="mt-4 text-sm font-semibold text-slate-900 dark:text-white">
@@ -4821,7 +5017,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
           Find projects, tasks, and team members.
         </p>
       </div>
-    `;return}let r=tr(n);if(r.projects.length+r.tasks.length+r.teamMembers.length===0){t.innerHTML=`
+    `;return}let r=dr(n);if(r.projects.length+r.tasks.length+r.teamMembers.length===0){t.innerHTML=`
       <div class="px-6 py-12 text-center">
         <p class="text-sm font-semibold text-slate-900 dark:text-white">
           No results found
@@ -4832,10 +5028,10 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
         </p>
       </div>
     `;return}let i=r.projects.map(e=>({type:`project`,id:e.id,title:e.name,subtitle:e.description||`Project`,path:`/projects/${e.id}`})),a=r.tasks.map(e=>{let t=_().projects.find(t=>String(t.id)===String(e.projectId));return{type:`task`,id:e.id,title:e.title,subtitle:t?`Task · ${t.name}`:`Task`,path:`/tasks`}}),o=r.teamMembers.map(e=>({type:`person`,id:e.id,title:e.name,subtitle:`${e.role} · ${e.email}`,path:`/team`}));t.innerHTML=`
-    ${ir(`Projects`,i)}
-    ${ir(`Tasks`,a)}
-    ${ir(`People`,o)}
-  `}function or(){let e=document.querySelector(`#global-search-modal`),t=document.querySelector(`#global-search-button`),n=document.querySelector(`#global-search-input`);e&&(e.classList.add(`hidden`),e.setAttribute(`aria-hidden`,`true`),document.body.classList.remove(`overflow-hidden`),t&&(t.setAttribute(`aria-expanded`,`false`),t.focus()),n&&(n.value=``))}function sr(){let e=document.querySelector(`#global-search-modal`),t=document.querySelector(`#global-search-input`),n=document.querySelector(`#global-search-results`),r=document.querySelector(`#global-search-button`);!e||!t||(e.classList.remove(`hidden`),e.setAttribute(`aria-hidden`,`false`),document.body.classList.add(`overflow-hidden`),r?.setAttribute(`aria-expanded`,`true`),ar(``),requestAnimationFrame(()=>{t.focus()}),n&&(n.scrollTop=0))}function cr(){ur||(ur=!0,document.addEventListener(`click`,e=>{if(e.target.closest(`#global-search-button`)){sr();return}if(e.target.closest(`[data-close-global-search]`)){or();return}let t=e.target.closest(`.global-search-result`);if(t){let e=t.dataset.resultPath;or(),e&&Z(e);return}}),document.addEventListener(`input`,e=>{e.target.id===`global-search-input`&&ar(e.target.value)}),document.addEventListener(`keydown`,e=>{if((navigator.platform.toUpperCase().includes(`MAC`)?e.metaKey:e.ctrlKey)&&e.key.toLowerCase()===`k`){e.preventDefault(),sr();return}if(e.key===`Escape`){let e=document.querySelector(`#global-search-modal`);e&&!e.classList.contains(`hidden`)&&or()}}))}function lr(){if(document.querySelector(`#global-search-modal`)){cr();return}document.body.insertAdjacentHTML(`beforeend`,`
+    ${mr(`Projects`,i)}
+    ${mr(`Tasks`,a)}
+    ${mr(`People`,o)}
+  `}function gr(){let e=document.querySelector(`#global-search-modal`),t=document.querySelector(`#global-search-button`),n=document.querySelector(`#global-search-input`);e&&(e.classList.add(`hidden`),e.setAttribute(`aria-hidden`,`true`),document.body.classList.remove(`overflow-hidden`),t&&(t.setAttribute(`aria-expanded`,`false`),t.focus()),n&&(n.value=``))}function _r(){let e=document.querySelector(`#global-search-modal`),t=document.querySelector(`#global-search-input`),n=document.querySelector(`#global-search-results`),r=document.querySelector(`#global-search-button`);!e||!t||(e.classList.remove(`hidden`),e.setAttribute(`aria-hidden`,`false`),document.body.classList.add(`overflow-hidden`),r?.setAttribute(`aria-expanded`,`true`),hr(``),requestAnimationFrame(()=>{t.focus()}),n&&(n.scrollTop=0))}function vr(){br||(br=!0,document.addEventListener(`click`,e=>{if(e.target.closest(`#global-search-button`)){_r();return}if(e.target.closest(`[data-close-global-search]`)){gr();return}let t=e.target.closest(`.global-search-result`);if(t){let e=t.dataset.resultPath;gr(),e&&X(e);return}}),document.addEventListener(`input`,e=>{e.target.id===`global-search-input`&&hr(e.target.value)}),document.addEventListener(`keydown`,e=>{if((navigator.platform.toUpperCase().includes(`MAC`)?e.metaKey:e.ctrlKey)&&e.key.toLowerCase()===`k`){e.preventDefault(),_r();return}if(e.key===`Escape`){let e=document.querySelector(`#global-search-modal`);e&&!e.classList.contains(`hidden`)&&gr()}}))}function yr(){if(document.querySelector(`#global-search-modal`)){vr();return}document.body.insertAdjacentHTML(`beforeend`,`
       <div
         id="global-search-modal"
         class="fixed inset-0 z-[100] hidden overflow-y-auto bg-slate-950/50 px-4 py-10 backdrop-blur-sm sm:py-20"
@@ -4914,18 +5110,18 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
           </div>
         </div>
       </div>
-    `),cr()}var ur,dr=t((()=>{C(),Q(),ur=!1}));function fr(){let e=localStorage.getItem(vr);if(!e)return yr;try{return{...yr,...JSON.parse(e)}}catch{return yr}}function pr(e){return e.trim().split(/\s+/).map(e=>e[0]).join(``).slice(0,2).toUpperCase()}function mr(){let e=fr(),t=pr(e.name),n=document.querySelector(`#navbar`);if(!n){console.error(`Navbar mount point not found.`);return}n.innerHTML=`
+    `),vr()}var br,xr=t((()=>{C(),Z(),br=!1}));function Sr(){let e=localStorage.getItem(Or);if(!e)return $;try{return{...$,...JSON.parse(e)}}catch{return $}}function Cr(e){return e.trim().split(/\s+/).map(e=>e[0]).join(``).slice(0,2).toUpperCase()}function wr(){let e=Sr(),t=Cr(e.name),n=document.querySelector(`#navbar`);if(!n){console.error(`Navbar mount point not found.`);return}n.innerHTML=`
     <header class="h-16 border-b border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950">
-      <div class="h-full px-4 sm:px-6 flex items-center justify-between">
+      <div class="flex h-full min-w-0 items-center justify-between gap-2 px-2 sm:px-6">
 
         <!-- Left Side -->
-        <div class="flex items-center gap-2">
+        <div class="flex min-w-0 shrink-0 items-center gap-1 sm:gap-2">
 
           <!-- Mobile Menu Button -->
           <button
             type="button"
             id="mobile-menu-button"
-            class="inline-flex size-10 items-center justify-center rounded-lg text-slate-500 hover:bg-slate-100 hover:text-slate-900 transition-colors dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white md:hidden"
+            class="inline-flex size-10 shrink-0 items-center justify-center rounded-lg text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white md:hidden"
             aria-label="Open navigation menu"
             aria-expanded="false"
             aria-controls="mobile-navigation"
@@ -4948,16 +5144,17 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
           <!-- Logo -->
           <a
             href="/"
-            class="flex items-center gap-2"
+            class="flex shrink-0 items-center gap-2"
             aria-label="Flowboard home"
           >
             <div
-              class="size-9 rounded-lg bg-indigo-600 text-white flex items-center justify-center font-bold"
+              class="flex size-9 shrink-0 items-center justify-center rounded-lg bg-indigo-600 font-bold text-white"
             >
               F
             </div>
 
-            <span class="text-lg font-bold tracking-tight text-slate-900 dark:text-white">
+            <!-- Hide Flowboard text on mobile -->
+            <span class="hidden text-lg font-bold tracking-tight text-slate-900 dark:text-white sm:block">
               Flowboard
             </span>
           </a>
@@ -4965,18 +5162,17 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
         </div>
 
         <!-- Right Side -->
-        <div class="flex items-center gap-2">
+        <div class="flex min-w-0 shrink-0 items-center gap-0.5 sm:gap-2">
 
           <!-- Search -->
           <button
             type="button"
             id="global-search-button"
-            class="size-10 rounded-lg flex items-center justify-center text-slate-500 hover:bg-slate-100 hover:text-slate-900 transition-colors dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white"
+            class="flex size-10 shrink-0 items-center justify-center rounded-lg text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white"
             aria-label="Search Flowboard"
-              aria-expanded="false"
-  aria-controls="global-search-modal"
-  title="Search (Ctrl+K)"
-
+            aria-expanded="false"
+            aria-controls="global-search-modal"
+            title="Search (Ctrl+K)"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -4996,7 +5192,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
           <button
             type="button"
             id="theme-toggle-btn"
-            class="size-10 rounded-lg flex items-center justify-center text-slate-500 hover:bg-slate-100 hover:text-slate-900 transition-colors dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white"
+            class="flex size-10 shrink-0 items-center justify-center rounded-lg text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white"
             aria-label="Switch to dark mode"
             title="Switch to dark mode"
           >
@@ -5036,83 +5232,89 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
           </button>
 
           <!-- Notifications -->
-          <!-- Notifications -->
-<div class="relative">
+          <div class="relative shrink-0">
 
-  <button
-    type="button"
-    id="notifications-button"
-    class="relative size-10 rounded-lg flex items-center justify-center text-slate-500 hover:bg-slate-100 hover:text-slate-900 transition-colors dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white"
-    aria-label="Notifications"
-    aria-expanded="false"
-    aria-controls="notifications-panel"
-  >
-    <!-- Bell Icon -->
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      class="size-5"
-      aria-hidden="true"
-    >
-      <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path>
-      <path d="M10 21h4"></path>
-    </svg>
-
-    <!-- Unread Notification Badge -->
-    <span
-      id="notifications-badge"
-      class="absolute -right-0.5 -top-0.5 flex min-w-4 h-4 items-center justify-center rounded-full bg-red-500 px-1 text-[10px] font-bold text-white"
-      aria-hidden="true"
-    >
-      2
-    </span>
-  </button>
-
-  <!-- Notifications Dropdown -->
-  <div
-    id="notifications-panel"
-    class="absolute right-0 top-full z-50 mt-2 hidden w-[min(24rem,calc(100vw-2rem))] overflow-hidden rounded-xl border border-slate-200 bg-white shadow-xl dark:border-slate-700 dark:bg-slate-900"
-    role="region"
-    aria-label="Notifications"
-  >
-    <div id="notifications-container"></div>
-  </div>
-
-</div>
-
-          <!-- User Menu -->
-          <div class="relative">
-
-            <!-- User Menu Button -->
             <button
               type="button"
-              id="user-menu-button"
-              class="ml-1 flex items-center gap-2 rounded-lg p-1.5 hover:bg-slate-100 transition-colors dark:hover:bg-slate-800"
-              aria-label="Open user menu"
+              id="notifications-button"
+              class="relative flex size-10 shrink-0 items-center justify-center rounded-lg text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white"
+              aria-label="Notifications"
               aria-expanded="false"
-              aria-haspopup="true"
-              aria-controls="user-menu"
+              aria-controls="notifications-panel"
             >
-              <div
-                class="size-8 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center text-sm font-bold dark:bg-indigo-500/20 dark:text-indigo-300"
-              >
-                ${t}
-              </div>
-
-              <span class="hidden sm:block text-sm font-semibold text-slate-700 dark:text-slate-200">
-                ${e.name}
-              </span>
-
+              <!-- Bell Icon -->
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
                 stroke-width="2"
-                class="hidden sm:block size-4 text-slate-400 transition-transform duration-200 dark:text-slate-500"
+                class="size-5"
+                aria-hidden="true"
+              >
+                <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path>
+                <path d="M10 21h4"></path>
+              </svg>
+
+              <!-- Unread Notification Badge -->
+              <span
+                id="notifications-badge"
+                class="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-red-500 px-1 text-[10px] font-bold text-white"
+                aria-hidden="true"
+              >
+                2
+              </span>
+            </button>
+
+            <!-- Notifications Dropdown -->
+            <div
+              id="notifications-panel"
+              class="absolute right-0 top-full z-50 mt-2 hidden w-[min(24rem,calc(100vw-2rem))] overflow-hidden rounded-xl border border-slate-200 bg-white shadow-xl dark:border-slate-700 dark:bg-slate-900"
+              role="region"
+              aria-label="Notifications"
+            >
+              <div id="notifications-container"></div>
+            </div>
+
+          </div>
+
+          <!-- User Menu -->
+          <div class="relative shrink-0">
+
+            <!-- User Menu Button -->
+            <button
+              type="button"
+              id="user-menu-button"
+              class="ml-0 flex shrink-0 items-center gap-1 rounded-lg p-1 transition-colors hover:bg-slate-100 dark:hover:bg-slate-800 sm:ml-1 sm:gap-2 sm:p-1.5"
+              aria-label="Open user menu"
+              aria-expanded="false"
+              aria-haspopup="true"
+              aria-controls="user-menu"
+            >
+              <!-- Profile Avatar -->
+            <div
+  class="flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-full bg-indigo-100 text-sm font-bold text-indigo-700 dark:bg-indigo-500/20 dark:text-indigo-300"
+>
+  ${e.avatar?`<img
+          src="${e.avatar}"
+          alt="Profile avatar"
+          class="size-full object-cover"
+        />`:t}
+</div>
+
+              <!-- Profile Name: Hidden on Mobile -->
+              <span class="hidden text-sm font-semibold text-slate-700 dark:text-slate-200 sm:block">
+                ${e.name}
+              </span>
+
+              <!-- Dropdown Chevron -->
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                class="hidden size-4 text-slate-400 transition-transform duration-200 dark:text-slate-500 sm:block"
                 id="user-menu-chevron"
                 aria-hidden="true"
               >
@@ -5120,7 +5322,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
               </svg>
             </button>
 
-            <!-- Dropdown -->
+            <!-- User Dropdown -->
             <div
               id="user-menu"
               class="absolute right-0 top-full z-50 mt-2 hidden w-64 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-lg dark:border-slate-700 dark:bg-slate-900"
@@ -5145,7 +5347,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
 
                 <!-- Profile -->
                 <a
-                  href="#"
+                  href="/settings#profile"
                   class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800"
                   role="menuitem"
                 >
@@ -5167,7 +5369,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
 
                 <!-- Settings -->
                 <a
-                  href="#"
+                  href="/settings"
                   class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800"
                   role="menuitem"
                 >
@@ -5181,39 +5383,11 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
                     aria-hidden="true"
                   >
                     <circle cx="12" cy="12" r="3"></circle>
-                    <path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-1.7 1.7-.06-.06A1.7 1.7 0 0 0 16.16 19a1.7 1.7 0 0 0-1.06 1.55V21h-2.4v-.45A1.7 1.7 0 0 0 11.64 19a1.7 1.7 0 0 0-1.88.34l-.06.06-1.7-1.7.06-.06A1.7 1.7 0 0 0 8.4 15a1.7 1.7 0 0 0-1.55-1.06H6v-2.4h.45A1.7 1.7 0 0 0 8.4 10a1.7 1.7 0 0 0-.34-1.88L8 8.06l1.7-1.7.06.06A1.7 1.7 0 0 0 11.64 6 1.7 1.7 0 0 0 12.7 4.45V4h2.4v.45A1.7 1.7 0 0 0 16.16 6a1.7 1.7 0 0 0 1.88-.34l-.06-.06 1.7 1.7-.06.06A1.7 1.7 0 0 0 19.4 10a1.7 1.7 0 0 0 1.55 1.06H21v2.4h-.45A1.7 1.7 0 0 0 19.4 15Z"></path>
+                    <path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06-.06-1.7 1.7-.06-.06A1.7 1.7 0 0 0 16.16 19a1.7 1.7 0 0 0-1.06 1.55V21h-2.4v-.45A1.7 1.7 0 0 0 11.64 19a1.7 1.7 0 0 0-1.88.34l-.06.06-1.7-1.7.06-.06A1.7 1.7 0 0 0 8.4 15a1.7 1.7 0 0 0-1.55-1.06H6v-2.4h.45A1.7 1.7 0 0 0 8.4 10a1.7 1.7 0 0 0-.34-1.88L8 8.06l1.7-1.7.06.06A1.7 1.7 0 0 0 11.64 6 1.7 1.7 0 0 0 12.7 4.45V4h2.4v.45A1.7 1.7 0 0 0 16.16 6a1.7 1.7 0 0 0 1.88-.34l-.06-.06 1.7 1.7-.06.06A1.7 1.7 0 0 0 19.4 10a1.7 1.7 0 0 0 1.55 1.06H21v2.4h-.45A1.7 1.7 0 0 0 19.4 15Z"></path>
                   </svg>
 
                   Settings
                 </a>
-
-              </div>
-
-              <!-- Logout -->
-              <div class="border-t border-slate-200 p-1.5 dark:border-slate-700">
-
-                <button
-                  type="button"
-                  id="logout-button"
-                  class="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-red-600 hover:bg-red-50"
-                  role="menuitem"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    class="size-4.5"
-                    aria-hidden="true"
-                  >
-                    <path d="M10 17l5-5-5-5"></path>
-                    <path d="M15 12H3"></path>
-                    <path d="M21 19V5a2 2 0 0 0-2-2h-6"></path>
-                  </svg>
-
-                  Log out
-                </button>
 
               </div>
 
@@ -5224,85 +5398,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
         </div>
       </div>
     </header>
-  `,hr(),gr(),Se(),lr(),_r||=(window.addEventListener(`flowboard:profile-updated`,()=>{mr()}),!0)}function hr(){let e=document.querySelector(`#user-menu-button`),t=document.querySelector(`#user-menu`),n=document.querySelector(`#user-menu-chevron`);if(!e||!t||!n){console.error(`User menu elements not found.`);return}function r(){t.classList.remove(`hidden`),e.setAttribute(`aria-expanded`,`true`),n.classList.add(`rotate-180`)}function i(){t.classList.add(`hidden`),e.setAttribute(`aria-expanded`,`false`),n.classList.remove(`rotate-180`)}function a(){e.getAttribute(`aria-expanded`)===`true`?i():r()}e.addEventListener(`click`,e=>{e.stopPropagation(),a()}),document.addEventListener(`click`,n=>{!t.contains(n.target)&&!e.contains(n.target)&&i()}),document.addEventListener(`keydown`,t=>{t.key===`Escape`&&(i(),e.focus())})}function gr(){let e=document.querySelector(`#theme-toggle-btn`);if(!e){console.error(`Theme toggle button not found.`);return}function t(){let t=document.documentElement.classList.contains(`dark`)?`Switch to light mode`:`Switch to dark mode`;e.setAttribute(`aria-label`,t),e.setAttribute(`title`,t)}t(),e.addEventListener(`click`,()=>{let e=o(),n=document.documentElement.classList.contains(`dark`)?`light`:`dark`;s({...e,theme:n}),c(n),t()})}var _r,vr,yr,br=t((()=>{d(),De(),dr(),_r=!1,vr=`flowboard-profile`,yr={name:`Abir`,email:`abir@example.com`,role:`Admin`}})),xr,Sr,Cr=t((()=>{xr=[{label:`Dashboard`,href:`/`,icon:`
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                class="size-5"
-            >
-                <rect width="7" height="9" x="3" y="3" rx="1"></rect>
-                <rect width="7" height="5" x="14" y="3" rx="1"></rect>
-                <rect width="7" height="9" x="14" y="12" rx="1"></rect>
-                <rect width="7" height="5" x="3" y="16" rx="1"></rect>
-            </svg>
-        `},{label:`Projects`,href:`/projects`,icon:`
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                class="size-5"
-            >
-                <path d="M3 7h5l2 2h11v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                <path d="M3 7V5a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v2"></path>
-            </svg>
-        `},{label:`My Tasks`,href:`/tasks`,icon:`
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                class="size-5"
-            >
-                <rect width="18" height="18" x="3" y="3" rx="2"></rect>
-                <path d="m9 12 2 2 4-4"></path>
-            </svg>
-        `},{label:`Calendar`,href:`/calendar`,icon:`
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                class="size-5"
-            >
-                <rect width="18" height="18" x="3" y="4" rx="2"></rect>
-                <path d="M16 2v4"></path>
-                <path d="M8 2v4"></path>
-                <path d="M3 10h18"></path>
-            </svg>
-        `},{label:`Team`,href:`/team`,icon:`
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                class="size-5"
-            >
-                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
-                <circle cx="9" cy="7" r="4"></circle>
-                <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
-                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-            </svg>
-        `}],Sr=[{label:`Settings`,href:`/settings`,icon:`
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                class="size-5"
-            >
-                <circle cx="12" cy="12" r="3"></circle>
-                <path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-1.7 1.7-.06-.06A1.7 1.7 0 0 0 16.16 19a1.7 1.7 0 0 0-1.06 1.55V21h-2.4v-.45A1.7 1.7 0 0 0 11.64 19a1.7 1.7 0 0 0-1.88.34l-.06.06-1.7-1.7.06-.06A1.7 1.7 0 0 0 8.4 15a1.7 1.7 0 0 0-1.55-1.06H6v-2.4h.45A1.7 1.7 0 0 0 8.4 10a1.7 1.7 0 0 0-.34-1.88L8 8.06l1.7-1.7.06.06A1.7 1.7 0 0 0 11.64 6 1.7 1.7 0 0 0 12.7 4.45V4h2.4v.45A1.7 1.7 0 0 0 16.16 6a1.7 1.7 0 0 0 1.88-.34l.06-.06 1.7 1.7-.06.06A1.7 1.7 0 0 0 19.4 10a1.7 1.7 0 0 0 1.55 1.06H21v2.4h-.45A1.7 1.7 0 0 0 19.4 15Z"></path>
-            </svg>
-        `}]}));function wr(){let e=document.querySelector(`#sidebar`);if(!e){console.error(`Sidebar mount point not found.`);return}let t=window.location.pathname;e.innerHTML=`
+  `,Tr(),Er(),Se(),yr(),Dr||=(window.addEventListener(`flowboard:profile-updated`,()=>{wr()}),!0)}function Tr(){let e=document.querySelector(`#user-menu-button`),t=document.querySelector(`#user-menu`),n=document.querySelector(`#user-menu-chevron`);if(!e||!t||!n){console.error(`User menu elements not found.`);return}function r(){t.classList.remove(`hidden`),e.setAttribute(`aria-expanded`,`true`),n.classList.add(`rotate-180`)}function i(){t.classList.add(`hidden`),e.setAttribute(`aria-expanded`,`false`),n.classList.remove(`rotate-180`)}function a(){e.getAttribute(`aria-expanded`)===`true`?i():r()}e.addEventListener(`click`,e=>{e.stopPropagation(),a()}),document.addEventListener(`click`,n=>{!t.contains(n.target)&&!e.contains(n.target)&&i()}),document.addEventListener(`keydown`,t=>{t.key===`Escape`&&(i(),e.focus())})}function Er(){let e=document.querySelector(`#theme-toggle-btn`);if(!e){console.error(`Theme toggle button not found.`);return}function t(){let t=document.documentElement.classList.contains(`dark`)?`Switch to light mode`:`Switch to dark mode`;e.setAttribute(`aria-label`,t),e.setAttribute(`title`,t)}t(),e.addEventListener(`click`,()=>{let e=o(),n=document.documentElement.classList.contains(`dark`)?`light`:`dark`;s({...e,theme:n}),c(n),t()})}var Dr,Or,$,kr=t((()=>{d(),De(),xr(),Dr=!1,Or=`flowboard-profile`,$={name:`username`,email:`username@address`,role:`Admin`}}));function Ar(){let e=document.querySelector(`#sidebar`);if(!e){console.error(`Sidebar mount point not found.`);return}let t=window.location.pathname;e.innerHTML=`
     <aside class="hidden w-64 shrink-0 border-r border-slate-200 bg-white md:flex dark:border-slate-800 dark:bg-slate-950">
       <div class="flex w-full flex-col">
 
@@ -5310,13 +5406,12 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
         <nav class="flex-1 p-4">
 
           <div class="space-y-1">
-            ${xr.map(e=>{let n=e.href===t||e.href===`/`&&t===`/dashboard`;return`
+            ${nr.map(e=>{let n=e.href===t||e.href===`/`&&t===`/dashboard`;return`
                   <a
                     href="${e.href}"
                     class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm ${n?`bg-indigo-50 font-semibold text-indigo-700 dark:bg-indigo-500/10 dark:text-indigo-300`:`font-medium text-slate-600 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100`} transition-colors"
                   >
                     ${e.icon}
-
                     ${e.label}
                   </a>
                 `}).join(``)}
@@ -5324,18 +5419,17 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
 
           <div class="mt-8">
 
-        <p class="px-3 text-xs font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+            <p class="px-3 text-xs font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">
               Workspace
             </p>
 
             <div class="mt-2 space-y-1">
-              ${Sr.map(e=>{let n=e.href===t;return`
+              ${rr.map(e=>{let n=e.href===t;return`
                     <a
                       href="${e.href}"
                       class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm ${n?`bg-indigo-50 font-semibold text-indigo-700 dark:bg-indigo-500/10 dark:text-indigo-300`:`font-medium text-slate-600 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100`} transition-colors"
                     >
                       ${e.icon}
-
                       ${e.label}
                     </a>
                   `}).join(``)}
@@ -5345,37 +5439,9 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
 
         </nav>
 
-        <!-- Sidebar Footer -->
-      <div class="border-t border-slate-200 p-4 dark:border-slate-800">
-
-       <div class="rounded-lg bg-slate-50 p-3 dark:bg-slate-900">
-
-         <p class="text-xs font-semibold text-slate-700 dark:text-slate-200">
-              Free Plan
-            </p>
-
-        <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">
-              3 of 5 projects used
-            </p>
-
-         <div class="mt-3 h-1.5 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-700">
-              <div class="h-full w-3/5 rounded-full bg-indigo-600"></div>
-            </div>
-
-            <button
-              type="button"
-          class="mt-3 text-xs font-semibold text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-300"
-            >
-              Upgrade plan
-            </button>
-
-          </div>
-
-        </div>
-
       </div>
     </aside>
-  `}var Tr=t((()=>{Cr()}));function Er(){let e=document.querySelector(`#footer`);if(!e){console.error(`Footer mount point not found.`);return}e.innerHTML=`
+  `}var jr=t((()=>{ir()}));function Mr(){let e=document.querySelector(`#footer`);if(!e){console.error(`Footer mount point not found.`);return}e.innerHTML=`
     <footer class="border-t border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950">
       <div class="px-6 py-5">
         <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
@@ -5486,7 +5552,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
 
       </section>
     </div>
-  `,Dr()}function Dr(){if(Or)return;Or=!0;let e=document.querySelector(`#footer-modal-overlay`),t=document.querySelector(`#footer-modal-title`),n=document.querySelector(`#footer-modal-description`),r=document.querySelector(`#footer-modal-close`),i=document.querySelector(`#footer-modal-done`);if(!e||!t||!n||!r||!i){console.error(`Footer modal elements not found.`);return}let a=null,o={help:{title:`Help & Contact`,content:`
+  `,Nr()}function Nr(){if(Pr)return;Pr=!0;let e=document.querySelector(`#footer-modal-overlay`),t=document.querySelector(`#footer-modal-title`),n=document.querySelector(`#footer-modal-description`),r=document.querySelector(`#footer-modal-close`),i=document.querySelector(`#footer-modal-done`);if(!e||!t||!n||!r||!i){console.error(`Footer modal elements not found.`);return}let a=null,o={help:{title:`Help & Contact`,content:`
         <div class="space-y-5">
 
           <div>
@@ -5724,98 +5790,4 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
           </p>
 
         </div>
-      `}};function s(i,s){let c=o[i];c&&(a=s,t.textContent=c.title,n.innerHTML=c.content,e.classList.remove(`hidden`),e.classList.add(`flex`),e.setAttribute(`aria-hidden`,`false`),document.body.classList.add(`overflow-hidden`),r.focus())}function c(){e.classList.add(`hidden`),e.classList.remove(`flex`),e.setAttribute(`aria-hidden`,`true`),document.body.classList.remove(`overflow-hidden`),a?.isConnected&&a.focus()}document.addEventListener(`click`,t=>{let n=t.target.closest(`[data-footer-modal]`);if(n){s(n.dataset.footerModal,n);return}if(t.target.closest(`#footer-modal-close`)||t.target.closest(`#footer-modal-done`)){c();return}t.target===e&&c()}),document.addEventListener(`keydown`,t=>{t.key===`Escape`&&!e.classList.contains(`hidden`)&&c()})}var Or,kr=t((()=>{Or=!1}));function Ar(){let e=document.querySelector(`#mobile-navigation`);if(!e){console.error(`Mobile navigation mount point not found.`);return}e.innerHTML=`
-        <!-- Backdrop -->
-        <div
-            id="mobile-navigation-backdrop"
-            class="fixed inset-0 z-40 hidden bg-black/40"
-        ></div>
-
-        <!-- Drawer -->
-        <aside
-            id="mobile-navigation-drawer"
-          class="fixed inset-y-0 left-0 z-50 flex w-72 -translate-x-full flex-col bg-white shadow-xl transition-transform duration-300 dark:bg-slate-950"
-        >
-
-            <!-- Drawer Header -->
-       <div class="flex h-16 items-center justify-between border-b border-slate-200 px-4 dark:border-slate-800">
-
-                <div class="flex items-center gap-2">
-
-                    <div
-                        class="flex size-9 items-center justify-center rounded-lg bg-indigo-600 font-bold text-white"
-                    >
-                        F
-                    </div>
-
-                <span class="text-lg font-bold tracking-tight text-slate-900 dark:text-white">
-                        Flowboard
-                    </span>
-
-                </div>
-
-                <button
-                    type="button"
-                    id="mobile-menu-close"
-                  class="flex size-10 items-center justify-center rounded-lg text-slate-500 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white"
-                    aria-label="Close navigation menu"
-                >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        class="size-5"
-                    >
-                        <path d="M18 6 6 18"></path>
-                        <path d="m6 6 12 12"></path>
-                    </svg>
-                </button>
-
-            </div>
-
-            <!-- Navigation -->
-            <nav class="flex-1 overflow-y-auto p-4">
-
-    <div class="space-y-1">
-
-        ${xr.map((e,t)=>`
-            <a
-                href="${e.href}"
-                class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm ${t===0?`bg-indigo-50 font-semibold text-indigo-700 dark:bg-indigo-500/10 dark:text-indigo-300`:`font-medium text-slate-600 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100`}"
-            >
-                ${e.icon}
-
-                ${e.label}
-            </a>
-        `).join(``)}
-
-    </div>
-
-    <div class="mt-8">
-
-    <p class="px-3 text-xs font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">
-            Workspace
-        </p>
-
-        <div class="mt-2 space-y-1">
-
-            ${Sr.map(e=>`
-                <a
-                    href="${e.href}"
-                  class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100"
-                >
-                    ${e.icon}
-
-                    ${e.label}
-                </a>
-            `).join(``)}
-
-        </div>
-
-    </div>
-
-</nav>
-        </aside>
-    `,jr()}function jr(){let e=document.querySelector(`#mobile-menu-button`),t=document.querySelector(`#mobile-menu-close`),n=document.querySelector(`#mobile-navigation-backdrop`),r=document.querySelector(`#mobile-navigation-drawer`);if(!e||!t||!n||!r){console.error(`Mobile navigation elements not found.`);return}function i(){r.classList.remove(`-translate-x-full`),n.classList.remove(`hidden`),e.setAttribute(`aria-expanded`,`true`),document.body.classList.add(`overflow-hidden`)}function a(){r.classList.add(`-translate-x-full`),n.classList.add(`hidden`),e.setAttribute(`aria-expanded`,`false`),document.body.classList.remove(`overflow-hidden`)}e.addEventListener(`click`,i),t.addEventListener(`click`,a),n.addEventListener(`click`,a),document.addEventListener(`keydown`,e=>{e.key===`Escape`&&a()})}var Mr=t((()=>{Cr()}));function Nr(){document.addEventListener(`click`,e=>{let t=e.target.closest(`a`);if(!t)return;let n=t.getAttribute(`href`);!n||!n.startsWith(`/`)||n.startsWith(`//`)||(e.preventDefault(),Z(n),wr())}),window.addEventListener(`popstate`,()=>{$n(),wr()})}var Pr=t((()=>{Q(),Tr()}));n((()=>{i(),a(),br(),Tr(),kr(),Mr(),O(),Q(),ct(),Pr(),d(),c(o().theme),mr(),wr(),Er(),Ar(),Oe(),Nr(),ot(),$n()}))();
+      `}};function s(i,s){let c=o[i];c&&(a=s,t.textContent=c.title,n.innerHTML=c.content,e.classList.remove(`hidden`),e.classList.add(`flex`),e.setAttribute(`aria-hidden`,`false`),document.body.classList.add(`overflow-hidden`),r.focus())}function c(){e.classList.add(`hidden`),e.classList.remove(`flex`),e.setAttribute(`aria-hidden`,`true`),document.body.classList.remove(`overflow-hidden`),a?.isConnected&&a.focus()}document.addEventListener(`click`,t=>{let n=t.target.closest(`[data-footer-modal]`);if(n){s(n.dataset.footerModal,n);return}if(t.target.closest(`#footer-modal-close`)||t.target.closest(`#footer-modal-done`)){c();return}t.target===e&&c()}),document.addEventListener(`keydown`,t=>{t.key===`Escape`&&!e.classList.contains(`hidden`)&&c()})}var Pr,Fr=t((()=>{Pr=!1}));function Ir(){document.addEventListener(`click`,e=>{if(e.defaultPrevented||e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;let t=e.target.closest(`a`);if(!t)return;let n=t.getAttribute(`href`);!n||!n.startsWith(`/`)||n.startsWith(`//`)||t.target===`_blank`||t.hasAttribute(`download`)||(e.preventDefault(),X(n),Ar())})}var Lr=t((()=>{Z(),jr()}));n((()=>{i(),a(),kr(),jr(),Fr(),O(),Z(),ct(),Lr(),d(),c(o().theme),wr(),Ar(),Mr(),Oe(),ot(),Ir(),lr()}))();
