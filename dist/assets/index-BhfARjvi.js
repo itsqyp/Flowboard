@@ -760,13 +760,13 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
       </div>
 
     </section>
-  `,e.querySelectorAll(`.dashboard-project-card`).forEach(e=>{e.addEventListener(`click`,()=>{let t=e.dataset.projectId;X(`/projects/${t}`)})})}function Xe(e){let t={progress:`bg-indigo-50 text-indigo-700 dark:bg-indigo-500/10 dark:text-indigo-300`,warning:`bg-amber-50 text-amber-700 dark:bg-amber-500/10 dark:text-amber-300`,success:`bg-emerald-50 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-300`};return`
+  `,e.querySelectorAll(`.dashboard-project-card`).forEach(e=>{e.addEventListener(`click`,()=>{let t=e.dataset.projectId;Z(`/projects/${t}`)})})}function Xe(e){let t={progress:`bg-indigo-50 text-indigo-700 dark:bg-indigo-500/10 dark:text-indigo-300`,warning:`bg-amber-50 text-amber-700 dark:bg-amber-500/10 dark:text-amber-300`,success:`bg-emerald-50 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-300`};return`
     <span
       class="rounded-full px-2.5 py-1 text-xs font-semibold ${t[e.statusType]||t.progress}"
     >
       ${e.status}
     </span>
-  `}var Ze=t((()=>{C(),Z()}));function Qe(){let e=document.querySelector(`#dashboard-tasks`);if(!e){console.error(`Dashboard tasks mount point not found.`);return}let{tasks:t,projects:n}=_();e.innerHTML=`
+  `}var Ze=t((()=>{C(),Q()}));function Qe(){let e=document.querySelector(`#dashboard-tasks`);if(!e){console.error(`Dashboard tasks mount point not found.`);return}let{tasks:t,projects:n}=_();e.innerHTML=`
     <section class="rounded-xl border bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
 
       <!-- Header -->
@@ -1266,7 +1266,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
             </p>
           </div>
         </label>
-      `).join(``))}function ft(e){mt=e;let t=document.querySelector(`#edit-project-modal`);t&&t.remove();let n=document.createElement(`div`);n.id=`edit-project-modal`,n.className=`fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/50 p-4 backdrop-blur-sm`,n.innerHTML=`
+      `).join(``))}function ft(e){P=e;let t=document.querySelector(`#edit-project-modal`);t&&t.remove();let n=document.createElement(`div`);n.id=`edit-project-modal`,n.className=`fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/50 p-4 backdrop-blur-sm`,n.innerHTML=`
     <div
       class="w-full max-w-lg rounded-2xl border border-slate-200 bg-white shadow-2xl dark:border-slate-700 dark:bg-slate-900"
     >
@@ -1456,7 +1456,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
         </div>
       </form>
     </div>
-  `,document.body.appendChild(n);let r=n.querySelector(`#edit-project-form`),i=n.querySelector(`#close-edit-project-modal`),a=n.querySelector(`#cancel-edit-project-modal`);i.addEventListener(`click`,N),a.addEventListener(`click`,N),n.addEventListener(`click`,e=>{e.target===n&&N()}),r.addEventListener(`submit`,e=>{e.preventDefault();let t=new FormData(r),n=t.get(`name`).trim(),i=t.get(`description`).trim(),a=t.get(`status`),o=t.get(`priority`),s=t.get(`dueDate`),c=t.getAll(`memberIds`).map(Number);if(!n){E(`Project name is required.`,`error`);return}mt&&mt({id:ht,name:n,description:i,status:a,priority:o,dueDate:s,memberIds:c}),N(),E(`Project updated successfully.`,`success`)})}function pt(e){let t=document.querySelector(`#edit-project-modal`);if(!t)return;ht=e.id;let n=e.memberIds||[];document.querySelector(`#edit-project-name`).value=e.name||``,document.querySelector(`#edit-project-description`).value=e.description||``,document.querySelector(`#edit-project-status`).value=e.status||`planning`,document.querySelector(`#edit-project-priority`).value=e.priority||`medium`,document.querySelector(`#edit-project-due-date`).value=e.dueDate||``,dt(n),t.classList.remove(`hidden`),t.classList.add(`flex`),document.querySelector(`#edit-project-name`).focus()}function N(){let e=document.querySelector(`#edit-project-modal`);e&&(e.classList.add(`hidden`),e.classList.remove(`flex`),ht=null)}var mt,ht,gt=t((()=>{O(),C(),mt=null,ht=null}));function _t(){let e=document.querySelector(`#app`);if(!e){console.error(`App mount point not found.`);return}let{projects:t,tasks:n}=_();e.innerHTML=`
+  `,document.body.appendChild(n);let r=n.querySelector(`#edit-project-form`),i=n.querySelector(`#close-edit-project-modal`),a=n.querySelector(`#cancel-edit-project-modal`);i.addEventListener(`click`,N),a.addEventListener(`click`,N),n.addEventListener(`click`,e=>{e.target===n&&N()}),r.addEventListener(`submit`,e=>{e.preventDefault();let t=new FormData(r),n=t.get(`name`).trim(),i=t.get(`description`).trim(),a=t.get(`status`),o=t.get(`priority`),s=t.get(`dueDate`),c=t.getAll(`memberIds`).map(Number);if(!n){E(`Project name is required.`,`error`);return}P&&P({id:mt,name:n,description:i,status:a,priority:o,dueDate:s,memberIds:c}),N(),E(`Project updated successfully.`,`success`)})}function pt(e){let t=document.querySelector(`#edit-project-modal`);if(!t)return;mt=e.id;let n=e.memberIds||[];document.querySelector(`#edit-project-name`).value=e.name||``,document.querySelector(`#edit-project-description`).value=e.description||``,document.querySelector(`#edit-project-status`).value=e.status||`planning`,document.querySelector(`#edit-project-priority`).value=e.priority||`medium`,document.querySelector(`#edit-project-due-date`).value=e.dueDate||``,dt(n),t.classList.remove(`hidden`),t.classList.add(`flex`),document.querySelector(`#edit-project-name`).focus()}function N(){let e=document.querySelector(`#edit-project-modal`);e&&(e.classList.add(`hidden`),e.classList.remove(`flex`),mt=null)}var P,mt,ht=t((()=>{O(),C(),P=null,mt=null}));function gt(){let e=document.querySelector(`#app`);if(!e){console.error(`App mount point not found.`);return}let{projects:t,tasks:n}=_();e.innerHTML=`
     <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
 
       <!-- Page Header -->
@@ -1619,7 +1619,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
           </p>
 
         </div>
-      `;return}r.innerHTML=u.map(e=>lt(e)).join(``)}Ae(e=>{t.unshift(e),y({type:`project_created`,user:h().name,target:e.name}),v(),l()}),ft(e=>{let n=t.findIndex(t=>String(t.id)===String(e.id));if(n===-1){vt();return}t[n]={...t[n],...e},y({type:`project_updated`,user:h().name,target:e.name}),v(),l()}),l(),i.addEventListener(`input`,l),a.addEventListener(`change`,l),o.addEventListener(`change`,l),document.querySelector(`#create-project-btn`).addEventListener(`click`,Ne),r.addEventListener(`click`,e=>{let n=e.target.closest(`.edit-project-btn`);if(!n)return;let r=n.dataset.editProjectId,i=t.find(e=>String(e.id)===String(r));if(!i){vt();return}pt(i)})}function vt(){E(`Project could not be updated.`,`error`)}var yt=t((()=>{C(),ut(),O(),Le(),gt()}));function bt(e){Tt=e;let{projects:t,teamMembers:n}=_();document.querySelector(`#task-modal`)||(F=document.createElement(`div`),F.id=`task-modal`,F.className=`fixed inset-0 z-[90] hidden items-center justify-center p-4`,F.innerHTML=`
+      `;return}r.innerHTML=u.map(e=>lt(e)).join(``)}Ae(e=>{t.unshift(e),y({type:`project_created`,user:h().name,target:e.name}),v(),l()}),ft(e=>{let n=t.findIndex(t=>String(t.id)===String(e.id));if(n===-1){_t();return}t[n]={...t[n],...e},y({type:`project_updated`,user:h().name,target:e.name}),v(),l()}),l(),i.addEventListener(`input`,l),a.addEventListener(`change`,l),o.addEventListener(`change`,l),document.querySelector(`#create-project-btn`).addEventListener(`click`,Ne),r.addEventListener(`click`,e=>{let n=e.target.closest(`.edit-project-btn`);if(!n)return;let r=n.dataset.editProjectId,i=t.find(e=>String(e.id)===String(r));if(!i){_t();return}pt(i)})}function _t(){E(`Project could not be updated.`,`error`)}var vt=t((()=>{C(),ut(),O(),Le(),ht()}));function yt(e){Tt=e;let{projects:t,teamMembers:n}=_();document.querySelector(`#task-modal`)||(I=document.createElement(`div`),I.id=`task-modal`,I.className=`fixed inset-0 z-[90] hidden items-center justify-center p-4`,I.innerHTML=`
     <!-- Backdrop -->
     <div
       class="task-modal-backdrop absolute inset-0 bg-slate-900/50 backdrop-blur-sm"
@@ -1832,7 +1832,21 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
       </form>
 
     </div>
-  `,document.body.appendChild(F),xt())}function xt(){let e=F.querySelector(`#close-task-modal`),t=F.querySelector(`#cancel-task-modal`),n=F.querySelector(`.task-modal-backdrop`),r=F.querySelector(`#task-form`);e.addEventListener(`click`,P),t.addEventListener(`click`,P),n.addEventListener(`click`,P),r.addEventListener(`submit`,wt),document.addEventListener(`keydown`,Ct)}function St(e=null){if(!F)return;let t=F.querySelector(`#task-project`);t.disabled=!1,t.classList.remove(`pointer-events-none`,`bg-slate-100`),t.removeAttribute(`aria-disabled`),e&&typeof e!=`object`?(t.value=String(e),t.classList.add(`pointer-events-none`,`bg-slate-100`),t.setAttribute(`aria-disabled`,`true`)):t.value=``,F.classList.remove(`hidden`),F.classList.add(`flex`),document.body.classList.add(`overflow-hidden`);let n=F.querySelector(`#task-title`);setTimeout(()=>{n.focus()},50)}function P(){if(!F)return;F.classList.add(`hidden`),F.classList.remove(`flex`),document.body.classList.remove(`overflow-hidden`),F.querySelector(`#task-form`).reset();let e=F.querySelector(`#task-project`);e.disabled=!1,e.classList.remove(`pointer-events-none`,`bg-slate-100`),e.removeAttribute(`aria-disabled`)}function Ct(e){e.key===`Escape`&&!F.classList.contains(`hidden`)&&P()}function wt(e){e.preventDefault();let t=new FormData(e.currentTarget),n=t.get(`title`).trim(),r=t.get(`description`).trim(),i=t.get(`projectId`),a=t.get(`priority`),o=t.get(`dueDate`),s=Number(t.get(`assigneeId`));if(!n){E(`Please enter a task title.`,`warning`);return}if(!i){E(`Please select a project.`,`warning`);return}if(!o){E(`Please select a due date.`,`warning`);return}let c={id:`task-${Date.now()}`,projectId:i,title:n,description:r||`No description provided.`,status:`todo`,priority:a,dueDate:o,assigneeId:s,createdAt:new Date().toISOString().split(`T`)[0]};Tt&&Tt(c),P(),E(`"${n}" has been created successfully.`,`success`)}var F,Tt,Et=t((()=>{O(),C(),F=null,Tt=null}));function Dt(e){Mt=e;let t=document.querySelector(`#edit-task-modal`);t&&t.remove(),document.body.insertAdjacentHTML(`beforeend`,`
+  `,document.body.appendChild(I),bt())}function bt(){let e=I.querySelector(`#close-task-modal`),t=I.querySelector(`#cancel-task-modal`),n=I.querySelector(`.task-modal-backdrop`),r=I.querySelector(`#task-form`);e.addEventListener(`click`,F),t.addEventListener(`click`,F),n.addEventListener(`click`,F),r.addEventListener(`submit`,wt),document.addEventListener(`keydown`,Ct)}function xt(){let{projects:e,teamMembers:t}=_(),n=I.querySelector(`#task-project`),r=I.querySelector(`#task-assignee`);n.innerHTML=`
+    <option value="">Select a project</option>
+
+    ${e.map(e=>`
+          <option value="${e.id}">
+            ${e.name}
+          </option>
+        `).join(``)}
+  `,r.innerHTML=`
+    ${t.map(e=>`
+          <option value="${e.id}">
+            ${e.name}
+          </option>
+        `).join(``)}
+  `}function St(e=null){if(!I)return;xt();let t=I.querySelector(`#task-project`);e==null?(t.disabled=!1,t.value=``,delete I.dataset.projectId):(t.value=String(e),t.disabled=!0,I.dataset.projectId=String(e)),I.classList.remove(`hidden`),I.classList.add(`flex`),document.body.classList.add(`overflow-hidden`);let n=I.querySelector(`#task-title`);setTimeout(()=>{n.focus()},50)}function F(){if(!I)return;I.classList.add(`hidden`),I.classList.remove(`flex`),document.body.classList.remove(`overflow-hidden`),I.querySelector(`#task-form`).reset();let e=I.querySelector(`#task-project`);e.disabled=!1,delete I.dataset.projectId}function Ct(e){e.key===`Escape`&&!I.classList.contains(`hidden`)&&F()}function wt(e){e.preventDefault();let t=new FormData(e.currentTarget),n=t.get(`title`).trim(),r=t.get(`description`).trim(),i=I.dataset.projectId||t.get(`projectId`),a=t.get(`priority`),o=t.get(`dueDate`),s=Number(t.get(`assigneeId`));if(!n){E(`Please enter a task title.`,`warning`);return}if(!i){E(`Please select a project.`,`warning`);return}if(!o){E(`Please select a due date.`,`warning`);return}let c={id:`task-${Date.now()}`,projectId:i,title:n,description:r||`No description provided.`,status:`todo`,priority:a,dueDate:o,assigneeId:s,createdAt:new Date().toISOString().split(`T`)[0]};Tt&&Tt(c),F(),E(`"${n}" has been created successfully.`,`success`)}var I,Tt,Et=t((()=>{O(),C(),I=null,Tt=null}));function Dt(e){Mt=e;let t=document.querySelector(`#edit-task-modal`);t&&t.remove(),document.body.insertAdjacentHTML(`beforeend`,`
       <div
         id="edit-task-modal"
         class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/40 p-4"
@@ -2032,7 +2046,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
         >
           ${t.name}
         </option>
-      `).join(``))}function kt(){let e=document.querySelector(`#edit-task-modal`),t=document.querySelector(`#edit-task-form`),n=document.querySelector(`#close-edit-task-modal`),r=document.querySelector(`#cancel-edit-task`);!e||!t||!n||!r||(n.addEventListener(`click`,jt),r.addEventListener(`click`,jt),e.addEventListener(`click`,t=>{t.target===e&&jt()}),t.addEventListener(`submit`,e=>{e.preventDefault();let n=new FormData(t),r=n.get(`title`).trim(),i=n.get(`description`).trim()||`No description provided.`,a=n.get(`status`),o=n.get(`priority`),s=n.get(`dueDate`),c=n.get(`assigneeId`),l={id:Nt,projectId:I,title:r,description:i,status:a,priority:o,dueDate:s,assigneeId:c?Number(c):null};if(!l.title||!l.dueDate){E(`Please fill in all required fields.`,`error`);return}Mt&&Mt(l),jt(),E(`Task updated successfully.`,`success`)}))}function At(e){let t=document.querySelector(`#edit-task-modal`);t&&(Nt=e.id,I=e.projectId,document.querySelector(`#edit-task-title`).value=e.title||``,document.querySelector(`#edit-task-description`).value=e.description||``,document.querySelector(`#edit-task-status`).value=e.status||`todo`,document.querySelector(`#edit-task-priority`).value=e.priority||`medium`,document.querySelector(`#edit-task-due-date`).value=e.dueDate||``,Ot(e.assigneeId??null),t.classList.remove(`hidden`),t.classList.add(`flex`),document.querySelector(`#edit-task-title`).focus())}function jt(){let e=document.querySelector(`#edit-task-modal`);e&&(e.classList.add(`hidden`),e.classList.remove(`flex`),Nt=null,I=null)}var Mt,Nt,I,Pt=t((()=>{O(),C(),Mt=null,Nt=null,I=null}));function Ft(e){zt=e;let t=document.querySelector(`#delete-task-modal`);t&&t.remove(),document.body.insertAdjacentHTML(`beforeend`,`
+      `).join(``))}function kt(){let e=document.querySelector(`#edit-task-modal`),t=document.querySelector(`#edit-task-form`),n=document.querySelector(`#close-edit-task-modal`),r=document.querySelector(`#cancel-edit-task`);!e||!t||!n||!r||(n.addEventListener(`click`,jt),r.addEventListener(`click`,jt),e.addEventListener(`click`,t=>{t.target===e&&jt()}),t.addEventListener(`submit`,e=>{e.preventDefault();let n=new FormData(t),r=n.get(`title`).trim(),i=n.get(`description`).trim()||`No description provided.`,a=n.get(`status`),o=n.get(`priority`),s=n.get(`dueDate`),c=n.get(`assigneeId`),l={id:L,projectId:Nt,title:r,description:i,status:a,priority:o,dueDate:s,assigneeId:c?Number(c):null};if(!l.title||!l.dueDate){E(`Please fill in all required fields.`,`error`);return}Mt&&Mt(l),jt(),E(`Task updated successfully.`,`success`)}))}function At(e){let t=document.querySelector(`#edit-task-modal`);t&&(L=e.id,Nt=e.projectId,document.querySelector(`#edit-task-title`).value=e.title||``,document.querySelector(`#edit-task-description`).value=e.description||``,document.querySelector(`#edit-task-status`).value=e.status||`todo`,document.querySelector(`#edit-task-priority`).value=e.priority||`medium`,document.querySelector(`#edit-task-due-date`).value=e.dueDate||``,Ot(e.assigneeId??null),t.classList.remove(`hidden`),t.classList.add(`flex`),document.querySelector(`#edit-task-title`).focus())}function jt(){let e=document.querySelector(`#edit-task-modal`);e&&(e.classList.add(`hidden`),e.classList.remove(`flex`),L=null,Nt=null)}var Mt,L,Nt,Pt=t((()=>{O(),C(),Mt=null,L=null,Nt=null}));function Ft(e){zt=e;let t=document.querySelector(`#delete-task-modal`);t&&t.remove(),document.body.insertAdjacentHTML(`beforeend`,`
       <div
         id="delete-task-modal"
         class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/40 p-4"
@@ -2105,7 +2119,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
           </div>
         </div>
       </div>
-    `),It()}function It(){let e=document.querySelector(`#delete-task-modal`),t=document.querySelector(`#cancel-delete-task`),n=document.querySelector(`#confirm-delete-task`);t.addEventListener(`click`,Rt),e.addEventListener(`click`,t=>{t.target===e&&Rt()}),n.addEventListener(`click`,()=>{L&&=(zt&&zt(L),Rt(),E(`Task deleted successfully.`,`success`),null)})}function Lt(e){let t=document.querySelector(`#delete-task-modal`),n=document.querySelector(`#delete-task-name`);!t||!n||(L=e,n.textContent=`"${e.title}"`,t.classList.remove(`hidden`),t.classList.add(`flex`))}function Rt(){let e=document.querySelector(`#delete-task-modal`);e&&(e.classList.add(`hidden`),e.classList.remove(`flex`),L=null)}var zt,L,Bt=t((()=>{O(),zt=null,L=null}));function R(){Ht||=(ie(()=>{window.location.pathname===`/tasks`&&R()}),!0);let e=document.querySelector(`#app`);if(!e){console.error(`App mount point not found.`);return}let{tasks:t,projects:n,teamMembers:r}=_(),i=t.filter(e=>{let t=z.search.toLowerCase(),n=e.title.toLowerCase().includes(t)||e.description.toLowerCase().includes(t),r=z.status===`all`||e.status===z.status,i=z.priority===`all`||e.priority===z.priority,a=z.project===`all`||e.projectId===z.project;return n&&r&&i&&a}),a=[...i].sort((e,t)=>{switch(z.sort){case`oldest`:return new Date(e.createdAt)-new Date(t.createdAt);case`due-asc`:return new Date(e.dueDate)-new Date(t.dueDate);case`due-desc`:return new Date(t.dueDate)-new Date(e.dueDate);case`priority-high`:{let n={high:3,medium:2,low:1};return n[t.priority]-n[e.priority]}case`priority-low`:{let n={high:3,medium:2,low:1};return n[e.priority]-n[t.priority]}default:return new Date(t.createdAt)-new Date(e.createdAt)}}),o=Math.ceil(a.length/Vt);o>0&&B>o&&(B=o);let s=(B-1)*Vt,c=s+Vt,l=a.slice(s,c);e.innerHTML=`
+    `),It()}function It(){let e=document.querySelector(`#delete-task-modal`),t=document.querySelector(`#cancel-delete-task`),n=document.querySelector(`#confirm-delete-task`);t.addEventListener(`click`,Rt),e.addEventListener(`click`,t=>{t.target===e&&Rt()}),n.addEventListener(`click`,()=>{R&&=(zt&&zt(R),Rt(),E(`Task deleted successfully.`,`success`),null)})}function Lt(e){let t=document.querySelector(`#delete-task-modal`),n=document.querySelector(`#delete-task-name`);!t||!n||(R=e,n.textContent=`"${e.title}"`,t.classList.remove(`hidden`),t.classList.add(`flex`))}function Rt(){let e=document.querySelector(`#delete-task-modal`);e&&(e.classList.add(`hidden`),e.classList.remove(`flex`),R=null)}var zt,R,Bt=t((()=>{O(),zt=null,R=null}));function z(){Ht||=(ie(()=>{window.location.pathname===`/tasks`&&z()}),!0);let e=document.querySelector(`#app`);if(!e){console.error(`App mount point not found.`);return}let{tasks:t,projects:n,teamMembers:r}=_(),i=t.filter(e=>{let t=B.search.toLowerCase(),n=e.title.toLowerCase().includes(t)||e.description.toLowerCase().includes(t),r=B.status===`all`||e.status===B.status,i=B.priority===`all`||e.priority===B.priority,a=B.project===`all`||e.projectId===B.project;return n&&r&&i&&a}),a=[...i].sort((e,t)=>{switch(B.sort){case`oldest`:return new Date(e.createdAt)-new Date(t.createdAt);case`due-asc`:return new Date(e.dueDate)-new Date(t.dueDate);case`due-desc`:return new Date(t.dueDate)-new Date(e.dueDate);case`priority-high`:{let n={high:3,medium:2,low:1};return n[t.priority]-n[e.priority]}case`priority-low`:{let n={high:3,medium:2,low:1};return n[e.priority]-n[t.priority]}default:return new Date(t.createdAt)-new Date(e.createdAt)}}),o=Math.ceil(a.length/Vt);o>0&&V>o&&(V=o);let s=(V-1)*Vt,c=s+Vt,l=a.slice(s,c);e.innerHTML=`
     <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
 
       <!-- Header -->
@@ -2241,7 +2255,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
         <input
           id="task-search"
           type="search"
-           value="${z.search}"
+           value="${B.search}"
           placeholder="Search tasks..."
           class="w-full rounded-lg border border-slate-200 bg-white py-2 pl-9 pr-3 text-sm text-slate-700 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 sm:w-56 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:placeholder:text-slate-500"
         />
@@ -2252,19 +2266,19 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
         id="task-status-filter"
         class="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-600 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200"
       >
-        <option value="all" ${z.status===`all`?`selected`:``}>
+        <option value="all" ${B.status===`all`?`selected`:``}>
   All Status
 </option>
 
-<option value="todo" ${z.status===`todo`?`selected`:``}>
+<option value="todo" ${B.status===`todo`?`selected`:``}>
   To Do
 </option>
 
-<option value="in-progress" ${z.status===`in-progress`?`selected`:``}>
+<option value="in-progress" ${B.status===`in-progress`?`selected`:``}>
   In Progress
 </option>
 
-<option value="completed" ${z.status===`completed`?`selected`:``}>
+<option value="completed" ${B.status===`completed`?`selected`:``}>
   Completed
 </option>
       </select>
@@ -2274,19 +2288,19 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
         id="task-priority-filter"
         class="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-600 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200"
       >
-       <option value="all" ${z.priority===`all`?`selected`:``}>
+       <option value="all" ${B.priority===`all`?`selected`:``}>
   All Priority
 </option>
 
-<option value="high" ${z.priority===`high`?`selected`:``}>
+<option value="high" ${B.priority===`high`?`selected`:``}>
   High
 </option>
 
-<option value="medium" ${z.priority===`medium`?`selected`:``}>
+<option value="medium" ${B.priority===`medium`?`selected`:``}>
   Medium
 </option>
 
-<option value="low" ${z.priority===`low`?`selected`:``}>
+<option value="low" ${B.priority===`low`?`selected`:``}>
   Low
 </option>
       </select>
@@ -2296,7 +2310,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
 >
   <option
     value="all"
-    ${z.project===`all`?`selected`:``}
+    ${B.project===`all`?`selected`:``}
   >
     All Projects
   </option>
@@ -2304,7 +2318,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
   ${n.map(e=>`
         <option
           value="${e.id}"
-          ${z.project===e.id?`selected`:``}
+          ${B.project===e.id?`selected`:``}
         >
           ${e.name}
         </option>
@@ -2316,42 +2330,42 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
 >
   <option
     value="newest"
-    ${z.sort===`newest`?`selected`:``}
+    ${B.sort===`newest`?`selected`:``}
   >
     Newest
   </option>
 
   <option
     value="oldest"
-    ${z.sort===`oldest`?`selected`:``}
+    ${B.sort===`oldest`?`selected`:``}
   >
     Oldest
   </option>
 
   <option
     value="due-asc"
-    ${z.sort===`due-asc`?`selected`:``}
+    ${B.sort===`due-asc`?`selected`:``}
   >
     Due Date ↑
   </option>
 
   <option
     value="due-desc"
-    ${z.sort===`due-desc`?`selected`:``}
+    ${B.sort===`due-desc`?`selected`:``}
   >
     Due Date ↓
   </option>
 
   <option
     value="priority-high"
-    ${z.sort===`priority-high`?`selected`:``}
+    ${B.sort===`priority-high`?`selected`:``}
   >
     Priority: High → Low
   </option>
 
   <option
     value="priority-low"
-    ${z.sort===`priority-low`?`selected`:``}
+    ${B.sort===`priority-low`?`selected`:``}
   >
     Priority: Low → High
   </option>
@@ -2592,7 +2606,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
             id="previous-task-page"
             type="button"
            class="rounded-lg border border-slate-200 px-3 py-2 text-xs font-semibold text-slate-600 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
-            ${B===1?`disabled`:``}
+            ${V===1?`disabled`:``}
           >
             Previous
           </button>
@@ -2602,7 +2616,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
           ${Array.from({length:o},(e,t)=>{let n=t+1;return`
                 <button
                   type="button"
-                  class="task-page-btn rounded-lg px-3 py-2 text-xs font-semibold transition ${B===n?`bg-indigo-600 text-white`:`text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800`}"
+                  class="task-page-btn rounded-lg px-3 py-2 text-xs font-semibold transition ${V===n?`bg-indigo-600 text-white`:`text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800`}"
                   data-page="${n}"
                 >
                   ${n}
@@ -2615,7 +2629,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
             id="next-task-page"
             type="button"
            class="rounded-lg border border-slate-200 px-3 py-2 text-xs font-semibold text-slate-600 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
-            ${B===o?`disabled`:``}
+            ${V===o?`disabled`:``}
           >
             Next
           </button>
@@ -2633,7 +2647,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
       </div>
 
     </div>
-  `,bt(e=>{t.unshift(e),y({type:`task_created`,user:h().name,target:e.title}),v(),R()}),Dt(e=>{let n=t.findIndex(t=>t.id===e.id);n!==-1&&(t[n]=e,y({type:`task_updated`,user:h().name,target:e.title}),v(),R())}),Ft(e=>{let n=t.findIndex(t=>t.id===e.id);n!==-1&&(y({type:`task_deleted`,user:h().name,target:e.title}),t.splice(n,1),v(),R())}),document.querySelectorAll(`.edit-task-btn`).forEach(e=>{e.addEventListener(`click`,()=>{let n=e.dataset.taskId,r=t.find(e=>e.id===n);r&&At(r)})}),document.querySelectorAll(`.delete-task-btn`).forEach(e=>{e.addEventListener(`click`,()=>{let n=e.dataset.taskId,r=t.find(e=>e.id===n);r&&Lt(r)})}),document.querySelector(`#add-task-btn`)?.addEventListener(`click`,()=>{St()}),document.querySelectorAll(`.task-complete-btn`).forEach(e=>{e.addEventListener(`click`,()=>{let n=e.dataset.taskId,r=t.find(e=>e.id===n);r&&(r.status=r.status===`completed`?`todo`:`completed`,r.status===`completed`?y({type:`task_completed`,user:h().name,target:r.title}):y({type:`task_status_changed`,user:h().name,target:r.title}),v(),R())})});let u=document.querySelector(`#task-search`),d=document.querySelector(`#task-status-filter`),f=document.querySelector(`#task-priority-filter`),ee=document.querySelector(`#task-project-filter`),p=document.querySelector(`#task-sort`);u?.addEventListener(`input`,e=>{z.search=e.target.value,B=1,R();let t=document.querySelector(`#task-search`);t&&(t.focus(),t.setSelectionRange(t.value.length,t.value.length))}),d?.addEventListener(`change`,e=>{z.status=e.target.value,B=1,R()}),f?.addEventListener(`change`,e=>{z.priority=e.target.value,B=1,R()}),ee?.addEventListener(`change`,e=>{z.project=e.target.value,B=1,R()}),p?.addEventListener(`change`,e=>{z.sort=e.target.value,B=1,R()});let te=document.querySelector(`#previous-task-page`),m=document.querySelector(`#next-task-page`),ne=document.querySelectorAll(`.task-page-btn`);te?.addEventListener(`click`,()=>{B<=1||(--B,R())}),m?.addEventListener(`click`,()=>{B>=o||(B+=1,R())}),ne.forEach(e=>{e.addEventListener(`click`,()=>{B=Number(e.dataset.page),R()})}),document.querySelector(`#clear-task-filters`)?.addEventListener(`click`,()=>{z={search:``,status:`all`,priority:`all`,project:`all`,sort:`newest`},B=1,R()})}var z,B,Vt,Ht,Ut=t((()=>{C(),Et(),Pt(),Bt(),z={search:``,status:`all`,priority:`all`,project:`all`,sort:`newest`},B=1,Vt=10,Ht=!1})),Wt,Gt,Kt,qt,Jt=t((()=>{Wt=`modulepreload`,Gt=function(e){return`/`+e},Kt={},qt=function(e,t,n){let r=Promise.resolve();if(t&&t.length>0){let e=document.getElementsByTagName(`link`),i=document.querySelector(`meta[property=csp-nonce]`),a=i?.nonce||i?.getAttribute(`nonce`);function o(e){return Promise.all(e.map(e=>Promise.resolve(e).then(e=>({status:`fulfilled`,value:e}),e=>({status:`rejected`,reason:e}))))}function s(e){return import.meta.resolve?import.meta.resolve(e):new URL(e,import.meta.url).href}r=o(t.map(t=>{if(t=Gt(t,n),t=s(t),t in Kt)return;Kt[t]=!0;let r=t.endsWith(`.css`);for(let n=e.length-1;n>=0;n--){let i=e[n];if(i.href===t&&(!r||i.rel===`stylesheet`))return}let i=document.createElement(`link`);if(i.rel=r?`stylesheet`:Wt,r||(i.as=`script`),i.crossOrigin=``,i.href=t,a&&i.setAttribute(`nonce`,a),document.head.appendChild(i),r)return new Promise((e,n)=>{i.addEventListener(`load`,e),i.addEventListener(`error`,()=>n(Error(`Unable to preload CSS for ${t}`)))})}))}function i(e){let t=new Event(`vite:preloadError`,{cancelable:!0});if(t.payload=e,window.dispatchEvent(t),!t.defaultPrevented)throw e}return r.then(t=>{for(let e of t||[])e.status===`rejected`&&i(e.reason);return e().catch(i)})}}));function Yt(){let{projects:e,tasks:t}=_(),n=e.filter(e=>e.dueDate).map(e=>({id:`project-${e.id}`,type:`project`,title:e.name,date:e.dueDate,projectId:e.id})),r=t.filter(e=>e.dueDate).map(e=>({id:e.id,type:`task`,title:e.title,date:e.dueDate,projectId:e.projectId,status:e.status,priority:e.priority}));return[...n,...r]}function Xt(){Zt||=(ie(()=>{window.location.pathname===`/calendar`&&V()}),!0)}function V(){Xt();let e=document.querySelector(`#app`);if(!e)return;let t=Yt();e.innerHTML=`
+  `,yt(e=>{t.unshift(e),y({type:`task_created`,user:h().name,target:e.title}),v(),z()}),Dt(e=>{let n=t.findIndex(t=>t.id===e.id);n!==-1&&(t[n]=e,y({type:`task_updated`,user:h().name,target:e.title}),v(),z())}),Ft(e=>{let n=t.findIndex(t=>t.id===e.id);n!==-1&&(y({type:`task_deleted`,user:h().name,target:e.title}),t.splice(n,1),v(),z())}),document.querySelectorAll(`.edit-task-btn`).forEach(e=>{e.addEventListener(`click`,()=>{let n=e.dataset.taskId,r=t.find(e=>e.id===n);r&&At(r)})}),document.querySelectorAll(`.delete-task-btn`).forEach(e=>{e.addEventListener(`click`,()=>{let n=e.dataset.taskId,r=t.find(e=>e.id===n);r&&Lt(r)})}),document.querySelector(`#add-task-btn`)?.addEventListener(`click`,()=>{St()}),document.querySelectorAll(`.task-complete-btn`).forEach(e=>{e.addEventListener(`click`,()=>{let n=e.dataset.taskId,r=t.find(e=>e.id===n);r&&(r.status=r.status===`completed`?`todo`:`completed`,r.status===`completed`?y({type:`task_completed`,user:h().name,target:r.title}):y({type:`task_status_changed`,user:h().name,target:r.title}),v(),z())})});let u=document.querySelector(`#task-search`),d=document.querySelector(`#task-status-filter`),f=document.querySelector(`#task-priority-filter`),ee=document.querySelector(`#task-project-filter`),p=document.querySelector(`#task-sort`);u?.addEventListener(`input`,e=>{B.search=e.target.value,V=1,z();let t=document.querySelector(`#task-search`);t&&(t.focus(),t.setSelectionRange(t.value.length,t.value.length))}),d?.addEventListener(`change`,e=>{B.status=e.target.value,V=1,z()}),f?.addEventListener(`change`,e=>{B.priority=e.target.value,V=1,z()}),ee?.addEventListener(`change`,e=>{B.project=e.target.value,V=1,z()}),p?.addEventListener(`change`,e=>{B.sort=e.target.value,V=1,z()});let te=document.querySelector(`#previous-task-page`),m=document.querySelector(`#next-task-page`),ne=document.querySelectorAll(`.task-page-btn`);te?.addEventListener(`click`,()=>{V<=1||(--V,z())}),m?.addEventListener(`click`,()=>{V>=o||(V+=1,z())}),ne.forEach(e=>{e.addEventListener(`click`,()=>{V=Number(e.dataset.page),z()})}),document.querySelector(`#clear-task-filters`)?.addEventListener(`click`,()=>{B={search:``,status:`all`,priority:`all`,project:`all`,sort:`newest`},V=1,z()})}var B,V,Vt,Ht,Ut=t((()=>{C(),Et(),Pt(),Bt(),B={search:``,status:`all`,priority:`all`,project:`all`,sort:`newest`},V=1,Vt=10,Ht=!1})),Wt,Gt,Kt,qt,Jt=t((()=>{Wt=`modulepreload`,Gt=function(e){return`/`+e},Kt={},qt=function(e,t,n){let r=Promise.resolve();if(t&&t.length>0){let e=document.getElementsByTagName(`link`),i=document.querySelector(`meta[property=csp-nonce]`),a=i?.nonce||i?.getAttribute(`nonce`);function o(e){return Promise.all(e.map(e=>Promise.resolve(e).then(e=>({status:`fulfilled`,value:e}),e=>({status:`rejected`,reason:e}))))}function s(e){return import.meta.resolve?import.meta.resolve(e):new URL(e,import.meta.url).href}r=o(t.map(t=>{if(t=Gt(t,n),t=s(t),t in Kt)return;Kt[t]=!0;let r=t.endsWith(`.css`);for(let n=e.length-1;n>=0;n--){let i=e[n];if(i.href===t&&(!r||i.rel===`stylesheet`))return}let i=document.createElement(`link`);if(i.rel=r?`stylesheet`:Wt,r||(i.as=`script`),i.crossOrigin=``,i.href=t,a&&i.setAttribute(`nonce`,a),document.head.appendChild(i),r)return new Promise((e,n)=>{i.addEventListener(`load`,e),i.addEventListener(`error`,()=>n(Error(`Unable to preload CSS for ${t}`)))})}))}function i(e){let t=new Event(`vite:preloadError`,{cancelable:!0});if(t.payload=e,window.dispatchEvent(t),!t.defaultPrevented)throw e}return r.then(t=>{for(let e of t||[])e.status===`rejected`&&i(e.reason);return e().catch(i)})}}));function Yt(){let{projects:e,tasks:t}=_(),n=e.filter(e=>e.dueDate).map(e=>({id:`project-${e.id}`,type:`project`,title:e.name,date:e.dueDate,projectId:e.id})),r=t.filter(e=>e.dueDate).map(e=>({id:e.id,type:`task`,title:e.title,date:e.dueDate,projectId:e.projectId,status:e.status,priority:e.priority}));return[...n,...r]}function Xt(){Zt||=(ie(()=>{window.location.pathname===`/calendar`&&H()}),!0)}function H(){Xt();let e=document.querySelector(`#app`);if(!e)return;let t=Yt();e.innerHTML=`
     <div class="space-y-6">
 
       <!-- Header -->
@@ -2694,7 +2708,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
 
 
           <h2 class="text-base font-bold text-slate-900 dark:text-white">
-            ${H.toLocaleDateString(`en-US`,{month:`long`,year:`numeric`})}
+            ${U.toLocaleDateString(`en-US`,{month:`long`,year:`numeric`})}
           </h2>
 
 
@@ -2764,7 +2778,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
   <div class="min-w-[900px]">
     <div class="grid grid-cols-7">
 
-      ${(()=>{let e=H.getFullYear(),n=H.getMonth(),r=new Date(e,n,1).getDay(),i=new Date(e,n+1,0).getDate(),a=Math.ceil((r+i)/7)*7;return Array.from({length:a},(a,o)=>{let s=o-r+1,c=s>=1&&s<=i,l=c?`${e}-${String(n+1).padStart(2,`0`)}-${String(s).padStart(2,`0`)}`:``,u=t.filter(e=>e.date===l);return`
+      ${(()=>{let e=U.getFullYear(),n=U.getMonth(),r=new Date(e,n,1).getDay(),i=new Date(e,n+1,0).getDate(),a=Math.ceil((r+i)/7)*7;return Array.from({length:a},(a,o)=>{let s=o-r+1,c=s>=1&&s<=i,l=c?`${e}-${String(n+1).padStart(2,`0`)}-${String(s).padStart(2,`0`)}`:``,u=t.filter(e=>e.date===l);return`
             <div
               class="group min-h-28 border-b border-r border-slate-100 p-3 transition-colors dark:border-slate-800 ${c?`bg-white hover:bg-slate-50 dark:bg-slate-900 dark:hover:bg-slate-800/50`:`bg-slate-50 dark:bg-slate-950`}"
             >
@@ -2846,7 +2860,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
         </div>
 
 
-  `;function n(e,t){U?.remove();let n=new Date(`${t}T00:00:00`).toLocaleDateString(`en-US`,{weekday:`long`,month:`long`,day:`numeric`,year:`numeric`});U=document.createElement(`div`),U.innerHTML=`
+  `;function n(e,t){W?.remove();let n=new Date(`${t}T00:00:00`).toLocaleDateString(`en-US`,{weekday:`long`,month:`long`,day:`numeric`,year:`numeric`});W=document.createElement(`div`),W.innerHTML=`
       <div
         class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 p-4"
         data-calendar-modal-backdrop
@@ -2929,7 +2943,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
 
         </div>
       </div>
-    `,document.body.appendChild(U);let r=()=>{U?.remove(),U=null};U.querySelector(`[data-calendar-modal-close]`)?.addEventListener(`click`,r),U.querySelector(`[data-calendar-modal-backdrop]`)?.addEventListener(`click`,e=>{e.target===e.currentTarget&&r()}),U.querySelectorAll(`.calendar-modal-event`).forEach(e=>{e.addEventListener(`click`,()=>{let t=e.dataset.projectId;t&&(r(),window.history.pushState({},``,`/projects/${t}`),qt(async()=>{let{router:e}=await Promise.resolve().then(()=>(Z(),cr));return{router:e}},void 0).then(({router:e})=>{e()}))})})}document.querySelector(`#previous-calendar-month`)?.addEventListener(`click`,()=>{H.setMonth(H.getMonth()-1),V()}),document.querySelector(`#next-calendar-month`)?.addEventListener(`click`,()=>{H.setMonth(H.getMonth()+1),V()}),document.querySelector(`#today-calendar-btn`)?.addEventListener(`click`,()=>{H=new Date,V()}),document.querySelectorAll(`.calendar-event`).forEach(e=>{e.addEventListener(`click`,()=>{let t=e.dataset.projectId;t&&(window.history.pushState({},``,`/projects/${t}`),qt(async()=>{let{router:e}=await Promise.resolve().then(()=>(Z(),cr));return{router:e}},void 0).then(({router:e})=>{e()}))})}),document.querySelectorAll(`.calendar-more`).forEach(e=>{e.addEventListener(`click`,()=>{let r=e.dataset.date;r&&n(t.filter(e=>e.date===r),r)})})}var H,U,Zt,Qt=t((()=>{C(),Jt(),H=new Date,U=null,Zt=!1}));function $t(e){an=e;let t=document.querySelector(`#member-modal`);t&&t.remove(),document.body.insertAdjacentHTML(`beforeend`,`
+    `,document.body.appendChild(W);let r=()=>{W?.remove(),W=null};W.querySelector(`[data-calendar-modal-close]`)?.addEventListener(`click`,r),W.querySelector(`[data-calendar-modal-backdrop]`)?.addEventListener(`click`,e=>{e.target===e.currentTarget&&r()}),W.querySelectorAll(`.calendar-modal-event`).forEach(e=>{e.addEventListener(`click`,()=>{let t=e.dataset.projectId;t&&(r(),window.history.pushState({},``,`/projects/${t}`),qt(async()=>{let{router:e}=await Promise.resolve().then(()=>(Q(),cr));return{router:e}},void 0).then(({router:e})=>{e()}))})})}document.querySelector(`#previous-calendar-month`)?.addEventListener(`click`,()=>{U.setMonth(U.getMonth()-1),H()}),document.querySelector(`#next-calendar-month`)?.addEventListener(`click`,()=>{U.setMonth(U.getMonth()+1),H()}),document.querySelector(`#today-calendar-btn`)?.addEventListener(`click`,()=>{U=new Date,H()}),document.querySelectorAll(`.calendar-event`).forEach(e=>{e.addEventListener(`click`,()=>{let t=e.dataset.projectId;t&&(window.history.pushState({},``,`/projects/${t}`),qt(async()=>{let{router:e}=await Promise.resolve().then(()=>(Q(),cr));return{router:e}},void 0).then(({router:e})=>{e()}))})}),document.querySelectorAll(`.calendar-more`).forEach(e=>{e.addEventListener(`click`,()=>{let r=e.dataset.date;r&&n(t.filter(e=>e.date===r),r)})})}var U,W,Zt,Qt=t((()=>{C(),Jt(),U=new Date,W=null,Zt=!1}));function $t(e){an=e;let t=document.querySelector(`#member-modal`);t&&t.remove(),document.body.insertAdjacentHTML(`beforeend`,`
       <div
         id="member-modal"
         class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/40 p-4"
@@ -3231,7 +3245,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
           </form>
         </div>
       </div>
-    `),cn()}function cn(){let e=document.querySelector(`#edit-member-modal`),t=document.querySelector(`#edit-member-form`),n=document.querySelector(`#close-edit-member-modal`),r=document.querySelector(`#cancel-edit-member`);n.addEventListener(`click`,dn),r.addEventListener(`click`,dn),e.addEventListener(`click`,t=>{t.target===e&&dn()}),t.addEventListener(`submit`,e=>{if(e.preventDefault(),W===null)return;let n=new FormData(t),r={id:W,name:n.get(`name`).trim(),email:n.get(`email`).trim(),role:n.get(`role`),status:n.get(`status`)};r.initials=ln(r.name),fn&&fn(r),dn(),E(`Team member updated successfully.`,`success`)})}function ln(e){return e.split(` `).filter(Boolean).map(e=>e[0]).join(``).slice(0,2).toUpperCase()}function un(e){let t=document.querySelector(`#edit-member-modal`);t&&(W=e.id,document.querySelector(`#edit-member-name`).value=e.name,document.querySelector(`#edit-member-email`).value=e.email,document.querySelector(`#edit-member-role`).value=e.role,document.querySelector(`#edit-member-status`).value=e.status,t.classList.remove(`hidden`),t.classList.add(`flex`),document.querySelector(`#edit-member-name`)?.focus())}function dn(){let e=document.querySelector(`#edit-member-modal`);e&&(e.classList.add(`hidden`),e.classList.remove(`flex`),W=null)}var fn,W,pn=t((()=>{O(),fn=null,W=null}));function mn(e){vn=e;let t=document.querySelector(`#delete-member-modal`);t&&t.remove(),document.body.insertAdjacentHTML(`beforeend`,`
+    `),cn()}function cn(){let e=document.querySelector(`#edit-member-modal`),t=document.querySelector(`#edit-member-form`),n=document.querySelector(`#close-edit-member-modal`),r=document.querySelector(`#cancel-edit-member`);n.addEventListener(`click`,dn),r.addEventListener(`click`,dn),e.addEventListener(`click`,t=>{t.target===e&&dn()}),t.addEventListener(`submit`,e=>{if(e.preventDefault(),G===null)return;let n=new FormData(t),r={id:G,name:n.get(`name`).trim(),email:n.get(`email`).trim(),role:n.get(`role`),status:n.get(`status`)};r.initials=ln(r.name),fn&&fn(r),dn(),E(`Team member updated successfully.`,`success`)})}function ln(e){return e.split(` `).filter(Boolean).map(e=>e[0]).join(``).slice(0,2).toUpperCase()}function un(e){let t=document.querySelector(`#edit-member-modal`);t&&(G=e.id,document.querySelector(`#edit-member-name`).value=e.name,document.querySelector(`#edit-member-email`).value=e.email,document.querySelector(`#edit-member-role`).value=e.role,document.querySelector(`#edit-member-status`).value=e.status,t.classList.remove(`hidden`),t.classList.add(`flex`),document.querySelector(`#edit-member-name`)?.focus())}function dn(){let e=document.querySelector(`#edit-member-modal`);e&&(e.classList.add(`hidden`),e.classList.remove(`flex`),G=null)}var fn,G,pn=t((()=>{O(),fn=null,G=null}));function mn(e){vn=e;let t=document.querySelector(`#delete-member-modal`);t&&t.remove(),document.body.insertAdjacentHTML(`beforeend`,`
       <div
         id="delete-member-modal"
         class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/40 p-4"
@@ -3312,7 +3326,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
 
         </div>
       </div>
-    `),hn()}function hn(){let e=document.querySelector(`#delete-member-modal`),t=document.querySelector(`#cancel-delete-member`),n=document.querySelector(`#confirm-delete-member`);t.addEventListener(`click`,_n),e.addEventListener(`click`,t=>{t.target===e&&_n()}),n.addEventListener(`click`,()=>{G&&=(vn&&vn(G),_n(),E(`Team member removed successfully.`,`success`),null)})}function gn(e){let t=document.querySelector(`#delete-member-modal`),n=document.querySelector(`#delete-member-name`);!t||!n||(G=e,n.textContent=`"${e.name}"`,t.classList.remove(`hidden`),t.classList.add(`flex`))}function _n(){let e=document.querySelector(`#delete-member-modal`);e&&(e.classList.add(`hidden`),e.classList.remove(`flex`),G=null)}var vn,G,yn=t((()=>{O(),vn=null,G=null}));function K(){Sn||=(ie(()=>{window.location.pathname===`/team`&&K()}),!0);let e=document.querySelector(`#app`);if(!e){console.error(`App mount point not found.`);return}let{teamMembers:t,projects:n,tasks:r}=_();e.innerHTML=`
+    `),hn()}function hn(){let e=document.querySelector(`#delete-member-modal`),t=document.querySelector(`#cancel-delete-member`),n=document.querySelector(`#confirm-delete-member`);t.addEventListener(`click`,_n),e.addEventListener(`click`,t=>{t.target===e&&_n()}),n.addEventListener(`click`,()=>{K&&=(vn&&vn(K),_n(),E(`Team member removed successfully.`,`success`),null)})}function gn(e){let t=document.querySelector(`#delete-member-modal`),n=document.querySelector(`#delete-member-name`);!t||!n||(K=e,n.textContent=`"${e.name}"`,t.classList.remove(`hidden`),t.classList.add(`flex`))}function _n(){let e=document.querySelector(`#delete-member-modal`);e&&(e.classList.add(`hidden`),e.classList.remove(`flex`),K=null)}var vn,K,yn=t((()=>{O(),vn=null,K=null}));function q(){Sn||=(ie(()=>{window.location.pathname===`/team`&&q()}),!0);let e=document.querySelector(`#app`);if(!e){console.error(`App mount point not found.`);return}let{teamMembers:t,projects:n,tasks:r}=_();e.innerHTML=`
     <div class="mx-auto max-w-7xl p-5">
 
       <!-- Header -->
@@ -3361,7 +3375,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
       </div>
 
     </div>
-  `,$t(e=>{t.push(e),v(),K()}),sn(e=>{let n=t.findIndex(t=>t.id===e.id);n!==-1&&(t[n]=e,v(),K())}),mn(e=>{let i=t.findIndex(t=>t.id===e.id);if(i===-1)return;let a=e.id;n.forEach(e=>{e.memberIds=(e.memberIds||[]).filter(e=>e!==a)}),r.forEach(e=>{e.assigneeId===a&&(e.assigneeId=null)}),t.splice(i,1),v(),K()}),xn(t)}function bn(e){return`
+  `,$t(e=>{t.push(e),v(),q()}),sn(e=>{let n=t.findIndex(t=>t.id===e.id);n!==-1&&(t[n]=e,v(),q())}),mn(e=>{let i=t.findIndex(t=>t.id===e.id);if(i===-1)return;let a=e.id;n.forEach(e=>{e.memberIds=(e.memberIds||[]).filter(e=>e!==a)}),r.forEach(e=>{e.assigneeId===a&&(e.assigneeId=null)}),t.splice(i,1),v(),q()}),xn(t)}function bn(e){return`
     <article
       class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-slate-800 dark:bg-slate-900"
     >
@@ -4231,13 +4245,13 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
       </div>
 
     </section>
-  `}function Rn(){let e=document.querySelector(`#profile-avatar-input`),t=document.querySelector(`#change-avatar-button`),n=document.querySelector(`#profile-avatar-preview`);!e||!t||!n||(t.addEventListener(`click`,()=>{e.click()}),e.addEventListener(`change`,()=>{let t=e.files?.[0];if(!t)return;if(![`image/jpeg`,`image/png`,`image/gif`,`image/webp`].includes(t.type)){q(`Please select a JPG, PNG, GIF, or WebP image.`,`error`),e.value=``;return}if(t.size>2097152){q(`Your image must be smaller than 2MB.`,`error`),e.value=``;return}let r=new FileReader;r.onload=()=>{let e=r.result;if(typeof e!=`string`){q(`Unable to read the selected image.`,`error`);return}try{Mn({...An(),avatar:e}),n.innerHTML=`
+  `}function Rn(){let e=document.querySelector(`#profile-avatar-input`),t=document.querySelector(`#change-avatar-button`),n=document.querySelector(`#profile-avatar-preview`);!e||!t||!n||(t.addEventListener(`click`,()=>{e.click()}),e.addEventListener(`change`,()=>{let t=e.files?.[0];if(!t)return;if(![`image/jpeg`,`image/png`,`image/gif`,`image/webp`].includes(t.type)){J(`Please select a JPG, PNG, GIF, or WebP image.`,`error`),e.value=``;return}if(t.size>2097152){J(`Your image must be smaller than 2MB.`,`error`),e.value=``;return}let r=new FileReader;r.onload=()=>{let e=r.result;if(typeof e!=`string`){J(`Unable to read the selected image.`,`error`);return}try{Mn({...An(),avatar:e}),n.innerHTML=`
           <img
             src="${e}"
             alt="Profile avatar"
             class="size-full object-cover"
           />
-        `,window.dispatchEvent(new CustomEvent(`flowboard:profile-updated`)),q(`Profile photo updated successfully.`,`success`)}catch(e){console.error(`Failed to save profile avatar:`,e),q(`Unable to save this image. Please try a smaller file.`,`error`)}},r.onerror=()=>{q(`Unable to read the selected image.`,`error`)},r.readAsDataURL(t)}))}function q(e,t=`info`){window.dispatchEvent(new CustomEvent(`flowboard:toast`,{detail:{message:e,type:t}}))}var zn,Bn,Vn,Hn,Un,Wn=t((()=>{d(),zn=!1,Bn=`flowboard-profile`,Vn={name:`Abir`,email:`abir@example.com`,role:`Admin`},Hn=`flowboard-notifications`,Un={taskAssignments:!0,taskUpdates:!0,projectUpdates:!0,mentions:!0,comments:!0,dueDateReminders:!0}}));function Gn(e){Yn=e;let t=document.querySelector(`#delete-project-modal`);t&&t.remove(),document.body.insertAdjacentHTML(`beforeend`,`
+        `,window.dispatchEvent(new CustomEvent(`flowboard:profile-updated`)),J(`Profile photo updated successfully.`,`success`)}catch(e){console.error(`Failed to save profile avatar:`,e),J(`Unable to save this image. Please try a smaller file.`,`error`)}},r.onerror=()=>{J(`Unable to read the selected image.`,`error`)},r.readAsDataURL(t)}))}function J(e,t=`info`){window.dispatchEvent(new CustomEvent(`flowboard:toast`,{detail:{message:e,type:t}}))}var zn,Bn,Vn,Hn,Un,Wn=t((()=>{d(),zn=!1,Bn=`flowboard-profile`,Vn={name:`Abir`,email:`abir@example.com`,role:`Admin`},Hn=`flowboard-notifications`,Un={taskAssignments:!0,taskUpdates:!0,projectUpdates:!0,mentions:!0,comments:!0,dueDateReminders:!0}}));function Gn(e){Yn=e;let t=document.querySelector(`#delete-project-modal`);t&&t.remove(),document.body.insertAdjacentHTML(`beforeend`,`
       <div
         id="delete-project-modal"
         class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/40 p-4"
@@ -4310,7 +4324,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
           </div>
         </div>
       </div>
-    `),Kn()}function Kn(){let e=document.querySelector(`#delete-project-modal`),t=document.querySelector(`#cancel-delete-project`),n=document.querySelector(`#confirm-delete-project`);t.addEventListener(`click`,Jn),e.addEventListener(`click`,t=>{t.target===e&&Jn()}),n.addEventListener(`click`,()=>{J&&=(Yn&&Yn(J),Jn(),E(`Project deleted successfully.`,`success`),null)})}function qn(e){let t=document.querySelector(`#delete-project-modal`),n=document.querySelector(`#delete-project-name`);!t||!n||(J=e,n.textContent=`"${e.name}"`,t.classList.remove(`hidden`),t.classList.add(`flex`))}function Jn(){let e=document.querySelector(`#delete-project-modal`);e&&(e.classList.add(`hidden`),e.classList.remove(`flex`),J=null)}var Yn,J,Xn=t((()=>{O(),Yn=null,J=null}));function Zn(e,t){return e.length===0?`
+    `),Kn()}function Kn(){let e=document.querySelector(`#delete-project-modal`),t=document.querySelector(`#cancel-delete-project`),n=document.querySelector(`#confirm-delete-project`);t.addEventListener(`click`,Jn),e.addEventListener(`click`,t=>{t.target===e&&Jn()}),n.addEventListener(`click`,()=>{Y&&=(Yn&&Yn(Y),Jn(),E(`Project deleted successfully.`,`success`),null)})}function qn(e){let t=document.querySelector(`#delete-project-modal`),n=document.querySelector(`#delete-project-name`);!t||!n||(Y=e,n.textContent=`"${e.name}"`,t.classList.remove(`hidden`),t.classList.add(`flex`))}function Jn(){let e=document.querySelector(`#delete-project-modal`);e&&(e.classList.add(`hidden`),e.classList.remove(`flex`),Y=null)}var Yn,Y,Xn=t((()=>{O(),Yn=null,Y=null}));function Zn(e,t){return e.length===0?`
       <div class="px-5 py-12 text-center">
 
         <div
@@ -4468,7 +4482,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
           `}).join(``)}
 
     </div>
-  `}function Y(e){let t=document.querySelector(`#app`),{projects:n,tasks:r,teamMembers:i}=_();if(!t){console.error(`App mount point not found.`);return}let a=n.find(t=>t.id===e),o=r.filter(t=>t.projectId===e),s=o.filter(e=>e.status===`completed`).length,c=o.length,l=c===0?0:Math.round(s/c*100);if(!a){t.innerHTML=`
+  `}function X(e){let t=document.querySelector(`#app`),{projects:n,tasks:r,teamMembers:i}=_();if(!t){console.error(`App mount point not found.`);return}let a=n.find(t=>t.id===e),o=r.filter(t=>t.projectId===e),s=o.filter(e=>e.status===`completed`).length,c=o.length,l=c===0?0:Math.round(s/c*100);if(!a){t.innerHTML=`
     <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
       <div
         class="rounded-xl border border-slate-200 bg-white p-8 text-center shadow-sm dark:border-slate-800 dark:bg-slate-900"
@@ -4772,7 +4786,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
     </div>
 
   </div>
-`,bt(e=>{r.unshift(e),y({type:`task_created`,user:h().name,target:e.title}),v(),X(`/projects/${e.projectId}`)}),ft(t=>{let r=n.findIndex(e=>String(e.id)===String(t.id));if(r===-1){E(`Project could not be updated.`,`error`);return}let i=n[r];i.name=t.name,i.description=t.description,i.status=t.status,i.priority=t.priority,i.dueDate=t.dueDate,i.memberIds=t.memberIds,y({type:`project_updated`,user:h().name,target:t.name}),v(),Y(e),E(`Project updated successfully.`,`success`)}),Gn(e=>{let t=n.findIndex(t=>t.id===e.id);if(t!==-1){y({type:`project_deleted`,user:h().name,target:e.name}),n.splice(t,1);for(let t=r.length-1;t>=0;t--)r[t].projectId===e.id&&r.splice(t,1);v(),X(`/projects`)}}),Ft(t=>{let n=r.findIndex(e=>e.id===t.id);n!==-1&&(y({type:`task_deleted`,user:h().name,target:t.title}),r.splice(n,1),v(),Y(e))}),Dt(t=>{let n=r.find(e=>e.id===t.id);n&&(n.title=t.title,n.description=t.description,n.status=t.status,n.priority=t.priority,n.dueDate=t.dueDate,n.assigneeId=t.assigneeId,y({type:`task_updated`,user:h().name,target:t.title}),v(),Y(e))});let d=document.querySelector(`#add-task-btn`),f=document.querySelector(`#add-task-btn-secondary`),ee=document.querySelector(`#edit-project-btn`);d.addEventListener(`click`,()=>{St(a.id)}),f.addEventListener(`click`,()=>{St(a.id)}),ee.addEventListener(`click`,()=>{pt(a)}),document.querySelector(`#delete-project-btn`).addEventListener(`click`,()=>{qn(a)});let p=document.querySelector(`#task-list`);p.addEventListener(`click`,t=>{let n=t.target.closest(`.task-edit-btn`);if(n){let e=n.dataset.taskId,t=r.find(t=>t.id===e);if(!t)return;At(t);return}let i=t.target.closest(`.task-delete-btn`);if(i){let e=i.dataset.taskId,t=r.find(t=>t.id===e);if(!t)return;Lt(t);return}let a=t.target.closest(`.task-complete-btn`);if(!a)return;let o=a.dataset.taskId,s=r.find(e=>e.id===o);s&&(s.status=s.status===`completed`?`todo`:`completed`,s.status===`completed`?y({type:`task_completed`,user:h().name,target:s.title}):y({type:`task_status_changed`,user:h().name,target:s.title}),v(),E(s.status===`completed`?`"${s.title}" completed.`:`"${s.title}" marked as incomplete.`,`success`),Y(e))}),p.addEventListener(`change`,t=>{let n=t.target.closest(`.task-status-select`);if(!n)return;let i=n.dataset.taskId,a=r.find(e=>e.id===i);if(!a)return;let o=a.status;a.status=n.value,o!==a.status&&(a.status===`completed`?y({type:`task_completed`,user:h().name,target:a.title}):y({type:`task_status_changed`,user:h().name,target:a.title})),v(),E(`"${a.title}" moved to ${a.status===`todo`?`To Do`:a.status===`in-progress`?`In Progress`:`Completed`}.`,`success`),Y(e)});let te=document.querySelector(`#task-search`),m=document.querySelector(`#task-status-filter`),ne=document.querySelector(`#task-priority-filter`),re=document.querySelector(`#task-sort`);function g(){let e=te.value.trim().toLowerCase(),t=m.value,n=ne.value,r=re.value,a=o.filter(r=>{let i=r.title.toLowerCase().includes(e)||r.description.toLowerCase().includes(e),a=t===`all`||r.status===t,o=n===`all`||r.priority===n;return i&&a&&o}),s={high:3,medium:2,low:1};a.sort((e,t)=>{switch(r){case`priority-high`:return s[t.priority]-s[e.priority];case`priority-low`:return s[e.priority]-s[t.priority];case`newest`:return new Date(t.createdAt)-new Date(e.createdAt);case`oldest`:return new Date(e.createdAt)-new Date(t.createdAt);case`title-asc`:return e.title.localeCompare(t.title);default:return new Date(e.dueDate)-new Date(t.dueDate)}}),document.querySelector(`#task-list`).innerHTML=Zn(a,i),document.querySelector(`#task-count`).textContent=`${a.length} ${a.length===1?`task`:`tasks`}`}te.addEventListener(`input`,g),m.addEventListener(`change`,g),ne.addEventListener(`change`,g),re.addEventListener(`change`,g)}var Qn,$n,er,tr=t((()=>{C(),Et(),Pt(),Bt(),gt(),Xn(),Z(),O(),{projects:Qn,tasks:$n,teamMembers:er}=_()})),nr,rr,ir=t((()=>{nr=[{label:`Dashboard`,href:`/`,icon:`
+`,yt(e=>{r.unshift(e),y({type:`task_created`,user:h().name,target:e.title}),v(),Z(`/projects/${e.projectId}`)}),ft(t=>{let r=n.findIndex(e=>String(e.id)===String(t.id));if(r===-1){E(`Project could not be updated.`,`error`);return}let i=n[r];i.name=t.name,i.description=t.description,i.status=t.status,i.priority=t.priority,i.dueDate=t.dueDate,i.memberIds=t.memberIds,y({type:`project_updated`,user:h().name,target:t.name}),v(),X(e),E(`Project updated successfully.`,`success`)}),Gn(e=>{let t=n.findIndex(t=>t.id===e.id);if(t!==-1){y({type:`project_deleted`,user:h().name,target:e.name}),n.splice(t,1);for(let t=r.length-1;t>=0;t--)r[t].projectId===e.id&&r.splice(t,1);v(),Z(`/projects`)}}),Ft(t=>{let n=r.findIndex(e=>e.id===t.id);n!==-1&&(y({type:`task_deleted`,user:h().name,target:t.title}),r.splice(n,1),v(),X(e))}),Dt(t=>{let n=r.find(e=>e.id===t.id);n&&(n.title=t.title,n.description=t.description,n.status=t.status,n.priority=t.priority,n.dueDate=t.dueDate,n.assigneeId=t.assigneeId,y({type:`task_updated`,user:h().name,target:t.title}),v(),X(e))});let d=document.querySelector(`#add-task-btn`),f=document.querySelector(`#add-task-btn-secondary`),ee=document.querySelector(`#edit-project-btn`);d.addEventListener(`click`,()=>{St(a.id)}),f.addEventListener(`click`,()=>{St(a.id)}),ee.addEventListener(`click`,()=>{pt(a)}),document.querySelector(`#delete-project-btn`).addEventListener(`click`,()=>{qn(a)});let p=document.querySelector(`#task-list`);p.addEventListener(`click`,t=>{let n=t.target.closest(`.task-edit-btn`);if(n){let e=n.dataset.taskId,t=r.find(t=>t.id===e);if(!t)return;At(t);return}let i=t.target.closest(`.task-delete-btn`);if(i){let e=i.dataset.taskId,t=r.find(t=>t.id===e);if(!t)return;Lt(t);return}let a=t.target.closest(`.task-complete-btn`);if(!a)return;let o=a.dataset.taskId,s=r.find(e=>e.id===o);s&&(s.status=s.status===`completed`?`todo`:`completed`,s.status===`completed`?y({type:`task_completed`,user:h().name,target:s.title}):y({type:`task_status_changed`,user:h().name,target:s.title}),v(),E(s.status===`completed`?`"${s.title}" completed.`:`"${s.title}" marked as incomplete.`,`success`),X(e))}),p.addEventListener(`change`,t=>{let n=t.target.closest(`.task-status-select`);if(!n)return;let i=n.dataset.taskId,a=r.find(e=>e.id===i);if(!a)return;let o=a.status;a.status=n.value,o!==a.status&&(a.status===`completed`?y({type:`task_completed`,user:h().name,target:a.title}):y({type:`task_status_changed`,user:h().name,target:a.title})),v(),E(`"${a.title}" moved to ${a.status===`todo`?`To Do`:a.status===`in-progress`?`In Progress`:`Completed`}.`,`success`),X(e)});let te=document.querySelector(`#task-search`),m=document.querySelector(`#task-status-filter`),ne=document.querySelector(`#task-priority-filter`),re=document.querySelector(`#task-sort`);function g(){let e=te.value.trim().toLowerCase(),t=m.value,n=ne.value,r=re.value,a=o.filter(r=>{let i=r.title.toLowerCase().includes(e)||r.description.toLowerCase().includes(e),a=t===`all`||r.status===t,o=n===`all`||r.priority===n;return i&&a&&o}),s={high:3,medium:2,low:1};a.sort((e,t)=>{switch(r){case`priority-high`:return s[t.priority]-s[e.priority];case`priority-low`:return s[e.priority]-s[t.priority];case`newest`:return new Date(t.createdAt)-new Date(e.createdAt);case`oldest`:return new Date(e.createdAt)-new Date(t.createdAt);case`title-asc`:return e.title.localeCompare(t.title);default:return new Date(e.dueDate)-new Date(t.dueDate)}}),document.querySelector(`#task-list`).innerHTML=Zn(a,i),document.querySelector(`#task-count`).textContent=`${a.length} ${a.length===1?`task`:`tasks`}`}te.addEventListener(`input`,g),m.addEventListener(`change`,g),ne.addEventListener(`change`,g),re.addEventListener(`change`,g)}var Qn,$n,er,tr=t((()=>{C(),Et(),Pt(),Bt(),ht(),Xn(),Q(),O(),{projects:Qn,tasks:$n,teamMembers:er}=_()})),nr,rr,ir=t((()=>{nr=[{label:`Dashboard`,href:`/`,icon:`
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -4930,7 +4944,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
   </nav>
 </aside>
 
-`,or()}function or(){let e=document.querySelector(`#mobile-menu-button`),t=document.querySelector(`#mobile-menu-close`),n=document.querySelector(`#mobile-navigation-backdrop`),r=document.querySelector(`#mobile-navigation-drawer`);if(!e||!t||!n||!r){console.error(`Mobile navigation elements not found.`);return}function i(){r.classList.remove(`-translate-x-full`),n.classList.remove(`hidden`),e.setAttribute(`aria-expanded`,`true`),document.body.classList.add(`overflow-hidden`)}function a(){r.classList.add(`-translate-x-full`),n.classList.add(`hidden`),e.setAttribute(`aria-expanded`,`false`),document.body.classList.remove(`overflow-hidden`)}e.setAttribute(`aria-expanded`,`false`),e.addEventListener(`click`,i),t.addEventListener(`click`,a),n.addEventListener(`click`,a),r.querySelectorAll(`a`).forEach(e=>{e.addEventListener(`click`,a)}),document.addEventListener(`keydown`,e=>{e.key===`Escape`&&a()})}var sr=t((()=>{ir()})),cr=r({navigateTo:()=>X,router:()=>lr});function lr(){let e=window.location.pathname;if(e.startsWith(`/projects/`)){let t=e.split(`/`)[2];Y(t)}else(ur[e]||M)();ar()}function X(e){window.history.pushState({},``,e),lr()}var ur,Z=t((()=>{ct(),yt(),Ut(),Qt(),Cn(),Wn(),tr(),sr(),ur={"/":M,"/dashboard":M,"/projects":_t,"/tasks":R,"/calendar":V,"/team":K,"/settings":Nn},window.addEventListener(`popstate`,lr)}));function Q(e){let t={"&":`&amp;`,"<":`&lt;`,">":`&gt;`,'"':`&quot;`,"'":`&#39;`};return String(e??``).replace(/[&<>"']/g,e=>t[e])}function dr(e){let{projects:t,tasks:n,teamMembers:r}=_(),i=e.trim().toLowerCase();return i?{projects:t.filter(e=>[e.name,e.description,e.status,e.priority].some(e=>String(e??``).toLowerCase().includes(i))).slice(0,5),tasks:n.filter(e=>{let n=t.find(t=>String(t.id)===String(e.projectId)),a=r.find(t=>String(t.id)===String(e.assigneeId));return[e.title,e.description,e.status,e.priority,n?.name,a?.name].some(e=>String(e??``).toLowerCase().includes(i))}).slice(0,5),teamMembers:r.filter(e=>[e.name,e.email,e.role].some(e=>String(e??``).toLowerCase().includes(i))).slice(0,5)}:{projects:[],tasks:[],teamMembers:[]}}function fr(e){return{project:`
+`,or()}function or(){let e=document.querySelector(`#mobile-menu-button`),t=document.querySelector(`#mobile-menu-close`),n=document.querySelector(`#mobile-navigation-backdrop`),r=document.querySelector(`#mobile-navigation-drawer`);if(!e||!t||!n||!r){console.error(`Mobile navigation elements not found.`);return}function i(){r.classList.remove(`-translate-x-full`),n.classList.remove(`hidden`),e.setAttribute(`aria-expanded`,`true`),document.body.classList.add(`overflow-hidden`)}function a(){r.classList.add(`-translate-x-full`),n.classList.add(`hidden`),e.setAttribute(`aria-expanded`,`false`),document.body.classList.remove(`overflow-hidden`)}e.setAttribute(`aria-expanded`,`false`),e.addEventListener(`click`,i),t.addEventListener(`click`,a),n.addEventListener(`click`,a),r.querySelectorAll(`a`).forEach(e=>{e.addEventListener(`click`,a)}),document.addEventListener(`keydown`,e=>{e.key===`Escape`&&a()})}var sr=t((()=>{ir()})),cr=r({navigateTo:()=>Z,router:()=>lr});function lr(){let e=window.location.pathname;if(e.startsWith(`/projects/`)){let t=e.split(`/`)[2];X(t)}else(ur[e]||M)();ar()}function Z(e){window.history.pushState({},``,e),lr()}var ur,Q=t((()=>{ct(),vt(),Ut(),Qt(),Cn(),Wn(),tr(),sr(),ur={"/":M,"/dashboard":M,"/projects":gt,"/tasks":z,"/calendar":H,"/team":q,"/settings":Nn},window.addEventListener(`popstate`,lr)}));function $(e){let t={"&":`&amp;`,"<":`&lt;`,">":`&gt;`,'"':`&quot;`,"'":`&#39;`};return String(e??``).replace(/[&<>"']/g,e=>t[e])}function dr(e){let{projects:t,tasks:n,teamMembers:r}=_(),i=e.trim().toLowerCase();return i?{projects:t.filter(e=>[e.name,e.description,e.status,e.priority].some(e=>String(e??``).toLowerCase().includes(i))).slice(0,5),tasks:n.filter(e=>{let n=t.find(t=>String(t.id)===String(e.projectId)),a=r.find(t=>String(t.id)===String(e.assigneeId));return[e.title,e.description,e.status,e.priority,n?.name,a?.name].some(e=>String(e??``).toLowerCase().includes(i))}).slice(0,5),teamMembers:r.filter(e=>[e.name,e.email,e.role].some(e=>String(e??``).toLowerCase().includes(i))).slice(0,5)}:{projects:[],tasks:[],teamMembers:[]}}function fr(e){return{project:`
       <svg xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24" fill="none"
         stroke="currentColor" stroke-width="1.8"
@@ -4958,9 +4972,9 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
     <button
       type="button"
       class="global-search-result flex w-full items-center gap-3 rounded-xl px-3 py-3 text-left transition-colors hover:bg-slate-100 focus:bg-slate-100 focus:outline-none dark:hover:bg-slate-800 dark:focus:bg-slate-800"
-      data-result-type="${Q(t)}"
-      data-result-id="${Q(a)}"
-      data-result-path="${Q(i)}"
+      data-result-type="${$(t)}"
+      data-result-id="${$(a)}"
+      data-result-path="${$(i)}"
       role="option"
     >
       <span
@@ -4972,11 +4986,11 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
 
       <span class="min-w-0 flex-1">
         <span class="block truncate text-sm font-semibold text-slate-900 dark:text-white">
-          ${Q(n)}
+          ${$(n)}
         </span>
 
         <span class="mt-0.5 block truncate text-xs text-slate-500 dark:text-slate-400">
-          ${Q(r)}
+          ${$(r)}
         </span>
       </span>
 
@@ -4996,7 +5010,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
   `}function mr(e,t){return t.length?`
     <section class="px-2 py-2">
       <h3 class="px-3 pb-2 pt-1 text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
-        ${Q(e)}
+        ${$(e)}
       </h3>
 
       <div class="space-y-1">
@@ -5031,7 +5045,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
     ${mr(`Projects`,i)}
     ${mr(`Tasks`,a)}
     ${mr(`People`,o)}
-  `}function gr(){let e=document.querySelector(`#global-search-modal`),t=document.querySelector(`#global-search-button`),n=document.querySelector(`#global-search-input`);e&&(e.classList.add(`hidden`),e.setAttribute(`aria-hidden`,`true`),document.body.classList.remove(`overflow-hidden`),t&&(t.setAttribute(`aria-expanded`,`false`),t.focus()),n&&(n.value=``))}function _r(){let e=document.querySelector(`#global-search-modal`),t=document.querySelector(`#global-search-input`),n=document.querySelector(`#global-search-results`),r=document.querySelector(`#global-search-button`);!e||!t||(e.classList.remove(`hidden`),e.setAttribute(`aria-hidden`,`false`),document.body.classList.add(`overflow-hidden`),r?.setAttribute(`aria-expanded`,`true`),hr(``),requestAnimationFrame(()=>{t.focus()}),n&&(n.scrollTop=0))}function vr(){br||(br=!0,document.addEventListener(`click`,e=>{if(e.target.closest(`#global-search-button`)){_r();return}if(e.target.closest(`[data-close-global-search]`)){gr();return}let t=e.target.closest(`.global-search-result`);if(t){let e=t.dataset.resultPath;gr(),e&&X(e);return}}),document.addEventListener(`input`,e=>{e.target.id===`global-search-input`&&hr(e.target.value)}),document.addEventListener(`keydown`,e=>{if((navigator.platform.toUpperCase().includes(`MAC`)?e.metaKey:e.ctrlKey)&&e.key.toLowerCase()===`k`){e.preventDefault(),_r();return}if(e.key===`Escape`){let e=document.querySelector(`#global-search-modal`);e&&!e.classList.contains(`hidden`)&&gr()}}))}function yr(){if(document.querySelector(`#global-search-modal`)){vr();return}document.body.insertAdjacentHTML(`beforeend`,`
+  `}function gr(){let e=document.querySelector(`#global-search-modal`),t=document.querySelector(`#global-search-button`),n=document.querySelector(`#global-search-input`);e&&(e.classList.add(`hidden`),e.setAttribute(`aria-hidden`,`true`),document.body.classList.remove(`overflow-hidden`),t&&(t.setAttribute(`aria-expanded`,`false`),t.focus()),n&&(n.value=``))}function _r(){let e=document.querySelector(`#global-search-modal`),t=document.querySelector(`#global-search-input`),n=document.querySelector(`#global-search-results`),r=document.querySelector(`#global-search-button`);!e||!t||(e.classList.remove(`hidden`),e.setAttribute(`aria-hidden`,`false`),document.body.classList.add(`overflow-hidden`),r?.setAttribute(`aria-expanded`,`true`),hr(``),requestAnimationFrame(()=>{t.focus()}),n&&(n.scrollTop=0))}function vr(){br||(br=!0,document.addEventListener(`click`,e=>{if(e.target.closest(`#global-search-button`)){_r();return}if(e.target.closest(`[data-close-global-search]`)){gr();return}let t=e.target.closest(`.global-search-result`);if(t){let e=t.dataset.resultPath;gr(),e&&Z(e);return}}),document.addEventListener(`input`,e=>{e.target.id===`global-search-input`&&hr(e.target.value)}),document.addEventListener(`keydown`,e=>{if((navigator.platform.toUpperCase().includes(`MAC`)?e.metaKey:e.ctrlKey)&&e.key.toLowerCase()===`k`){e.preventDefault(),_r();return}if(e.key===`Escape`){let e=document.querySelector(`#global-search-modal`);e&&!e.classList.contains(`hidden`)&&gr()}}))}function yr(){if(document.querySelector(`#global-search-modal`)){vr();return}document.body.insertAdjacentHTML(`beforeend`,`
       <div
         id="global-search-modal"
         class="fixed inset-0 z-[100] hidden overflow-y-auto bg-slate-950/50 px-4 py-10 backdrop-blur-sm sm:py-20"
@@ -5110,7 +5124,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
           </div>
         </div>
       </div>
-    `),vr()}var br,xr=t((()=>{C(),Z(),br=!1}));function Sr(){let e=localStorage.getItem(Or);if(!e)return $;try{return{...$,...JSON.parse(e)}}catch{return $}}function Cr(e){return e.trim().split(/\s+/).map(e=>e[0]).join(``).slice(0,2).toUpperCase()}function wr(){let e=Sr(),t=Cr(e.name),n=document.querySelector(`#navbar`);if(!n){console.error(`Navbar mount point not found.`);return}n.innerHTML=`
+    `),vr()}var br,xr=t((()=>{C(),Q(),br=!1}));function Sr(){let e=localStorage.getItem(Or);if(!e)return kr;try{return{...kr,...JSON.parse(e)}}catch{return kr}}function Cr(e){return e.trim().split(/\s+/).map(e=>e[0]).join(``).slice(0,2).toUpperCase()}function wr(){let e=Sr(),t=Cr(e.name),n=document.querySelector(`#navbar`);if(!n){console.error(`Navbar mount point not found.`);return}n.innerHTML=`
     <header class="h-16 border-b border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950">
       <div class="flex h-full min-w-0 items-center justify-between gap-2 px-2 sm:px-6">
 
@@ -5398,7 +5412,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
         </div>
       </div>
     </header>
-  `,Tr(),Er(),Se(),yr(),Dr||=(window.addEventListener(`flowboard:profile-updated`,()=>{wr()}),!0)}function Tr(){let e=document.querySelector(`#user-menu-button`),t=document.querySelector(`#user-menu`),n=document.querySelector(`#user-menu-chevron`);if(!e||!t||!n){console.error(`User menu elements not found.`);return}function r(){t.classList.remove(`hidden`),e.setAttribute(`aria-expanded`,`true`),n.classList.add(`rotate-180`)}function i(){t.classList.add(`hidden`),e.setAttribute(`aria-expanded`,`false`),n.classList.remove(`rotate-180`)}function a(){e.getAttribute(`aria-expanded`)===`true`?i():r()}e.addEventListener(`click`,e=>{e.stopPropagation(),a()}),document.addEventListener(`click`,n=>{!t.contains(n.target)&&!e.contains(n.target)&&i()}),document.addEventListener(`keydown`,t=>{t.key===`Escape`&&(i(),e.focus())})}function Er(){let e=document.querySelector(`#theme-toggle-btn`);if(!e){console.error(`Theme toggle button not found.`);return}function t(){let t=document.documentElement.classList.contains(`dark`)?`Switch to light mode`:`Switch to dark mode`;e.setAttribute(`aria-label`,t),e.setAttribute(`title`,t)}t(),e.addEventListener(`click`,()=>{let e=o(),n=document.documentElement.classList.contains(`dark`)?`light`:`dark`;s({...e,theme:n}),c(n),t()})}var Dr,Or,$,kr=t((()=>{d(),De(),xr(),Dr=!1,Or=`flowboard-profile`,$={name:`username`,email:`username@address`,role:`Admin`}}));function Ar(){let e=document.querySelector(`#sidebar`);if(!e){console.error(`Sidebar mount point not found.`);return}let t=window.location.pathname;e.innerHTML=`
+  `,Tr(),Er(),Se(),yr(),Dr||=(window.addEventListener(`flowboard:profile-updated`,()=>{wr()}),!0)}function Tr(){let e=document.querySelector(`#user-menu-button`),t=document.querySelector(`#user-menu`),n=document.querySelector(`#user-menu-chevron`);if(!e||!t||!n){console.error(`User menu elements not found.`);return}function r(){t.classList.remove(`hidden`),e.setAttribute(`aria-expanded`,`true`),n.classList.add(`rotate-180`)}function i(){t.classList.add(`hidden`),e.setAttribute(`aria-expanded`,`false`),n.classList.remove(`rotate-180`)}function a(){e.getAttribute(`aria-expanded`)===`true`?i():r()}e.addEventListener(`click`,e=>{e.stopPropagation(),a()}),document.addEventListener(`click`,n=>{!t.contains(n.target)&&!e.contains(n.target)&&i()}),document.addEventListener(`keydown`,t=>{t.key===`Escape`&&(i(),e.focus())})}function Er(){let e=document.querySelector(`#theme-toggle-btn`);if(!e){console.error(`Theme toggle button not found.`);return}function t(){let t=document.documentElement.classList.contains(`dark`)?`Switch to light mode`:`Switch to dark mode`;e.setAttribute(`aria-label`,t),e.setAttribute(`title`,t)}t(),e.addEventListener(`click`,()=>{let e=o(),n=document.documentElement.classList.contains(`dark`)?`light`:`dark`;s({...e,theme:n}),c(n),t()})}var Dr,Or,kr,Ar=t((()=>{d(),De(),xr(),Dr=!1,Or=`flowboard-profile`,kr={name:`username`,email:`username@address`,role:`Admin`}}));function jr(){let e=document.querySelector(`#sidebar`);if(!e){console.error(`Sidebar mount point not found.`);return}let t=window.location.pathname;e.innerHTML=`
     <aside class="hidden w-64 shrink-0 border-r border-slate-200 bg-white md:flex dark:border-slate-800 dark:bg-slate-950">
       <div class="flex w-full flex-col">
 
@@ -5441,7 +5455,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
 
       </div>
     </aside>
-  `}var jr=t((()=>{ir()}));function Mr(){let e=document.querySelector(`#footer`);if(!e){console.error(`Footer mount point not found.`);return}e.innerHTML=`
+  `}var Mr=t((()=>{ir()}));function Nr(){let e=document.querySelector(`#footer`);if(!e){console.error(`Footer mount point not found.`);return}e.innerHTML=`
     <footer class="border-t border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950">
       <div class="px-6 py-5">
         <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
@@ -5552,7 +5566,7 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
 
       </section>
     </div>
-  `,Nr()}function Nr(){if(Pr)return;Pr=!0;let e=document.querySelector(`#footer-modal-overlay`),t=document.querySelector(`#footer-modal-title`),n=document.querySelector(`#footer-modal-description`),r=document.querySelector(`#footer-modal-close`),i=document.querySelector(`#footer-modal-done`);if(!e||!t||!n||!r||!i){console.error(`Footer modal elements not found.`);return}let a=null,o={help:{title:`Help & Contact`,content:`
+  `,Pr()}function Pr(){if(Fr)return;Fr=!0;let e=document.querySelector(`#footer-modal-overlay`),t=document.querySelector(`#footer-modal-title`),n=document.querySelector(`#footer-modal-description`),r=document.querySelector(`#footer-modal-close`),i=document.querySelector(`#footer-modal-done`);if(!e||!t||!n||!r||!i){console.error(`Footer modal elements not found.`);return}let a=null,o={help:{title:`Help & Contact`,content:`
         <div class="space-y-5">
 
           <div>
@@ -5790,4 +5804,4 @@ var e=Object.defineProperty,t=(e,t,n)=>()=>{if(n)throw n[0];try{return e&&(t=e(e
           </p>
 
         </div>
-      `}};function s(i,s){let c=o[i];c&&(a=s,t.textContent=c.title,n.innerHTML=c.content,e.classList.remove(`hidden`),e.classList.add(`flex`),e.setAttribute(`aria-hidden`,`false`),document.body.classList.add(`overflow-hidden`),r.focus())}function c(){e.classList.add(`hidden`),e.classList.remove(`flex`),e.setAttribute(`aria-hidden`,`true`),document.body.classList.remove(`overflow-hidden`),a?.isConnected&&a.focus()}document.addEventListener(`click`,t=>{let n=t.target.closest(`[data-footer-modal]`);if(n){s(n.dataset.footerModal,n);return}if(t.target.closest(`#footer-modal-close`)||t.target.closest(`#footer-modal-done`)){c();return}t.target===e&&c()}),document.addEventListener(`keydown`,t=>{t.key===`Escape`&&!e.classList.contains(`hidden`)&&c()})}var Pr,Fr=t((()=>{Pr=!1}));function Ir(){document.addEventListener(`click`,e=>{if(e.defaultPrevented||e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;let t=e.target.closest(`a`);if(!t)return;let n=t.getAttribute(`href`);!n||!n.startsWith(`/`)||n.startsWith(`//`)||t.target===`_blank`||t.hasAttribute(`download`)||(e.preventDefault(),X(n),Ar())})}var Lr=t((()=>{Z(),jr()}));n((()=>{i(),a(),kr(),jr(),Fr(),O(),Z(),ct(),Lr(),d(),c(o().theme),wr(),Ar(),Mr(),Oe(),ot(),Ir(),lr()}))();
+      `}};function s(i,s){let c=o[i];c&&(a=s,t.textContent=c.title,n.innerHTML=c.content,e.classList.remove(`hidden`),e.classList.add(`flex`),e.setAttribute(`aria-hidden`,`false`),document.body.classList.add(`overflow-hidden`),r.focus())}function c(){e.classList.add(`hidden`),e.classList.remove(`flex`),e.setAttribute(`aria-hidden`,`true`),document.body.classList.remove(`overflow-hidden`),a?.isConnected&&a.focus()}document.addEventListener(`click`,t=>{let n=t.target.closest(`[data-footer-modal]`);if(n){s(n.dataset.footerModal,n);return}if(t.target.closest(`#footer-modal-close`)||t.target.closest(`#footer-modal-done`)){c();return}t.target===e&&c()}),document.addEventListener(`keydown`,t=>{t.key===`Escape`&&!e.classList.contains(`hidden`)&&c()})}var Fr,Ir=t((()=>{Fr=!1}));function Lr(){document.addEventListener(`click`,e=>{if(e.defaultPrevented||e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;let t=e.target.closest(`a`);if(!t)return;let n=t.getAttribute(`href`);!n||!n.startsWith(`/`)||n.startsWith(`//`)||t.target===`_blank`||t.hasAttribute(`download`)||(e.preventDefault(),Z(n),jr())})}var Rr=t((()=>{Q(),Mr()}));n((()=>{i(),a(),Ar(),Mr(),Ir(),O(),Q(),ct(),Rr(),d(),c(o().theme),wr(),jr(),Nr(),Oe(),ot(),Lr(),lr()}))();
