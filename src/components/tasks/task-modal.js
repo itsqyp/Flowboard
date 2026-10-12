@@ -298,24 +298,28 @@ export function openTaskModal(projectId = null) {
     return;
   }
 
+  // Always refresh projects and team members before opening.
+  refreshTaskModalOptions();
+
   const projectSelect = modal.querySelector("#task-project");
 
-  // Always start with an unlocked project selector
-  projectSelect.disabled = false;
-  projectSelect.classList.remove("pointer-events-none", "bg-slate-100");
-  projectSelect.removeAttribute("aria-disabled");
-
-  // If a project ID was provided from Project Details,
-  // automatically select and visually lock that project.
-  if (projectId && typeof projectId !== "object") {
+  if (projectId !== null && projectId !== undefined) {
+    // Automatically select the project from Project Details.
     projectSelect.value = String(projectId);
 
-    projectSelect.classList.add("pointer-events-none", "bg-slate-100");
+    // Lock the project selection when adding a task
+    // directly from Project Details.
+    projectSelect.disabled = true;
 
-    projectSelect.setAttribute("aria-disabled", "true");
+    // Keep the project ID available for form submission.
+    modal.dataset.projectId = String(projectId);
   } else {
-    // Normal Tasks page flow
+    // Allow the user to choose a project when opening
+    // the task modal from elsewhere.
+    projectSelect.disabled = false;
     projectSelect.value = "";
+
+    delete modal.dataset.projectId;
   }
 
   modal.classList.remove("hidden");
@@ -329,6 +333,7 @@ export function openTaskModal(projectId = null) {
     titleInput.focus();
   }, 50);
 }
+
 export function closeTaskModal() {
   if (!modal) {
     return;
@@ -343,10 +348,9 @@ export function closeTaskModal() {
 
   const projectSelect = modal.querySelector("#task-project");
 
-  // Always unlock the project selector after closing
   projectSelect.disabled = false;
-  projectSelect.classList.remove("pointer-events-none", "bg-slate-100");
-  projectSelect.removeAttribute("aria-disabled");
+
+  delete modal.dataset.projectId;
 }
 function handleEscape(event) {
   if (event.key === "Escape" && !modal.classList.contains("hidden")) {
@@ -361,7 +365,7 @@ function handleSubmit(event) {
 
   const title = formData.get("title").trim();
   const description = formData.get("description").trim();
-  const projectId = formData.get("projectId");
+  const projectId = modal.dataset.projectId || formData.get("projectId");
   const priority = formData.get("priority");
   const dueDate = formData.get("dueDate");
   const assigneeId = Number(formData.get("assigneeId"));
